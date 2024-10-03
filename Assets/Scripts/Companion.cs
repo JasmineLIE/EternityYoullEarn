@@ -1,30 +1,63 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class Companion : MonoBehaviour
+public class Companion : Clickable
 {
     //Data Variables
 
     private string comName;
     private List<string> barks = new List<string>();
-    private int psycheLevel, motivationLevel;
 
-   
-    public void CharacterSetUp(string charName, string[] barks)
+    //These hold the 'r' value from the spreadsheet, incrementing each level
+    private int[] psycheFactors = new int[4];
+    private int[] motivationFactors = new int[4];
+
+    //Represents what investment level the player is currently on
+    private int psycheIndex;
+    private int motivationIndex; 
+
+    //These values represent the current cost of the invesment
+    private int psycheCost;
+    private int motivationCost;
+
+    //This value represents 't' from the Spreadsheet
+    private int growthFactor;
+
+    private void Awake()
+    {
+        growthFactor = 5;
+
+        //Start at 0 because we are accessing an array of values
+        psycheIndex = 0;
+        motivationIndex = 0;
+    }
+
+    public void CharacterSetUp(string charName, string[] barks, int[] psyche, int[] motivation)
     {
         //TODO: Bio
         //not really concerned about saved data for now
 
         comName = charName;
 
-        setBarks(barks); 
+        setBarks(barks);
 
-        //Starting investment level
-        psycheLevel = 0;
-        motivationLevel = 0;
+        //Set up investment growth increments
+        for (int i = 0; i < psycheFactors.Length; i++)
+        {
+            psycheFactors[i] = psyche[i];
+            motivationFactors[i] = motivation[i];
+        }
+    
 
+    }
+
+    public override void Clicked()
+    {
+        //Shoud open a UI when clicked
+        throw new System.NotImplementedException();
     }
 
     public void setBarks(string[] newBarks)
@@ -39,4 +72,14 @@ public class Companion : MonoBehaviour
         }
 
     }
-}
+
+    public int PsycheGrowthModel(int r, int t)
+    {
+        return ((1 + (r * 2))*t); 
+    }
+
+    public int MotivationGrowthModel(int r, int t)
+    {
+        return (r * t) * t;
+    }
+ }
