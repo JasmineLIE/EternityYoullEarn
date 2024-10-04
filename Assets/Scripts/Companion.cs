@@ -30,9 +30,7 @@ public class Companion : Clickable
     {
         growthFactor = 5;
 
-        //Start at 0 because we are accessing an array of values
-        psycheIndex = 0;
-        motivationIndex = 0;
+        
     }
 
     public void CharacterSetUp(string charName, string[] barks, int[] psyche, int[] motivation)
