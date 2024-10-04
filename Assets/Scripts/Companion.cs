@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ public class Companion : Clickable
 
     private string comName;
     private List<string> barks = new List<string>();
+
+    public SaveData saveData;
 
     //These hold the 'r' value from the spreadsheet, incrementing each level
     private int[] psycheFactors = new int[4];
@@ -28,8 +31,9 @@ public class Companion : Clickable
 
     private void Awake()
     {
-        growthFactor = 5;
 
+      
+        growthFactor = 5;
         
     }
 
@@ -48,8 +52,8 @@ public class Companion : Clickable
             psycheFactors[i] = psyche[i];
             motivationFactors[i] = motivation[i];
         }
-    
 
+        UploadJSON(comName);
     }
 
     public override void Clicked()
@@ -80,4 +84,10 @@ public class Companion : Clickable
     {
         return (r * t) * t;
     }
+
+    private void UploadJSON(string key)
+    {
+       
+    }
+   
  }
