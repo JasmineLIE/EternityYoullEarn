@@ -10,7 +10,7 @@ public class Companion : Clickable
     //Data Variables
 
     private string comName;
-    private List<string> barks = new List<string>();
+    public string[] barks;
     public SaveData saveData;
     
 
@@ -37,7 +37,7 @@ public class Companion : Clickable
         
     }
 
-    public void CharacterSetUp(string charName, string[] barks, int[] psyche, int[] motivation)
+    public void CharacterSetUp(string charName)
     {
         //TODO: Bio
         //not really concerned about saved data for now
@@ -47,16 +47,9 @@ public class Companion : Clickable
         //draw from save file companion's level
             UploadJSON(comName);
        
-        //load character barks
-        setBarks(barks);
+      
 
-        //Set up investment growth increments
-        for (int i = 0; i < psycheFactors.Length; i++)
-        {
-            psycheFactors[i] = psyche[i];
-            motivationFactors[i] = motivation[i];
-        }
-
+      
         //set up current cost of active next investment
       psycheCost = PsycheGrowthModel(psycheFactors[psycheIndex], growthFactor);
       motivationCost = MotivationGrowthModel(motivationFactors[motivationIndex], growthFactor); 
@@ -69,18 +62,7 @@ public class Companion : Clickable
         throw new System.NotImplementedException();
     }
 
-    public void setBarks(string[] newBarks)
-    {
-        //If we have time to replace barks as Companion gains investments to reflect state
-        barks.Clear();
-
-        //Add starting barks to the character's bark pool
-        for (int i = 0; i < newBarks.Length; i++)
-        {
-            barks.AddRange(newBarks[i]);
-        }
-
-    }
+  
 
     public int PsycheGrowthModel(int r, int t)
     {

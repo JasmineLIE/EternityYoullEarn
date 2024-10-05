@@ -5,7 +5,7 @@ using UnityEngine;
 public class ClickDetection : MonoBehaviour
 {
     public Camera myCam;
-    int clicks = 0;
+   
 
     private void Update()
     {
