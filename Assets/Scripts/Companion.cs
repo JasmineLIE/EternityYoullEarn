@@ -11,7 +11,7 @@ public class Companion : Clickable
 
     private string comName;
     private List<string> barks = new List<string>();
-
+    public SaveData saveData;
     
 
     //These hold the 'r' value from the spreadsheet, incrementing each level
@@ -44,6 +44,10 @@ public class Companion : Clickable
 
         comName = charName;
 
+        //draw from save file companion's level
+            UploadJSON(comName);
+       
+        //load character barks
         setBarks(barks);
 
         //Set up investment growth increments
@@ -53,7 +57,10 @@ public class Companion : Clickable
             motivationFactors[i] = motivation[i];
         }
 
-        UploadJSON(comName);
+        //set up current cost of active next investment
+      psycheCost = PsycheGrowthModel(psycheFactors[psycheIndex], growthFactor);
+      motivationCost = MotivationGrowthModel(motivationFactors[motivationIndex], growthFactor); 
+
     }
 
     public override void Clicked()
@@ -87,7 +94,20 @@ public class Companion : Clickable
 
     private void UploadJSON(string key)
     {
-       
+        int[] companionData = saveData.LoadCompanionData(key);
+
+        psycheIndex = companionData[0];
+        motivationIndex = companionData[1];
+
+    }
+
+    public void UpgradePsyche()
+    {
+        saveData.SaveCompanionPsyche(comName);
     }
    
+    public void UpgradeMotivation()
+    {
+        saveData.SaveCompanionMotivation(comName);
+    }
  }

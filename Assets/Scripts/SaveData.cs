@@ -83,6 +83,9 @@ public class SaveData : MonoBehaviour
     //-----Player Data Functions-----
    public int[] LoadPlayerData()
     {
+        //Ensure data is up to date bfore loading
+        LoadJson();
+
         int[] playerData = new int[5];
 
         /**
@@ -130,7 +133,89 @@ public class SaveData : MonoBehaviour
         SaveIntoJson();
     }
 
+   //-----
+
+    //----- Companion Data Functions -----
+
+    public int[] LoadCompanionData(string key)
+    {
+        //Ensure data is up to date before loading
+        LoadJson();
+
+        int[] companionData = new int[2];
+
+        switch (key)
+        {
+            /**
+             * 0 - Gwynhark
+             * 1 - Erem
+             * 2 - Quan
+             */
+            case "Gwynhark":
+                companionData[1] = _CompanionData.Gwynhark_psycheLevel;
+                companionData[0] = _CompanionData.Gwynhark_motivationLevel;
+                break;
+               
+                
+            case "Erem":
+                companionData[1] = _CompanionData.Erem_psycheLevel;
+                companionData[0] = _CompanionData.Erem_motivationLevel;
+                break;
+                
+            case "Quan":
+                companionData[1] = _CompanionData.Quan_psycheLevel;
+                companionData[0] = _CompanionData.Quan_motivationLevel;
+                break;
+        }
+        return companionData;
+    }
+
+    public void SaveCompanionPsyche(string key)
+    {
+        switch (key)
+        {
+            
+            case "Gwynhark":
+                _CompanionData.Gwynhark_psycheLevel++;
+               
+                break;
+
+
+            case "Erem":
+                _CompanionData.Erem_psycheLevel++;
+
+                break;
+
+            case "Quan":
+                _CompanionData.Quan_psycheLevel++;
+                break;
+        }
+        SaveIntoJson();
+    }
+
    
+    public void SaveCompanionMotivation(string key)
+    {
+        switch (key)
+        {
+            
+            case "Gwynhark":
+                _CompanionData.Gwynhark_motivationLevel++;
+                break;
+
+
+            case "Erem":
+                _CompanionData.Erem_motivationLevel++;
+                break;
+
+            case "Quan":
+                _CompanionData.Quan_motivationLevel++;
+                break;
+        }
+
+        SaveIntoJson();
+    }
+    //-----
 }
 
 [System.Serializable]
@@ -152,9 +237,10 @@ public class CompanionData
 public class PlayerData
 {
     public int insightVal;
+    public int MOHVal;
     public int crystalEbonyVal;
     public int texts_untransVal;
     public int texts_transVal;
-    public int MOHVal;
+   
 }
 
