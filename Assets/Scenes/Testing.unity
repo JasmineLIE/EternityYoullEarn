@@ -536,12 +536,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _CompanionData:
-    gwyn_psycheLevel: 1
-    gwyn_motivationLevel: 1
-    erem_psycheLevel: 1
-    erem_motivationLevel: 1
-    quan_psycheLevel: 1
-    quan_motivationLevel: 1
+    Gwynhark_psycheLevel: 0
+    Gwynhark_motivationLevel: 0
+    Erem_psycheLevel: 0
+    Erem_motivationLevel: 0
+    Quan_psycheLevel: 0
+    Quan_motivationLevel: 0
+  _PlayerData:
+    insightVal: 0
+    MOHVal: 0
+    crystalEbonyVal: 0
+    texts_untransVal: 0
+    texts_transVal: 0
 --- !u!114 &803873049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -881,6 +887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3d833e5f8d087f418c186c8da1a54fb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveData: {fileID: 803873048}
 --- !u!4 &1811600359
 Transform:
   m_ObjectHideFlags: 0
