@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
        for (int i = 0; i < loadedPlayerData.Length; i++)
         {
             SetResource(i, loadedPlayerData[i]);
+            print(GetResource(i));
         }
           
     }
@@ -46,19 +47,19 @@ public class Player : MonoBehaviour
        if (key == 2)
         {
             crystalEbonies += val;
-            saveData.SaveCrystalEbonies(val);
+            saveData.SaveCrystalEbonies(crystalEbonies);
         } 
         else if (key < 2)
         {
             if (key == 1)
             {
                 marksOfHumanity += val;
-                saveData.SaveMOH(val);
+                saveData.SaveMOH(marksOfHumanity);
             } 
             else
             {
                 insight += val;
-                saveData.SaveInsight(val);
+                saveData.SaveInsight(insight);
             }
         } 
         else
@@ -66,12 +67,12 @@ public class Player : MonoBehaviour
             if (key == 3)
             {
                 textsUntrans += val;
-                saveData.SaveUntransTexts(val);
+                saveData.SaveUntransTexts(textsUntrans);
             } 
             else
             {
                 textsTrans += val;
-                saveData.SaveTransTexts(val);
+                saveData.SaveTransTexts(textsTrans);
             }
         }
     }

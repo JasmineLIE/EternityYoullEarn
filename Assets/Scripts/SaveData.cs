@@ -104,29 +104,29 @@ public class SaveData : MonoBehaviour
 
     public void SaveInsight(int val)
     {
-        _PlayerData.insightVal += val;
+        _PlayerData.insightVal = val;
         SaveIntoJson();
     }
 
     public void SaveMOH(int val)
     {
-        _PlayerData.MOHVal += val;
+        _PlayerData.MOHVal = val;
         SaveIntoJson();
     }
 
     public void SaveCrystalEbonies(int val)
     {
-        _PlayerData.crystalEbonyVal += val;
+        _PlayerData.crystalEbonyVal = val;
         SaveIntoJson();
     }
 
     public void SaveUntransTexts(int val)
     {
-        _PlayerData.texts_untransVal += val;
+        _PlayerData.texts_untransVal = val;
         SaveIntoJson();
     }
     public void SaveTransTexts(int val) { 
-        _PlayerData.texts_transVal += val;
+        _PlayerData.texts_transVal = val;
         SaveIntoJson();
     }
 
