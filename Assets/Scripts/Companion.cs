@@ -12,7 +12,7 @@ public class Companion : Clickable
     private string comName;
     private List<string> barks = new List<string>();
 
-    public SaveData saveData;
+    
 
     //These hold the 'r' value from the spreadsheet, incrementing each level
     private int[] psycheFactors = new int[4];

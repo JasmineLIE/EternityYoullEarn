@@ -11,16 +11,21 @@ public class Player : MonoBehaviour
     private int textsUntrans;
     private int textsTrans;
 
-   
+    public SaveData saveData;
 
     private void Awake()
     {
-        //INIT
-        insight = 0;
-        marksOfHumanity = 0;
-        crystalEbonies = 0;
-        textsUntrans = 0;
-        textsTrans = 0;
+
+        //Game start, load player data from local directory
+       saveData.LoadJson();
+        int[] loadedPlayerData = saveData.LoadPlayerData();
+
+        //Load the data retrieved from the json file into the local variables of player
+        //everything should start at 0 when game is booted
+       for (int i = 0; i < loadedPlayerData.Length; i++)
+        {
+            SetResource(i, loadedPlayerData[i]);
+        }
           
     }
        
@@ -41,16 +46,19 @@ public class Player : MonoBehaviour
        if (key == 2)
         {
             crystalEbonies += val;
+            saveData.SaveCrystalEbonies(val);
         } 
         else if (key < 2)
         {
             if (key == 1)
             {
                 marksOfHumanity += val;
+                saveData.SaveMOH(val);
             } 
             else
             {
                 insight += val;
+                saveData.SaveInsight(val);
             }
         } 
         else
@@ -58,10 +66,12 @@ public class Player : MonoBehaviour
             if (key == 3)
             {
                 textsUntrans += val;
+                saveData.SaveUntransTexts(val);
             } 
             else
             {
                 textsTrans += val;
+                saveData.SaveTransTexts(val);
             }
         }
     }
