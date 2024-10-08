@@ -12,8 +12,15 @@ public class TheGate : Clickable
 
     private void Awake()
     {
-        insightIncrement = 1;
+        
         player = GameObject.FindGameObjectWithTag("Player");
+        insightIncrement = player.GetComponent<Player>().saveData.GetInsightIncrementVal();
+      
+    }
+
+    private void Start()
+    {
+        insightDisplay.text = "Insight is: " + player.GetComponent<Player>().GetResource(0);
     }
     public override void Clicked()
     {

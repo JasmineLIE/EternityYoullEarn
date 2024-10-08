@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
 public class SaveData : MonoBehaviour
@@ -12,22 +13,20 @@ public class SaveData : MonoBehaviour
     [SerializeField] private CompanionData _CompanionData = new CompanionData();
     [SerializeField] private PlayerData _PlayerData = new PlayerData();
 
-    
+   
     public void SaveIntoJson()
     {
         //Create strings for path direction and file name
         string companionDataPath = Application.persistentDataPath + "/CompanionData.json";
-        string playerDataPath = Application.persistentDataPath + "/Playerdata.json";
+        string playerDataPath = Application.persistentDataPath + "/PlayerData.json";
 
         //serialize into JSon data
         string companion = JsonUtility.ToJson(_CompanionData);
         string player = JsonUtility.ToJson(_PlayerData);
        
-        //check if we have any previous saves, if not, set all values to default
-        if (!File.Exists(playerDataPath) && !File.Exists(companionDataPath)) {
-            GameStartValues();
-        }
+        //Default data set is adjusted in Inspector
 
+        print("Writing save file...");
         //In the chosen directory, create and save a file
         System.IO.File.WriteAllText(companionDataPath, companion);
         System.IO.File.WriteAllText(playerDataPath, player);
@@ -38,14 +37,15 @@ public class SaveData : MonoBehaviour
     public void LoadJson()
     {
         string companionDataPath = Application.persistentDataPath + "/CompanionData.json";
-        string playerDataPath = Application.persistentDataPath + "/Playerdata.json";
+        string playerDataPath = Application.persistentDataPath + "/PlayerData.json";
 
         if (!File.Exists(playerDataPath) && !File.Exists(companionDataPath))
         {
-            //if there is no file available to load, create a new one
+           
             SaveIntoJson();
         } else
         {
+            print("Game data found!  Loading in...");
             //read entire file(s) and save its content(s)
             string companionDataContents = File.ReadAllText(companionDataPath);
             string playerDataContents = File.ReadAllText(@playerDataPath);
@@ -57,29 +57,14 @@ public class SaveData : MonoBehaviour
         }
     }
 
-    //set everything to 0, like fresh game
-    private void GameStartValues()
+    public void LoadGameStart()
     {
-
-    
-
-        _CompanionData.Gwynhark_psycheLevel = 0;
-        _CompanionData.Gwynhark_motivationLevel = 0;
-
-        _CompanionData.Erem_psycheLevel = 0;
-        _CompanionData.Erem_motivationLevel = 0;
-
-        _CompanionData.Quan_psycheLevel = 0;
-        _CompanionData.Quan_motivationLevel = 0;
-
-        _PlayerData.insightVal = 0;
-        _PlayerData.crystalEbonyVal = 0;
-        _PlayerData.texts_untransVal = 0;
-        _PlayerData.texts_transVal = 0;
-        _PlayerData.MOHVal = 0;
-
+       
+        LoadJson();
+        SceneManager.LoadScene("TheGate");
     }
 
+  
     //-----Player Data Functions-----
    public int[] LoadPlayerData()
     {
@@ -133,6 +118,15 @@ public class SaveData : MonoBehaviour
         SaveIntoJson();
     }
 
+    public void SaveIncrementVal(int val)
+    {
+        _PlayerData.incrementVal = val;
+        SaveIntoJson();
+    }
+    public int GetInsightIncrementVal()
+    {
+        return _PlayerData.incrementVal;
+    }
    //-----
 
     //----- Companion Data Functions -----
@@ -241,6 +235,7 @@ public class PlayerData
     public int crystalEbonyVal;
     public int texts_untransVal;
     public int texts_transVal;
+    public int incrementVal;
    
 }
 

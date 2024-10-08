@@ -13,11 +13,10 @@ public class Player : MonoBehaviour
 
     public SaveData saveData;
 
-    private void Awake()
+    private void Start()
     {
 
-        //Game start, load player data from local directory
-       saveData.LoadJson();
+    
         int[] loadedPlayerData = saveData.LoadPlayerData();
 
         //Load the data retrieved from the json file into the local variables of player
@@ -25,7 +24,7 @@ public class Player : MonoBehaviour
        for (int i = 0; i < loadedPlayerData.Length; i++)
         {
             SetResource(i, loadedPlayerData[i]);
-            print(GetResource(i));
+         
         }
           
     }
