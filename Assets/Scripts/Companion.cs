@@ -8,12 +8,12 @@ using UnityEngine;
 public class Companion : Clickable
 {
     //Data Variables
-
+  
     private string comName;
     public string[] barks;
     public SaveData saveData;
-    
-
+    public CompanionUI ui;
+   
     //These hold the 'r' value from the spreadsheet, incrementing each level
     private int[] psycheFactors = new int[4];
     private int[] motivationFactors = new int[4];
@@ -27,54 +27,59 @@ public class Companion : Clickable
     private int motivationCost;
 
     //This value represents 't' from the Spreadsheet
-    private int growthFactor;
+    private int growthFactor_psyche;
+    private int growthFactor_motivation;
 
-    private void Awake()
+   
+    public void CharacterSetUp(string charName, int[] psycheFact, int[] motivationFact, int psyche_t, int motivation_t)
     {
+        growthFactor_motivation = motivation_t;
+        growthFactor_psyche = psyche_t;
 
-      
-        growthFactor = 5;
-        
-    }
-
-    public void CharacterSetUp(string charName)
-    {
+        for (int i = 0; i < psycheFact.Length; i++)
+        {
+            psycheFactors[i] = psycheFact[i];
+            motivationFactors[i] = motivationFact[i];
+        }
         //TODO: Bio
         //not really concerned about saved data for now
 
         comName = charName;
 
         //draw from save file companion's level
-            UploadJSON(comName);
+            GetCurrentIndex(comName);
        
       
 
       
         //set up current cost of active next investment
-      psycheCost = PsycheGrowthModel(psycheFactors[psycheIndex], growthFactor);
-      motivationCost = MotivationGrowthModel(motivationFactors[motivationIndex], growthFactor); 
+      psycheCost = GetPsycheGrowthModel(psycheFactors[psycheIndex], growthFactor_psyche);
+      motivationCost = GetMotivationGrowthModel(motivationFactors[motivationIndex], growthFactor_motivation);
+
+        print("The current psyche cost for " + comName + " is " + psycheCost);
 
     }
 
     public override void Clicked()
     {
-        //Shoud open a UI when clicked
-        throw new System.NotImplementedException();
+        //REMINDER: Ensure the scene has "ClickDetection" to make this work
+        print("You are clicking " + comName);
+       ui.OpenCompanionUI(comName);
     }
 
   
 
-    public int PsycheGrowthModel(int r, int t)
+    public int GetPsycheGrowthModel(int r, int t)
     {
         return ((1 + (r * 2))*t); 
     }
 
-    public int MotivationGrowthModel(int r, int t)
+    public int GetMotivationGrowthModel(int r, int t)
     {
         return (r * t) * t;
     }
 
-    private void UploadJSON(string key)
+    private void GetCurrentIndex(string key)
     {
         int[] companionData = saveData.LoadCompanionData(key);
 
@@ -85,11 +90,22 @@ public class Companion : Clickable
 
     public void UpgradePsyche()
     {
+        //The function in SaveData increments for us
         saveData.SaveCompanionPsyche(comName);
     }
    
     public void UpgradeMotivation()
     {
         saveData.SaveCompanionMotivation(comName);
+    }
+
+    public int GetCurrentPsyche()
+    {
+        return psycheCost;
+    }
+
+    public int GetCurrentMotivation()
+    {
+        return motivationCost;  
     }
  }

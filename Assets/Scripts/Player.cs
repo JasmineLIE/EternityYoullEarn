@@ -17,6 +17,7 @@ public class Player : MonoBehaviour
     {
 
     
+        //will load player data every time the scene changes
         int[] loadedPlayerData = saveData.LoadPlayerData();
 
         //Load the data retrieved from the json file into the local variables of player

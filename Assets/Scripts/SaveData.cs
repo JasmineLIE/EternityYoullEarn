@@ -146,19 +146,19 @@ public class SaveData : MonoBehaviour
              * 2 - Quan
              */
             case "Gwynhark":
-                companionData[1] = _CompanionData.Gwynhark_psycheLevel;
-                companionData[0] = _CompanionData.Gwynhark_motivationLevel;
+                companionData[0] = _CompanionData.Gwynhark_psycheLevel;
+                companionData[1] = _CompanionData.Gwynhark_motivationLevel;
                 break;
                
                 
             case "Erem":
-                companionData[1] = _CompanionData.Erem_psycheLevel;
-                companionData[0] = _CompanionData.Erem_motivationLevel;
+                companionData[0] = _CompanionData.Erem_psycheLevel;
+                companionData[1] = _CompanionData.Erem_motivationLevel;
                 break;
                 
             case "Quan":
-                companionData[1] = _CompanionData.Quan_psycheLevel;
-                companionData[0] = _CompanionData.Quan_motivationLevel;
+                companionData[0] = _CompanionData.Quan_psycheLevel;
+                companionData[1] = _CompanionData.Quan_motivationLevel;
                 break;
         }
         return companionData;
