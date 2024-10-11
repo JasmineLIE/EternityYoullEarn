@@ -13,12 +13,20 @@ public class Companion : Clickable
     public string[] barks;
     public SaveData saveData;
     public CompanionUI ui;
-  
+    public GameObject player;
 
+    //to keep track of current effect bonuses
+    protected int effect_p_1;
+    protected int effect_p_2;
+    protected int effect_p_3;
+
+    protected int effect_m_1;
+    protected int effect_m_2;
+    protected int effect_m_3;
 
     //Represents what investment level the player is currently on
-    private int psycheIndex;
-    private int motivationIndex; 
+    protected int psycheIndex;
+    protected int motivationIndex; 
 
     //These values represent the current cost of the invesment
     private int psycheCost;
@@ -38,6 +46,16 @@ public class Companion : Clickable
     protected int[,,] psycheEffect;
     protected int[,,] motivationEffect;
 
+    protected string[] psycheEffectDesc;
+    protected string[] motivationEffectDesc;
+
+    protected int efficiency;
+    protected float timeToCompleteTask;
+
+    private void Awake()
+    {
+       player = GameObject.FindGameObjectWithTag("Player");
+    }
     public void CharacterSetUp(string charName)
     {
         
@@ -59,7 +77,7 @@ public class Companion : Clickable
       motivationCost = GetMotivationGrowthModel(motivation_r[motivationIndex], motivation_t);
 
         print("The current psyche cost for " + comName + " is " + psycheCost);
-
+      
     }
 
     public override void Clicked()
@@ -91,14 +109,50 @@ public class Companion : Clickable
 
     }
 
-    public virtual void UpgradePsyche()
+    public void PsycheUpgradeRequest()
     {
-        //The function in SaveData increments for us
+
+        //if the player has enough marks of humanity
+        if (player.GetComponent<Player>().GetResource(1) >= psycheCost)
+        {
+            UpgradePsyche();
+        }
+        else
+        {
+            //notify player that they don't have enough
+        }
+    }
+
+    public void MotivationUpgradeRequest()
+    {
+        //if the player has enough marks of humanity
+        if (player.GetComponent<Player>().GetResource(1) >= motivationCost)
+        {
+            UpgradeMotivation();
+        }
+        else
+        {
+            //notify player that they don't have enough
+        }
+    }
+    protected virtual void UpgradePsyche()
+    {
+        effect_p_1 = psycheEffect[psycheIndex, 0, 0];
+        effect_p_2 = psycheEffect[psycheIndex, 1, 1];
+        effect_p_3 = psycheEffect[psycheIndex, 2, 2];
+
+        psycheIndex++;
+       
         saveData.SaveCompanionPsyche(comName);
     }
    
-    public virtual void UpgradeMotivation()
+    protected virtual void UpgradeMotivation()
     {
+        effect_m_1 = motivationEffect[motivationIndex, 0, 0];
+        effect_m_2 = motivationEffect[motivationIndex, 1, 1];
+        effect_m_3 = motivationEffect[motivationIndex, 2, 2];
+
+        motivationIndex++;
         saveData.SaveCompanionMotivation(comName);
     }
 
@@ -111,4 +165,31 @@ public class Companion : Clickable
     {
         return motivationCost;  
     }
- }
+
+  
+   public IEnumerator StartTask()
+    {
+        float countdown = timeToCompleteTask - (((efficiency / 100)/timeToCompleteTask)*100); //Calculate time it takes to complete the task, considering character's efficiency
+        yield return new WaitForSeconds(countdown);
+        CompleteTask();
+
+    }
+
+    public virtual void CompleteTask()
+    {
+        //MUST BE WRITTEN IN CHILD
+    }
+
+    public virtual string GetPsycheEffectDesc() 
+    {
+        string placeholder = "";
+        return placeholder;
+    }
+
+    public virtual string GetMotivationEffectDesc()
+    {
+        string placeholder = "";
+        return placeholder;
+
+    }
+}

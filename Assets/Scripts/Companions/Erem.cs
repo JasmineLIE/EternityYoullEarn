@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro.EditorUtilities;
 using UnityEngine;
 
 public class Erem : Companion
@@ -12,14 +13,19 @@ public class Erem : Companion
     //1st array -- MOH earn rate
     //2nd array -- Additional marks earned by companions
     //3rd array -- N/A
-    private int[,,] p_e = { { { 20, 40, 70, 199 }, { 0, 3, 3, 10 }, { 0, 0, 0, 0 } } };
+    private int[,,] p_e = { { { 20, 40, 70, 199 }, 
+                                { 0, 3, 3, 10 }, 
+                                { 0, 0, 0, 0 } } };
 
     //1st array -- efficiency
     //2nd array -- Untranslated texts they can study at a time
     //3rd array -- N/A
-    private int[,,] m_e = { { { 10, 15, 30, 50 }, { 4, 5, 5, 6 }, { 0, 0, 0, 0 } } };
+    private int[,,] m_e = { { { 10, 15, 30, 50 }, 
+                                { 4, 5, 5, 6 }, 
+                                { 0, 0, 0, 0 } } };
 
-
+    private string[] p_e_d = new string[4];
+    private string[] m_e_d = new string[4];
     void Start()
     {
         psyche_r = p_r;
@@ -31,6 +37,7 @@ public class Erem : Companion
         psyche_t = 5;
         motivation_t = 3;
         CharacterSetUp("Erem");
+        UpgradePsyche();
     }
 
     // Update is called once per frame
@@ -39,5 +46,15 @@ public class Erem : Companion
         
     }
 
-   
+    public override string GetPsycheEffectDesc()
+    {
+        string effectText ="";
+        switch (psycheIndex)
+        {
+            
+        }
+
+        return effectText;
+    }
+
 }
