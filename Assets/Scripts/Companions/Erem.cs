@@ -37,7 +37,7 @@ public class Erem : Companion
         psyche_t = 5;
         motivation_t = 3;
         CharacterSetUp("Erem");
-        UpgradePsyche();
+     
     }
 
     // Update is called once per frame
@@ -51,7 +51,15 @@ public class Erem : Companion
         string effectText ="";
         switch (psycheIndex)
         {
-            
+            case 0:
+                effectText = "Marks of Humanity Rate: " + effect_p_1 + "%";
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+             case 3:
+                break;
         }
 
         return effectText;

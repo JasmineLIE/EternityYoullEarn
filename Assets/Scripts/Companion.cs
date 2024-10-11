@@ -69,21 +69,20 @@ public class Companion : Clickable
         //draw from save file companion's level
             GetCurrentIndex(comName);
        
-      
+    
 
       
         //set up current cost of active next investment
       psycheCost = GetPsycheGrowthModel(psyche_r[psycheIndex], psyche_t);
       motivationCost = GetMotivationGrowthModel(motivation_r[motivationIndex], motivation_t);
 
-        print("The current psyche cost for " + comName + " is " + psycheCost);
       
     }
 
     public override void Clicked()
     {
         //REMINDER: Ensure the scene has "ClickDetection" to make this work
-        print("You are clicking " + comName);
+    
       
        ui.OpenCompanionUI(comName);
     }
@@ -106,6 +105,9 @@ public class Companion : Clickable
 
         psycheIndex = companionData[0];
         motivationIndex = companionData[1];
+
+        print(key + "'s psycheIndex is: " + psycheIndex);
+        print(key + "'s motivationIndex is: " + motivationIndex);
 
     }
 
