@@ -13,10 +13,8 @@ public class Companion : Clickable
     public string[] barks;
     public SaveData saveData;
     public CompanionUI ui;
-   
-    //These hold the 'r' value from the spreadsheet, incrementing each level
-    private int[] psycheFactors = new int[4];
-    private int[] motivationFactors = new int[4];
+  
+
 
     //Represents what investment level the player is currently on
     private int psycheIndex;
@@ -26,21 +24,25 @@ public class Companion : Clickable
     private int psycheCost;
     private int motivationCost;
 
-    //This value represents 't' from the Spreadsheet
-    private int growthFactor_psyche;
-    private int growthFactor_motivation;
+    //r values
+    protected int[] psyche_r;
+    protected int[] motivation_r;
 
-   
-    public void CharacterSetUp(string charName, int[] psycheFact, int[] motivationFact, int psyche_t, int motivation_t)
+    //t values
+    protected int psyche_t;
+    protected int motivation_t;
+
+    //first array is for changes in efficiency
+    //second array is for upgrades specific to the character's talen
+    //third array is for boosts to earning MoH
+    protected int[,,] psycheEffect;
+    protected int[,,] motivationEffect;
+
+    public void CharacterSetUp(string charName)
     {
-        growthFactor_motivation = motivation_t;
-        growthFactor_psyche = psyche_t;
+        
 
-        for (int i = 0; i < psycheFact.Length; i++)
-        {
-            psycheFactors[i] = psycheFact[i];
-            motivationFactors[i] = motivationFact[i];
-        }
+     
         //TODO: Bio
         //not really concerned about saved data for now
 
@@ -53,8 +55,8 @@ public class Companion : Clickable
 
       
         //set up current cost of active next investment
-      psycheCost = GetPsycheGrowthModel(psycheFactors[psycheIndex], growthFactor_psyche);
-      motivationCost = GetMotivationGrowthModel(motivationFactors[motivationIndex], growthFactor_motivation);
+      psycheCost = GetPsycheGrowthModel(psyche_r[psycheIndex], psyche_t);
+      motivationCost = GetMotivationGrowthModel(motivation_r[motivationIndex], motivation_t);
 
         print("The current psyche cost for " + comName + " is " + psycheCost);
 
@@ -64,6 +66,7 @@ public class Companion : Clickable
     {
         //REMINDER: Ensure the scene has "ClickDetection" to make this work
         print("You are clicking " + comName);
+      
        ui.OpenCompanionUI(comName);
     }
 
@@ -88,13 +91,13 @@ public class Companion : Clickable
 
     }
 
-    public void UpgradePsyche()
+    public virtual void UpgradePsyche()
     {
         //The function in SaveData increments for us
         saveData.SaveCompanionPsyche(comName);
     }
    
-    public void UpgradeMotivation()
+    public virtual void UpgradeMotivation()
     {
         saveData.SaveCompanionMotivation(comName);
     }

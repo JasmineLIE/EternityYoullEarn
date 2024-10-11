@@ -5,7 +5,12 @@ using UnityEngine;
 public class ClickDetection : MonoBehaviour
 {
     public Camera myCam;
-   
+    public bool canClick;
+
+    private void Awake()
+    {
+        canClick = true;
+    }
 
     private void Update()
     {
@@ -19,7 +24,7 @@ public class ClickDetection : MonoBehaviour
             RaycastHit raycastHit;
             bool weHitSomething = Physics.Raycast(myRay, out raycastHit);
 
-            if (weHitSomething)
+            if (weHitSomething && canClick)
             {
                 raycastHit.transform.GetComponent<Clickable>().Clicked();
             }
