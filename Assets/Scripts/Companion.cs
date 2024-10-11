@@ -76,6 +76,9 @@ public class Companion : Clickable
       psycheCost = GetPsycheGrowthModel(psyche_r[psycheIndex], psyche_t);
       motivationCost = GetMotivationGrowthModel(motivation_r[motivationIndex], motivation_t);
 
+        UpdatePsycheEffect();
+        UpdateMotivationEffect();
+
       
     }
 
@@ -106,8 +109,6 @@ public class Companion : Clickable
         psycheIndex = companionData[0];
         motivationIndex = companionData[1];
 
-        print(key + "'s psycheIndex is: " + psycheIndex);
-        print(key + "'s motivationIndex is: " + motivationIndex);
 
     }
 
@@ -139,9 +140,7 @@ public class Companion : Clickable
     }
     protected virtual void UpgradePsyche()
     {
-        effect_p_1 = psycheEffect[psycheIndex, 0, 0];
-        effect_p_2 = psycheEffect[psycheIndex, 1, 1];
-        effect_p_3 = psycheEffect[psycheIndex, 2, 2];
+      
 
         psycheIndex++;
        
@@ -150,9 +149,7 @@ public class Companion : Clickable
    
     protected virtual void UpgradeMotivation()
     {
-        effect_m_1 = motivationEffect[motivationIndex, 0, 0];
-        effect_m_2 = motivationEffect[motivationIndex, 1, 1];
-        effect_m_3 = motivationEffect[motivationIndex, 2, 2];
+        
 
         motivationIndex++;
         saveData.SaveCompanionMotivation(comName);
@@ -193,5 +190,19 @@ public class Companion : Clickable
         string placeholder = "";
         return placeholder;
 
+    }
+
+   public void UpdatePsycheEffect()
+    {
+        effect_p_1 = psycheEffect[psycheIndex, 0, 0];
+        effect_p_2 = psycheEffect[psycheIndex, 1, 1];
+        effect_p_3 = psycheEffect[psycheIndex, 2, 2];
+    }
+
+    public void UpdateMotivationEffect()
+    {
+        effect_m_1 = motivationEffect[motivationIndex, 0, 0];
+        effect_m_2 = motivationEffect[motivationIndex, 1, 1];
+        effect_m_3 = motivationEffect[motivationIndex, 2, 2];
     }
 }

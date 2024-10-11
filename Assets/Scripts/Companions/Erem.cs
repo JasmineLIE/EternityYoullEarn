@@ -37,7 +37,9 @@ public class Erem : Companion
         psyche_t = 5;
         motivation_t = 3;
         CharacterSetUp("Erem");
-     
+
+
+       
     }
 
     // Update is called once per frame
