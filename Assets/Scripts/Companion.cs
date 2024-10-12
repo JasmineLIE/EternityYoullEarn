@@ -43,8 +43,8 @@ public class Companion : Clickable
     //first array is for changes in efficiency
     //second array is for upgrades specific to the character's talen
     //third array is for boosts to earning MoH
-    protected int[,,] psycheEffect;
-    protected int[,,] motivationEffect;
+    protected int[,] psycheEffect;
+    protected int[,] motivationEffect;
 
     protected string[] psycheEffectDesc;
     protected string[] motivationEffectDesc;
@@ -78,7 +78,8 @@ public class Companion : Clickable
 
         UpdatePsycheEffect();
         UpdateMotivationEffect();
-
+        print(comName);
+        print(psycheEffect);
       
     }
 
@@ -141,8 +142,8 @@ public class Companion : Clickable
     protected virtual void UpgradePsyche()
     {
       
-
         psycheIndex++;
+        UpdatePsycheEffect();
        
         saveData.SaveCompanionPsyche(comName);
     }
@@ -150,11 +151,24 @@ public class Companion : Clickable
     protected virtual void UpgradeMotivation()
     {
         
-
         motivationIndex++;
+        UpdateMotivationEffect();
+
         saveData.SaveCompanionMotivation(comName);
     }
+    private void UpdatePsycheEffect()
+    {
+        effect_p_1 = psycheEffect[0, psycheIndex];
+        effect_p_2 = psycheEffect[1, psycheIndex];
+        effect_p_3 = psycheEffect[2, psycheIndex];
+    }
 
+    private void UpdateMotivationEffect()
+    {
+        effect_m_1 = motivationEffect[0, motivationIndex];
+        effect_m_2 = motivationEffect[1, motivationIndex];
+        effect_m_3 = motivationEffect[2, motivationIndex];
+    }
     public int GetCurrentPsyche()
     {
         return psycheCost;
@@ -192,17 +206,5 @@ public class Companion : Clickable
 
     }
 
-   public void UpdatePsycheEffect()
-    {
-        effect_p_1 = psycheEffect[psycheIndex, 0, 0];
-        effect_p_2 = psycheEffect[psycheIndex, 1, 1];
-        effect_p_3 = psycheEffect[psycheIndex, 2, 2];
-    }
-
-    public void UpdateMotivationEffect()
-    {
-        effect_m_1 = motivationEffect[motivationIndex, 0, 0];
-        effect_m_2 = motivationEffect[motivationIndex, 1, 1];
-        effect_m_3 = motivationEffect[motivationIndex, 2, 2];
-    }
+  
 }

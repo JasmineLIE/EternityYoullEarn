@@ -13,16 +13,16 @@ public class Erem : Companion
     //1st array -- MOH earn rate
     //2nd array -- Additional marks earned by companions
     //3rd array -- N/A
-    private int[,,] p_e = { { { 20, 40, 70, 199 }, 
+    private int[,] p_e = {  { 20, 40, 70, 199 }, 
                                 { 0, 3, 3, 10 }, 
-                                { 0, 0, 0, 0 } } };
+                                { 0, 0, 0, 0 }  };
 
     //1st array -- efficiency
     //2nd array -- Untranslated texts they can study at a time
     //3rd array -- N/A
-    private int[,,] m_e = { { { 10, 15, 30, 50 }, 
+    private int[,] m_e = {  { 10, 15, 30, 50 }, 
                                 { 4, 5, 5, 6 }, 
-                                { 0, 0, 0, 0 } } };
+                                { 0, 0, 0, 0 }  };
 
     private string[] p_e_d = new string[4];
     private string[] m_e_d = new string[4];
