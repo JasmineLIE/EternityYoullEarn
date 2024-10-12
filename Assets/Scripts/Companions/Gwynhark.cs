@@ -22,6 +22,7 @@ public class Gwynhark : Companion
                             { 0, 10, 25, 40 }, 
                             { 0, 0, 0, 0 }  };
 
+  
 
     // Start is called before the first frame update
     void Start()
@@ -35,14 +36,22 @@ public class Gwynhark : Companion
 
         psyche_t = 5;
         motivation_t = 3;
+
+        timeToCompleteTask = 30f;
+
+
         CharacterSetUp("Gwynhark");
+
+        //Set up MoH Rate
+        if (motivationIndex == 0)
+        {
+            mohRate = 10;
+        } else
+        {
+            mohRate = motivationEffect[1, motivationIndex - 1];
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public override string GetPsycheEffectDesc()
     {
@@ -87,4 +96,6 @@ public class Gwynhark : Companion
         }
         return effectText;
     }
+
+    
 }

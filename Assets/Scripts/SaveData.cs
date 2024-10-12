@@ -209,6 +209,18 @@ public class SaveData : MonoBehaviour
 
         SaveIntoJson();
     }
+
+    public int GetExtraMarksGenerated()
+    {
+        return _CompanionData.extraMarksGenerated;
+    }
+
+
+    public void SetExtraMarksGenerated(int val)
+    {
+        _CompanionData.extraMarksGenerated += val;
+        SaveIntoJson();
+    }
     //-----
 }
 
@@ -224,6 +236,7 @@ public class CompanionData
     public int Quan_psycheLevel;
     public int Quan_motivationLevel;
 
+    public int extraMarksGenerated;
  
 }
 

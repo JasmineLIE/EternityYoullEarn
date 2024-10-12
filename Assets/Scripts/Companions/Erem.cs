@@ -14,7 +14,7 @@ public class Erem : Companion
     //2nd array -- Additional marks earned by companions
     //3rd array -- N/A
     private int[,] p_e = {  { 20, 40, 70, 199 }, 
-                                { 0, 3, 3, 10 }, 
+                                { 0, 3, 0, 10 }, 
                                 { 0, 0, 0, 0 }  };
 
     //1st array -- efficiency
@@ -36,6 +36,9 @@ public class Erem : Companion
 
         psyche_t = 5;
         motivation_t = 3;
+
+        timeToCompleteTask = 45f;
+
         CharacterSetUp("Erem");
 
 

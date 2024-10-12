@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Quan : Companion
 {
+
+    private int untranslatedTextsThresh;
+
     private int[] p_r = { 1, 2, 3, 8 };
     private int[] m_r = { 1, 3, 6, 9 };
 
@@ -11,7 +14,7 @@ public class Quan : Companion
     //2nd array -- How many untranslated texts can be translated at a time
     //3rd array -- extra Marks earned for ALL companions
     private int[,] p_e = { { 20, 40, 60, 100 }, 
-                                { 0, 4, 4, 4 }, 
+                                { 2, 4, 4, 4 }, 
                                 { 0, 0, 0, 5 } };
 
     //1st array -- efficiency
@@ -33,7 +36,13 @@ public class Quan : Companion
 
         psyche_t = 5;
         motivation_t = 3;
+
+        timeToCompleteTask = 25f;
+
+       
+
         CharacterSetUp("Quan");
+
     }
 
     public override string GetPsycheEffectDesc()
@@ -81,5 +90,33 @@ public class Quan : Companion
                 break;
         }
         return effectText;
+    }
+
+    public override void CompleteTask()
+    {
+
+        base.CompleteTask();
+    }
+
+    protected override void UpdatePsycheEffect()
+    {
+
+        untranslatedTextsThresh = psycheEffect[1, psycheIndex];
+        //Set MoH Rate
+        if (psycheIndex == 0)
+        {
+            mohRate = 10;
+        }
+        else
+        {
+            mohRate = psycheEffect[0, psycheIndex - 1];
+        }
+    
+
+        base.UpdatePsycheEffect();
+    }
+    protected override void UpdateMotivationEffect()
+    {
+        base.UpdateMotivationEffect();
     }
 }

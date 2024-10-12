@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Companion : Clickable
 {
@@ -11,15 +12,17 @@ public class Companion : Clickable
   
     private string comName;
     public string[] barks;
+
     public SaveData saveData;
     public CompanionUI ui;
     public GameObject player;
 
-    //to keep track of current effect bonuses
+    //to keep track of current effect bonuses in the psyche area
     protected int effect_p_1;
     protected int effect_p_2;
     protected int effect_p_3;
 
+    //to keep track of current effect bonuses in the motivation area
     protected int effect_m_1;
     protected int effect_m_2;
     protected int effect_m_3;
@@ -46,11 +49,14 @@ public class Companion : Clickable
     protected int[,] psycheEffect;
     protected int[,] motivationEffect;
 
-    protected string[] psycheEffectDesc;
-    protected string[] motivationEffectDesc;
+   
 
+    //For completeting tasks
     protected int efficiency;
     protected float timeToCompleteTask;
+    protected int mohRate;
+
+
 
     private void Awake()
     {
@@ -59,8 +65,7 @@ public class Companion : Clickable
     public void CharacterSetUp(string charName)
     {
         
-
-     
+    
         //TODO: Bio
         //not really concerned about saved data for now
 
@@ -69,8 +74,7 @@ public class Companion : Clickable
         //draw from save file companion's level
             GetCurrentIndex(comName);
        
-    
-
+   
       
         //set up current cost of active next investment
       psycheCost = GetPsycheGrowthModel(psyche_r[psycheIndex], psyche_t);
@@ -120,7 +124,10 @@ public class Companion : Clickable
        if (player.GetComponent<Player>().GetResource(1) >= psycheCost)
         {
             psycheIndex++;
+          
             UpdatePsycheEffect();
+
+            psycheCost = GetPsycheGrowthModel(psyche_r[psycheIndex], psyche_t);
 
             saveData.SaveCompanionPsyche(comName);
         } else
@@ -136,7 +143,9 @@ public class Companion : Clickable
         if (player.GetComponent<Player>().GetResource(1) >= motivationCost)
         {
             motivationIndex++;
+    );
             UpdateMotivationEffect();
+            motivationCost = GetMotivationGrowthModel(motivation_r[motivationIndex], motivation_t);
 
             saveData.SaveCompanionMotivation(comName);
         } else
@@ -145,19 +154,21 @@ public class Companion : Clickable
         }
        
     }
-    private void UpdatePsycheEffect()
+    protected virtual void UpdatePsycheEffect()
     {
         effect_p_1 = psycheEffect[0, psycheIndex];
         effect_p_2 = psycheEffect[1, psycheIndex];
         effect_p_3 = psycheEffect[2, psycheIndex];
     }
 
-    private void UpdateMotivationEffect()
+    protected virtual void UpdateMotivationEffect()
     {
         effect_m_1 = motivationEffect[0, motivationIndex];
         effect_m_2 = motivationEffect[1, motivationIndex];
         effect_m_3 = motivationEffect[2, motivationIndex];
     }
+
+ 
     public int GetCurrentPsyche()
     {
         return psycheCost;
@@ -179,8 +190,15 @@ public class Companion : Clickable
 
     public virtual void CompleteTask()
     {
-        //TODO
-        //MUST BE WRITTEN IN CHILD
+      
+        //Rest needs to be completed in children
+        //Marks earned
+        int numerGen = Random.Range(0, 100);
+        if (numerGen <= mohRate)
+        {
+            int marksEarned = Random.Range(1, 3) + saveData.GetExtraMarksGenerated();
+            player.GetComponent<Player>().SetResource(1, marksEarned);
+        }
     }
 
     public virtual string GetPsycheEffectDesc() 
@@ -196,5 +214,15 @@ public class Companion : Clickable
 
     }
 
+    protected void UpdateExtraMarksEarned(int oldVal, int newVal)
+    {
+
+        int old = (-1) * oldVal;
+
+        //subtract previous boost
+        saveData.SetExtraMarksGenerated(old);
+        //replace with new boost
+        saveData.SetExtraMarksGenerated(newVal);
+    }
   
 }
