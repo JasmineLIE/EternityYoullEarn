@@ -237,6 +237,8 @@ public class CompanionData
     public int Quan_motivationLevel;
 
     public int extraMarksGenerated;
+
+   
  
 }
 

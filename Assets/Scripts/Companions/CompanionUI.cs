@@ -24,6 +24,7 @@ public class CompanionUI : MonoBehaviour
     public Erem erem;
     public Gwynhark gwyn;
 
+
     private void Start()
     {
         comUI.alpha = 0;
@@ -57,6 +58,7 @@ public class CompanionUI : MonoBehaviour
                 Investments(quan);
                 break;
         }
+
     }
 
     public void Investments(Companion companion)
@@ -89,7 +91,15 @@ public class CompanionUI : MonoBehaviour
         }
     }
 
-    
+    public void UpgradePsyche()
+    {
+     
+    }
+
+    public void UpgradeMotivation()
+    {
+       
+    }
 
     public void Exit()
     {
@@ -97,4 +107,7 @@ public class CompanionUI : MonoBehaviour
         comUI.alpha = 0;
 
     }
+
+
+   
 }

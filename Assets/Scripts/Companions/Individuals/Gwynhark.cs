@@ -19,7 +19,7 @@ public class Gwynhark : Companion
     //2nd array -- MOH Rate
     //3rd array -- N/A
     private int[,] m_e = { { 10, 15, 25, 35 }, 
-                            { 0, 10, 25, 40 }, 
+                            { 20, 30, 50, 80 }, 
                             { 0, 0, 0, 0 }  };
 
   
@@ -28,47 +28,39 @@ public class Gwynhark : Companion
     void Start()
     {
 
-        psyche_r = p_r;
-        motivation_r = m_r;
+        psyche.SetValues_r(p_r);
+        motivation.SetValues_r(m_r);
 
-        psycheEffect = p_e;
-        motivationEffect = m_e;
+        psyche.SetEffectArray(p_e);
+        motivation.SetEffectArray(m_e);
 
-        psyche_t = 5;
-        motivation_t = 3;
+        psyche.SetValues_t(5);
+        motivation.SetValues_t(3);
 
         timeToCompleteTask = 30f;
 
 
         CharacterSetUp("Gwynhark");
 
-        //Set up MoH Rate
-        if (motivationIndex == 0)
-        {
-            mohRate = 10;
-        } else
-        {
-            mohRate = motivationEffect[1, motivationIndex - 1];
-        }
     }
 
 
     public override string GetPsycheEffectDesc()
     {
         string effectText = "";
-        switch (psycheIndex)
+        switch (psyche.GetIndex())
         {
             case 0:
-                effectText = "<b>Rewards:</b> " + ((effect_p_1)-1) + " - " + ((effect_p_2)-2) + " → " + effect_p_1 + " - " + effect_p_2;
+                effectText = "<b>Rewards:</b> " + ((psyche.GetEffect(1))-1) + " - " + ((psyche.GetEffect(2))-2) + " → " + psyche.GetEffect(1) + " - " + psyche.GetEffect(2);
                 break;
             case 1:
-                effectText = "<b>Rewards:</b> " + ((effect_p_1) - 3) + " - " + ((effect_p_2) - 3) + " → " + effect_p_1 + " - " + effect_p_2;
+                effectText = "<b>Rewards:</b> " + ((psyche.GetEffect(1)) - 3) + " - " + ((psyche.GetEffect(2)) - 3) + " → " + psyche.GetEffect(1) + " - " + psyche.GetEffect(2);
                 break;
             case 2:
-                effectText = "<b>Rewards:</b> " + ((effect_p_1) - 3) + " - " + ((effect_p_2) - 6) + " → " + effect_p_1 + " - " + effect_p_2;
+                effectText = "<b>Rewards:</b> " + ((psyche.GetEffect(1)) - 3) + " - " + ((psyche.GetEffect(2)) - 6) + " → " + psyche.GetEffect(1) + " - " + psyche.GetEffect(2);
                 break;
             case 3:
-                effectText = "<b>Rewards:</b> " + ((effect_p_1) - 7) + " - " + ((effect_p_2) - 13) + " → " + effect_p_1 + " - " + effect_p_2;
+                effectText = "<b>Rewards:</b> " + ((psyche.GetEffect(1)) - 7) + " - " + ((psyche.GetEffect(2)) - 13) + " → " + psyche.GetEffect(1) + " - " + psyche.GetEffect(2);
                 break;
         }
 
@@ -79,10 +71,10 @@ public class Gwynhark : Companion
     {
         string effectText = "";
 
-        switch (motivationIndex)
+        switch (motivation.GetIndex())
         {
             case 0:
-                effectText = "<b>Efficiency:</b> " + effect_m_1 + "%"; 
+                effectText = "<b>Efficiency:</b> " + motivation.GetEffect(1) + "%"; 
                 break;
 
             case 1:
@@ -91,7 +83,7 @@ public class Gwynhark : Companion
             case 2:
               
             case 3:
-                effectText = "<b>Efficiency:</b> " + effect_m_1 + "%" + "\n" + "<b>Mark of Humanity Rate:</b> " + effect_m_2 + "%";
+                effectText = "<b>Efficiency:</b> " + motivation.GetEffect(1) + "%" + "\n" + "<b>Mark of Humanity Rate:</b> " + motivation.GetEffect(2) + "%";
                 break;
         }
         return effectText;

@@ -13,7 +13,7 @@ public class Erem : Companion
     //1st array -- MOH earn rate
     //2nd array -- Additional marks earned by companions
     //3rd array -- N/A
-    private int[,] p_e = {  { 20, 40, 70, 199 }, 
+    private int[,] p_e = {  { 20, 40, 70, 100 }, 
                                 { 0, 3, 0, 10 }, 
                                 { 0, 0, 0, 0 }  };
 
@@ -28,14 +28,14 @@ public class Erem : Companion
     private string[] m_e_d = new string[4];
     void Start()
     {
-        psyche_r = p_r;
-        motivation_r = m_r;
+        psyche.SetValues_r(p_r);
+        motivation.SetValues_r(m_r);
 
-        psycheEffect = p_e;
-        motivationEffect = m_e;
+        psyche.SetEffectArray(p_e);
+        motivation.SetEffectArray(m_e);
 
-        psyche_t = 5;
-        motivation_t = 3;
+        psyche.SetValues_t(5);
+        motivation.SetValues_t(3);
 
         timeToCompleteTask = 45f;
 
@@ -54,19 +54,19 @@ public class Erem : Companion
     public override string GetPsycheEffectDesc()
     {
         string effectText ="";
-        switch (psycheIndex)
+        switch (psyche.GetIndex())
         {
             case 0:
-                effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%";
+                effectText = "<b>Marks of Humanity Rate:</b> " + psyche.GetEffectArray(0, 0) + "%";
                 break;
             case 1:
-                effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%" + "\n" + "<b>Marks Earned:</b> +" + effect_p_2 + " Marks for ALL companions";
+                effectText = "<b>Marks of Humanity Rate:</b> " + psyche.GetEffectArray(0,1) + "%" + "\n" + "<b>Marks Earned:</b> +" + psyche.GetEffectArray(1,1) + " Marks for ALL companions";
                 break;
             case 2:
-                effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%";
+                effectText = "<b>Marks of Humanity Rate:</b> " + psyche.GetEffectArray(0, 2) + "%";
                 break;
              case 3:
-                effectText = "<b>Marks of Humanity Rate: Gauranteed</b>" + "\n" + "<b>Marks Earned:</b> +" + effect_p_2 + " Marks for ALL companions";
+                effectText = "<b>Marks of Humanity Rate: Gauranteed</b>" + "\n" + "<b>Marks Earned:</b> +" + psyche.GetEffectArray(1,3) + " Marks for ALL companions";
                 break;
         }
 
@@ -77,21 +77,21 @@ public class Erem : Companion
     {
         string effectText = "";
 
-        switch (motivationIndex)
+        switch (motivation.GetIndex())
         {
             case 0:
-                 
-
+                effectText = "<b>Efficiency:</b> " + motivation.GetEffectArray(0, 0) + "%";
+                break;
             case 1:
-                effectText = "<b>Efficiency:</b> " + effect_m_1 + "%" + "\n" + "<b>Study Translated Texts:</b> " + (effect_m_2 - 1) + " → " + effect_m_2;
+                effectText = "<b>Efficiency:</b> " + motivation.GetEffectArray(0,1) + "%" + "\n" + "<b>Study Translated Texts:</b> " + (motivation.GetEffectArray(1, 0) - 1) + " → " + motivation.GetEffectArray(1,0);
                 break;
 
             case 2:
-                effectText = "<b>Efficiency:</b> " + effect_m_1+ "%";
+                effectText = "<b>Efficiency:</b> " + motivation.GetEffectArray(0,2)+ "%";
                 break;
 
             case 3:
-                effectText = "<b>Efficiency:</b> " + effect_m_1 + "%" + "\n" + "<b>Study Translated Texts:</b> " + (effect_m_2 - 1) + " → " + effect_m_2;
+                effectText = "<b>Efficiency:</b> " + motivation.GetEffectArray(0,3) + "%" + "\n" + "<b>Study Translated Texts:</b> " + (motivation.GetEffectArray(1,3) - 1) + " → " + motivation.GetEffectArray(1,3);
                 break;
         }
         return effectText;
