@@ -54,17 +54,43 @@ public class Erem : Companion
         switch (psycheIndex)
         {
             case 0:
-                effectText = "Marks of Humanity Rate: " + effect_p_1 + "%";
+                effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%";
                 break;
             case 1:
+                effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%" + "\n" + "<b>Marks Earned:</b> +" + effect_p_2 + " addtional Marks for ALL companions";
                 break;
             case 2:
+                effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%";
                 break;
              case 3:
+                effectText = "<b>Marks of Humanity Rate: Gauranteed</b>" + "\n" + "<b>Marks Earned:</b> +" + effect_p_2 + " addtional Marks for ALL companions";
                 break;
         }
 
         return effectText;
     }
 
+    public override string GetMotivationEffectDesc()
+    {
+        string effectText = "";
+
+        switch (motivationIndex)
+        {
+            case 0:
+                 
+
+            case 1:
+                effectText = "<b>Efficiency:</b> " + effect_m_1 + "%" + "\n\n" + "<b>Study:</b> " + (effect_m_2 - 1) + " Translated Texts Limit > " + effect_m_2 + " Translated Texts Limit";
+                break;
+
+            case 2:
+                effectText = "<b>Efficiency:</b> " + effect_m_1+ "%";
+                break;
+
+            case 3:
+                effectText = "<b>Efficiency:</b> " + effect_m_1 + "%" + "\n\n" + "<b>Study:</b> " + (effect_m_2 - 1) + " Translated Texts Limit > " + effect_m_2 + " Translated Texts Limit";
+                break;
+        }
+        return effectText;
+    }
 }

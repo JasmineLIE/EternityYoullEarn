@@ -62,7 +62,12 @@ public class CompanionUI : MonoBehaviour
     public void Investments(Companion companion)
     {
         p_cost.text = companion.GetCurrentPsyche().ToString() + " Marks of Humanity";
-       m_cost.text = companion.GetCurrentMotivation().ToString() + " Marks of Humanity";
+        m_cost.text = companion.GetCurrentMotivation().ToString() + " Marks of Humanity";
+
+        p_effect.text = companion.GetPsycheEffectDesc();
+        m_effect.text = companion.GetMotivationEffectDesc();
+
+
     }
 
     public void OpenBio () {

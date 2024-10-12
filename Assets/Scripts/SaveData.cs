@@ -26,7 +26,7 @@ public class SaveData : MonoBehaviour
        
         //Default data set is adjusted in Inspector
 
-        print("Writing save file...");
+       
         //In the chosen directory, create and save a file
         System.IO.File.WriteAllText(companionDataPath, companion);
         System.IO.File.WriteAllText(playerDataPath, player);
@@ -45,7 +45,7 @@ public class SaveData : MonoBehaviour
             SaveIntoJson();
         } else
         {
-            print("Game data found!  Loading in...");
+          
             //read entire file(s) and save its content(s)
             string companionDataContents = File.ReadAllText(companionDataPath);
             string playerDataContents = File.ReadAllText(@playerDataPath);

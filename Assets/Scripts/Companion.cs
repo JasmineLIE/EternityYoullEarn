@@ -78,7 +78,7 @@ public class Companion : Clickable
 
         UpdatePsycheEffect();
         UpdateMotivationEffect();
-        print(comName);
+    
         
       
     }
@@ -110,51 +110,40 @@ public class Companion : Clickable
         psycheIndex = companionData[0];
         motivationIndex = companionData[1];
 
-
     }
 
-    public void PsycheUpgradeRequest()
-    {
+  
 
-        //if the player has enough marks of humanity
-        if (player.GetComponent<Player>().GetResource(1) >= psycheCost)
-        {
-            UpgradePsyche();
-        }
-        else
-        {
-            //notify player that they don't have enough
-        }
-    }
-
-    public void MotivationUpgradeRequest()
-    {
-        //if the player has enough marks of humanity
-        if (player.GetComponent<Player>().GetResource(1) >= motivationCost)
-        {
-            UpgradeMotivation();
-        }
-        else
-        {
-            //notify player that they don't have enough
-        }
-    }
     protected virtual void UpgradePsyche()
     {
       
-        psycheIndex++;
-        UpdatePsycheEffect();
+       if (player.GetComponent<Player>().GetResource(1) >= psycheCost)
+        {
+            psycheIndex++;
+            UpdatePsycheEffect();
+
+            saveData.SaveCompanionPsyche(comName);
+        } else
+        {
+            //TODO
+        }
        
-        saveData.SaveCompanionPsyche(comName);
     }
    
     protected virtual void UpgradeMotivation()
     {
         
-        motivationIndex++;
-        UpdateMotivationEffect();
+        if (player.GetComponent<Player>().GetResource(1) >= motivationCost)
+        {
+            motivationIndex++;
+            UpdateMotivationEffect();
 
-        saveData.SaveCompanionMotivation(comName);
+            saveData.SaveCompanionMotivation(comName);
+        } else
+        {
+            //TODO
+        }
+       
     }
     private void UpdatePsycheEffect()
     {
@@ -190,6 +179,7 @@ public class Companion : Clickable
 
     public virtual void CompleteTask()
     {
+        //TODO
         //MUST BE WRITTEN IN CHILD
     }
 

@@ -36,5 +36,51 @@ public class Quan : Companion
         CharacterSetUp("Quan");
     }
 
-   
+    public override string GetPsycheEffectDesc()
+    {
+        string effectText = "";
+        switch (psycheIndex)
+        {
+            case 0:
+                effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%";
+                break;
+            case 1:
+                effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%" + "\n" + "<b>Translation:</b> +" + (effect_p_2-2) + " Untranslated Texts Limit > " + effect_p_2 + " Untranslated Texts Limit";
+                break;
+            case 2:
+                effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%";
+                break;
+            case 3:
+                effectText = "<b>Marks of Humanity Rate: Gauranteed</b>" + "\n" + "<b>Marks Earned:</b> +" + effect_p_3 + " addtional Marks for ALL companions";
+                break;
+        }
+
+        return effectText;
+    }
+
+    public override string GetMotivationEffectDesc()
+    {
+        string effectText = "";
+
+        switch (motivationIndex)
+        {
+            case 0:
+                effectText = "<b>Efficiency:</b> " + effect_m_1 + "%" + "\n" + "<b>Translated Texts Earned:</b> " + effect_m_2 + " change for extra +1 extra";
+                break;
+
+            case 1:
+                effectText = "<b>Efficiency:</b> " + effect_m_1+"%";
+                effectText = "<b>Efficiency:</b> " + effect_m_1;
+                break;
+
+            case 2:
+                effectText = "<b>Translated Texts Earned: Gauranteed +1 Extra"; 
+                break;
+
+            case 3:
+                effectText = "<b>Efficiency:</b> " + effect_m_1+"%";
+                break;
+        }
+        return effectText;
+    }
 }
