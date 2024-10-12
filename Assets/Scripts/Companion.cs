@@ -79,7 +79,7 @@ public class Companion : Clickable
         UpdatePsycheEffect();
         UpdateMotivationEffect();
         print(comName);
-        print(psycheEffect);
+        
       
     }
 
