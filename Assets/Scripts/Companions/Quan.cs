@@ -45,7 +45,7 @@ public class Quan : Companion
                 effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%";
                 break;
             case 1:
-                effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%" + "\n" + "<b>Translation:</b> +" + (effect_p_2-2) + " Untranslated Texts Limit > " + effect_p_2 + " Untranslated Texts Limit";
+                effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%" + "\n" + "<b>Translation Texts Limit:</b> +" + (effect_p_2-2) + " → " + effect_p_2;
                 break;
             case 2:
                 effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%";
@@ -65,12 +65,11 @@ public class Quan : Companion
         switch (motivationIndex)
         {
             case 0:
-                effectText = "<b>Efficiency:</b> " + effect_m_1 + "%" + "\n" + "<b>Translated Texts Earned:</b> " + effect_m_2 + " change for extra +1 extra";
+                effectText = "<b>Efficiency:</b> " + effect_m_1 + "%" + "\n" + "<b>Translated Texts Earned:</b> " + effect_m_2 + "% chance for +1 extra";
                 break;
 
             case 1:
                 effectText = "<b>Efficiency:</b> " + effect_m_1+"%";
-                effectText = "<b>Efficiency:</b> " + effect_m_1;
                 break;
 
             case 2:

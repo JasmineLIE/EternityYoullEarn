@@ -57,13 +57,13 @@ public class Erem : Companion
                 effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%";
                 break;
             case 1:
-                effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%" + "\n" + "<b>Marks Earned:</b> +" + effect_p_2 + " addtional Marks for ALL companions";
+                effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%" + "\n" + "<b>Marks Earned:</b> +" + effect_p_2 + " Marks for ALL companions";
                 break;
             case 2:
                 effectText = "<b>Marks of Humanity Rate:</b> " + effect_p_1 + "%";
                 break;
              case 3:
-                effectText = "<b>Marks of Humanity Rate: Gauranteed</b>" + "\n" + "<b>Marks Earned:</b> +" + effect_p_2 + " addtional Marks for ALL companions";
+                effectText = "<b>Marks of Humanity Rate: Gauranteed</b>" + "\n" + "<b>Marks Earned:</b> +" + effect_p_2 + " Marks for ALL companions";
                 break;
         }
 
@@ -80,7 +80,7 @@ public class Erem : Companion
                  
 
             case 1:
-                effectText = "<b>Efficiency:</b> " + effect_m_1 + "%" + "\n\n" + "<b>Study:</b> " + (effect_m_2 - 1) + " Translated Texts Limit > " + effect_m_2 + " Translated Texts Limit";
+                effectText = "<b>Efficiency:</b> " + effect_m_1 + "%" + "\n" + "<b>Study Translated Texts:</b> " + (effect_m_2 - 1) + " → " + effect_m_2;
                 break;
 
             case 2:
@@ -88,7 +88,7 @@ public class Erem : Companion
                 break;
 
             case 3:
-                effectText = "<b>Efficiency:</b> " + effect_m_1 + "%" + "\n\n" + "<b>Study:</b> " + (effect_m_2 - 1) + " Translated Texts Limit > " + effect_m_2 + " Translated Texts Limit";
+                effectText = "<b>Efficiency:</b> " + effect_m_1 + "%" + "\n" + "<b>Study Translated Texts:</b> " + (effect_m_2 - 1) + " → " + effect_m_2;
                 break;
         }
         return effectText;

@@ -50,16 +50,16 @@ public class Gwynhark : Companion
         switch (psycheIndex)
         {
             case 0:
-                effectText = ((effect_p_1)-1) + " (MIN) - " + ((effect_p_2)-2) + " (MAX) > " + effect_p_1 + " (MIN) - " + effect_p_2 + " (MAX)";
+                effectText = "<b>Rewards:</b> " + ((effect_p_1)-1) + " - " + ((effect_p_2)-2) + " → " + effect_p_1 + " - " + effect_p_2;
                 break;
             case 1:
-                effectText = ((effect_p_1) - 3) + " (MIN) - " + ((effect_p_2) - 3) + " (MAX) > " + effect_p_1 + " (MIN) - " + effect_p_2 + " (MAX)";
+                effectText = "<b>Rewards:</b> " + ((effect_p_1) - 3) + " - " + ((effect_p_2) - 3) + " → " + effect_p_1 + " - " + effect_p_2;
                 break;
             case 2:
-                effectText = ((effect_p_1) - 3) + " (MIN) - " + ((effect_p_2) - 6) + " (MAX) > " + effect_p_1 + " (MIN) - " + effect_p_2 + " (MAX)";
+                effectText = "<b>Rewards:</b> " + ((effect_p_1) - 3) + " - " + ((effect_p_2) - 6) + " → " + effect_p_1 + " - " + effect_p_2;
                 break;
             case 3:
-                effectText = ((effect_p_1) - 7) + " (MIN) - " + ((effect_p_2) - 13) + " (MAX) > " + effect_p_1 + " (MIN) - " + effect_p_2 + " (MAX)";
+                effectText = "<b>Rewards:</b> " + ((effect_p_1) - 7) + " - " + ((effect_p_2) - 13) + " → " + effect_p_1 + " - " + effect_p_2;
                 break;
         }
 
