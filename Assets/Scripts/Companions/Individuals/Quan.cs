@@ -55,13 +55,13 @@ public class Quan : Companion
         switch (psyche.GetIndex())
         {
             case 0:
-                effectText = "<b>Marks of Humanity Rate:</b> " + psyche.GetEffectArray(0, 0) + "%";
+                effectText = "<b>Marks of Humanity Rate:</b> " + psyche.GetEffect(0) + "%" + " → " + psyche.GetEffectArray(0, 0) + "%";
                 break;
             case 1:
-                effectText = "<b>Marks of Humanity Rate:</b> " + psyche.GetEffectArray(0, 1) + "%" + "\n" + "<b>Translation Texts Limit:</b> +" + (psyche.GetEffectArray(1, 1) - 2) + " → " + psyche.GetEffectArray(1, 1);
+                effectText = "<b>Marks of Humanity Rate:</b> " + psyche.GetEffect(0) + "%" + " → " + psyche.GetEffectArray(0, 1) + "%" + "\n" + "<b>Translation Texts Limit:</b> +" + psyche.GetEffect(1) + " → " + psyche.GetEffectArray(1, 1);
                 break;
             case 2:
-                effectText = "<b>Marks of Humanity Rate:</b> " + psyche.GetEffectArray(0, 2) + "%";
+                effectText = "<b>Marks of Humanity Rate:</b> " + psyche.GetEffect(0) + "%" + " → " + psyche.GetEffectArray(0, 2) + "%";
                 break;
             case 3:
                 effectText = "<b>Marks of Humanity Rate: Gauranteed</b>" + "\n" + "<b>Marks Earned:</b> +" + psyche.GetEffectArray(2, 3) + " addtional Marks for ALL companions";
@@ -78,11 +78,11 @@ public class Quan : Companion
         switch (motivation.GetIndex())
         {
             case 0:
-                effectText = "<b>Efficiency:</b> " + psyche.GetEffectArray(0, 0) + "%" + "\n" + "<b>Translated Texts Earned:</b> " + motivation.GetEffectArray(1, 0) + "% chance for +1 extra";
+                effectText = "<b>Efficiency:</b> " + motivation.GetEffect(0) + "%" + " → " + motivation.GetEffectArray(0, 0) + "%" + "\n" + "<b>Translated Texts Earned:</b> " + motivation.GetEffectArray(1, 0) + "% chance for +1 extra";
                 break;
 
             case 1:
-                effectText = "<b>Efficiency:</b> " + motivation.GetEffectArray(0, 1) + "%";
+                effectText = "<b>Efficiency:</b> " + motivation.GetEffect(0) + "%" + " → " + motivation.GetEffectArray(0, 1) + "%";
                 break;
 
             case 2:
@@ -90,7 +90,7 @@ public class Quan : Companion
                 break;
 
             case 3:
-                effectText = "<b>Efficiency:</b> " + motivation.GetEffectArray(0,3) + "%";
+                effectText = "<b>Efficiency:</b> " + motivation.GetEffect(0) + "%" + " → " + motivation.GetEffectArray(0,3) + "%";
                 break;
         }
         return effectText;
@@ -135,10 +135,16 @@ public class Quan : Companion
 
     protected override void SetDefaultValues()
     {
+        base.SetDefaultValues();
+
+        psyche.SetEffect(0, mohRate);
         insightCost = 100;
         MAX_translatedTexts = 2;
+        psyche.SetEffect(1, MAX_translatedTexts);
+        psyche.SetEffect(2, additionalMarksEarned);
         extraRewardsRate = 0;
-        base.SetDefaultValues();
+
+        
     }
 
     private int GetBonusResources()

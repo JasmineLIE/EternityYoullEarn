@@ -45,11 +45,7 @@ public class Erem : Companion
        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 
     public override string GetPsycheEffectDesc()
     {
@@ -57,13 +53,13 @@ public class Erem : Companion
         switch (psyche.GetIndex())
         {
             case 0:
-                effectText = "<b>Marks of Humanity Rate:</b> " + psyche.GetEffectArray(0, 0) + "%";
+                effectText = "<b>Marks of Humanity Rate:</b> " + psyche.GetEffect(0) + "%" + " → " + psyche.GetEffectArray(0, 0) + "%";
                 break;
             case 1:
-                effectText = "<b>Marks of Humanity Rate:</b> " + psyche.GetEffectArray(0,1) + "%" + "\n" + "<b>Marks Earned:</b> +" + psyche.GetEffectArray(1,1) + " Marks for ALL companions";
+                effectText = "<b>Marks of Humanity Rate:</b> " + psyche.GetEffect(0) + "%" + " → " + psyche.GetEffectArray(0,1) + "%" + "\n" + "<b>Marks Earned:</b> +" + psyche.GetEffectArray(1,1) + " Marks for ALL companions";
                 break;
             case 2:
-                effectText = "<b>Marks of Humanity Rate:</b> " + psyche.GetEffectArray(0, 2) + "%";
+                effectText = "<b>Marks of Humanity Rate:</b> " + psyche.GetEffect(0) + "%" + " → " + psyche.GetEffectArray(0, 2) + "%";
                 break;
              case 3:
                 effectText = "<b>Marks of Humanity Rate: Gauranteed</b>" + "\n" + "<b>Marks Earned:</b> +" + psyche.GetEffectArray(1,3) + " Marks for ALL companions";
@@ -80,18 +76,18 @@ public class Erem : Companion
         switch (motivation.GetIndex())
         {
             case 0:
-                effectText = "<b>Efficiency:</b> " + motivation.GetEffectArray(0, 0) + "%";
+                effectText = "<b>Efficiency:</b> " + motivation.GetEffect(0) + "%" + " → " + motivation.GetEffectArray(0, 0) + "%";
                 break;
             case 1:
-                effectText = "<b>Efficiency:</b> " + motivation.GetEffectArray(0,1) + "%" + "\n" + "<b>Study Translated Texts:</b> " + (motivation.GetEffectArray(1, 0) - 1) + " → " + motivation.GetEffectArray(1,0);
+                effectText = "<b>Efficiency:</b> " + motivation.GetEffect(0) + "%" + " → " + motivation.GetEffectArray(0, 1) + "%" + "\n" + "<b>Study Translated Texts:</b> " + (motivation.GetEffect(1) + " → " + motivation.GetEffectArray(1, 1));
                 break;
 
             case 2:
-                effectText = "<b>Efficiency:</b> " + motivation.GetEffectArray(0,2)+ "%";
+                effectText = "<b>Efficiency:</b> " + motivation.GetEffect(0) + "%" + " → " + motivation.GetEffectArray(0,2)+ "%";
                 break;
 
             case 3:
-                effectText = "<b>Efficiency:</b> " + motivation.GetEffectArray(0,3) + "%" + "\n" + "<b>Study Translated Texts:</b> " + (motivation.GetEffectArray(1,3) - 1) + " → " + motivation.GetEffectArray(1,3);
+                effectText = "<b>Efficiency:</b> " + motivation.GetEffect(0) + "%" + " → " + motivation.GetEffectArray(0,3) + "%" + "\n" + "<b>Study Translated Texts:</b> " + (motivation.GetEffect(1) + " → " + motivation.GetEffectArray(1,3));
                 break;
         }
         return effectText;
