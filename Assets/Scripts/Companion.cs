@@ -143,7 +143,7 @@ public class Companion : Clickable
         if (player.GetComponent<Player>().GetResource(1) >= motivationCost)
         {
             motivationIndex++;
-    );
+    
             UpdateMotivationEffect();
             motivationCost = GetMotivationGrowthModel(motivation_r[motivationIndex], motivation_t);
 
@@ -224,5 +224,6 @@ public class Companion : Clickable
         //replace with new boost
         saveData.SetExtraMarksGenerated(newVal);
     }
+
   
 }

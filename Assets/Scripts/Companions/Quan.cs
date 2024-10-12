@@ -39,7 +39,7 @@ public class Quan : Companion
 
         timeToCompleteTask = 25f;
 
-       
+        
 
         CharacterSetUp("Quan");
 
@@ -100,8 +100,10 @@ public class Quan : Companion
 
     protected override void UpdatePsycheEffect()
     {
+        base.UpdatePsycheEffect();
 
         untranslatedTextsThresh = psycheEffect[1, psycheIndex];
+        
         //Set MoH Rate
         if (psycheIndex == 0)
         {
@@ -113,10 +115,11 @@ public class Quan : Companion
         }
     
 
-        base.UpdatePsycheEffect();
+  
     }
     protected override void UpdateMotivationEffect()
     {
         base.UpdateMotivationEffect();
     }
+
 }
