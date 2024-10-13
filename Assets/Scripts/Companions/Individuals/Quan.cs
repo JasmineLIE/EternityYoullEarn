@@ -16,8 +16,8 @@ public class Quan : Companion
     //1st array -- rate to earn Marks
     //2nd array -- How many untranslated texts can be translated at a time
     //3rd array -- extra Marks earned for ALL companions
-    private int[,] p_e = { { 30, 60, 80, 100 },
-                                { 2, 4, 4, 4 },
+    private int[,] p_e = { { 20, 50, 75, 100 },
+                                { 3, 5, 6, 8 },
                                 { 0, 0, 0, 5 } };
 
     //1st array -- efficiency
@@ -61,10 +61,10 @@ public class Quan : Companion
                 effectText = "<b>Marks of Humanity Rate:</b> " + mohRate + "%" + " → " + psyche.GetEffectArray(0, 0) + "%";
                 break;
             case 1:
-                effectText = "<b>Marks of Humanity Rate:</b> " + mohRate + "%" + " → " + psyche.GetEffectArray(0, 1) + "%" + "\n" + "<b>Translation Texts Limit:</b> +" + MAX_untranslatedTexts + " → " + psyche.GetEffectArray(1, 1);
+                effectText = "<b>Marks of Humanity Rate:</b> " + mohRate + "%" + " → " + psyche.GetEffectArray(0, 1) + "%" + "\n" + "<b>Translation Texts Limit:</b> " + MAX_untranslatedTexts + " → " + psyche.GetEffectArray(1, 2);
                 break;
             case 2:
-                effectText = "<b>Marks of Humanity Rate:</b> " + mohRate + "%" + " → " + psyche.GetEffectArray(0, 2) + "%";
+                effectText = "<b>Marks of Humanity Rate:</b> " + mohRate + "%" + " → " + psyche.GetEffectArray(0, 2) + "%" + "\n" + "<b>Translation Texts Limit:</b> " + MAX_untranslatedTexts + " → " + psyche.GetEffectArray(1, 3); ;
                 break;
             case 3:
                 effectText = "<b>Marks of Humanity Rate: Gauranteed</b>" + "\n" + "<b>Marks Earned:</b> +" + psyche.GetEffectArray(2, 3) + " addtional Marks for ALL companions";
@@ -118,26 +118,36 @@ public class Quan : Companion
 
     protected override void UpdatePsycheEffect()
     {
-        base.UpdatePsycheEffect();
-
-        int prevGlobalMarksEarned = additionalMarksEarned;
-       
+            base.UpdatePsycheEffect();
 
         mohRate = psyche.GetEffect(0);
-        MAX_untranslatedTexts = psyche.GetEffect(1);
-        additionalMarksEarned = psyche.GetEffect(2);
+        
+     
+            
+        if (psyche.GetIndex() > 0)
+        
+        {
+      
+            int prevGlobalMarksEarned = additionalMarksEarned;
+            additionalMarksEarned = psyche.GetEffect(2);
+            SetGlobalAdditionalMarks(prevGlobalMarksEarned, additionalMarksEarned);
+        }
 
+     
        
-        SetGlobalAdditionalMarks(prevGlobalMarksEarned, additionalMarksEarned);
+        MAX_untranslatedTexts = psyche.GetEffect(1);
+        
+
+
 
 
     }
     protected override void UpdateMotivationEffect()
     {
-        base.UpdateMotivationEffect();
+    
         efficiency = motivation.GetEffect(0);
         extraRewardsRate = motivation.GetEffect(1);
-
+        base.UpdateMotivationEffect();
     }
 
     protected override void SetDefaultValues()
@@ -145,11 +155,11 @@ public class Quan : Companion
         base.SetDefaultValues();
 
         psyche.SetEffect(0, mohRate);
-        
+
         MAX_untranslatedTexts = 2;
-        psyche.SetEffect(1, MAX_untranslatedTexts);
-        psyche.SetEffect(2, additionalMarksEarned);
+       
         extraRewardsRate = 0;
+
 
         
     }

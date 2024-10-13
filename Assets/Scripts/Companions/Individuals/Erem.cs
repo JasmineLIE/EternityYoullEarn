@@ -98,9 +98,9 @@ public class Erem : Companion
     protected override void SetDefaultValues()
     {
         base.SetDefaultValues();
-        psyche.SetEffect(0, mohRate);
+       psyche.SetEffect(0, mohRate);
       
-        MAX_translatedTexts = 3;
+         MAX_translatedTexts = 3;
         motivation.SetEffect(1, MAX_translatedTexts);
         psyche.SetEffect(2, additionalMarksEarned);
        
