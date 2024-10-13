@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CompanionUI : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class CompanionUI : MonoBehaviour
     public TMP_Text m_cost;
     public TMP_Text m_effect;
     public TMP_Text mohAlert;
+
+    public Button psycheButton;
+    public Button motivationButton;
 
     public CanvasGroup comUI;
     public CanvasGroup TasksUI;
@@ -29,6 +33,7 @@ public class CompanionUI : MonoBehaviour
     public Erem erem;
     public Gwynhark gwyn;
 
+    
 
     private void Start()
     {
@@ -47,21 +52,37 @@ public class CompanionUI : MonoBehaviour
 
     public void OpenTask()
     {
-        TasksUI.alpha = 1;
-        UpdateMoHAlert();
         CloseBio();
+        
+    
+      
+
+        TasksUI.interactable = true;
+        TasksUI.alpha = 1;
+
+        UpdateMoHAlert();
+       
         switch (NPCName)
         {
             case "Gwynhark":
                 Investments(gwyn);
+                gwynTask.alpha = 1;
+                eremTask.alpha = 0;
+                quanTask.alpha = 0;
                     break;
 
             case "Erem":
                 Investments(erem);
+                gwynTask.alpha = 0;
+                eremTask.alpha = 1;
+                quanTask.alpha = 0;
                 break;
 
             case "Quan":
                 Investments(quan);
+                gwynTask.alpha = 0;
+                eremTask.alpha = 0;
+                quanTask.alpha = 1;
                 break;
         }
 
@@ -69,17 +90,38 @@ public class CompanionUI : MonoBehaviour
 
     public void Investments(Companion companion)
     {
-        p_cost.text = companion.GetCurrentPsyche().ToString() + " Marks of Humanity";
-        m_cost.text = companion.GetCurrentMotivation().ToString() + " Marks of Humanity";
+      
+        if (companion.psyche.GetIndex() < companion.psyche.effect.GetLength(0))
+        {
+            psycheButton.enabled = true;
+         
+            p_cost.text = companion.GetCurrentPsyche().ToString() + " Marks of Humanity";
+            p_effect.text = companion.GetPsycheEffectDesc();
+        } else
+        {
+            p_cost.text = "No more upgrades";
+            psycheButton.enabled = false;
+        }
 
-        p_effect.text = companion.GetPsycheEffectDesc();
-        m_effect.text = companion.GetMotivationEffectDesc();
+        if (companion.motivation.GetIndex() < companion.motivation.effect.GetLength(0)) {
+            motivationButton.enabled = true;
+            m_cost.text = companion.GetCurrentMotivation().ToString() + " Marks of Humanity";
+
+
+            m_effect.text = companion.GetMotivationEffectDesc();
+        } else
+        {
+            m_cost.text = "No more upgrades";
+            motivationButton.enabled = false;
+        }
+   
 
 
     }
 
     public void OpenBio () {
         CloseTask();
+        BioUI.interactable = true;
         BioUI.alpha = 1;
      
         switch (NPCName)
@@ -100,7 +142,7 @@ public class CompanionUI : MonoBehaviour
 
     public void UpgradePsyche()
     {
-        print("Click");
+      
         //reference to address
         Companion companion = gwyn;
 
@@ -109,7 +151,6 @@ public class CompanionUI : MonoBehaviour
             case "Gwynhark":
                 companion = gwyn;
                 break;
-
             case "Erem":
                 companion = erem;
                 break;
@@ -121,21 +162,18 @@ public class CompanionUI : MonoBehaviour
 
         bool wasUpgradeSuccessful = companion.UpgradePsyche();
 
-        if (wasUpgradeSuccessful) 
+        if (wasUpgradeSuccessful)
         {
-            mohAlert.text = "Available Marks of Humanity: " + quan.player.GetComponent<Player>().GetResource(1);
-            //TODO
-        } else
-        {
-            print(NPCName + " cannot upgrade!");
+            mohAlert.text = "Available Marks of Humanity: " + companion.player.GetComponent<Player>().GetResource(1);
         }
+        Investments(companion);
     }
 
    
 
     public void UpgradeMotivation()
     {
-        print("Click");
+      
         //reference to address
         Companion companion = gwyn;
 
@@ -158,13 +196,11 @@ public class CompanionUI : MonoBehaviour
 
         if (wasUpgradeSuccessful)
         {
-            mohAlert.text = "Available Marks of Humanity: " + quan.player.GetComponent<Player>().GetResource(1);
-            //TODO
+            mohAlert.text = "Available Marks of Humanity: " + companion.player.GetComponent<Player>().GetResource(1);
+         
+        
         }
-        else
-        {
-            print(NPCName + " cannot upgrade!");
-        }
+        Investments(companion);
     }
 
    
@@ -179,12 +215,14 @@ public class CompanionUI : MonoBehaviour
    private void CloseBio()
     {
         BioUI.alpha = 0;
+        BioUI.interactable = false;
      
     }
 
     private void CloseTask()
     {
         TasksUI.alpha = 0;
+        TasksUI.interactable= false;
       
     }
 

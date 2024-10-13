@@ -19,14 +19,14 @@ public class Erem : Companion
     //2nd array -- Additional marks earned by companions
     //3rd array -- N/A
     private int[,] p_e = {  { 20, 40, 70, 100 }, 
-                                { 0, 3, 0, 10 }, 
+                                { 0, 3, 3, 10 }, 
                                 { 0, 0, 0, 0 }  };
 
     //1st array -- efficiency
     //2nd array -- Translated texts they can study at a time
     //3rd array -- N/A
     private int[,] m_e = {  { 10, 15, 30, 50 }, 
-                                { 4, 5, 5, 6 }, 
+                                { 4, 5, 6, 7 }, 
                                 { 0, 0, 0, 0 }  };
 
     void Start()
@@ -85,18 +85,11 @@ public class Erem : Companion
         switch (motivation.GetIndex())
         {
             case 0:
-                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, 0) + "%";
-                break;
+
             case 1:
-                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, 1) + "%" + "\n" + "<b>Study Translated Texts:</b> " + MAX_translatedTexts + " → " + motivation.GetEffectArray(1, 1);
-                break;
-
             case 2:
-                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0,2)+ "%";
-                break;
-
             case 3:
-                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0,3) + "%" + "\n" + "<b>Study Translated Texts:</b> " + MAX_translatedTexts + " → " + motivation.GetEffectArray(1,3);
+                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, motivation.GetIndex()) + "%" + "\n" + "<b>Study Translated Texts:</b> " + MAX_translatedTexts + " → " + motivation.GetEffectArray(1,motivation.GetIndex());
                 break;
         }
         return effectText;
@@ -115,20 +108,27 @@ public class Erem : Companion
 
     protected override void UpdatePsycheEffect()
     {
+        if (psyche.GetIndex() > 0)
+        {
+            int prevGlobalMarksEarned = additionalMarksEarned;
+
+            additionalMarksEarned = psyche.GetEffect(1);
+
+            SetGlobalAdditionalMarks(prevGlobalMarksEarned, additionalMarksEarned);
+        }
+
         base.UpdatePsycheEffect();
-        mohRate = psyche.GetEffect(1);
-        int prevGlobalMarksEarned = additionalMarksEarned;
-
-        additionalMarksEarned = psyche.GetEffect(2);
-
-        SetGlobalAdditionalMarks(prevGlobalMarksEarned, additionalMarksEarned);
+        mohRate = psyche.GetEffect(0);
+       
+     
     }
 
     protected override void UpdateMotivationEffect()
     {
-        base.UpdateMotivationEffect();
         efficiency = motivation.GetEffect(0);
         MAX_translatedTexts = motivation.GetEffect(1);
+        base.UpdateMotivationEffect();
+       
 
     }
 

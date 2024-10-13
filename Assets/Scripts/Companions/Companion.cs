@@ -116,18 +116,19 @@ public class Companion : Clickable
     public virtual bool UpgradePsyche()
     {
 
-        if (player.GetComponent<Player>().GetResource(1) >= psyche.GetCost())
+        if (player.GetComponent<Player>().GetResource(1) >= psyche.GetCost() && psyche.GetIndex() < psyche.effect.GetLength(0))
         {
-
+          
             //Spend resource required
             player.GetComponent<Player>().SetResource(1, (-1) * psyche.GetCost());
-
+       
             int newIndex = psyche.GetIndex() + 1;
-
-            psyche.SetIndex(newIndex);
           
+            psyche.SetIndex(newIndex);
+       
 
             UpdatePsycheEffect();
+
 
             int newCost = GetPsycheGrowthModel(psyche.GetValues_r(newIndex), psyche.GetValues_t());
 
@@ -136,7 +137,7 @@ public class Companion : Clickable
 
             //save
             saveData.SaveCompanionPsyche(comName);
-
+        
             return true;
 
         }
@@ -151,25 +152,28 @@ public class Companion : Clickable
     public virtual bool UpgradeMotivation()
     {
 
-        if (player.GetComponent<Player>().GetResource(1) >= motivation.GetCost())
+        if (player.GetComponent<Player>().GetResource(1) >= motivation.GetCost() && motivation.GetIndex() < motivation.effect.GetLength(0))
         {
-            //Spend resource required
+            //Spend resource require
+           
             player.GetComponent<Player>().SetResource(1, (-1) * motivation.GetCost());
 
+           
             int newIndex = motivation.GetIndex() + 1;
-
+         
+            
             motivation.SetIndex(newIndex);
-
-
+        
             UpdateMotivationEffect();
+
 
             int newCost = GetMotivationGrowthModel(motivation.GetValues_r(newIndex), motivation.GetValues_t());
             //get cost of next investment
             motivation.SetCost(newCost);
 
             //save
-            saveData.SaveCompanionPsyche(comName);
-
+            saveData.SaveCompanionMotivation(comName);
+          
             return true;
 
         }
@@ -194,7 +198,7 @@ public class Companion : Clickable
     {
         for (int i = 0; i < 3; i++)
         {
-            motivation.SetEffect(i, motivation.GetEffectArray(i - 1, motivation.GetIndex()));
+            motivation.SetEffect(i, motivation.GetEffectArray(i , motivation.GetIndex()));
         }
     }
 
@@ -269,6 +273,7 @@ public class Companion : Clickable
     public void SetGlobalAdditionalMarks(int prevVal, int newVal)
     {
         int result = newVal - prevVal;
+        print(comName + " attributed " + result + " additional marks earned");
         saveData.SetExtraMarksGenerated(result);
     }
 

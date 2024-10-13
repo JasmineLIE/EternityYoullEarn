@@ -50,6 +50,8 @@ public class Quan : Companion
 
     }
 
+  
+
     public override string GetPsycheEffectDesc()
     {
         string effectText = "";
@@ -119,11 +121,13 @@ public class Quan : Companion
         base.UpdatePsycheEffect();
 
         int prevGlobalMarksEarned = additionalMarksEarned;
+       
 
-        mohRate = psyche.GetEffect(1);
-        MAX_untranslatedTexts = psyche.GetEffect(2);
-        additionalMarksEarned = psyche.GetEffect(3);
+        mohRate = psyche.GetEffect(0);
+        MAX_untranslatedTexts = psyche.GetEffect(1);
+        additionalMarksEarned = psyche.GetEffect(2);
 
+       
         SetGlobalAdditionalMarks(prevGlobalMarksEarned, additionalMarksEarned);
 
 
@@ -131,8 +135,8 @@ public class Quan : Companion
     protected override void UpdateMotivationEffect()
     {
         base.UpdateMotivationEffect();
-        efficiency = motivation.GetEffect(1);
-        extraRewardsRate = motivation.GetEffect(2);
+        efficiency = motivation.GetEffect(0);
+        extraRewardsRate = motivation.GetEffect(1);
 
     }
 
