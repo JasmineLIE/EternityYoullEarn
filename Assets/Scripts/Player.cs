@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private int crystalEbonies;
     private int textsUntrans;
     private int textsTrans;
+    private int studiedArtifacts;
 
     public SaveData saveData;
 

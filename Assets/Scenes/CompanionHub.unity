@@ -269,6 +269,8 @@ GameObject:
   - component: {fileID: 112154038}
   - component: {fileID: 112154037}
   - component: {fileID: 112154036}
+  - component: {fileID: 112154041}
+  - component: {fileID: 112154040}
   m_Layer: 0
   m_Name: Square
   m_TagString: Untagged
@@ -291,6 +293,13 @@ MonoBehaviour:
   barks: []
   saveData: {fileID: 1928994178}
   ui: {fileID: 514677527}
+  player: {fileID: 0}
+  motivation: {fileID: 112154041}
+  psyche: {fileID: 112154040}
+  insightCost: 0
+  MAX_translatedTexts: 0
+  artifactTarget: 0
+  studiedArtifacts: 0
 --- !u!65 &112154037
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -379,6 +388,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &112154040
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112154035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a16be8613112834bb1281548e7e1216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects: 000000000000000000000000
+  index: 0
+  cost: 0
+  values_r: 
+  values_t: 0
+--- !u!114 &112154041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 112154035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a16be8613112834bb1281548e7e1216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects: 000000000000000000000000
+  index: 0
+  cost: 0
+  values_r: 
+  values_t: 0
 --- !u!1001 &169588119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -558,6 +601,8 @@ GameObject:
   - component: {fileID: 351990078}
   - component: {fileID: 351990077}
   - component: {fileID: 351990076}
+  - component: {fileID: 351990081}
+  - component: {fileID: 351990080}
   m_Layer: 0
   m_Name: Square (1)
   m_TagString: Untagged
@@ -580,6 +625,12 @@ MonoBehaviour:
   barks: []
   saveData: {fileID: 1928994178}
   ui: {fileID: 514677527}
+  player: {fileID: 0}
+  motivation: {fileID: 351990081}
+  psyche: {fileID: 351990080}
+  insightCost: 0
+  MIN_untranslatedTexts: 2
+  MAX_untranslatedTexts: 0
 --- !u!65 &351990077
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -668,6 +719,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &351990080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351990075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a16be8613112834bb1281548e7e1216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects: 000000000000000000000000
+  index: 0
+  cost: 0
+  values_r: 
+  values_t: 0
+--- !u!114 &351990081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 351990075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a16be8613112834bb1281548e7e1216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects: 000000000000000000000000
+  index: 0
+  cost: 0
+  values_r: 
+  values_t: 0
 --- !u!1 &438300851
 GameObject:
   m_ObjectHideFlags: 0
@@ -810,9 +895,29 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 319523474}
     m_Modifications:
+    - target: {fileID: 2014880000976036911, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -26.063
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014880000976036911, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.2198944
+      objectReference: {fileID: 0}
+    - target: {fileID: 2014880000976036911, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -56.77054
+      objectReference: {fileID: 0}
     - target: {fileID: 2296517280548009127, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
       propertyPath: m_Name
       value: CompanionSelect
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696137696502901429, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -18.7882
+      objectReference: {fileID: 0}
+    - target: {fileID: 2696137696502901429, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -1.6578064
       objectReference: {fileID: 0}
     - target: {fileID: 3473631655265789212, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
       propertyPath: m_Pivot.x
@@ -1197,6 +1302,8 @@ GameObject:
   - component: {fileID: 1035466579}
   - component: {fileID: 1035466578}
   - component: {fileID: 1035466577}
+  - component: {fileID: 1035466582}
+  - component: {fileID: 1035466581}
   m_Layer: 0
   m_Name: Square (2)
   m_TagString: Untagged
@@ -1219,6 +1326,12 @@ MonoBehaviour:
   barks: []
   saveData: {fileID: 1928994178}
   ui: {fileID: 514677527}
+  player: {fileID: 0}
+  motivation: {fileID: 1035466582}
+  psyche: {fileID: 1035466581}
+  insightCost: 0
+  MIN_resources: 0
+  MAX_resources: 0
 --- !u!65 &1035466578
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1307,6 +1420,40 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1035466581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035466576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a16be8613112834bb1281548e7e1216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects: 000000000000000000000000
+  index: 0
+  cost: 0
+  values_r: 
+  values_t: 0
+--- !u!114 &1035466582
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035466576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a16be8613112834bb1281548e7e1216, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  effects: 000000000000000000000000
+  index: 0
+  cost: 0
+  values_r: 
+  values_t: 0
 --- !u!1001 &1077902023
 PrefabInstance:
   m_ObjectHideFlags: 0

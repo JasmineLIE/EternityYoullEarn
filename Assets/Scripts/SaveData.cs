@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Security;
+using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
@@ -13,16 +14,23 @@ public class SaveData : MonoBehaviour
     [SerializeField] private CompanionData _CompanionData = new CompanionData();
     [SerializeField] private PlayerData _PlayerData = new PlayerData();
 
-   
+    //Artifacts
+
+
+    [SerializeField] private Artifact _ArtifactData = new Artifact();
+
+
     public void SaveIntoJson()
     {
         //Create strings for path direction and file name
         string companionDataPath = Application.persistentDataPath + "/CompanionData.json";
         string playerDataPath = Application.persistentDataPath + "/PlayerData.json";
+        string artifactDataPath = Application.persistentDataPath + "/ArtifactData.json";
 
         //serialize into JSon data
         string companion = JsonUtility.ToJson(_CompanionData);
         string player = JsonUtility.ToJson(_PlayerData);
+        string artifact = JsonUtility.ToJson(_ArtifactData); 
        
         //Default data set is adjusted in Inspector
 
@@ -30,6 +38,7 @@ public class SaveData : MonoBehaviour
         //In the chosen directory, create and save a file
         System.IO.File.WriteAllText(companionDataPath, companion);
         System.IO.File.WriteAllText(playerDataPath, player);
+        System.IO.File.WriteAllText(artifactDataPath, artifact);
 
         
     }
@@ -38,6 +47,7 @@ public class SaveData : MonoBehaviour
     {
         string companionDataPath = Application.persistentDataPath + "/CompanionData.json";
         string playerDataPath = Application.persistentDataPath + "/PlayerData.json";
+        string artifactDataPath = Application.persistentDataPath + "/ArtifactData.json";
 
         if (!File.Exists(playerDataPath) && !File.Exists(companionDataPath))
         {
@@ -48,11 +58,13 @@ public class SaveData : MonoBehaviour
           
             //read entire file(s) and save its content(s)
             string companionDataContents = File.ReadAllText(companionDataPath);
-            string playerDataContents = File.ReadAllText(@playerDataPath);
+            string playerDataContents = File.ReadAllText(playerDataPath);
+            string artifactDataContents = File.ReadAllText(artifactDataPath);
 
             //Deserialize the JSON data
             _CompanionData = JsonUtility.FromJson<CompanionData>(companionDataContents);
             _PlayerData = JsonUtility.FromJson<PlayerData>(playerDataContents);
+            _ArtifactData = JsonUtility.FromJson<Artifact>(artifactDataContents);
 
         }
     }
@@ -221,6 +233,17 @@ public class SaveData : MonoBehaviour
         _CompanionData.extraMarksGenerated += val;
         SaveIntoJson();
     }
+
+    public int GetStudiedArtifactsVal() 
+    {
+        return _CompanionData.Erem_studiedArtifactsVal;
+    }
+
+    public void SetStudiedArtifactsVal(int val)
+    {
+        _CompanionData.Erem_studiedArtifactsVal += val;
+        SaveIntoJson();
+    }
     //-----
 }
 
@@ -232,6 +255,7 @@ public class CompanionData
 
     public int Erem_psycheLevel;
     public int Erem_motivationLevel;
+    public int Erem_studiedArtifactsVal;
 
     public int Quan_psycheLevel;
     public int Quan_motivationLevel;
@@ -251,6 +275,30 @@ public class PlayerData
     public int texts_untransVal;
     public int texts_transVal;
     public int incrementVal;
+ 
    
+}
+
+[System.Serializable]
+public class Artifact
+{
+   public List<ArtifactInfo> info = new List<ArtifactInfo> ();
+}
+
+[System.Serializable] 
+public class ArtifactInfo
+{
+    public bool isUnlocked;
+
+    public string name;
+    public string desc;
+
+    public int cost1;
+    public int cost2; //optional
+    public int[] costKeys;
+
+    public int effect;
+    public int effectKey;
+
 }
 

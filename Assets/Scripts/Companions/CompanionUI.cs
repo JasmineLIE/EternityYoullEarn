@@ -93,14 +93,70 @@ public class CompanionUI : MonoBehaviour
 
     public void UpgradePsyche()
     {
-     
+        //reference to address
+        Companion companion = gwyn;
+
+        switch (NPCName)
+        {
+            case "Gwynhark":
+                companion = gwyn;
+                break;
+
+            case "Erem":
+                companion = erem;
+                break;
+
+            case "Quan":
+                companion = quan;
+                break;
+        }
+
+        bool wasUpgradeSuccessful = companion.UpgradePsyche();
+
+        if (wasUpgradeSuccessful) 
+        {
+            //TODO
+        } else
+        {
+            //TODO
+        }
     }
+
+   
 
     public void UpgradeMotivation()
     {
-       
+        //reference to address
+        Companion companion = gwyn;
+
+        switch (NPCName)
+        {
+            case "Gwynhark":
+                companion = gwyn;
+                break;
+
+            case "Erem":
+                companion = erem;
+                break;
+
+            case "Quan":
+                companion = quan;
+                break;
+        }
+
+        bool wasUpgradeSuccessful = companion.UpgradeMotivation();
+
+        if (wasUpgradeSuccessful)
+        {
+            //TODO
+        }
+        else
+        {
+            //TODO
+        }
     }
 
+   
     public void Exit()
     {
         cd.canClick = true;

@@ -113,11 +113,15 @@ public class Companion : Clickable
 
 
 
-    protected virtual bool UpgradePsyche()
+    public virtual bool UpgradePsyche()
     {
 
         if (player.GetComponent<Player>().GetResource(1) >= psyche.GetCost())
         {
+
+            //Spend resource required
+            player.GetComponent<Player>().SetResource(1, (-1) * psyche.GetCost());
+
             int newIndex = psyche.GetIndex() + 1;
 
             psyche.SetIndex(newIndex);
@@ -126,6 +130,7 @@ public class Companion : Clickable
             UpdatePsycheEffect();
 
             int newCost = GetPsycheGrowthModel(psyche.GetValues_r(newIndex), psyche.GetValues_t());
+
             //get cost of next investment
             psyche.SetCost(newCost);
 
@@ -137,16 +142,20 @@ public class Companion : Clickable
         }
         else
         {
+            print(comName + " cannot upgrade this!");
             return false;
         }
 
     }
 
-    protected virtual bool UpgradeMotivation()
+    public virtual bool UpgradeMotivation()
     {
 
         if (player.GetComponent<Player>().GetResource(1) >= motivation.GetCost())
         {
+            //Spend resource required
+            player.GetComponent<Player>().SetResource(1, (-1) * motivation.GetCost());
+
             int newIndex = motivation.GetIndex() + 1;
 
             motivation.SetIndex(newIndex);
@@ -166,6 +175,7 @@ public class Companion : Clickable
         }
         else
         {
+            print(comName + " cannot upgrade this!");
             return false;
         }
 
@@ -255,13 +265,15 @@ public class Companion : Clickable
         return additionalMarksEarned;
     }
 
-    public void CalculateGlobalAdditionalMarks(int one, int two, int three)
+   
+    public void SetGlobalAdditionalMarks(int prevVal, int newVal)
     {
-        int sum = one + two + three;
-        saveData.SetExtraMarksGenerated(sum);
+        int result = newVal - prevVal;
+        saveData.SetExtraMarksGenerated(result);
     }
 
+
     //nested class
-    
+
 }
 

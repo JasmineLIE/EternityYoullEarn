@@ -49,8 +49,10 @@ MonoBehaviour:
     Gwynhark_motivationLevel: 0
     Erem_psycheLevel: 0
     Erem_motivationLevel: 0
+    Erem_studiedArtifactsVal: 0
     Quan_psycheLevel: 0
     Quan_motivationLevel: 0
+    extraMarksGenerated: 0
   _PlayerData:
     insightVal: 0
     MOHVal: 0
@@ -58,3 +60,45 @@ MonoBehaviour:
     texts_untransVal: 0
     texts_transVal: 0
     incrementVal: 1
+  _ArtifactData:
+    info:
+    - isUnlocked: 0
+      name: The Four Immortals
+      desc: 
+      cost1: 10
+      cost2: 0
+      costKeys: 02000000
+      effect: 50
+      effectKey: 0
+    - isUnlocked: 0
+      name: An Ode to the Fairy Mother
+      desc: 
+      cost1: 50
+      cost2: 500
+      costKeys: 0200000000000000
+      effect: 25
+      effectKey: 1
+    - isUnlocked: 0
+      name: Treachery
+      desc: 
+      cost1: 25
+      cost2: 300
+      costKeys: 0200000000000000
+      effect: 2
+      effectKey: -1
+    - isUnlocked: 0
+      name: War Banner
+      desc: 
+      cost1: 1000
+      cost2: 0
+      costKeys: 00000000
+      effect: 25
+      effectKey: -1
+    - isUnlocked: 0
+      name: Ragged Banner
+      desc: 
+      cost1: 20
+      cost2: 0
+      costKeys: 01000000
+      effect: 10
+      effectKey: 0
