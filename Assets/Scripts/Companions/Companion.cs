@@ -142,7 +142,7 @@ public class Companion : Clickable
         }
         else
         {
-            print(comName + " cannot upgrade this!");
+       
             return false;
         }
 
@@ -175,7 +175,7 @@ public class Companion : Clickable
         }
         else
         {
-            print(comName + " cannot upgrade this!");
+    
             return false;
         }
 

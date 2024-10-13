@@ -11,10 +11,15 @@ public class CompanionUI : MonoBehaviour
     public TMP_Text p_effect;
     public TMP_Text m_cost;
     public TMP_Text m_effect;
+    public TMP_Text mohAlert;
 
     public CanvasGroup comUI;
     public CanvasGroup TasksUI;
     public CanvasGroup BioUI;
+
+    public CanvasGroup quanTask;
+    public CanvasGroup eremTask;
+    public CanvasGroup gwynTask;
 
     public ClickDetection cd;
 
@@ -43,7 +48,8 @@ public class CompanionUI : MonoBehaviour
     public void OpenTask()
     {
         TasksUI.alpha = 1;
-        BioUI.alpha = 0;
+        UpdateMoHAlert();
+        CloseBio();
         switch (NPCName)
         {
             case "Gwynhark":
@@ -73,8 +79,9 @@ public class CompanionUI : MonoBehaviour
     }
 
     public void OpenBio () {
-        TasksUI.alpha = 0;
+        CloseTask();
         BioUI.alpha = 1;
+     
         switch (NPCName)
         {
             case "Gwynhark":
@@ -93,6 +100,7 @@ public class CompanionUI : MonoBehaviour
 
     public void UpgradePsyche()
     {
+        print("Click");
         //reference to address
         Companion companion = gwyn;
 
@@ -115,10 +123,11 @@ public class CompanionUI : MonoBehaviour
 
         if (wasUpgradeSuccessful) 
         {
+            mohAlert.text = "Available Marks of Humanity: " + quan.player.GetComponent<Player>().GetResource(1);
             //TODO
         } else
         {
-            //TODO
+            print(NPCName + " cannot upgrade!");
         }
     }
 
@@ -126,6 +135,7 @@ public class CompanionUI : MonoBehaviour
 
     public void UpgradeMotivation()
     {
+        print("Click");
         //reference to address
         Companion companion = gwyn;
 
@@ -148,11 +158,12 @@ public class CompanionUI : MonoBehaviour
 
         if (wasUpgradeSuccessful)
         {
+            mohAlert.text = "Available Marks of Humanity: " + quan.player.GetComponent<Player>().GetResource(1);
             //TODO
         }
         else
         {
-            //TODO
+            print(NPCName + " cannot upgrade!");
         }
     }
 
@@ -165,5 +176,20 @@ public class CompanionUI : MonoBehaviour
     }
 
 
-   
+   private void CloseBio()
+    {
+        BioUI.alpha = 0;
+     
+    }
+
+    private void CloseTask()
+    {
+        TasksUI.alpha = 0;
+      
+    }
+
+    private void UpdateMoHAlert()
+    {
+        mohAlert.text = "Available Marks of Humanity: " + quan.player.GetComponent<Player>().GetResource(1);
+    }
 }
