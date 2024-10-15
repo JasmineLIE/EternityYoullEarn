@@ -10,7 +10,7 @@ public class Companion : Clickable
 {
     //Data Variables
 
-    private string comName;
+    public string comName;
     public string[] barks;
 
     public SaveData saveData;
@@ -20,6 +20,8 @@ public class Companion : Clickable
     public Investment motivation;
     public Investment psyche;
 
+    public TimerController timerController;
+
     public int insightCost;
 
     
@@ -27,7 +29,7 @@ public class Companion : Clickable
 
     //For completeting tasks
     protected int efficiency;
-    protected float timeToCompleteTask;
+    public float timeToCompleteTask;
     protected int mohRate;
 
     protected int additionalMarksEarned;
@@ -37,7 +39,6 @@ public class Companion : Clickable
 
     private void Awake()
     {
-
 
 
         player = GameObject.FindGameObjectWithTag("Player");
@@ -217,7 +218,9 @@ public class Companion : Clickable
 
     public IEnumerator StartTask()
     {
+
         float countdown = timeToCompleteTask - (((efficiency / 100) / timeToCompleteTask) * 100); //Calculate time it takes to complete the task, considering character's efficiency
+        timerController.SetTime(countdown); //send countdown data to TimerController, which provides visual feedback of timer
         yield return new WaitForSeconds(countdown);
         CompleteTask();
 

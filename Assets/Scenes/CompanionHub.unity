@@ -688,14 +688,6 @@ PrefabInstance:
       propertyPath: quan
       value: 
       objectReference: {fileID: 351990076}
-    - target: {fileID: 5615099228411848286, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
-      propertyPath: psycheButton
-      value: 
-      objectReference: {fileID: 2089407726}
-    - target: {fileID: 5615099228411848286, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
-      propertyPath: motivationButton
-      value: 
-      objectReference: {fileID: 646303247}
     - target: {fileID: 5959581534050301150, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -727,6 +719,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 12bce566affa4ec4caf188e94bb822c0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &514677528 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1884622875510428494, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+  m_PrefabInstance: {fileID: 514677525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1796db51819f4c4f8d8756a78fe1161, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &514677529 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4024079475682633214, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+  m_PrefabInstance: {fileID: 514677525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1796db51819f4c4f8d8756a78fe1161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &525855598
@@ -831,15 +845,15 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 13199420616130997, guid: 03285f47a0ebe8f42a0e85c3b45913d6, type: 3}
   m_PrefabInstance: {fileID: 525855598}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &646303247 stripped
+--- !u!114 &660890693 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3520772911478609778, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5480130370716360336, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
   m_PrefabInstance: {fileID: 514677525}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Script: {fileID: 11500000, guid: f1796db51819f4c4f8d8756a78fe1161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &783301686
@@ -1431,17 +1445,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aecfe99df1d9ae749ad7d4a5113f9734, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2089407726 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 470412202862151588, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
-  m_PrefabInstance: {fileID: 514677525}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &848389462625084116
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1458,6 +1461,10 @@ PrefabInstance:
       propertyPath: saveData
       value: 
       objectReference: {fileID: 1928994178}
+    - target: {fileID: 7086698730075804458, guid: 1e7efa750c8d76c4f9d84f27f54762a1, type: 3}
+      propertyPath: timerController
+      value: 
+      objectReference: {fileID: 514677529}
     - target: {fileID: 8600136388092757902, guid: 1e7efa750c8d76c4f9d84f27f54762a1, type: 3}
       propertyPath: m_Name
       value: Quan
@@ -1628,6 +1635,10 @@ PrefabInstance:
       propertyPath: artifactManager
       value: 
       objectReference: {fileID: 1465922520}
+    - target: {fileID: 7920475870209945675, guid: 6d984de4556068348a3e07a5326cfed0, type: 3}
+      propertyPath: timerController
+      value: 
+      objectReference: {fileID: 660890693}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1649,6 +1660,10 @@ PrefabInstance:
       propertyPath: saveData
       value: 
       objectReference: {fileID: 1928994178}
+    - target: {fileID: 1041312007069878934, guid: 7005990a8fd4f0d42a6719130e2d52aa, type: 3}
+      propertyPath: timerController
+      value: 
+      objectReference: {fileID: 514677528}
     - target: {fileID: 4498234316380778622, guid: 7005990a8fd4f0d42a6719130e2d52aa, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5.94
