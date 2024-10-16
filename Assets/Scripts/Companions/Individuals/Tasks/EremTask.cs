@@ -54,10 +54,11 @@ public class EremTask : Task
         } else
         {
 
-            currTextsResearched += requestVal;
+          
             UpdateArtifactTarget();
             UpdateAvailableTransTexts();
             erem.GetComponent<Erem>().CompleteTask(requestVal);
+            currTextsResearched += requestVal;
         }
     }
 

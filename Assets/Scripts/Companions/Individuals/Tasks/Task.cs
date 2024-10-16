@@ -28,8 +28,7 @@ public class Task : MonoBehaviour
 
     private void Awake()
     {
-        fedValues = 0;
-        fedValText.text = fedValues.ToString();
+      
         player = GameObject.FindGameObjectWithTag("Player");
         canDispatch = true;
     }
@@ -111,6 +110,8 @@ public class Task : MonoBehaviour
 
     public virtual void SetUp()
     {
+        fedValues = 0;
+        fedValText.text = fedValues.ToString();
         UpdateInsightText();
     }
  

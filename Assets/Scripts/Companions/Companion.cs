@@ -236,7 +236,20 @@ public class Companion : Clickable
      
         CompleteTask();
     }
-    public virtual void CompleteTask()
+
+    public IEnumerator StartTask(int key1, int val1, int key2, int val2)
+    {
+        float countdown = timeToCompleteTask - (((efficiency / 100) / timeToCompleteTask) * 100); //Calculate time it takes to complete the task, considering character's efficiency
+        timerController.SetTime(countdown); //send countdown data to TimerController, which provides visual feedback of timer
+        yield return new WaitForSeconds(countdown);
+
+        player.GetComponent<Player>().SetResource(key1, val1);
+        player.GetComponent<Player>().SetResource(key2, val2);
+
+        CompleteTask();
+
+    }
+     public virtual void CompleteTask()
     {
 
         //Rest needs to be completed in children

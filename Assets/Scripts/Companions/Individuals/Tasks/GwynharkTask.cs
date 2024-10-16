@@ -31,7 +31,7 @@ public class GwynharkTask : Task
 
     private void Update()
     {
-        expedition.text = "Expedition Points Available: " + expeditionPoints;
+        expedition.text = "Remaining Expedition Points: " + expeditionPoints;
     }
     public void ResetValues()
     {
@@ -46,6 +46,14 @@ public class GwynharkTask : Task
         fedValues2 = 0;
         UpdateCBText();
         UpdateUntransText();
+        
+    }
+
+    public override void SetUp()
+    {
+        insightRequired = gwynhark.GetComponent<Gwynhark>().insightCost;
+        ResetValues();
+        UpdateInsightText();
     }
 
     public void CBIncrease()
@@ -55,6 +63,7 @@ public class GwynharkTask : Task
             fedValues++;
             expeditionPoints--;
             AdjustCBIcons();
+            UpdateCBText();
           
         } else
         {
@@ -69,6 +78,7 @@ public class GwynharkTask : Task
             fedValues--;
             expeditionPoints++;
             AdjustCBIcons();
+            UpdateCBText();
 
         }
         else
@@ -84,6 +94,7 @@ public class GwynharkTask : Task
             fedValues2++;
             expeditionPoints--;
             AdjustUntransIcons();
+            UpdateUntransText();
         }
         else
         {
@@ -98,6 +109,7 @@ public class GwynharkTask : Task
             fedValues2--;
             expeditionPoints++;
             AdjustUntransIcons();
+            UpdateUntransText();
         }
         else
         {
@@ -108,12 +120,14 @@ public class GwynharkTask : Task
 
     public void Request()
     {
-        if (expeditionPoints == 0)
+        if (expeditionPoints == 0 && player.GetComponent<Player>().GetResource(0) >= insightRequired && canDispatch)
         {
+            gwynhark.GetComponent<Gwynhark>().CompleteTask(fedValues, fedValues2);
+            ResetValues();
 
         } else
         {
-            print("Please spend more expedition points!");
+            print("Unable to dispatch!");
         }
     }
     private void UpdateCBText()
