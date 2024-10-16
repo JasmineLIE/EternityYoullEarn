@@ -678,6 +678,10 @@ PrefabInstance:
       propertyPath: erem
       value: 
       objectReference: {fileID: 5671502699278874283}
+    - target: {fileID: 631373917196436567, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+      propertyPath: artifactManager
+      value: 
+      objectReference: {fileID: 1465922520}
     - target: {fileID: 632562756445228876, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -1142,31 +1146,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1074619402269683139, guid: 03285f47a0ebe8f42a0e85c3b45913d6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 30.809998
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3249811016929309546, guid: 03285f47a0ebe8f42a0e85c3b45913d6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3249811016929309546, guid: 03285f47a0ebe8f42a0e85c3b45913d6, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3249811016929309546, guid: 03285f47a0ebe8f42a0e85c3b45913d6, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 177
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3249811016929309546, guid: 03285f47a0ebe8f42a0e85c3b45913d6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 20.81
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3249811016929309546, guid: 03285f47a0ebe8f42a0e85c3b45913d6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 98.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3249811016929309546, guid: 03285f47a0ebe8f42a0e85c3b45913d6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15.405
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4820774709139989074, guid: 03285f47a0ebe8f42a0e85c3b45913d6, type: 3}
       propertyPath: m_Name
@@ -1882,6 +1886,14 @@ PrefabInstance:
       propertyPath: _PlayerData.MOHVal
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2755858325574370780, guid: 346b215ea6a02534b96455f3ceeccc67, type: 3}
+      propertyPath: _ArtifactData.pointer
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2755858325574370780, guid: 346b215ea6a02534b96455f3ceeccc67, type: 3}
+      propertyPath: _ArtifactData.undiscovered
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8775020683890121014, guid: 346b215ea6a02534b96455f3ceeccc67, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.4138167
@@ -2124,6 +2136,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArtifactManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4813462763890461107, guid: 5369fe9b1e80e564e9a554677b0d730b, type: 3}
+      propertyPath: saveData
+      value: 
+      objectReference: {fileID: 1928994178}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -32,6 +32,7 @@ public class SaveData : MonoBehaviour
         string player = JsonUtility.ToJson(_PlayerData);
         string artifact = JsonUtility.ToJson(_ArtifactData); 
        
+     
         //Default data set is adjusted in Inspector
 
        
@@ -49,7 +50,7 @@ public class SaveData : MonoBehaviour
         string playerDataPath = Application.persistentDataPath + "/PlayerData.json";
         string artifactDataPath = Application.persistentDataPath + "/ArtifactData.json";
 
-        if (!File.Exists(playerDataPath) && !File.Exists(companionDataPath))
+        if (!File.Exists(playerDataPath) || !File.Exists(companionDataPath) || !File.Exists(artifactDataPath))
         {
            
             SaveIntoJson();
@@ -244,7 +245,73 @@ public class SaveData : MonoBehaviour
         _CompanionData.Erem_studiedArtifactsVal += val;
         SaveIntoJson();
     }
+    
     //-----
+
+    //----- Artifact Handler -----
+
+    /*
+     * This function will randomize artifacts discovered, placing them at the end of the list, so that all elements at the front are undiscovered, eventually working within the list to sort all
+     * There should be an edge case preceding this to ensure we do not go out of array index
+     * Working with index is tricky when having a counter that counts normally.  Some minor spahgetti
+     */
+    public void DiscoverArtifact()
+    {
+ 
+        if (_ArtifactData.pointer > 1)
+        { 
+            //Randomly select an undiscovered artifact
+            int random = Random.Range(0, _ArtifactData.pointer);
+
+            //We will set the select undiscovered artifact to discover, and move it to the end of the "undiscovered" portion of the list, swapping places with what element was at the end
+            _ArtifactData.info[random].isDiscovered = true;
+
+            ArtifactInfo discoveredTemp = _ArtifactData.info[random];
+            ArtifactInfo undiscoveredTemp = _ArtifactData.info[_ArtifactData.pointer];
+
+            //swap
+            _ArtifactData.info[random] = undiscoveredTemp;
+            _ArtifactData.info[_ArtifactData.pointer] = discoveredTemp;
+
+       
+
+        }     else
+        {
+            // meaning we only have one left
+            _ArtifactData.info[0].isDiscovered = true;
+     
+        }
+
+        _ArtifactData.discovered++;
+        _ArtifactData.pointer--;
+        SaveIntoJson();
+
+    }
+
+    public List<ArtifactInfo> GetDiscoveredArtifacts()
+    {
+        List<ArtifactInfo> temp;
+
+        int difference = (_ArtifactData.info.Count - (_ArtifactData.pointer + 1));
+        temp = _ArtifactData.info.GetRange(_ArtifactData.pointer+1, difference);
+
+        return temp;
+    }
+
+    public int GetDiscoveredCount()
+    {
+        return _ArtifactData.discovered;
+    }
+
+    public int GetArtifactListSize()
+    {
+        return _ArtifactData.info.Count;
+    }
+
+    public int GetArtifactPointer()
+    {
+        return _ArtifactData.pointer;
+    }
 }
 
 [System.Serializable]
@@ -282,13 +349,21 @@ public class PlayerData
 [System.Serializable]
 public class Artifact
 {
-   public List<ArtifactInfo> info = new List<ArtifactInfo> ();
+   
+    public int pointer;
+    public int discovered;
+
+    //Holds all Artifacts thus far
+   public List<ArtifactInfo> info = new List<ArtifactInfo>();
+
+ 
 }
 
 [System.Serializable] 
 public class ArtifactInfo
 {
-    public bool isUnlocked;
+
+    public bool isDiscovered;
 
     public string name;
     public string desc;

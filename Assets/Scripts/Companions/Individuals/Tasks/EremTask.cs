@@ -9,6 +9,11 @@ public class EremTask : Task
 
     public TMP_Text artifactCountdown;
     public TMP_Text translatedTextsAvail;
+ 
+
+    public ArtifactManager artifactManager;
+
+    private bool canClaim;
 
     private int currTextsResearched;
   
@@ -21,10 +26,21 @@ public class EremTask : Task
         
     }
 
+    private void Update()
+    {
+        if (!canClaim)
+        {
+            canDispatch = true;
+        } else
+        {
+            canDispatch = false;
+        }
+    }
     public override void SetUp()
     {
         insightRequired = erem.GetComponent<Erem>().insightCost;
         thresh = erem.GetComponent<Erem>().MAX_translatedTexts;
+        currTextsResearched = erem.GetComponent<Erem>().studiedArtifacts;
         UpdateArtifactTarget();
         UpdateAvailableTransTexts();
         base.SetUp();
@@ -33,8 +49,21 @@ public class EremTask : Task
 
     public override void Increases()
     {
-        thresh = erem.GetComponent<Erem>().MAX_translatedTexts;
-        base.Increases();
+        if (!canClaim)
+        {
+            thresh = erem.GetComponent<Erem>().MAX_translatedTexts;
+            base.Increases();
+        }
+     
+    }
+
+    public override void Decreases()
+    {
+        if (!canClaim)
+        {
+            base.Decreases();
+        }
+    
     }
 
     public void UpdateArtifactTarget()
@@ -42,8 +71,19 @@ public class EremTask : Task
         
         int target = erem.GetComponent<Erem>().artifactTarget;
         artifactCountdown.text = (target - currTextsResearched).ToString(); 
+
+        if (target-currTextsResearched == 0)
+        {
+            canClaim = true;
+            dispatchText.text = "Redeem";
+        } else
+        {
+            canClaim = false;
+            dispatchText.text = "Dispatch";
+        }
     }
 
+    
     public void Request()
     {
         int requestVal = RequestTask();
@@ -53,17 +93,42 @@ public class EremTask : Task
             print("dont have enough insight or required resources!");
         } else
         {
+            erem.GetComponent<Erem>().CompleteTask(requestVal);
+            currTextsResearched = erem.GetComponent<Erem>().studiedArtifacts;
 
-          
             UpdateArtifactTarget();
             UpdateAvailableTransTexts();
-            erem.GetComponent<Erem>().CompleteTask(requestVal);
-            currTextsResearched += requestVal;
+          
         }
     }
 
     public void UpdateAvailableTransTexts()
     {
         translatedTextsAvail.text = "Translated Texts: " + player.GetComponent<Player>().GetResource(4).ToString();
+    }
+
+    public void RedeemArtifact()
+    {
+        if (canClaim)
+        {
+            erem.GetComponent<Erem>().saveData.SetStudiedArtifactsVal(erem.GetComponent<Erem>().studiedArtifacts * (-1)); //reset back to 0
+            erem.GetComponent<Erem>().studiedArtifacts = 0;
+           bool processed = artifactManager.DiscoverArtifact();
+
+            if (processed)
+            {
+                UpdateArtifactTarget();
+            }
+            else
+            {
+                //TODO -- extra MOH?
+            }
+
+
+        }
+    
+     
+
+
     }
 }

@@ -13,7 +13,7 @@ public class Erem : Companion
     public int artifactTarget;
     public int studiedArtifacts;
 
-    public ArtifactManager artifactManager;
+    
 
     private int[] p_r= { 2, 3, 4, 5 };
     private int[] m_r = { 1, 3, 6, 9 };
