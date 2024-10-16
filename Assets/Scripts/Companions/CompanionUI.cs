@@ -33,7 +33,8 @@ public class CompanionUI : MonoBehaviour
     public Erem erem;
     public Gwynhark gwyn;
 
-    
+    public GameObject DomUI;
+    public GameObject BackUI;
 
     private void Start()
     {
@@ -61,28 +62,43 @@ public class CompanionUI : MonoBehaviour
         TasksUI.alpha = 1;
 
         UpdateMoHAlert();
-       
+    
         switch (NPCName)
         {
+           
             case "Gwynhark":
                 Investments(gwyn);
+          
                 gwynTask.alpha = 1;
+            gwynTask.transform.SetParent(DomUI.transform);
+                gwynTask.interactable = true;
                 eremTask.alpha = 0;
+                eremTask.transform.SetParent(BackUI.transform);
                 quanTask.alpha = 0;
+                quan.transform.parent.SetParent(BackUI.transform);
                     break;
 
             case "Erem":
                 Investments(erem);
                 gwynTask.alpha = 0;
+                gwynTask.transform.SetParent(BackUI.transform);
                 eremTask.alpha = 1;
+                eremTask.transform.SetParent(DomUI.transform);
+                eremTask.interactable = true;
                 quanTask.alpha = 0;
+                quanTask.transform.SetParent(BackUI.transform);
+             
                 break;
 
             case "Quan":
                 Investments(quan);
                 gwynTask.alpha = 0;
+                gwynTask.transform.SetParent(BackUI.transform);
                 eremTask.alpha = 0;
+                eremTask.transform.SetParent(BackUI.transform);
                 quanTask.alpha = 1;
+                quanTask.transform.SetParent(DomUI.transform);
+                quanTask.interactable = true;
                 break;
         }
 

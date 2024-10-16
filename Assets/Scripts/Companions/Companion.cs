@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
 public class Companion : Clickable
@@ -227,6 +228,14 @@ public class Companion : Clickable
 
     }
 
+    public IEnumerator StartTask()
+    {
+        float countdown = timeToCompleteTask - (((efficiency / 100) / timeToCompleteTask) * 100); //Calculate time it takes to complete the task, considering character's efficiency
+        timerController.SetTime(countdown); //send countdown data to TimerController, which provides visual feedback of timer
+        yield return new WaitForSeconds(countdown);
+     
+        CompleteTask();
+    }
     public virtual void CompleteTask()
     {
 

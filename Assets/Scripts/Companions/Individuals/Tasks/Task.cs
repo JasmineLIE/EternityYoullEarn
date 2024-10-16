@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class Task : MonoBehaviour
 {
 
-  
+    public bool canDispatch;
 
     //For choosing/spending resources
     protected int fedValues;
-    protected int thresh;
+    public int thresh;
     protected int resourceKey;
 
     
@@ -19,6 +19,8 @@ public class Task : MonoBehaviour
     public TMP_Text dispatchText;
     public TMP_Text insightText;
     public TMP_Text fedValText;
+
+    public Button dispatch;
 
     public int insightRequired;
 
@@ -29,15 +31,27 @@ public class Task : MonoBehaviour
         fedValues = 0;
         fedValText.text = fedValues.ToString();
         player = GameObject.FindGameObjectWithTag("Player");
+        canDispatch = true;
     }
-   
 
 
+    private void Update()
+    {
+        if (!canDispatch)
+        {
+            dispatch.interactable = false;
+        } else
+        {
+            dispatch.interactable = true;
+        }
+        UpdateInsightText();
+    }
     public virtual void Increases()
     {
         if (fedValues < thresh)
         {
             fedValues++;
+      
             fedValText.text = fedValues.ToString();
         }
         else
@@ -63,7 +77,7 @@ public class Task : MonoBehaviour
 
     public int RequestTask()
     {
-        if (player.GetComponent<Player>().GetResource(0) >= insightRequired && fedValues!= 0 && player.GetComponent<Player>().GetResource(resourceKey) >= fedValues)
+        if (player.GetComponent<Player>().GetResource(0) >= insightRequired && fedValues!= 0 && player.GetComponent<Player>().GetResource(resourceKey) >= fedValues && canDispatch)
         {
             //Task submission, subtract required insight
             player.GetComponent<Player>().SetResource(0, (-1)*insightRequired);
@@ -71,6 +85,7 @@ public class Task : MonoBehaviour
             int temp = fedValues;
             fedValues = 0;
             fedValText.text = fedValues.ToString();
+            canDispatch = false;
             return temp;
         } 
        
@@ -94,7 +109,6 @@ public class Task : MonoBehaviour
         }
     }
 
-   
 
  
 }

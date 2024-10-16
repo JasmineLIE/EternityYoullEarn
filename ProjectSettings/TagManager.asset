@@ -12,6 +12,8 @@ TagManager:
   - EremTask
   - GwynTask
   - Tooltip
+  - Back
+  - Dom
   layers:
   - Default
   - TransparentFX

@@ -191,5 +191,10 @@ public class Quan : Companion
         return 0;
     }
 
+    public override void CompleteTask()
+    {
+        base.CompleteTask();
+        QuanTask.GetComponent<QuanTask>().canDispatch = false;
+    }
 
 }

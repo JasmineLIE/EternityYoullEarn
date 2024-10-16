@@ -16,7 +16,7 @@ public class QuanTask : Task
        
     }
 
-    public void SetUp()
+    public override void SetUp()
     {
         insightRequired = quan.GetComponent<Quan>().insightCost;
         UpdateEstimatedRewardText();
