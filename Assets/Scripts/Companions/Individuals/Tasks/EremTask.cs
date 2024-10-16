@@ -21,13 +21,13 @@ public class EremTask : Task
         
     }
 
-    public void SetUp()
+    public override void SetUp()
     {
         insightRequired = erem.GetComponent<Erem>().insightCost;
         thresh = erem.GetComponent<Erem>().MAX_translatedTexts;
         UpdateArtifactTarget();
         UpdateAvailableTransTexts();
- 
+        base.SetUp();
       
     }
 

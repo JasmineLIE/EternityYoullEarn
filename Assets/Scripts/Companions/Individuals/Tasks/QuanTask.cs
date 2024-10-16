@@ -20,14 +20,11 @@ public class QuanTask : Task
     {
         insightRequired = quan.GetComponent<Quan>().insightCost;
         UpdateEstimatedRewardText();
-        UpdateUntranslatedText();
+        base.SetUp();
      
     }
 
-    private void Update()
-    {
-        UpdateInsightText();
-    }
+  
     public override void Increases() { 
     
         //in case the thresh increases via investment
@@ -82,19 +79,18 @@ public class QuanTask : Task
             rewards += 1;
         }
 
-            if (rewards == -1)
+            if (rewards == -1 || fedValues == 0)
         {
             rewards = 0;
         }
         estimatedRewards.text = rewards.ToString();
 
         //In considerationn for extra rewards
-        if (quan.GetComponent<Quan>().extraRewardsRate == 50)
+        if (quan.GetComponent<Quan>().extraRewardsRate == 50 && fedValues != 0)
         {
             estimatedRewards.text = rewards.ToString() + "-" + (rewards + 1).ToString();
         }
-           
-        
+      
 
      
     }

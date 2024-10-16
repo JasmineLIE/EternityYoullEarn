@@ -44,7 +44,7 @@ public class Task : MonoBehaviour
         {
             dispatch.interactable = true;
         }
-        UpdateInsightText();
+
     }
     public virtual void Increases()
     {
@@ -109,6 +109,9 @@ public class Task : MonoBehaviour
         }
     }
 
-
+    public virtual void SetUp()
+    {
+        UpdateInsightText();
+    }
  
 }

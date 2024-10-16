@@ -16,14 +16,14 @@ public class Quan : Companion
     //1st array -- rate to earn Marks
     //2nd array -- How many untranslated texts can be translated at a time
     //3rd array -- extra Marks earned for ALL companions
-    private int[,] p_e = { { 20, 50, 75, 100 },
+    private int[,] p_e = { { 30, 50, 75, 100 },
                                 { 3, 5, 6, 8 },
                                 { 0, 0, 0, 5 } };
 
     //1st array -- efficiency
     //2nd array -- Extra translated texts earned rate
     //3rd array -- N/A
-    private int[,] m_e = { { 10, 30, 30, 50 },
+    private int[,] m_e = { { 10, 20, 30, 50 },
                                 { 50, 50, 100, 100 },
                                 { 0, 0, 0, 0 } };
 
@@ -132,25 +132,27 @@ public class Quan : Companion
 
     protected override void UpdatePsycheEffect()
     {
-            base.UpdatePsycheEffect();
 
+        base.UpdatePsycheEffect();
         mohRate = psyche.GetEffect(0);
-        
-     
-            
+
         if (psyche.GetIndex() > 0)
-        
+
         {
       
+
+          
+          
             int prevGlobalMarksEarned = additionalMarksEarned;
             additionalMarksEarned = psyche.GetEffect(2);
             SetGlobalAdditionalMarks(prevGlobalMarksEarned, additionalMarksEarned);
         }
 
-     
-       
+
         MAX_untranslatedTexts = psyche.GetEffect(1);
-        
+
+
+
 
 
 
