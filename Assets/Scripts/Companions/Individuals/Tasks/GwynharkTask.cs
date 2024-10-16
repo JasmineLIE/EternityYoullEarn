@@ -58,7 +58,7 @@ public class GwynharkTask : Task
 
     public void CBIncrease()
     {
-        if (fedValues < expeditionPoints)
+        if (expeditionPoints > 0)
         {
             fedValues++;
             expeditionPoints--;
@@ -89,7 +89,7 @@ public class GwynharkTask : Task
 
     public void UntransIncrease()
     {
-        if (fedValues2 < expeditionPoints)
+        if (expeditionPoints > 0)
         {
             fedValues2++;
             expeditionPoints--;
