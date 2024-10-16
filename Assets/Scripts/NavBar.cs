@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 
 public class NavBar : Clickable
 {
+ 
 
     public TMP_Text tt_text;
      CanvasGroup tt_cg;

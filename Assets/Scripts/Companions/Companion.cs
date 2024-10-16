@@ -216,12 +216,13 @@ public class Companion : Clickable
     }
 
 
-    public IEnumerator StartTask()
+    public IEnumerator StartTask(int val, int key)
     {
 
         float countdown = timeToCompleteTask - (((efficiency / 100) / timeToCompleteTask) * 100); //Calculate time it takes to complete the task, considering character's efficiency
         timerController.SetTime(countdown); //send countdown data to TimerController, which provides visual feedback of timer
         yield return new WaitForSeconds(countdown);
+        player.GetComponent<Player>().SetResource(key, val);
         CompleteTask();
 
     }

@@ -8,7 +8,7 @@ public class TimerController : MonoBehaviour
 {
     public TMP_Text timer;
     public Image timerForeground;
-    private float timeRemaining;
+    public float timeRemaining;
     public float maxTime;
 
     private CanvasGroup cg;

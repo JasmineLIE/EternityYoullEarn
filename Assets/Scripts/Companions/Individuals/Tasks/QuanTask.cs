@@ -59,6 +59,7 @@ public class QuanTask : Task
             quan.GetComponent<Quan>().CompleteTask(requestVal);
             UpdateUntranslatedText();
             UpdateInsightText();
+            UpdateEstimatedRewardText();
 
         }
 

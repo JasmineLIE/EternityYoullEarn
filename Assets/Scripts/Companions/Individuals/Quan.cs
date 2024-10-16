@@ -112,11 +112,13 @@ public class Quan : Companion
         //caluclate the rewards
         int rewards = CalculateRewards(texts) + GetBonusResources();
 
-        CompleteTask();
+        StartCoroutine(StartTask(rewards, 4));
         //Add these resources to player inventory
-        player.GetComponent<Player>().SetResource(4, rewards);
+       
 
     }
+
+    
 
     public int CalculateRewards(int texts)
     {
@@ -188,5 +190,6 @@ public class Quan : Companion
         }
         return 0;
     }
+
 
 }
