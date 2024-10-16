@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 878697582442264676}
   m_Layer: 0
   m_Name: Quan
-  m_TagString: Untagged
+  m_TagString: Quan
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,15 +121,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 564e3881a158a48409960e6a1957b033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  comName: 
   barks: []
   saveData: {fileID: 0}
   ui: {fileID: 0}
   player: {fileID: 0}
   motivation: {fileID: 1700969352378260065}
   psyche: {fileID: 878697582442264676}
-  insightCost: 0
+  timerController: {fileID: 0}
+  insightCost: 150
+  timeToCompleteTask: 25
   MIN_untranslatedTexts: 2
   MAX_untranslatedTexts: 0
+  extraRewardsRate: 0
 --- !u!114 &1700969352378260065
 MonoBehaviour:
   m_ObjectHideFlags: 0

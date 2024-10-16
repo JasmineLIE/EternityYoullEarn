@@ -8,7 +8,7 @@ public class TheGate : Clickable
 
     private GameObject player;
     private int insightIncrement;
-    public TMP_Text insightDisplay;
+  
 
     private void Awake()
     {
@@ -18,15 +18,11 @@ public class TheGate : Clickable
       
     }
 
-    private void Start()
-    {
-        insightDisplay.text = "Insight is: " + player.GetComponent<Player>().GetResource(0);
-    }
+   
     public override void Clicked()
     {
         player.GetComponent<Player>().SetResource(0, insightIncrement);
-        insightDisplay.text = "Insight is: " + player.GetComponent<Player>().GetResource(0);
-
+    
 
     }
 

@@ -276,7 +276,7 @@ public class Companion : Clickable
     public void SetGlobalAdditionalMarks(int prevVal, int newVal)
     {
         int result = newVal - prevVal;
-        print(comName + " attributed " + result + " additional marks earned");
+     
         saveData.SetExtraMarksGenerated(result);
     }
 

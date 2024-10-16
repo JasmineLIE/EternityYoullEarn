@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     private int studiedArtifacts;
 
     public SaveData saveData;
+    public TMP_Text[] resource = new TMP_Text[5];
 
     private void Start()
     {
@@ -26,6 +28,7 @@ public class Player : MonoBehaviour
        for (int i = 0; i < loadedPlayerData.Length; i++)
         {
             SetResource(i, loadedPlayerData[i]);
+            
          
         }
           
@@ -76,6 +79,7 @@ public class Player : MonoBehaviour
                 saveData.SaveTransTexts(textsTrans);
             }
         }
+        resource[key].text = GetResource(key).ToString();
     }
 
     public int GetResource(int key)

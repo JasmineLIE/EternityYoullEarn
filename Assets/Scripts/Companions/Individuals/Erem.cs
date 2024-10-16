@@ -111,7 +111,7 @@ public class Erem : Companion
         if (psyche.GetIndex() > 0)
         {
             int prevGlobalMarksEarned = additionalMarksEarned;
-
+            base.UpdatePsycheEffect();
             additionalMarksEarned = psyche.GetEffect(1);
 
             SetGlobalAdditionalMarks(prevGlobalMarksEarned, additionalMarksEarned);

@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class Quan : Companion
 {
-
+    public GameObject QuanTask;
     public int MIN_untranslatedTexts;
     public int MAX_untranslatedTexts;
-    private int extraRewardsRate;
+    public int extraRewardsRate;
 
     private int[] p_r = { 1, 2, 3, 8 };
     private int[] m_r = { 1, 3, 6, 9 };
@@ -31,6 +31,7 @@ public class Quan : Companion
     // Start is called before the first frame update
     void Start()
     {
+        QuanTask = GameObject.FindGameObjectWithTag("QuanTask");
         MIN_untranslatedTexts = 2;
         psyche.SetValues_r(p_r);
         motivation.SetValues_r(m_r);
@@ -48,6 +49,7 @@ public class Quan : Companion
 
         CharacterSetUp("Quan");
 
+        QuanTask.GetComponent<QuanTask>().SetUp();
     }
 
   
@@ -108,12 +110,22 @@ public class Quan : Companion
         player.GetComponent<Player>().SetResource(3, (-1) * texts);
 
         //caluclate the rewards
-        int rewards = texts - 1 + GetBonusResources();
+        int rewards = CalculateRewards(texts) + GetBonusResources();
 
+        CompleteTask();
         //Add these resources to player inventory
         player.GetComponent<Player>().SetResource(4, rewards);
 
-        CompleteTask();
+    }
+
+    public int CalculateRewards(int texts)
+    {
+
+     
+        //caluclate the rewards
+        int rewards = texts - 1;
+
+        return rewards;
     }
 
     protected override void UpdatePsycheEffect()
@@ -145,9 +157,10 @@ public class Quan : Companion
     protected override void UpdateMotivationEffect()
     {
     
+        
+        base.UpdateMotivationEffect();
         efficiency = motivation.GetEffect(0);
         extraRewardsRate = motivation.GetEffect(1);
-        base.UpdateMotivationEffect();
     }
 
     protected override void SetDefaultValues()

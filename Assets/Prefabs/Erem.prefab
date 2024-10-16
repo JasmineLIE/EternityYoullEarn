@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7261675822834789268}
   m_Layer: 0
   m_Name: Erem
-  m_TagString: Untagged
+  m_TagString: Erem
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -121,13 +121,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1643fcb06f62b714dbd10d751cfbcf81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  comName: 
   barks: []
   saveData: {fileID: 0}
   ui: {fileID: 0}
   player: {fileID: 0}
   motivation: {fileID: 3719343599812325098}
   psyche: {fileID: 7261675822834789268}
+  timerController: {fileID: 0}
   insightCost: 0
+  timeToCompleteTask: 0
   MAX_translatedTexts: 0
   artifactTarget: 0
   studiedArtifacts: 0
