@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CompanionHub.unity
     guid: f72afdbade455da41820e2a86e518712
+  - enabled: 1
+    path: Assets/Scenes/PersistentGame.unity
+    guid: 2f0a612d8cdbaf24ba0ec16a4c6f8d8a
   m_configObjects: {}

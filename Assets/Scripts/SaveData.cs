@@ -74,7 +74,8 @@ public class SaveData : MonoBehaviour
     {
        
         LoadJson();
-        SceneManager.LoadScene("TheGate");
+        SceneManager.LoadSceneAsync("PersistentGame");
+        SceneManager.LoadSceneAsync("TheGate", LoadSceneMode.Additive);
     }
 
   

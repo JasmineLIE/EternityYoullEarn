@@ -92,11 +92,14 @@ public class NavBar : Clickable
     }
     public void GoToGate()
     {
-        SceneManager.LoadScene("TheGate");
+        SceneManager.LoadSceneAsync("TheGate", LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync("CompanionHub");
     }
 
     public void GoToCompanionHub()
     {
-        SceneManager.LoadScene("CompanionHub");
+        SceneManager.LoadSceneAsync("CompanionHub", LoadSceneMode.Additive);
+        SceneManager.UnloadSceneAsync("TheGate");
+
     }
 }
