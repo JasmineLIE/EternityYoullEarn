@@ -16,6 +16,7 @@ public class ArtifactManager : MonoBehaviour
     {
         if (saveData.GetDiscoveredCount() > 0)
         {
+            //assigns a subsidized list containing all discovered artifacts (uses .GetRange())
             availArtData.info = saveData.GetDiscoveredArtifacts();
         } else
         {
