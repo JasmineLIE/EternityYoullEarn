@@ -46,6 +46,7 @@ public class Gwynhark : Companion
         insightCost = 100;
 
         CharacterSetUp("Gwynhark");
+
         GwynTask.GetComponent<GwynharkTask>().SetUp();
 
     }
@@ -114,18 +115,22 @@ public class Gwynhark : Companion
         int ceYield = 0;
         int utYield = 0;
 
+
         for (int i = 0; i < crystalEbos; i++)
         {
-        
+            
             ceYield += Random.Range(MIN_resources, MAX_resources);
+           
         }
 
         for (int i = 0; i < untransTexts; i++)
         {
          
             utYield += Random.Range(MIN_resources, MAX_resources);
-        }
 
+        }
+        print("The crystal ebony yield is: " + ceYield);
+        print("The untranslated texts yield is: " + utYield);
         StartCoroutine(StartTask(2, ceYield, 3, utYield));
 
        

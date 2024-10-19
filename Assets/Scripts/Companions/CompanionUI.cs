@@ -115,7 +115,8 @@ public class CompanionUI : MonoBehaviour
             p_effect.text = companion.GetPsycheEffectDesc();
         } else
         {
-            p_cost.text = "No more upgrades";
+            p_effect.text = "No more upgrades";
+            p_cost.text = "";
             psycheButton.enabled = false;
         }
 
@@ -127,7 +128,8 @@ public class CompanionUI : MonoBehaviour
             m_effect.text = companion.GetMotivationEffectDesc();
         } else
         {
-            m_cost.text = "No more upgrades";
+            m_effect.text = "No more upgrades";
+            m_cost.text = "";
             motivationButton.enabled = false;
         }
    

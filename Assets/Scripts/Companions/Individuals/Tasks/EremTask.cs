@@ -93,6 +93,7 @@ public class EremTask : Task
             print("dont have enough insight or required resources!");
         } else
         {
+            //already have canDispatch as an edge case, don't need to check for !canClaim
             erem.GetComponent<Erem>().CompleteTask(requestVal);
             currTextsResearched = erem.GetComponent<Erem>().studiedArtifacts;
 
@@ -121,6 +122,8 @@ public class EremTask : Task
             }
             else
             {
+
+                erem.GetComponent<Erem>().GenerateMarks();
                 //TODO -- extra MOH?
             }
 

@@ -254,14 +254,20 @@ public class Companion : Clickable
 
         //Rest needs to be completed in children
         //Marks earned
+        GenerateMarks();
+    
+    }
+
+    public void GenerateMarks()
+    {
         int numerGen = Random.Range(0, 100);
         if (numerGen <= mohRate)
         {
-            int marksEarned = Random.Range(1, 3) + saveData.GetExtraMarksGenerated();
+            int marksEarned = Random.Range(3, 5) + saveData.GetExtraMarksGenerated();
+            print("Marks generated! " + marksEarned + " marks.");
             player.GetComponent<Player>().SetResource(1, marksEarned);
         }
     }
-
     public virtual string GetPsycheEffectDesc()
     {
         string placeholder = "";

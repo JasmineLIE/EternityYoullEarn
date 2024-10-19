@@ -19,11 +19,12 @@ public class GwynharkTask : Task
     public Image[] cb_counters = new Image[3];
     public Image[] untransTexts_counters = new Image[3];
 
-    GameObject gwynhark;
+    public GameObject gwynhark;
     // Start is called before the first frame update
     void Start()
     {
         gwynhark = GameObject.FindGameObjectWithTag("Gwynhark");
+     
         resourceKey = 2;
         resourceKey2 = 3;
         expeditionPoints = 3;
@@ -32,6 +33,7 @@ public class GwynharkTask : Task
     private void Update()
     {
         expedition.text = "Remaining Expedition Points: " + expeditionPoints;
+    
     }
     public void ResetValues()
     {
@@ -54,6 +56,8 @@ public class GwynharkTask : Task
         insightRequired = gwynhark.GetComponent<Gwynhark>().insightCost;
         ResetValues();
         UpdateInsightText();
+        //we are not using base.SetUp() because we are not using Fed Values
+
     }
 
     public void CBIncrease()
@@ -102,7 +106,7 @@ public class GwynharkTask : Task
         }
     }
 
-    public void UntreansDecrease()
+    public void UntransDecrease()
     {
         if (fedValues2 > 0)
         {
@@ -123,7 +127,9 @@ public class GwynharkTask : Task
         if (expeditionPoints == 0 && player.GetComponent<Player>().GetResource(0) >= insightRequired && canDispatch)
         {
             gwynhark.GetComponent<Gwynhark>().CompleteTask(fedValues, fedValues2);
+            player.GetComponent<Player>().SetResource(0, (-1)*insightRequired);
             ResetValues();
+            UpdateInsightText();
 
         } else
         {
@@ -146,7 +152,7 @@ public class GwynharkTask : Task
     {
         int temp = fedValues2 * gwynhark.GetComponent<Gwynhark>().MIN_resources;
         int temp2 = fedValues2 * gwynhark.GetComponent<Gwynhark>().MAX_resources;
-        cbVals.text = "Untranslated Texts: " + temp + " - " + temp2;
+        utVals.text = "Untranslated Texts: " + temp + " - " + temp2;
 
         if (fedValues2 == 0)
         {
