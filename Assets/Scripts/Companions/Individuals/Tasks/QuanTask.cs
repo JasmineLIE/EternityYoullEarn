@@ -28,6 +28,7 @@ public class QuanTask : Task
 
         insightRequired = quan.GetComponent<Quan>().insightCost;
         UpdateEstimatedRewardText();
+        UpdateUntranslatedText();
 
         summary.SetUp(quan);
         if (BackgroundTasks.QuanTimer > 0)
@@ -93,6 +94,7 @@ public class QuanTask : Task
 
     private void UpdateUntranslatedText()
     {
+      
         untransText.text = "Untranslated Texts: " + player.GetComponent<Player>().GetResource(3);
     }
 

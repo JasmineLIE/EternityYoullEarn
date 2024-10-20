@@ -15,7 +15,9 @@ public class EremTask : Task
 
     private bool canClaim;
 
-    private int currTextsResearched;
+    public int currTextsResearched;
+
+    public EremRewards summary;
   
     // Start is called before the first frame update
     void Start()
@@ -28,13 +30,15 @@ public class EremTask : Task
 
     private void Update()
     {
-        if (!canClaim)
-        {
-            canDispatch = true;
-        } else
+        if (canClaim || BackgroundTasks.EremHasTask)
         {
             canDispatch = false;
+        } else
+        {
+            canDispatch = true;
         }
+
+      
     }
     public override void SetUp()
     {
@@ -43,6 +47,18 @@ public class EremTask : Task
         currTextsResearched = erem.GetComponent<Erem>().studiedArtifacts;
         UpdateArtifactTarget();
         UpdateAvailableTransTexts();
+
+        summary.SetUp(erem);
+        if (BackgroundTasks.EremTimer > 0)
+        {
+            summary.Open();
+            timeToComplete = ReturnCountdown(erem.GetComponent<Erem>().timeToCompleteTask, erem.GetComponent<Erem>().efficiency);
+            timerController.SetTime(timeToComplete, BackgroundTasks.EremTimer);
+        }
+        else
+        {
+            summary.Close();
+        }
         base.SetUp();
       
     }
@@ -93,9 +109,15 @@ public class EremTask : Task
             print("dont have enough insight or required resources!");
         } else
         {
-            //already have canDispatch as an edge case, don't need to check for !canClaim
-            erem.GetComponent<Erem>().CompleteTask(requestVal);
-            currTextsResearched = erem.GetComponent<Erem>().studiedArtifacts;
+            timeToComplete = ReturnCountdown(erem.GetComponent<Erem>().timeToCompleteTask, erem.GetComponent<Erem>().efficiency);
+            summary.Open();
+            summary.SetUpVals(requestVal);
+
+            timerController.SetTime(timeToComplete, timeToComplete);
+
+            BackgroundTasks.EremTimer = timeToComplete;
+            BackgroundTasks.EremHasTask = true;
+
 
             UpdateArtifactTarget();
             UpdateAvailableTransTexts();

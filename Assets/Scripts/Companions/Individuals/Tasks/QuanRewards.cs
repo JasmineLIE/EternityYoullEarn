@@ -41,7 +41,7 @@ public class QuanRewards : Rewards
     {
         if (BackgroundTasks.QuanHasTask)
         {
-            quan.GetComponent<Quan>().CompleteTask(value);
+            quan.CompleteTask(value);
             BackgroundTasks.QuanHasTask = false;
             Close();
         }
