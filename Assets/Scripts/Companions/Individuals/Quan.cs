@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Build;
 using UnityEditor.UIElements;
 using UnityEngine;
 
@@ -111,9 +112,10 @@ public class Quan : Companion
 
         //caluclate the rewards
         int rewards = CalculateRewards(texts) + GetBonusResources();
-
-        StartCoroutine(StartTask(rewards, 4));
         //Add these resources to player inventory
+        player.GetComponent<Player>().SetResource(4, rewards);
+        CompleteTask();
+     
        
 
     }
@@ -193,10 +195,6 @@ public class Quan : Companion
         return 0;
     }
 
-    public override void CompleteTask()
-    {
-        base.CompleteTask();
-        QuanTask.GetComponent<QuanTask>().canDispatch = false;
-    }
+
 
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Build;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Gwynhark : Companion
 {
@@ -23,7 +24,7 @@ public class Gwynhark : Companion
     //1st array -- efficiency
     //2nd array -- MOH Rate
     //3rd array -- N/A
-    private int[,] m_e = { { 10, 15, 25, 35 }, 
+    private int[,] m_e = { { 30, 40, 50, 60 }, 
                             { 20, 30, 50, 80 }, 
                             { 0, 0, 0, 0 }  };
 
@@ -110,7 +111,7 @@ public class Gwynhark : Companion
         mohRate = motivation.GetEffect(1);
     }
 
-   public void CompleteTask(int crystalEbos, int untransTexts)
+    public int[] GenerateYield(int crystalEbos, int untransTexts)
     {
         int ceYield = 0;
         int utYield = 0;
@@ -118,30 +119,35 @@ public class Gwynhark : Companion
 
         for (int i = 0; i < crystalEbos; i++)
         {
-            
+
             ceYield += Random.Range(MIN_resources, MAX_resources);
-           
+
         }
 
         for (int i = 0; i < untransTexts; i++)
         {
-         
+
             utYield += Random.Range(MIN_resources, MAX_resources);
 
         }
+
+        int[] yields = {ceYield, utYield };
+        return yields;
+    }
+   public void CompleteTask(int ceYield, int utYield)
+    {
+      
         print("The crystal ebony yield is: " + ceYield);
         print("The untranslated texts yield is: " + utYield);
-        StartCoroutine(StartTask(2, ceYield, 3, utYield));
+       
 
-       
-       
-       
+        player.GetComponent<Player>().SetResource(2, ceYield);
+        player.GetComponent<Player>().SetResource(3, utYield);
+        CompleteTask();
+
     }
 
-    public override void CompleteTask()
-    {
-        GwynTask.GetComponent<GwynharkTask>().canDispatch = true;
-    }
+ 
 
 
 }

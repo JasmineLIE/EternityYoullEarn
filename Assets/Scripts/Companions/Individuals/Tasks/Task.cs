@@ -7,12 +7,15 @@ using UnityEngine.UI;
 public class Task : MonoBehaviour
 {
 
+  
+
     public bool canDispatch;
 
     //For choosing/spending resources
     protected int fedValues;
     public int thresh;
     protected int resourceKey;
+    protected float timeToComplete;
 
     
     //this will turn into "Redeem" for Erem after a certain amount of texts have been researched
@@ -25,6 +28,10 @@ public class Task : MonoBehaviour
     public int insightRequired;
 
     public GameObject player;
+
+    public TimerController timerController;
+
+  
 
     private void Awake()
     {
@@ -47,7 +54,7 @@ public class Task : MonoBehaviour
     }
     public virtual void Increases()
     {
-        if (fedValues < thresh)
+        if (fedValues < thresh && canDispatch)
         {
             fedValues++;
       
@@ -61,7 +68,7 @@ public class Task : MonoBehaviour
 
     public virtual void Decreases()
     {
-        if (fedValues > 0)
+        if (fedValues > 0 && canDispatch)
         {
             fedValues--;
             fedValText.text = fedValues.ToString();
@@ -115,4 +122,9 @@ public class Task : MonoBehaviour
         UpdateInsightText();
     }
  
+    public float ReturnCountdown(float timeToComplete, float efficiency)
+    {
+        return timeToComplete - (((efficiency / 100) / timeToComplete) * 100);
+
+    }
 }

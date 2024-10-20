@@ -7,15 +7,17 @@ using UnityEngine.SceneManagement;
 
 public class NavBar : Clickable
 {
- 
+
+    public CanvasGroup alert;
+
+    public static bool atGate;
 
     public TMP_Text tt_text;
      CanvasGroup tt_cg;
     RectTransform tt_rect;
     GameObject player;
 
-    private Vector2 tt_pos;
-
+  
     public float offset_y;
     public float offset_x;
 
@@ -26,7 +28,6 @@ public class NavBar : Clickable
     string tt_texts_translated = "<b>Translated Texts.</b>  Nonsensical on its own.";
     private void Awake()
     {
-  
        
         GameObject tooltip = GameObject.FindGameObjectWithTag("Tooltip");
         tt_cg = tooltip.GetComponent<CanvasGroup>();    
@@ -43,7 +44,19 @@ public class NavBar : Clickable
         //There is no implementation currently
     }
 
-   
+    private void Update()
+    {
+        if (atGate)
+        {
+            if (BackgroundTasks.CanCollect)
+            {
+                alert.alpha = 1;
+            } 
+        } else
+        {
+            alert.alpha = 0;
+        }
+    }
     private void OpenTT()
     {
 
@@ -90,16 +103,21 @@ public class NavBar : Clickable
         OpenTT();
         tt_text.text = tt_texts_translated;
     }
-    public void GoToGate()
+    public void SwitchScenes()
     {
-        SceneManager.LoadSceneAsync("TheGate", LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync("CompanionHub");
+        atGate = !atGate;
+        if (atGate)
+        {
+            SceneManager.LoadScene("TheGate");
+            SceneManager.LoadScene("PersistentGame", LoadSceneMode.Additive);
+
+        } else
+        {
+            SceneManager.LoadScene("CompanionHub");
+            SceneManager.LoadScene("PersistentGame", LoadSceneMode.Additive);
+        }
+
     }
 
-    public void GoToCompanionHub()
-    {
-        SceneManager.LoadSceneAsync("CompanionHub", LoadSceneMode.Additive);
-        SceneManager.UnloadSceneAsync("TheGate");
-
-    }
+ 
 }

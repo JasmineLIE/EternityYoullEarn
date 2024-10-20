@@ -140,7 +140,7 @@ public class Erem : Companion
     {
         saveData.SetStudiedArtifactsVal(texts);
 
-        StartCoroutine(StartTask());
+   
 
         player.GetComponent<Player>().SetResource(4, (-1) * texts);
     }

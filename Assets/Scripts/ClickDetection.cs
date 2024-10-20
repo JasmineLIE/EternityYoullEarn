@@ -6,10 +6,12 @@ public class ClickDetection : MonoBehaviour
 {
     public Camera myCam;
     public bool canClick;
+ 
 
     private void Awake()
     {
         canClick = true;
+    
     }
 
     private void Update()

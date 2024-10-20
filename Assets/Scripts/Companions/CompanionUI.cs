@@ -75,7 +75,7 @@ public class CompanionUI : MonoBehaviour
                 eremTask.alpha = 0;
                 eremTask.transform.SetParent(BackUI.transform);
                 quanTask.alpha = 0;
-                quan.transform.parent.SetParent(BackUI.transform);
+                quan.transform.SetParent(BackUI.transform);
                     break;
 
             case "Erem":

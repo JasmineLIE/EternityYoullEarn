@@ -21,7 +21,7 @@ public class TimerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (timeRemaining >0)
+        if (timeRemaining > 0)
         {
             cg.alpha = 1;
             timeRemaining -= Time.deltaTime;
@@ -33,10 +33,10 @@ public class TimerController : MonoBehaviour
         }
     }
 
-    public void SetTime(float time)
+    public void SetTime(float max, float remaining)
     {
-        maxTime = time;
-        timeRemaining = maxTime;
+        maxTime = max;
+        timeRemaining = remaining;
     }
 
     private void UpdateTimer(float currentTime)

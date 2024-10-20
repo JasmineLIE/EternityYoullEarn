@@ -21,6 +21,8 @@ public class GwynharkTask : Task
 
     public GameObject gwynhark;
     // Start is called before the first frame update
+
+    public GwynharkRewards summary;
     void Start()
     {
         gwynhark = GameObject.FindGameObjectWithTag("Gwynhark");
@@ -28,12 +30,17 @@ public class GwynharkTask : Task
         resourceKey = 2;
         resourceKey2 = 3;
         expeditionPoints = 3;
+
+      
+    
     }
 
     private void Update()
     {
         expedition.text = "Remaining Expedition Points: " + expeditionPoints;
-    
+       canDispatch = !BackgroundTasks.GwynHasTask;
+
+      
     }
     public void ResetValues()
     {
@@ -54,15 +61,27 @@ public class GwynharkTask : Task
     public override void SetUp()
     {
         insightRequired = gwynhark.GetComponent<Gwynhark>().insightCost;
+        timeToComplete = ReturnCountdown(gwynhark.GetComponent<Gwynhark>().timeToCompleteTask, gwynhark.GetComponent<Gwynhark>().efficiency);
         ResetValues();
         UpdateInsightText();
+        summary.SetUp(gwynhark);
         //we are not using base.SetUp() because we are not using Fed Values
-
+        if (BackgroundTasks.GwynTimer > 0)
+        {
+            summary.Open();
+            timeToComplete = ReturnCountdown(gwynhark.GetComponent<Gwynhark>().timeToCompleteTask, gwynhark.GetComponent<Gwynhark>().efficiency);
+            timerController.SetTime(timeToComplete, BackgroundTasks.GwynTimer);
+        }
+        else
+        {
+            summary.Close();
+         
+        }
     }
 
     public void CBIncrease()
     {
-        if (expeditionPoints > 0)
+        if (expeditionPoints > 0 && canDispatch)
         {
             fedValues++;
             expeditionPoints--;
@@ -77,7 +96,7 @@ public class GwynharkTask : Task
 
     public void CBDecrease()
     {
-        if (fedValues > 0)
+        if (fedValues > 0 && canDispatch)
         {
             fedValues--;
             expeditionPoints++;
@@ -93,7 +112,7 @@ public class GwynharkTask : Task
 
     public void UntransIncrease()
     {
-        if (expeditionPoints > 0)
+        if (expeditionPoints > 0 && canDispatch)
         {
             fedValues2++;
             expeditionPoints--;
@@ -108,7 +127,7 @@ public class GwynharkTask : Task
 
     public void UntransDecrease()
     {
-        if (fedValues2 > 0)
+        if (fedValues2 > 0 && canDispatch)
         {
             fedValues2--;
             expeditionPoints++;
@@ -126,8 +145,18 @@ public class GwynharkTask : Task
     {
         if (expeditionPoints == 0 && player.GetComponent<Player>().GetResource(0) >= insightRequired && canDispatch)
         {
-            gwynhark.GetComponent<Gwynhark>().CompleteTask(fedValues, fedValues2);
-            player.GetComponent<Player>().SetResource(0, (-1)*insightRequired);
+            player.GetComponent<Player>().SetResource(0, (-1) * insightRequired);
+            timeToComplete = ReturnCountdown(gwynhark.GetComponent<Gwynhark>().timeToCompleteTask, gwynhark.GetComponent<Gwynhark>().efficiency);
+
+            summary.Open();
+            summary.SetUpVals(fedValues, fedValues2);
+         
+            timerController.SetTime(timeToComplete, timeToComplete);
+
+            BackgroundTasks.GwynTimer = timeToComplete;
+            BackgroundTasks.GwynHasTask = true;
+
+;        
             ResetValues();
             UpdateInsightText();
 

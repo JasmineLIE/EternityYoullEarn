@@ -21,7 +21,7 @@ public class Companion : Clickable
     public Investment motivation;
     public Investment psyche;
 
-    public TimerController timerController;
+
 
     public int insightCost;
 
@@ -29,9 +29,9 @@ public class Companion : Clickable
 
 
     //For completeting tasks
-    protected int efficiency;
+    public int efficiency;
     public float timeToCompleteTask;
-    protected int mohRate;
+    public int mohRate;
 
     protected int additionalMarksEarned;
 
@@ -217,38 +217,9 @@ public class Companion : Clickable
     }
 
 
-    public IEnumerator StartTask(int val, int key)
-    {
+ 
 
-        float countdown = timeToCompleteTask - (((efficiency / 100) / timeToCompleteTask) * 100); //Calculate time it takes to complete the task, considering character's efficiency
-        timerController.SetTime(countdown); //send countdown data to TimerController, which provides visual feedback of timer
-        yield return new WaitForSeconds(countdown);
-        player.GetComponent<Player>().SetResource(key, val);
-        CompleteTask();
-
-    }
-
-    public IEnumerator StartTask()
-    {
-        float countdown = timeToCompleteTask - (((efficiency / 100) / timeToCompleteTask) * 100); //Calculate time it takes to complete the task, considering character's efficiency
-        timerController.SetTime(countdown); //send countdown data to TimerController, which provides visual feedback of timer
-        yield return new WaitForSeconds(countdown);
-     
-        CompleteTask();
-    }
-
-    public IEnumerator StartTask(int key1, int val1, int key2, int val2)
-    {
-        float countdown = timeToCompleteTask - (((efficiency / 100) / timeToCompleteTask) * 100); //Calculate time it takes to complete the task, considering character's efficiency
-        timerController.SetTime(countdown); //send countdown data to TimerController, which provides visual feedback of timer
-        yield return new WaitForSeconds(countdown);
-
-        player.GetComponent<Player>().SetResource(key1, val1);
-        player.GetComponent<Player>().SetResource(key2, val2);
-
-        CompleteTask();
-
-    }
+   
      public virtual void CompleteTask()
     {
 
@@ -266,6 +237,11 @@ public class Companion : Clickable
             int marksEarned = Random.Range(3, 5) + saveData.GetExtraMarksGenerated();
             print("Marks generated! " + marksEarned + " marks.");
             player.GetComponent<Player>().SetResource(1, marksEarned);
+        }
+        else
+        {
+            print("Failed to get marks!  The gen number was: " + numerGen);
+
         }
     }
     public virtual string GetPsycheEffectDesc()

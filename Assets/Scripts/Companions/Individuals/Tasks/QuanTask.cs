@@ -9,6 +9,12 @@ public class QuanTask : Task
     public TMP_Text untransText;
     public TMP_Text estimatedRewards;
 
+    public QuanRewards summary;
+
+    private void Update()
+    {
+        canDispatch = !BackgroundTasks.QuanHasTask;
+    }
     private void Start()
     {
         quan = GameObject.FindGameObjectWithTag("Quan");
@@ -18,10 +24,23 @@ public class QuanTask : Task
 
     public override void SetUp()
     {
+       
+
         insightRequired = quan.GetComponent<Quan>().insightCost;
         UpdateEstimatedRewardText();
+
+        summary.SetUp(quan);
+        if (BackgroundTasks.QuanTimer > 0)
+        {
+            summary.Open();
+            timeToComplete = ReturnCountdown(quan.GetComponent<Quan>().timeToCompleteTask, quan.GetComponent<Quan>().efficiency);
+            timerController.SetTime(timeToComplete, BackgroundTasks.QuanTimer);
+        } else
+        {
+            summary.Close();
+           
+        }
         base.SetUp();
-     
     }
 
   
@@ -53,7 +72,16 @@ public class QuanTask : Task
             print("Dont have enough insight or required resources!");
         } else
         {
-            quan.GetComponent<Quan>().CompleteTask(requestVal);
+            timeToComplete = ReturnCountdown(quan.GetComponent<Quan>().timeToCompleteTask, quan.GetComponent<Quan>().efficiency); quan.GetComponent<Quan>().CompleteTask(requestVal);
+
+            summary.Open();
+            summary.SetUpVals(requestVal);
+
+            timerController.SetTime(timeToComplete, timeToComplete);
+
+            BackgroundTasks.QuanTimer = timeToComplete;
+            BackgroundTasks.QuanHasTask = true;
+
             UpdateUntranslatedText();
             UpdateInsightText();
             UpdateEstimatedRewardText();
