@@ -8,8 +8,12 @@ public class TheGate : Clickable
 
     private GameObject player;
     private int insightIncrement;
-  
+    public GameObject ArtifactManager;
 
+    private void Start()
+    {
+        ArtifactManager.GetComponent<ArtifactManager>().LoadArtifacts();
+    }
     private void Awake()
     {
         

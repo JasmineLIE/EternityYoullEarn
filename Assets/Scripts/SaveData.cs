@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Security;
+using JetBrains.Annotations;
 using UnityEditor.Build;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -145,6 +146,30 @@ public class SaveData : MonoBehaviour
     public int GetInsightIncrementVal()
     {
         return _PlayerData.incrementVal;
+
+
+    }
+
+    public void IncrementTotalInvestments()
+    {
+        _PlayerData.totalInvestments++;
+        SaveIntoJson();
+    }
+
+    public int GetIncremenetTotal()
+    {
+        return _PlayerData.totalInvestments;
+    }
+
+    public void SetMOHIncrement(int val)
+    {
+        _PlayerData.MOHIncrementVal += val;
+        SaveIntoJson();
+    }
+
+    public int GetMOHIncrement()
+    {
+        return _PlayerData.MOHIncrementVal;
     }
    //-----
 
@@ -261,16 +286,16 @@ public class SaveData : MonoBehaviour
      * There should be an edge case preceding this to ensure we do not go out of array index
      * Working with index is tricky when having a counter that counts normally.  Some minor spahgetti
      */
-    public void DiscoverArtifact()
+    public bool DiscoverArtifact()
     {
  
-        if (_ArtifactData.pointer > 1)
+        if (_ArtifactData.pointer >= 1)
         { 
             //Randomly select an undiscovered artifact
             int random = Random.Range(0, _ArtifactData.pointer);
 
             //We will set the select undiscovered artifact to discover, and move it to the end of the "undiscovered" portion of the list, swapping places with what element was at the end
-            _ArtifactData.info[random].isDiscovered = true;
+          
 
             ArtifactInfo discoveredTemp = _ArtifactData.info[random];
             ArtifactInfo undiscoveredTemp = _ArtifactData.info[_ArtifactData.pointer];
@@ -279,18 +304,20 @@ public class SaveData : MonoBehaviour
             _ArtifactData.info[random] = undiscoveredTemp;
             _ArtifactData.info[_ArtifactData.pointer] = discoveredTemp;
 
-       
+            _ArtifactData.discovered++;
+            _ArtifactData.pointer--;
+            SaveIntoJson();
+            return true;
 
-        }     else
+        }    else if (_ArtifactData.pointer == 0) 
         {
-            // meaning we only have one left
-            _ArtifactData.info[0].isDiscovered = true;
-     
+            _ArtifactData.pointer--;
+            _ArtifactData.discovered++;
+            SaveIntoJson();
+            return true;
         }
 
-        _ArtifactData.discovered++;
-        _ArtifactData.pointer--;
-        SaveIntoJson();
+        return false;
 
     }
 
@@ -317,6 +344,20 @@ public class SaveData : MonoBehaviour
     public int GetArtifactPointer()
     {
         return _ArtifactData.pointer;
+    }
+
+    public void ActivateArtifact(string tempName)
+    {
+       for (int i = 0; i < _ArtifactData.info.Count; i++)
+        {
+            if (_ArtifactData.info[i].name == tempName)
+            {
+                _ArtifactData.info[i].isActivated = true;
+            } else
+            {
+                print("No artifact of such name found!");
+            }
+        }
     }
 }
 
@@ -348,6 +389,8 @@ public class PlayerData
     public int texts_untransVal;
     public int texts_transVal;
     public int incrementVal;
+    public int MOHIncrementVal;
+    public int totalInvestments;
  
    
 }
@@ -369,17 +412,18 @@ public class Artifact
 public class ArtifactInfo
 {
 
-    public bool isDiscovered;
+    public bool isActivated; //we will use this to determine if the artifact has been activated
 
     public string name;
     public string desc;
+    public string lore;
 
-    public int cost1;
-    public int cost2; //optional
-    public int[] costKeys;
+    public int[] cost;
+    public int[] costKey;
 
-    public int effect;
-    public int effectKey;
+    public int[] effect;
+    public int[] effectKey;
 
+    public float timeEffect;
 }
 

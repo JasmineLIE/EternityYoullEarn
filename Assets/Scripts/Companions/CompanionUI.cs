@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Xml.Schema;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class CompanionUI : MonoBehaviour
 {
+    
 
     public TMP_Text NPC_name;
     public TMP_Text p_cost;
@@ -183,6 +185,7 @@ public class CompanionUI : MonoBehaviour
         if (wasUpgradeSuccessful)
         {
             mohAlert.text = "Available Marks of Humanity: " + companion.player.GetComponent<Player>().GetResource(1);
+            companion.player.GetComponent<Player>().saveData.IncrementTotalInvestments(); //increment total number of investments
         }
         Investments(companion);
     }
@@ -215,8 +218,8 @@ public class CompanionUI : MonoBehaviour
         if (wasUpgradeSuccessful)
         {
             mohAlert.text = "Available Marks of Humanity: " + companion.player.GetComponent<Player>().GetResource(1);
-         
-        
+            companion.player.GetComponent<Player>().saveData.IncrementTotalInvestments();
+
         }
         Investments(companion);
     }
