@@ -1697,6 +1697,16 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8176882927016455649, guid: 7005990a8fd4f0d42a6719130e2d52aa, type: 3}
   m_PrefabInstance: {fileID: 9067759605523655832}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1285444662 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9012464864093227981, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+  m_PrefabInstance: {fileID: 514677525}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1285444663 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8146332785885768184, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+  m_PrefabInstance: {fileID: 514677525}
+  m_PrefabAsset: {fileID: 0}
 --- !u!225 &1288760501 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 5323352841877040803, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
@@ -2585,13 +2595,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 514677527}
     - target: {fileID: 7086698730075804458, guid: 1e7efa750c8d76c4f9d84f27f54762a1, type: 3}
+      propertyPath: QuanTask
+      value: 
+      objectReference: {fileID: 1285444663}
+    - target: {fileID: 7086698730075804458, guid: 1e7efa750c8d76c4f9d84f27f54762a1, type: 3}
       propertyPath: saveData
       value: 
       objectReference: {fileID: 1928994178}
-    - target: {fileID: 7086698730075804458, guid: 1e7efa750c8d76c4f9d84f27f54762a1, type: 3}
-      propertyPath: timerController
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 8600136388092757902, guid: 1e7efa750c8d76c4f9d84f27f54762a1, type: 3}
       propertyPath: m_Name
       value: Quan
@@ -2766,14 +2776,6 @@ PrefabInstance:
       propertyPath: saveData
       value: 
       objectReference: {fileID: 1928994178}
-    - target: {fileID: 7920475870209945675, guid: 6d984de4556068348a3e07a5326cfed0, type: 3}
-      propertyPath: artifactManager
-      value: 
-      objectReference: {fileID: 1465922520}
-    - target: {fileID: 7920475870209945675, guid: 6d984de4556068348a3e07a5326cfed0, type: 3}
-      propertyPath: timerController
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2796,6 +2798,10 @@ PrefabInstance:
       propertyPath: ui
       value: 
       objectReference: {fileID: 514677527}
+    - target: {fileID: 1041312007069878934, guid: 7005990a8fd4f0d42a6719130e2d52aa, type: 3}
+      propertyPath: GwynTask
+      value: 
+      objectReference: {fileID: 1285444662}
     - target: {fileID: 1041312007069878934, guid: 7005990a8fd4f0d42a6719130e2d52aa, type: 3}
       propertyPath: saveData
       value: 

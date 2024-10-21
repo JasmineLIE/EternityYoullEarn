@@ -45,8 +45,7 @@ public class EremTask : Task
         insightRequired = erem.GetComponent<Erem>().insightCost;
         thresh = erem.GetComponent<Erem>().MAX_translatedTexts;
         currTextsResearched = erem.GetComponent<Erem>().studiedArtifacts;
-        UpdateArtifactTarget();
-        UpdateAvailableTransTexts();
+ 
 
         summary.SetUp(erem);
         if (BackgroundTasks.EremTimer > 0)
@@ -60,9 +59,16 @@ public class EremTask : Task
             summary.Close();
         }
         base.SetUp();
+        UpdateTexts();
       
     }
 
+    public void UpdateTexts()
+    {
+        UpdateArtifactTarget();
+        UpdateAvailableTransTexts();
+        UpdateInsightText();
+    }
     public override void Increases()
     {
         if (!canClaim)
@@ -156,4 +162,6 @@ public class EremTask : Task
 
 
     }
+
+
 }

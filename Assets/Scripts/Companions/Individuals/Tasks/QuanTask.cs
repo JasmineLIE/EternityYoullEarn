@@ -27,8 +27,7 @@ public class QuanTask : Task
        
 
         insightRequired = quan.GetComponent<Quan>().insightCost;
-        UpdateEstimatedRewardText();
-        UpdateUntranslatedText();
+      
 
         summary.SetUp(quan);
         if (BackgroundTasks.QuanTimer > 0)
@@ -42,8 +41,15 @@ public class QuanTask : Task
            
         }
         base.SetUp();
+        UpdateTexts();
     }
 
+    public void UpdateTexts()
+    {
+        UpdateInsightText();
+        UpdateEstimatedRewardText();
+        UpdateUntranslatedText();
+    }
   
     public override void Increases() { 
     

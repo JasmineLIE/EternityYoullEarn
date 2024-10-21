@@ -128,13 +128,14 @@ MonoBehaviour:
   player: {fileID: 0}
   motivation: {fileID: 3719343599812325098}
   psyche: {fileID: 7261675822834789268}
-  timerController: {fileID: 0}
   insightCost: 0
+  efficiency: 0
   timeToCompleteTask: 0
+  mohRate: 0
+  EremTask: {fileID: 0}
   MAX_translatedTexts: 0
   artifactTarget: 0
   studiedArtifacts: 0
-  artifactManager: {fileID: 0}
 --- !u!114 &3719343599812325098
 MonoBehaviour:
   m_ObjectHideFlags: 0

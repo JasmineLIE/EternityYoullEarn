@@ -45,11 +45,7 @@ public class BackgroundTasks : MonoBehaviour
               
           
                 EremTimer -= Time.deltaTime;
-            } else
-            {
-                CanCollect = true;
             }
-
         }
 
         if(QuanHasTask)
@@ -57,11 +53,8 @@ public class BackgroundTasks : MonoBehaviour
             if (QuanTimer > 0)
             {
              
-           
+                
                 QuanTimer -= Time.deltaTime;    
-            } else
-            {
-                CanCollect = true;
             }
         }
 
@@ -71,10 +64,15 @@ public class BackgroundTasks : MonoBehaviour
             {
           
                 GwynTimer -= Time.deltaTime;
-            } else
-            {
-                CanCollect = true;
-            }
+            } 
+        }
+
+        if ((GwynTimer <= 0 && GwynHasTask) || (EremTimer <= 0 && EremHasTask) || (QuanTimer <= 0 && QuanHasTask))
+        {
+            CanCollect = true;
+        } else
+        {
+            CanCollect = false;
         }
     }
   

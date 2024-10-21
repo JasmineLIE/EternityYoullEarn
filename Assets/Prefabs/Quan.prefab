@@ -128,9 +128,11 @@ MonoBehaviour:
   player: {fileID: 0}
   motivation: {fileID: 1700969352378260065}
   psyche: {fileID: 878697582442264676}
-  timerController: {fileID: 0}
   insightCost: 150
+  efficiency: 0
   timeToCompleteTask: 25
+  mohRate: 0
+  QuanTask: {fileID: 0}
   MIN_untranslatedTexts: 2
   MAX_untranslatedTexts: 0
   extraRewardsRate: 0

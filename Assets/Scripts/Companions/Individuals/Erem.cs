@@ -28,7 +28,7 @@ public class Erem : Companion
     //1st array -- efficiency
     //2nd array -- Translated texts they can study at a time
     //3rd array -- N/A
-    private int[,] m_e = {  { 10, 15, 30, 50 }, 
+    private int[,] m_e = {  { 0, 15, 30, 50 }, 
                                 { 4, 5, 6, 7 }, 
                                 { 0, 0, 0, 0 }  };
 
@@ -72,11 +72,9 @@ public class Erem : Companion
                 effectText = "<b>Marks of Humanity Rate:</b> " + mohRate + "%" + " → " + psyche.GetEffectArray(0,2) + "%" + "\n" + "<b>Marks Earned:</b> +" + psyche.GetEffectArray(1,1) + " Marks for ALL companions";
                 break;
             case 2:
-                effectText = "<b>Marks of Humanity Rate:</b> " + mohRate + "%" + " → " + psyche.GetEffectArray(0, 3) + "%";
+                effectText = "<b>Marks of Humanity Rate: Gauranteed</b>" + "\n" + "<b>Marks Earned:</b> +" + psyche.GetEffectArray(1, 3) + " Marks for ALL companions";
                 break;
-             case 3:
-                effectText = "<b>Marks of Humanity Rate: Gauranteed</b>" + "\n" + "<b>Marks Earned:</b> +" + psyche.GetEffectArray(1,3) + " Marks for ALL companions";
-                break;
+       
         }
 
         return effectText;
@@ -93,7 +91,7 @@ public class Erem : Companion
             case 1:
             case 2:
             case 3:
-                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, motivation.GetIndex()) + "%" + "\n" + "<b>Study Translated Texts:</b> " + MAX_translatedTexts + " → " + motivation.GetEffectArray(1,motivation.GetIndex());
+                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, motivation.GetIndex()+1) + "%" + "\n" + "<b>Study Translated Texts:</b> " + MAX_translatedTexts + " → " + motivation.GetEffectArray(1,motivation.GetIndex());
                 break;
         }
         return effectText;
@@ -129,10 +127,12 @@ public class Erem : Companion
 
     protected override void UpdateMotivationEffect()
     {
+        base.UpdateMotivationEffect();
         efficiency = motivation.GetEffect(0);
         MAX_translatedTexts = motivation.GetEffect(1);
-        base.UpdateMotivationEffect();
+      
        
+
 
     }
 
