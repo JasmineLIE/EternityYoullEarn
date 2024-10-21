@@ -1228,6 +1228,8 @@ MonoBehaviour:
   artifactCountdown: {fileID: 1330663825301519112}
   translatedTextsAvail: {fileID: 3677685016224014093}
   artifactManager: {fileID: 0}
+  currTextsResearched: 0
+  summary: {fileID: 0}
 --- !u!1 &745195331689854904
 GameObject:
   m_ObjectHideFlags: 0
@@ -10800,7 +10802,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 3379629194549663250}
         m_TargetAssemblyTypeName: GwynharkTask, Assembly-CSharp
-        m_MethodName: UntreansDecrease
+        m_MethodName: UntransDecrease
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11445,6 +11447,7 @@ MonoBehaviour:
   quan: {fileID: 0}
   untransText: {fileID: 7209579991500796578}
   estimatedRewards: {fileID: 7988515149195877357}
+  summary: {fileID: 0}
 --- !u!1 &8146690897346845762
 GameObject:
   m_ObjectHideFlags: 0

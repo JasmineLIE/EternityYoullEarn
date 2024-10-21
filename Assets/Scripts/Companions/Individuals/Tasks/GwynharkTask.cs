@@ -38,7 +38,10 @@ public class GwynharkTask : Task
     private void Update()
     {
         expedition.text = "Remaining Expedition Points: " + expeditionPoints;
-       canDispatch = !BackgroundTasks.GwynHasTask;
+       if ( !BackgroundTasks.GwynHasTask && expeditionPoints == 0)
+        {
+            canDispatch = true;
+        }
 
       
     }
@@ -199,32 +202,30 @@ public class GwynharkTask : Task
 
     private void AdjustCBIcons()
     {
-        int leftover = 1;
-        for (int i = 0; i < fedValues; i++)
+
+       
+       
+        for(int i = 0; i < fedValues; i++)
         {
             cb_counters[i].color = Color.white;
-             leftover++;
         }
-    
-        if (fedValues < 2)
+
+        for (int i = fedValues; i < cb_counters.Length; i++)
         {
-            cb_counters[leftover].color = Color.black;
+            cb_counters[i].color = Color.black;
         }
-       
     }
 
     private void AdjustUntransIcons()
     {
-        int leftover = 1;
-        for (int i = 0; i < fedValues2; i++)
+       for (int i = 0; i < fedValues2; i++)
         {
             untransTexts_counters[i].color = Color.white;
-            leftover++;
         }
 
-        if (fedValues2 < 2)
+       for (int i = fedValues2; i < untransTexts_counters.Length;i++)
         {
-            untransTexts_counters[leftover].color = Color.black;
+            untransTexts_counters[i].color = Color.black;
         }
     }
 
