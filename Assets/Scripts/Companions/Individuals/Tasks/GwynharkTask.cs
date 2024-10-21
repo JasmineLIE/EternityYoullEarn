@@ -63,7 +63,6 @@ public class GwynharkTask : Task
         insightRequired = gwynhark.GetComponent<Gwynhark>().insightCost;
         timeToComplete = ReturnCountdown(gwynhark.GetComponent<Gwynhark>().timeToCompleteTask, gwynhark.GetComponent<Gwynhark>().efficiency);
         ResetValues();
-        UpdateInsightText();
         summary.SetUp(gwynhark);
         //we are not using base.SetUp() because we are not using Fed Values
         if (BackgroundTasks.GwynTimer > 0)
@@ -77,6 +76,8 @@ public class GwynharkTask : Task
             summary.Close();
          
         }
+
+        UpdateInsightText();
     }
 
     public void CBIncrease()
@@ -84,6 +85,7 @@ public class GwynharkTask : Task
         if (expeditionPoints > 0 && canDispatch)
         {
             fedValues++;
+            
             expeditionPoints--;
             AdjustCBIcons();
             UpdateCBText();
@@ -158,7 +160,7 @@ public class GwynharkTask : Task
 
 ;        
             ResetValues();
-            UpdateInsightText();
+     
 
         } else
         {

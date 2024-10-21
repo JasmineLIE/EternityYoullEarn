@@ -78,6 +78,8 @@ public class CompanionUI : MonoBehaviour
                 eremTask.transform.SetParent(BackUI.transform);
                 quanTask.alpha = 0;
                 quan.transform.SetParent(BackUI.transform);
+
+                gwyn.GetComponent<GwynharkTask>().SetUp();
                     break;
 
             case "Erem":
@@ -89,7 +91,7 @@ public class CompanionUI : MonoBehaviour
                 eremTask.interactable = true;
                 quanTask.alpha = 0;
                 quanTask.transform.SetParent(BackUI.transform);
-             
+                erem.GetComponent<EremTask>().SetUp();  
                 break;
 
             case "Quan":
@@ -101,6 +103,7 @@ public class CompanionUI : MonoBehaviour
                 quanTask.alpha = 1;
                 quanTask.transform.SetParent(DomUI.transform);
                 quanTask.interactable = true;
+                quan.GetComponent<QuanTask>().SetUp();
                 break;
         }
 

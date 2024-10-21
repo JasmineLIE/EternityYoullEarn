@@ -51,7 +51,10 @@ public class NavBar : Clickable
             if (BackgroundTasks.CanCollect)
             {
                 alert.alpha = 1;
-            } 
+            } else
+            {
+                alert.alpha = 0;
+            }
         } else
         {
             alert.alpha = 0;

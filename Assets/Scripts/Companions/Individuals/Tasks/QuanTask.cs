@@ -84,7 +84,7 @@ public class QuanTask : Task
             BackgroundTasks.QuanHasTask = true;
 
             UpdateUntranslatedText();
-            UpdateInsightText();
+          
             UpdateEstimatedRewardText();
 
         }

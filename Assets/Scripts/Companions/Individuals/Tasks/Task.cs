@@ -51,6 +51,8 @@ public class Task : MonoBehaviour
             dispatch.interactable = true;
         }
 
+        
+
     }
     public virtual void Increases()
     {
