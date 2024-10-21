@@ -85,6 +85,7 @@ public class GwynharkTask : Task
 
     public void UpdateTexts()
     {
+
         UpdateInsightText();
         ResetValues();
         
@@ -196,7 +197,7 @@ public class GwynharkTask : Task
 
         if (fedValues2 == 0)
         {
-            cbVals.text = "Untranslated Texts: 0";
+            utVals.text = "Untranslated Texts: 0";
         }
     }
 

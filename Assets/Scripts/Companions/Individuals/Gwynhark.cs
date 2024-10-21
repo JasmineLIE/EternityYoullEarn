@@ -76,7 +76,7 @@ public class Gwynhark : Companion
             case 2:
               
             case 3:
-                effectText = "<b>Efficiency:</b> " + MIN_resources + "%" + " → " + MAX_resources + "\n" + "<b>Mark of Humanity Rate:</b> " + mohRate + "%" + " → " + motivation.GetEffectArray(1, motivation.GetIndex()); ;
+                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, motivation.GetIndex()+1) + "%" + "\n" + "<b>Mark of Humanity Rate:</b> " + mohRate + "%" + " → " + motivation.GetEffectArray(1, motivation.GetIndex()+1) + "&";
                 break;
         }
         return effectText;
