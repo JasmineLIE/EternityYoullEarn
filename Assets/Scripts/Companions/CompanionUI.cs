@@ -79,8 +79,8 @@ public class CompanionUI : MonoBehaviour
                 quanTask.alpha = 0;
                 quan.transform.SetParent(BackUI.transform);
 
-                gwyn.GetComponent<GwynharkTask>().UpdateTexts();
-                    break;
+                Rewards.UpdateText();
+                break;
 
             case "Erem":
                 Investments(erem);
@@ -91,7 +91,7 @@ public class CompanionUI : MonoBehaviour
                 eremTask.interactable = true;
                 quanTask.alpha = 0;
                 quanTask.transform.SetParent(BackUI.transform);
-                erem.GetComponent<EremTask>().UpdateTexts();  
+                Rewards.UpdateText(); 
                 break;
 
             case "Quan":
@@ -103,7 +103,7 @@ public class CompanionUI : MonoBehaviour
                 quanTask.alpha = 1;
                 quanTask.transform.SetParent(DomUI.transform);
                 quanTask.interactable = true;
-                quan.GetComponent<QuanTask>().UpdateTexts();
+                Rewards.UpdateText();
                 break;
         }
 

@@ -8,7 +8,11 @@ public class ArtifactManager : MonoBehaviour
     public Artifact availArtData; //reference
     public GameObject UnactivatedPrefab;
     public GameObject frame;
-  
+
+    private void Update()
+    {
+       
+    }
     public void LoadArtifacts()
     {
      

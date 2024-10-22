@@ -44,9 +44,9 @@ public class QuanTask : Task
         UpdateTexts();
     }
 
-    public void UpdateTexts()
+    public override void UpdateTexts()
     {
-        UpdateInsightText();
+        base.UpdateTexts();
         UpdateEstimatedRewardText();
         UpdateUntranslatedText();
     }
@@ -79,19 +79,28 @@ public class QuanTask : Task
             print("Dont have enough insight or required resources!");
         } else
         {
-            timeToComplete = ReturnCountdown(quan.GetComponent<Quan>().timeToCompleteTask, quan.GetComponent<Quan>().efficiency); quan.GetComponent<Quan>().CompleteTask(requestVal);
+            int rewards = quan.GetComponent<Quan>().CalculateRewards(requestVal);
+       
+            if (rewards > 0)
+            {
+                timeToComplete = ReturnCountdown(quan.GetComponent<Quan>().timeToCompleteTask, quan.GetComponent<Quan>().efficiency); quan.GetComponent<Quan>().CompleteTask(requestVal);
 
-            summary.Open();
-            summary.SetUpVals(requestVal);
+                summary.Open();
+                summary.SetUpVals(requestVal);
 
-            timerController.SetTime(timeToComplete, timeToComplete);
+                timerController.SetTime(timeToComplete, timeToComplete);
 
-            BackgroundTasks.QuanTimer = timeToComplete;
-            BackgroundTasks.QuanHasTask = true;
+                BackgroundTasks.QuanTimer = timeToComplete;
+                BackgroundTasks.QuanHasTask = true;
 
-            UpdateUntranslatedText();
-          
-            UpdateEstimatedRewardText();
+                UpdateTexts();
+            } else
+            {
+                //refund
+                quan.GetComponent<Quan>().player.GetComponent<Player>().SetResource(0, quan.GetComponent<Quan>().insightCost);
+                UpdateTexts();
+            }
+         
 
         }
 

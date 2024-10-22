@@ -30,7 +30,6 @@ public class Task : MonoBehaviour
     public GameObject player;
 
     public TimerController timerController;
-
   
 
     private void Awake()
@@ -115,6 +114,8 @@ public class Task : MonoBehaviour
         {
             insightText.color = Color.black;
         }
+
+        print("Updated!");
     }
 
     public virtual void SetUp()
@@ -128,5 +129,10 @@ public class Task : MonoBehaviour
     {
         return timeToComplete - (((efficiency / 100) / timeToComplete) * 100);
 
+    }
+
+    public virtual void UpdateTexts()
+    {
+        UpdateInsightText();
     }
 }

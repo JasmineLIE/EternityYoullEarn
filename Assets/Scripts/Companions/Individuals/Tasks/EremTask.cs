@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EremTask : Task
 {
@@ -9,7 +11,9 @@ public class EremTask : Task
 
     public TMP_Text artifactCountdown;
     public TMP_Text translatedTextsAvail;
- 
+
+    public Button artifactRedeem;
+
 
     public ArtifactManager artifactManager;
 
@@ -38,6 +42,7 @@ public class EremTask : Task
             canDispatch = true;
         }
 
+        
       
     }
     public override void SetUp()
@@ -63,12 +68,7 @@ public class EremTask : Task
       
     }
 
-    public void UpdateTexts()
-    {
-        UpdateArtifactTarget();
-        UpdateAvailableTransTexts();
-        UpdateInsightText();
-    }
+  
     public override void Increases()
     {
         if (!canClaim)
@@ -90,18 +90,24 @@ public class EremTask : Task
 
     public void UpdateArtifactTarget()
     {
-        
+        currTextsResearched = erem.GetComponent<Erem>().studiedArtifacts;
         int target = erem.GetComponent<Erem>().artifactTarget;
+ 
         artifactCountdown.text = (target - currTextsResearched).ToString(); 
 
-        if (target-currTextsResearched == 0)
+        if (target-currTextsResearched <= 0)
         {
             canClaim = true;
-            dispatchText.text = "Redeem";
+            dispatch.interactable = false;
+            artifactRedeem.interactable = true;
+           
         } else
         {
             canClaim = false;
-            dispatchText.text = "Dispatch";
+            dispatch.interactable = true;
+            artifactRedeem.interactable = false;
+            
+            
         }
     }
 
@@ -125,8 +131,7 @@ public class EremTask : Task
             BackgroundTasks.EremHasTask = true;
 
 
-            UpdateArtifactTarget();
-            UpdateAvailableTransTexts();
+      
           
         }
     }
@@ -143,6 +148,7 @@ public class EremTask : Task
             erem.GetComponent<Erem>().saveData.SetStudiedArtifactsVal(erem.GetComponent<Erem>().studiedArtifacts * (-1)); //reset back to 0
             erem.GetComponent<Erem>().studiedArtifacts = 0;
            bool processed = artifactManager.DiscoverArtifact();
+           
 
             if (processed)
             {
@@ -159,9 +165,15 @@ public class EremTask : Task
         }
     
      
-
+   
 
     }
 
+    public override void UpdateTexts()
+    {
+        UpdateArtifactTarget();
+        UpdateAvailableTransTexts();
+        base.UpdateTexts();
+    }
 
 }

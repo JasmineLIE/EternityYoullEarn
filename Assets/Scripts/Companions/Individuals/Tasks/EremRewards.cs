@@ -13,7 +13,7 @@ public class EremRewards : Rewards
     // Start is called before the first frame update
     void Start()
     {
-       
+        companionTasks[2] = task;
     }
 
     // Update is called once per frame
@@ -46,7 +46,8 @@ public class EremRewards : Rewards
         if (BackgroundTasks.EremHasTask)
         {
             erem.CompleteTask(textsRead);
-            task.currTextsResearched = erem.studiedArtifacts;
+            erem.studiedArtifacts = erem.saveData.GetStudiedArtifactsVal();
+            UpdateText();
 
             BackgroundTasks.EremHasTask = false;
             Close();

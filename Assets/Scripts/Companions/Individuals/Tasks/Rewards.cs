@@ -7,7 +7,8 @@ public class Rewards : MonoBehaviour
 {
     public CanvasGroup cg;
     public TMP_Text status;
-  
+
+    public static Task[] companionTasks = new Task[3];
 
    
     protected void SetText(string stat)
@@ -25,5 +26,13 @@ public class Rewards : MonoBehaviour
     public void Open()
     {
         cg.alpha = 1;
+    }
+
+    public static void UpdateText()
+    {
+        foreach(Task task in companionTasks)
+        {
+            task.UpdateTexts();
+        }
     }
 }

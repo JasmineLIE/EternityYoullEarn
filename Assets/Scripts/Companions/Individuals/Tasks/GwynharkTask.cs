@@ -83,10 +83,10 @@ public class GwynharkTask : Task
         UpdateTexts();
     }
 
-    public void UpdateTexts()
+    public override void UpdateTexts()
     {
 
-        UpdateInsightText();
+       base.UpdateTexts();
         ResetValues();
         
     }
@@ -170,6 +170,7 @@ public class GwynharkTask : Task
 
 ;        
             ResetValues();
+            UpdateInsightText();
      
 
         } else

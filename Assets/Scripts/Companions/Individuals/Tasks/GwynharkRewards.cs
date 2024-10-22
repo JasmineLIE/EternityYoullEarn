@@ -11,9 +11,13 @@ public class GwynharkRewards : Rewards
 
     
  
-    Gwynhark gwynhark;
+   public Gwynhark gwynhark;
+   public GwynharkTask task;
 
-   
+    private void Start()
+    {
+        companionTasks[1] = task;
+    }
     private void Update()
     {
         if (BackgroundTasks.GwynHasTask)
@@ -52,6 +56,8 @@ public class GwynharkRewards : Rewards
         {
          
             gwynhark.CompleteTask(ebonyYield, untransYield);
+            gwynhark.GwynTask.GetComponent<GwynharkTask>().UpdateTexts();
+            UpdateText();
             BackgroundTasks.GwynHasTask = false;
             Close();
         }

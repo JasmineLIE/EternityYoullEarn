@@ -8,8 +8,14 @@ public class QuanRewards : Rewards
     public static int value;
    
     public Quan quan;
-   
- 
+
+    public QuanTask task;
+
+    private void Start()
+    {
+        companionTasks[0] = task;
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -42,6 +48,7 @@ public class QuanRewards : Rewards
         if (BackgroundTasks.QuanHasTask)
         {
             quan.CompleteTask(value);
+            UpdateText();
             BackgroundTasks.QuanHasTask = false;
             Close();
         }
