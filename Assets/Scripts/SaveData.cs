@@ -74,13 +74,14 @@ public class SaveData : MonoBehaviour
     {
 
         LoadJson();
-        NavBar.atGate = true;
+       
         BackgroundTasks.EremHasTask = false;
         BackgroundTasks.QuanHasTask = false;
         BackgroundTasks.QuanHasTask = false;
         BackgroundTasks.CanCollect = false;
-        SceneManager.LoadScene("TheGate");
-        SceneManager.LoadScene("PersistentGame", LoadSceneMode.Additive);
+
+        CustomSceneManager.ChangeScene(1);
+        
     }
 
   
