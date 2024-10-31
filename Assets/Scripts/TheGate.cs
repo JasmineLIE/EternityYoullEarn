@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 
-public class TheGate : Clickable
+public class TheGate : MonoBehaviour
 {
 
     private GameObject player;
@@ -23,7 +24,7 @@ public class TheGate : Clickable
     }
 
    
-    public override void Clicked()
+    public void Clicked()
     {
         player.GetComponent<Player>().SetResource(0, insightIncrement);
     

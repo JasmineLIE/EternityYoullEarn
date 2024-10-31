@@ -19,7 +19,11 @@ public class UnactivatedArtifacts : MonoBehaviour
     private int[] costKeys;
     private int[] costValues;
     private int[] effectKeys;
-    private int[] effectValues; 
+    private int[] effectValues;
+    private bool[] canRedeem;
+    private bool redeemable;
+
+    public Image button;
    
 
     public GameObject player;
@@ -44,30 +48,40 @@ public class UnactivatedArtifacts : MonoBehaviour
         costValues = costs;
         effectKeys = tempEffectKeys;
         effectValues = tempEffect;
+  
 
         if (tempCostKeys.Length == 1)
         {
-            CostSetUp(tempCostKeys[0], costs[0]);
+            CostSetUp(0, tempCostKeys[0], costs[0]);
+            bool[] temp = new bool[1];
+            canRedeem = temp;
+            canRedeem[0] = false;
+            costIcons[1].color = new Color(0, 0, 0, 0);
+            costTexts[1].color = new Color(0, 0, 0, 0);
+
         } else
         {
+            bool[] temp = new bool[2];
+            canRedeem = temp;
+
             for (int i = 0; i  < tempCostKeys.Length; i++)
             {
-                costIcons[i].sprite = GameAssets.Instance.ResourceIcons[tempCostKeys[i]];
-                costTexts[i].text = player.GetComponent<Player>().GetResource(tempCostKeys[i]) + "/" + costs[i];
-                
+                CostSetUp(i, tempCostKeys[i], costs[i]);
+                canRedeem[i] = false;
                 
             }
+
         }
+
+        UpdateCard();
 
     }
  
-    private void CostSetUp(int key, int cost)
+    private void CostSetUp(int index, int key, int cost)
     {
-       costIcons[0].sprite = GameAssets.Instance.ResourceIcons[key];
-        costIcons[1].color = new Color(0, 0, 0, 0);
-        costTexts[0].text = player.GetComponent<Player>().GetResource(key) + "/" + cost;
-        costTexts[1].color = new Color(0, 0, 0, 0);
-   
+       costIcons[index].sprite = GameAssets.Instance.ResourceIcons[key];
+        costTexts[index].text = player.GetComponent<Player>().GetResource(key) + "/" + cost;
+      
     }
 
     private void UpdateCard()
@@ -78,14 +92,52 @@ public class UnactivatedArtifacts : MonoBehaviour
             {
                 costIcons[i].color = Color.red;
                 costTexts[i].color = Color.red;
+                CheckEligibility(i, false);
             } else
             {
-                costTexts[i].color = Color.black;
-                costIcons[i].color = Color.black;   
+                costTexts[i].color = Color.white;
+                costIcons[i].color = Color.white;   
+                CheckEligibility(i, true);
             }
        
             costTexts[i].text = player.GetComponent<Player>().GetResource(costKeys[i]) + "/" + costValues[i];
         }
+        
+        if (redeemable)
+        {
+            button.color = new Color(0.5411765f, 0.8525754f, 1, 1);
+        } else
+        {
+            button.color = Color.white;
+        }
     }
 
+    //DEBUG THIS LATER?
+    private void CheckEligibility(int key, bool eligible)
+    {
+        canRedeem[key] = eligible;
+
+        bool flag = true;
+        int counter = 0;
+        while (flag && counter < canRedeem.Length)
+        {
+            if (canRedeem[counter] == false)
+            {
+                flag = false;
+            }
+            counter++;
+        }
+
+        redeemable = flag;
+    }
+    public void Redeem()
+    {
+        if (redeemable)
+        {
+
+        } else
+        {
+            print("we cannot redeem!");
+        }
+    }
 }
