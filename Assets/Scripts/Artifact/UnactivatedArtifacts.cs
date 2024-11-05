@@ -20,6 +20,7 @@ public class UnactivatedArtifacts : MonoBehaviour
     private int[] costValues;
     private int[] effectKeys;
     private int[] effectValues;
+    private float timeEffect;
     private bool[] canRedeem;
     private bool redeemable;
 
@@ -39,11 +40,13 @@ public class UnactivatedArtifacts : MonoBehaviour
         }
     }
 
-    public void SetUp(string name, string desc, int[] tempCostKeys, int[] costs, int[] tempEffectKeys, int[] tempEffect)
+    public void SetUp(string name, string desc, int[] tempCostKeys, int[] costs, int[] tempEffectKeys, int[] tempEffect, float time)
     {
         player = GameObject.FindGameObjectWithTag("Player");
         nameText.text = name;
-        descriptionText.text = desc;
+        
+
+        timeEffect = time;
         costKeys = tempCostKeys;
         costValues = costs;
         effectKeys = tempEffectKeys;
@@ -73,6 +76,15 @@ public class UnactivatedArtifacts : MonoBehaviour
 
         }
 
+        string description = ManageTextFiles.GetLineAtKey("[EFFECT]", desc);
+        description = ManageTextFiles.ReplaceText(description, effectValues[0].ToString(), "#");
+
+        if (timeEffect > 0)
+        {
+            description = ManageTextFiles.ReplaceText(description, timeEffect.ToString(), "@");
+        }
+      
+        descriptionText.text = description;
         UpdateCard();
 
     }

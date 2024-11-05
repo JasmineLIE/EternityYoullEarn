@@ -63,12 +63,12 @@ MonoBehaviour:
     MOHIncrementVal: 0
     totalInvestments: 0
   _ArtifactData:
-    pointer: 5
+    pointer: 4
     discovered: 0
     info:
     - isActivated: 0
       name: The Four Immortals
-      desc: 
+      desc: TheFourImmortals.txt
       lore: 
       cost: 0a000000
       costKey: 02000000
@@ -77,7 +77,7 @@ MonoBehaviour:
       timeEffect: 30
     - isActivated: 0
       name: An Ode to the Fairy Mother
-      desc: 
+      desc: FairyMother.txt
       lore: 
       cost: f401000032000000
       costKey: 0000000002000000
@@ -86,7 +86,7 @@ MonoBehaviour:
       timeEffect: 45
     - isActivated: 0
       name: Treachery
-      desc: 
+      desc: Treachery.txt
       lore: 
       cost: 2c01000019000000
       costKey: 0000000002000000
@@ -95,7 +95,7 @@ MonoBehaviour:
       timeEffect: 0
     - isActivated: 0
       name: War Banner
-      desc: 
+      desc: WarBanner.txt
       lore: 
       cost: e8030000
       costKey: 00000000
@@ -104,9 +104,9 @@ MonoBehaviour:
       timeEffect: 0
     - isActivated: 0
       name: Ragged Banner
-      desc: 
+      desc: RaggedBanner.txt
       lore: 
-      cost: 1d000000
+      cost: 14000000
       costKey: 01000000
       effect: 0a000000
       effectKey: 00000000

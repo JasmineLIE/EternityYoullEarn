@@ -1,3 +1,3 @@
-<strong>"Ragged Banner"</strong>.  Assumedly used for war.
+<b>"Ragged Banner"</b>.  Assumedly used for war.
 The colours of this banner are still vibrant.  Red fabric peaks through the dirt and dark patches.  Drawn in ink, two eyes stare back at you; that of a tiger's.
-[EFFECT]Gain passive Insight (+VAL) every SEC seconds.
+[EFFECT]Gain passive Insight (+#) every @ seconds.

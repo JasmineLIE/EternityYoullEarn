@@ -1,0 +1,4 @@
+<b>"The Four Immortals".</b>  A poem is etched into the recovered slab of stone. 
+The Iron Horse Gallops Across The Red River / Child of the Mountain Drinks from Our Silver
+Resistance Flies on a Yellow Dragon / Our Princess, Who Shall Not Fall"
+[EFFECT]For each companion investment, collect # Insight every @ seconds.

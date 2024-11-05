@@ -57,10 +57,11 @@ public class ArtifactManager : MonoBehaviour
         int[] costs = availArtData.info[cardIndex].cost;
         int[] effects = availArtData.info[cardIndex].effect;
         int[] effectKeys = availArtData.info[cardIndex].effectKey;
-
-        print("Spawning " + cardIndex);
+        float timeEffect = availArtData.info[cardIndex].timeEffect;
+       
+       
         GameObject card = Instantiate(UnactivatedPrefab);
         card.transform.SetParent(frame.transform);
-        card.GetComponent<UnactivatedArtifacts>().SetUp(name, desc, costKeys, costs, effectKeys, effects);
+        card.GetComponent<UnactivatedArtifacts>().SetUp(name, desc, costKeys, costs, effectKeys, effects, timeEffect);
     }
 }

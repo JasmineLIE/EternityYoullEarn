@@ -81,7 +81,8 @@ public class Companion : Clickable
             UpdateMotivationEffect();
         }
 
-
+        string path = comName + "Barks.txt";
+        barks = ManageTextFiles.GetAllLines(path);
     }
 
     public override void Clicked()
