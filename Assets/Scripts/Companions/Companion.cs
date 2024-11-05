@@ -287,7 +287,12 @@ public class Companion : Clickable
     }
 
 
-    //nested class
+    public string GetBark()
+    {
+        int temp = Random.Range(0, barks.Length - 1);
+        string bark = barks[temp];
+        return bark;
 
+    }
 }
 

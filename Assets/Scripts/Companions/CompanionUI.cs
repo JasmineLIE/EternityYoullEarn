@@ -15,6 +15,7 @@ public class CompanionUI : MonoBehaviour
     public TMP_Text m_cost;
     public TMP_Text m_effect;
     public TMP_Text mohAlert;
+    public TMP_Text bark;
 
     public Button psycheButton;
     public Button motivationButton;
@@ -79,6 +80,8 @@ public class CompanionUI : MonoBehaviour
                 quanTask.alpha = 0;
                 quan.transform.SetParent(BackUI.transform);
 
+                bark.text = gwyn.GetComponent<Gwynhark>().GetBark();
+
                 Rewards.UpdateText();
                 break;
 
@@ -91,6 +94,9 @@ public class CompanionUI : MonoBehaviour
                 eremTask.interactable = true;
                 quanTask.alpha = 0;
                 quanTask.transform.SetParent(BackUI.transform);
+
+                bark.text = erem.GetComponent<Erem>().GetBark();
+
                 Rewards.UpdateText(); 
                 break;
 
@@ -103,6 +109,9 @@ public class CompanionUI : MonoBehaviour
                 quanTask.alpha = 1;
                 quanTask.transform.SetParent(DomUI.transform);
                 quanTask.interactable = true;
+
+                bark.text = quan.GetComponent<Quan>().GetBark();
+
                 Rewards.UpdateText();
                 break;
         }
