@@ -23,7 +23,7 @@ public class ArtifactDescription : MonoBehaviour
         List<string> texts = ManageTextFiles.GetLineStopAtKey("[EFFECT]", fileName);
         foreach (string text in texts)
         {
-            desc.text += text;
+            desc.text += text + "\n\n";
         }
     }
 

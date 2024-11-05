@@ -12,7 +12,8 @@ public class UnactivatedArtifacts : MonoBehaviour
      */
     // Start is called before the first frame update
 
-   
+
+    GameObject artifactDesc;
 
     public TMP_Text nameText;
     public TMP_Text descriptionText;
@@ -33,9 +34,12 @@ public class UnactivatedArtifacts : MonoBehaviour
    
 
     public GameObject player;
-   
-  
-    
+
+
+    private void Start()
+    {
+        artifactDesc = GameObject.FindGameObjectWithTag("ArtifactDesc");
+    }
 
     private void Update()
     {
@@ -160,11 +164,11 @@ public class UnactivatedArtifacts : MonoBehaviour
 
     public void DisplayInfo()
     {
-        //ArtifactDescription.SendSignal(artName, textFile);
+        artifactDesc.GetComponent<ArtifactDescription>().SendSignal(artName, textFile);
     }
 
     public void ClearInfo()
     {
-        //ArtifactDescription.Clear();
+        artifactDesc.GetComponent<ArtifactDescription>().Clear();
     }
 }
