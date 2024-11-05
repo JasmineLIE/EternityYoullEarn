@@ -12,6 +12,8 @@ public class UnactivatedArtifacts : MonoBehaviour
      */
     // Start is called before the first frame update
 
+   
+
     public TMP_Text nameText;
     public TMP_Text descriptionText;
     public Image[] costIcons;
@@ -23,6 +25,9 @@ public class UnactivatedArtifacts : MonoBehaviour
     private float timeEffect;
     private bool[] canRedeem;
     private bool redeemable;
+
+    private string textFile;
+    public string artName;
 
     public Image button;
    
@@ -44,8 +49,8 @@ public class UnactivatedArtifacts : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player");
         nameText.text = name;
-        
-
+        textFile = desc;
+        artName = name;
         timeEffect = time;
         costKeys = tempCostKeys;
         costValues = costs;
@@ -151,5 +156,15 @@ public class UnactivatedArtifacts : MonoBehaviour
         {
             print("we cannot redeem!");
         }
+    }
+
+    public void DisplayInfo()
+    {
+        //ArtifactDescription.SendSignal(artName, textFile);
+    }
+
+    public void ClearInfo()
+    {
+        //ArtifactDescription.Clear();
     }
 }

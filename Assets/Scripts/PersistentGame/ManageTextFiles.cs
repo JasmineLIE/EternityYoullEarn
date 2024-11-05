@@ -4,6 +4,7 @@ using System.IO;
 using System.Net.Http.Headers;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class ManageTextFiles : MonoBehaviour
 {
@@ -30,6 +31,28 @@ public class ManageTextFiles : MonoBehaviour
         return temp;
     }
 
+    public static List<string> GetLineStopAtKey(string key, string fileName)
+    {
+        string path = Application.dataPath + "/FlavourText/" + fileName;
+
+        string[] lines = File.ReadAllLines(path);
+
+        List<string> temp = new List<string>();
+        bool flag = false;
+
+       for(int i = 0; i < lines.Length && !flag; i++)
+        {
+            if (lines[i].Substring(0, key.Length).Equals(key))
+            {
+                flag = true;
+            } else
+            {
+                temp.Add(lines[i]);
+
+            }
+        }
+        return temp;
+    }
     public static string[] GetAllLines(string fileName)
     {
        
