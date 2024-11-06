@@ -7,7 +7,8 @@ using UnityEngine.UI;
 
 public class CompanionUI : MonoBehaviour
 {
-    
+    public GameObject MasterDomUI;
+    public GameObject MasterBackUI;
 
     public TMP_Text NPC_name;
     public TMP_Text p_cost;
@@ -63,9 +64,10 @@ public class CompanionUI : MonoBehaviour
 
         TasksUI.interactable = true;
         TasksUI.alpha = 1;
+        TasksUI.transform.SetParent(MasterDomUI.transform);
 
         UpdateMoHAlert();
-    
+        Rewards.UpdateText();
         switch (NPCName)
         {
            
@@ -82,7 +84,7 @@ public class CompanionUI : MonoBehaviour
 
                 bark.text = gwyn.GetComponent<Gwynhark>().GetBark();
 
-                Rewards.UpdateText();
+               
                 break;
 
             case "Erem":
@@ -97,7 +99,7 @@ public class CompanionUI : MonoBehaviour
 
                 bark.text = erem.GetComponent<Erem>().GetBark();
 
-                Rewards.UpdateText(); 
+                
                 break;
 
             case "Quan":
@@ -112,10 +114,10 @@ public class CompanionUI : MonoBehaviour
 
                 bark.text = quan.GetComponent<Quan>().GetBark();
 
-                Rewards.UpdateText();
+              
                 break;
         }
-
+   
     }
 
     public void Investments(Companion companion)
@@ -155,6 +157,7 @@ public class CompanionUI : MonoBehaviour
         CloseTask();
         BioUI.interactable = true;
         BioUI.alpha = 1;
+        BioUI.transform.SetParent(MasterDomUI.transform);
      
         switch (NPCName)
         {
@@ -249,6 +252,7 @@ public class CompanionUI : MonoBehaviour
     {
         BioUI.alpha = 0;
         BioUI.interactable = false;
+        BioUI.transform.SetParent(MasterBackUI.transform);
      
     }
 
@@ -256,6 +260,7 @@ public class CompanionUI : MonoBehaviour
     {
         TasksUI.alpha = 0;
         TasksUI.interactable= false;
+        TasksUI.transform.SetParent(MasterBackUI.transform);
       
     }
 

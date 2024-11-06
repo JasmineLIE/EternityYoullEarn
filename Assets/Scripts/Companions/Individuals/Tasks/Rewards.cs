@@ -30,8 +30,10 @@ public class Rewards : MonoBehaviour
 
     public static void UpdateText()
     {
+        print("We have called to update rewards");
         foreach(Task task in companionTasks)
         {
+            print("Updating rewards!");
             task.UpdateTexts();
         }
     }

@@ -115,7 +115,7 @@ public class Task : MonoBehaviour
             insightText.color = Color.black;
         }
 
-        print("Updated!");
+     
     }
 
     public virtual void SetUp()
