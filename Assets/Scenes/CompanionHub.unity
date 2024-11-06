@@ -768,6 +768,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1643fcb06f62b714dbd10d751cfbcf81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &168641142 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4965166870993705240, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+  m_PrefabInstance: {fileID: 514677525}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &169588119
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -954,11 +965,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 53454802}
   - {fileID: 1438625181}
   - {fileID: 57984268}
   - {fileID: 438300852}
   - {fileID: 514677526}
-  - {fileID: 53454802}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1139,6 +1150,18 @@ PrefabInstance:
       propertyPath: timerController
       value: 
       objectReference: {fileID: 756416167}
+    - target: {fileID: 937596174180941922, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 937596174180941922, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.0095634
+      objectReference: {fileID: 0}
+    - target: {fileID: 937596174180941922, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 389
+      objectReference: {fileID: 0}
     - target: {fileID: 1553485611452269254, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 0
@@ -1287,6 +1310,10 @@ PrefabInstance:
       propertyPath: cd
       value: 
       objectReference: {fileID: 1025074381}
+    - target: {fileID: 5615099228411848286, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
+      propertyPath: bark
+      value: 
+      objectReference: {fileID: 168641142}
     - target: {fileID: 5615099228411848286, guid: f16a057b44ea3f04fbeb2fd3f92400f9, type: 3}
       propertyPath: erem
       value: 
