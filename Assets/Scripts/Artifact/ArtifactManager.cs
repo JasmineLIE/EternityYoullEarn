@@ -34,17 +34,17 @@ public class ArtifactManager : MonoBehaviour
      
     }
 
-    public bool DiscoverArtifact()
+    public ArtifactInfo DiscoverArtifact()
     {
         if (saveData.GetArtifactPointer() >= 0)
         {
-            saveData.DiscoverArtifact();
-            LoadArtifacts();
-            return true;
+            ArtifactInfo temp = saveData.DiscoverArtifact();
+        
+            return temp;
         } else
         {
             print("We have no more artifacts to discover");
-            return false;
+            return null;
         }
     
     }

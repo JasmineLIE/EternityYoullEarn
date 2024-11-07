@@ -286,7 +286,7 @@ public class SaveData : MonoBehaviour
      * There should be an edge case preceding this to ensure we do not go out of array index
      * Working with index is tricky when having a counter that counts normally.  Some minor spahgetti
      */
-    public bool DiscoverArtifact()
+    public ArtifactInfo DiscoverArtifact()
     {
  
         if (_ArtifactData.pointer >= 1)
@@ -294,7 +294,7 @@ public class SaveData : MonoBehaviour
             //Randomly select an undiscovered artifact
             int random = Random.Range(0, _ArtifactData.pointer);
 
-            //We will set the select undiscovered artifact to discover, and move it to the end of the "undiscovered" portion of the list, swapping places with what element was at the end
+            //We will set the select undiscovered artifact to discover, and move it to the end of the "discovered" portion of the list, swapping places with what element was at the end
           
 
             ArtifactInfo discoveredTemp = _ArtifactData.info[random];
@@ -307,17 +307,17 @@ public class SaveData : MonoBehaviour
             _ArtifactData.discovered++;
             _ArtifactData.pointer--;
             SaveIntoJson();
-            return true;
+            return discoveredTemp;
 
         }    else if (_ArtifactData.pointer == 0) 
         {
             _ArtifactData.pointer--;
             _ArtifactData.discovered++;
             SaveIntoJson();
-            return true;
+            return _ArtifactData.info[_ArtifactData.pointer];
         }
 
-        return false;
+        return null; //An error somehow occured
 
     }
 
