@@ -147,10 +147,11 @@ public class EremTask : Task
         {
             erem.GetComponent<Erem>().saveData.SetStudiedArtifactsVal(erem.GetComponent<Erem>().studiedArtifacts * (-1)); //reset back to 0
             erem.GetComponent<Erem>().studiedArtifacts = 0;
-           bool processed = artifactManager.DiscoverArtifact();
+           ArtifactInfo temp = artifactManager.DiscoverArtifact();
            
+            
 
-            if (processed)
+            if (temp!=null)
             {
                 UpdateArtifactTarget();
             }

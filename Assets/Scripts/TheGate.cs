@@ -10,6 +10,7 @@ public class TheGate : MonoBehaviour
     private GameObject player;
     private int insightIncrement;
     public GameObject ArtifactManager;
+    public GameObject feedbackPrefab;
 
     private void Start()
     {
@@ -27,7 +28,9 @@ public class TheGate : MonoBehaviour
     public void Clicked()
     {
         player.GetComponent<Player>().SetResource(0, insightIncrement);
-    
+        GameObject increment = Instantiate(feedbackPrefab);
+        increment.transform.SetParent(gameObject.transform);
+        increment.transform.position = Input.mousePosition;
 
     }
 
