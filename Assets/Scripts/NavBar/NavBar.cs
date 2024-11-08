@@ -37,6 +37,7 @@ public class NavBar : Clickable
     public Image moon;
 
     public Button TransitionButton;
+    public GameObject screenBlocker;
 
     private void Awake()
     {
@@ -52,6 +53,8 @@ public class NavBar : Clickable
 
     private void Start()
     {
+        screenBlocker.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
+        screenBlocker.GetComponent<Image>().raycastTarget = false;
      if (CustomSceneManager.CurrScene == 3)
         {
             animator.SetTrigger("Idle2");
@@ -129,7 +132,8 @@ public class NavBar : Clickable
     }
     public void SwitchScenes()
     {
-
+        screenBlocker.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.5f);
+        screenBlocker.GetComponent<Image>().raycastTarget = true;
         
         if (CustomSceneManager.CurrScene == 1)
         {
@@ -157,9 +161,13 @@ public class NavBar : Clickable
  
    
 
-    IEnumerator ChangeScene(int key) { 
-    
-       
+    IEnumerator ChangeScene(int key) {
+        screenBlocker.SetActive(true);
+        screenBlocker.GetComponent<Image>().raycastTarget = true;
+        screenBlocker.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.5f);
+
+  
+        
 
         if (key == 1)
         {

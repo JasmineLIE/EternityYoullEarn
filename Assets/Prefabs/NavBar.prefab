@@ -1879,6 +1879,7 @@ MonoBehaviour:
   transitionButton_text: {fileID: 7253834104394798230}
   moon: {fileID: 5005769685319224828}
   TransitionButton: {fileID: 812892783205957532}
+  screenBlocker: {fileID: 0}
 --- !u!222 &5157748698909656348
 CanvasRenderer:
   m_ObjectHideFlags: 0
