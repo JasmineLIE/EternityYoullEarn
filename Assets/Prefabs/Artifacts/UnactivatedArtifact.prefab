@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 30
+  m_fontSizeBase: 30
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -491,8 +491,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 220.59561, y: -101.975}
-  m_SizeDelta: {x: 401.19122, y: 42.050003}
+  m_AnchoredPosition: {x: 220.59561, y: -140.48}
+  m_SizeDelta: {x: 401.19122, y: 30.000002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5784880779471876863
 MonoBehaviour:
@@ -921,7 +921,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39edd983023d30b4d8767342320a3571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ArtifactDescription: {fileID: 8831146449785435901, guid: b4bda19d1321f3b4bace6c824c0a5cf0, type: 3}
   nameText: {fileID: 3787466182293631930}
   descriptionText: {fileID: 6900705811046957097}
   costIcons:
@@ -930,6 +929,7 @@ MonoBehaviour:
   costTexts:
   - {fileID: 7801822540203344562}
   - {fileID: 822598972153445965}
+  artName: 
   button: {fileID: 2485220879574714977}
   player: {fileID: 8861798374503961357, guid: 1e7f49d8ed3d99640856af58e07af267, type: 3}
 --- !u!114 &8380075330626307901
@@ -1200,8 +1200,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1334,8 +1334,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 16
-  m_fontSizeBase: 16
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
