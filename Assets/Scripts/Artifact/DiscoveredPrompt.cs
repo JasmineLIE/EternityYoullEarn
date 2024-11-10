@@ -8,7 +8,6 @@ public class DiscoveredPrompt : MonoBehaviour
 {
     public TMP_Text title;
     public TMP_Text description;
-    public Image icon;
     private CanvasGroup cg;
 
     private void Start()
@@ -17,11 +16,15 @@ public class DiscoveredPrompt : MonoBehaviour
         Close();
       
     }
-    public void SetUp(string name, string desc, Sprite img)
+    public void SetUp(string name, string fileName)
     {
         title.text = name;
-        description.text = desc;
-        icon.sprite = img;
+        List<string> texts = ManageTextFiles.GetLineStopAtKey("[EFFECT]", fileName);
+        foreach (string text in texts)
+        {
+            description.text += text + "\n\n\n";
+        }
+
         Open();
     }
 
@@ -38,6 +41,7 @@ public class DiscoveredPrompt : MonoBehaviour
         cg.alpha = 0;
         cg.interactable = false;
         cg.blocksRaycasts = false;
-   
+        title.text = "";
+        description.text = "";
     }
 }

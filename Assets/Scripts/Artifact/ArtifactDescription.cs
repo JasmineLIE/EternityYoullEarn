@@ -18,18 +18,17 @@ public class ArtifactDescription : MonoBehaviour
     }
     public void SendSignal(string name, string fileName)
     {
-        print("Trying to send signal");
+
         title.text = name;
         List<string> texts = ManageTextFiles.GetLineStopAtKey("[EFFECT]", fileName);
         foreach (string text in texts)
         {
-            desc.text += text + "\n\n";
+            desc.text += text + "\n\n\n";
         }
     }
 
     public void Clear()
     {
-        print("We are clearing!");
         title.text = "";
         desc.text = "";
     }

@@ -1,3 +1,3 @@
-A painting resemling the Fairy Queen done on stretched leather.
+<b>A painting resemling the Fairy Queen done on stretched leather.</b>
 The painting depicts a woman draped in a gown reminiscent of a lotus flower.  She leans against the side of a mountain, cradling a batch of eggs with a warm gaze.  A coiling, stripped tail runs from underneathe her body, as if she were trapping it.
 [EFFECT]Collect # Marks of Humanity every @ seconds

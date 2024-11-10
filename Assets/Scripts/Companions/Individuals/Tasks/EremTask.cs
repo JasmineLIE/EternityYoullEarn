@@ -22,6 +22,8 @@ public class EremTask : Task
     public int currTextsResearched;
 
     public EremRewards summary;
+
+    public DiscoveredPrompt prompt;
   
     // Start is called before the first frame update
     void Start()
@@ -42,7 +44,11 @@ public class EremTask : Task
             canDispatch = true;
         }
 
-        
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            canClaim = true;
+            RedeemArtifact();
+        }
       
     }
     public override void SetUp()
@@ -154,6 +160,8 @@ public class EremTask : Task
             if (temp!=null)
             {
                 UpdateArtifactTarget();
+                prompt.SetUp(temp.name, temp.desc);
+
             }
             else
             {
