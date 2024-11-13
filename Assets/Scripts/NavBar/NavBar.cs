@@ -22,11 +22,11 @@ public class NavBar : Clickable
     public float offset_y;
     public float offset_x;
 
-    string tt_insight = "<b>Insight.</b>  Interacting with The Gate inspires your next steps.  Escape may be possible.";
-    string tt_crystal_ebonies = "<b>Crystal Ebonies.</b>  A strange, crystalline flower pulsing with energy.  We could use these.";
-    string tt_marks_of_humanity = "<b>Marks of Humanity.</b>  A reminder of home, of good times, of sanity.  A necessity.";
-    string tt_texts_untranslated = "<b>Untranslated Texts.</b>  From a kingdom long gone.  Its texts are written in old Vietnamese.";
-    string tt_texts_translated = "<b>Translated Texts.</b>  Nonsensical on its own.";
+    string tt_insight = "<b>Insight.</b>  Interacting with The Gate inspires your next steps.  Used to command your companions.";
+    string tt_crystal_ebonies = "<b>Crystal Ebonies.</b>  A strange, crystalline flower pulsing with energy.  Obtained by sending Gwynhark on expeditions.  Used to activate artifacts.";
+    string tt_marks_of_humanity = "<b>Marks of Humanity.</b>  A reminder of home, of good times, of sanity.  Used to upgrade your companions' abilities.";
+    string tt_texts_untranslated = "<b>Untranslated Texts.</b>  From a kingdom long gone.  Its texts are written in old Vietnamese.  Obtained by sending Gwynhark on expeditions.  Can be translated by Quan.";
+    string tt_texts_translated = "<b>Translated Texts.</b>  Nonsensical on its own.  Can be converted into artifacts by Erem.";
 
     public Animator animator;
     public Animator sweep;
