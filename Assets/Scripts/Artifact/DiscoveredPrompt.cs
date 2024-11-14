@@ -9,11 +9,14 @@ public class DiscoveredPrompt : MonoBehaviour
     public TMP_Text title;
     public TMP_Text description;
     private CanvasGroup cg;
-
+    private Animator anim;
     private void Start()
     {
         cg = GetComponent<CanvasGroup>();
+        anim = GetComponent<Animator>();
         Close();
+    
+           
       
     }
     public void SetUp(string name, string fileName)
@@ -43,5 +46,8 @@ public class DiscoveredPrompt : MonoBehaviour
         cg.blocksRaycasts = false;
         title.text = "";
         description.text = "";
+
     }
+
+    
 }
