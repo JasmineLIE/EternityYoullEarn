@@ -1645,7 +1645,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Research
+  m_text: Unactivated
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 7e4b33e9252c42747b0a5d53e0023df7, type: 2}
   m_sharedMaterial: {fileID: 2350239560051400623, guid: 7e4b33e9252c42747b0a5d53e0023df7, type: 2}
@@ -1994,10 +1994,10 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 10
+    m_Top: 50
     m_Bottom: 10
   m_ChildAlignment: 1
-  m_Spacing: 10
+  m_Spacing: 5
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
@@ -2402,7 +2402,7 @@ GameObject:
   - component: {fileID: 2126451269}
   - component: {fileID: 2126451273}
   m_Layer: 5
-  m_Name: Research Panel
+  m_Name: Unactivated
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
