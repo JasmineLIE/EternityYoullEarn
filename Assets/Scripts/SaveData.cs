@@ -50,7 +50,8 @@ public class SaveData : MonoBehaviour
         string playerDataPath = Application.persistentDataPath + "/PlayerData.json";
         string artifactDataPath = Application.persistentDataPath + "/ArtifactData.json";
 
-        if (!File.Exists(playerDataPath) || !File.Exists(companionDataPath) || !File.Exists(artifactDataPath))
+       
+        if (!DoesSaveExist()) //there is no save file, create a new one
         {
            
             SaveIntoJson();
@@ -70,7 +71,24 @@ public class SaveData : MonoBehaviour
         }
     }
 
-    public void LoadGameStart()
+    /*
+     * This function returns true or false, depending if there exists save files.
+     * False if there is no save file detected in the local directory, true if otherwise.
+     */
+    public static bool DoesSaveExist()
+    {
+        string companionDataPath = Application.persistentDataPath + "/CompanionData.json";
+        string playerDataPath = Application.persistentDataPath + "/PlayerData.json";
+        string artifactDataPath = Application.persistentDataPath + "/ArtifactData.json";
+
+        if (!File.Exists(playerDataPath) || !File.Exists(companionDataPath) || !File.Exists(artifactDataPath))
+        {
+            return false;
+        }
+        return true;
+        }
+
+        public void LoadGameStart()
     {
 
         LoadJson();

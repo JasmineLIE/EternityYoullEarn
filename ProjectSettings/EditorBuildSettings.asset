@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PersistentGame.unity
     guid: 2f0a612d8cdbaf24ba0ec16a4c6f8d8a
+  - enabled: 1
+    path: Assets/Scenes/Intro.unity
+    guid: 1c38d85f341ff454fa4713f2d48a1d0a
   m_configObjects: {}
