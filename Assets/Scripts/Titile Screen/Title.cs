@@ -15,6 +15,7 @@ public class Title : MonoBehaviour
     public GameObject playButtonPos;
     public Animator anim;
 
+    public AudioSource music;
     bool isPlaying;
     private void Start()
     {
@@ -68,7 +69,8 @@ public class Title : MonoBehaviour
         cg.interactable = false;
         tiger.color = new Color(0.4245283f, 0.0531964f, 0, 1f);
         anim.SetTrigger("Fade");
-      
+
+        StartCoroutine(AudioFadeout.StartFade(music, 5f, 0f));
 
         yield return new WaitForSeconds(5f);
         if (!SaveData.DoesSaveExist())

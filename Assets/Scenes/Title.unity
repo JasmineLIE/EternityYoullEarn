@@ -1376,6 +1376,7 @@ MonoBehaviour:
   cg: {fileID: 259746215}
   playButtonPos: {fileID: 1678384112}
   anim: {fileID: 259746216}
+  music: {fileID: 1293173325375983607}
 --- !u!225 &1395153303
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -1398,7 +1399,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1678384113}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: PlayBtnPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2442,6 +2443,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed1262409d0558040bdcabe1fae5afc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1293173325375983607 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 8093077372737894341, guid: 35e19c8bba0472244a07235e65749706, type: 3}
+  m_PrefabInstance: {fileID: 1293173325375983604}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

@@ -66,6 +66,7 @@ public class Intro : MonoBehaviour
         canClick = true;
     }
 
+    //add flair to transition TODO (can do this in LoadData)
     public void Continue()
     {
         SceneManager.LoadScene("LoadData");
