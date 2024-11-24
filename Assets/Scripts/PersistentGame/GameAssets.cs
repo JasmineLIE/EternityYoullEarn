@@ -18,6 +18,7 @@ public class GameAssets : MonoBehaviour
 
     //COMPANION MENU
     public Sprite[] ButtonIcons;
+
     public Sprite[] CompanionTasksArt;
     public Sprite[] CompanionInvestmentsArt;
     public Sprite[] CompanionBioArt;

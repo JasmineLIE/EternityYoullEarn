@@ -6,6 +6,8 @@ using UnityEngine;
 public class Investment : MonoBehaviour
 {
 
+    public string[] flavourText = new string[3];
+
     public int[] effects = new int[3];
    
     public int index;

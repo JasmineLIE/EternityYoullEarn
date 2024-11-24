@@ -15,8 +15,9 @@ public class CompanionUI_Btn : MonoBehaviour
         menu = gameObject.GetComponentInParent<CompanionUI_Menu>();
     }
 
-    public void UpdateButtonState()
+    public void UpdateButtonState(bool tempState)
     {
+        isActive = tempState;
         if (isActive)
         {
             img.sprite = GameAssets.Instance.ButtonIcons[0];
@@ -29,7 +30,7 @@ public class CompanionUI_Btn : MonoBehaviour
 
     public void SwitchMenu()
     {
-        menu.OpenMenu(menu.selectedComp, ID);
-        menu.currMenu = ID;
+        menu.OpenMenu(menu.compIndex, ID);
+      
     }
 }

@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 6902039157791827875}
   - component: {fileID: 8244154924529059688}
   - component: {fileID: 8139926528147236749}
+  - component: {fileID: 4356902004004784086}
   m_Layer: 5
   m_Name: StatBlock
   m_TagString: Untagged
@@ -239,6 +240,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4356902004004784086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3252342017129760052}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cab511079afa5cb4e9ad7b21a00bf960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 5452552447941553639}
+  effect: {fileID: 4527866836946519920}
+  value: {fileID: 6970702989073075482}
 --- !u!1 &5904128980861434473
 GameObject:
   m_ObjectHideFlags: 0

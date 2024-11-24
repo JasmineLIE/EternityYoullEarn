@@ -12,7 +12,9 @@ public class Companion : Clickable
     //Data Variables
 
     public string comName;
+    public string[] bio;
     public string[] barks;
+   
 
     public SaveData saveData;
     public CompanionUI ui;
@@ -32,6 +34,7 @@ public class Companion : Clickable
     public int efficiency;
     public float timeToCompleteTask;
     public int mohRate;
+    
 
     protected int additionalMarksEarned;
 
@@ -81,8 +84,18 @@ public class Companion : Clickable
             UpdateMotivationEffect();
         }
 
-        string path = comName + "Barks.txt";
-        barks = ManageTextFiles.GetAllLines(path);
+        string barkPath = comName + "Barks.txt";
+        barks = ManageTextFiles.GetAllLines(barkPath);
+
+        string bioPath = comName + "Bio.txt";
+        bio = ManageTextFiles.GetAllLines(bioPath);
+
+        string motivationPath = comName + "MotivationFlavour.txt";
+        motivation.flavourText = ManageTextFiles.GetAllLines(motivationPath);
+
+        string psychePath = comName + "PsycheFlavour.txt";
+        psyche.flavourText = ManageTextFiles.GetAllLines(psychePath);
+        
     }
 
     public override void Clicked()
@@ -218,7 +231,7 @@ public class Companion : Clickable
     }
 
 
- 
+   
 
    
      public virtual void CompleteTask()
