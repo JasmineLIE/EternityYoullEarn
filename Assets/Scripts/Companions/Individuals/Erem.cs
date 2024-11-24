@@ -6,7 +6,7 @@ using UnityEngine;
 public class Erem : Companion
 {
 
-    public GameObject EremTask;
+    
 
 
     public int MAX_translatedTexts;
@@ -36,7 +36,7 @@ public class Erem : Companion
     {
         artifactTarget = 15;
 
-        EremTask = GameObject.FindGameObjectWithTag("EremTask");
+        
 
         psyche.SetValues_r(p_r);
         motivation.SetValues_r(m_r);
@@ -54,7 +54,7 @@ public class Erem : Companion
 
         CharacterSetUp("Erem");
 
-        EremTask.GetComponent<EremTask>().SetUp();
+       
        
     }
 
@@ -160,7 +160,7 @@ public class Erem : Companion
     public override void CompleteTask()
     {
         base.CompleteTask();
-        EremTask.GetComponent<EremTask>().canDispatch = true;
+     
     }
 
 

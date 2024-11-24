@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class Gwynhark : Companion
 {
 
-    public GameObject GwynTask;
+    
     private int[] p_r = { 0, 1, 2, 4 };
     private int[] m_r = { 1, 3, 6, 9 };
 
@@ -32,7 +32,7 @@ public class Gwynhark : Companion
     // Start is called before the first frame update
     void Start()
     {
-        GwynTask = GameObject.FindGameObjectWithTag("GwynTask");
+       
         psyche.SetValues_r(p_r);
         motivation.SetValues_r(m_r);
 
@@ -47,7 +47,7 @@ public class Gwynhark : Companion
 
         CharacterSetUp("Gwynhark");
 
-        GwynTask.GetComponent<GwynharkTask>().SetUp();
+    
 
     }
 

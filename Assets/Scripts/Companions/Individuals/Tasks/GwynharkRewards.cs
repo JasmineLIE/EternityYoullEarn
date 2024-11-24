@@ -56,7 +56,7 @@ public class GwynharkRewards : Rewards
         {
          
             gwynhark.CompleteTask(ebonyYield, untransYield);
-            gwynhark.GwynTask.GetComponent<GwynharkTask>().UpdateTexts();
+         
             UpdateText();
             BackgroundTasks.GwynHasTask = false;
             Close();

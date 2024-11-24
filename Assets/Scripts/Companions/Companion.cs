@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
-public class Companion : Clickable
+public class Companion : MonoBehaviour
 {
     //Data Variables
 
@@ -17,7 +17,7 @@ public class Companion : Clickable
    
 
     public SaveData saveData;
-    public CompanionUI ui;
+    
     public GameObject player;
 
     public Investment motivation;
@@ -98,13 +98,7 @@ public class Companion : Clickable
         
     }
 
-    public override void Clicked()
-    {
-        //REMINDER: Ensure the scene has "ClickDetection" to make this work
-
-
-        ui.OpenCompanionUI(comName);
-    }
+    
 
 
 

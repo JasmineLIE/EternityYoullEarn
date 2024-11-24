@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class Quan : Companion
 {
-    public GameObject QuanTask;
     public int MIN_untranslatedTexts;
     public int MAX_untranslatedTexts;
     public int extraRewardsRate;
@@ -32,7 +31,7 @@ public class Quan : Companion
     // Start is called before the first frame update
     void Start()
     {
-        QuanTask = GameObject.FindGameObjectWithTag("QuanTask");
+    
         MIN_untranslatedTexts = 2;
         psyche.SetValues_r(p_r);
         motivation.SetValues_r(m_r);
@@ -50,7 +49,7 @@ public class Quan : Companion
 
         CharacterSetUp("Quan");
 
-        QuanTask.GetComponent<QuanTask>().SetUp();
+       
     }
 
   

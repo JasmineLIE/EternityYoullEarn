@@ -47,7 +47,10 @@ public class CompanionUI_Menu : MonoBehaviour
     }
     private void Update()
     {
-        
+        if (GameAssets.Instance != null && debug) {
+            OpenMenu(0, 2);
+            debug = false;
+        }
     }
 
     //Set up buttonIDs
@@ -106,7 +109,9 @@ public class CompanionUI_Menu : MonoBehaviour
         taskMenu.SetImage(GameAssets.Instance.CompanionTasksArt[compIndex]);
 
         //TASKS
-
+        //set hint text based on who is selected
+        taskMenu.hintText.text = taskMenu.compHints[compIndex];
+      
 
         //BIO
        
