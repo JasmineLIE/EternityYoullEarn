@@ -15,6 +15,7 @@ TagManager:
   - Back
   - Dom
   - ArtifactDesc
+  - Stat Block
   layers:
   - Default
   - TransparentFX
