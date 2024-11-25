@@ -30,6 +30,19 @@ public class Tasks : MonoBehaviour
         cg= GetComponent<CanvasGroup>();    
     }
 
+    public virtual void SetUp(int insightCost, float time)
+    {
+        insightRequired = insightCost;
+        timeToComplete = time;
+
+      
+    }
+
+    private void Update()
+    {
+        UpdateInsightText();
+    }
+
     public void Close()
     {
         cg.alpha = 0;
@@ -51,16 +64,24 @@ public class Tasks : MonoBehaviour
 
     public void UpdateInsightText()
     {
-        if (CompanionUI_Menu_Model.currComp.player.GetComponent<Player>().GetResource(0) >= CompanionUI_Menu_Model.currComp.insightCost)
+        if(CompanionUI_Menu_Model.currComp != null) //safety first!
         {
+            insightCost.text = CompanionUI_Menu_Model.currComp.player.GetComponent<Player>().GetResource(0) 
+                + "/" + insightRequired;
+
+      
+            if (CompanionUI_Menu_Model.currComp.player.GetComponent<Player>().GetResource(0) 
+                >= CompanionUI_Menu_Model.currComp.insightCost)
+         {
 
             icon.color = new Color(0.227451f, 0.1490196f, 0.08235294f); //brown
             insightCost.color = new Color(0.227451f, 0.1490196f, 0.08235294f);
-        }
-        else
-        {
+         }
+            else
+            {
             icon.color = Color.red;
             insightCost.color = Color.red;
+             }
         }
     }
 

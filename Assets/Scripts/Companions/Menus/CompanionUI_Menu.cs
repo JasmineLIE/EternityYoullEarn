@@ -135,6 +135,7 @@ public class CompanionUI_Menu : MonoBehaviour
         //TASKS
         //set hint text based on who is selected
         taskMenu.hintText.text = taskMenu.compHints[compIndex];
+
         //Open up the correct task
         for(int i = 0; i < compTasks.Length; i++) {
             if (i == compIndex)
@@ -144,6 +145,9 @@ public class CompanionUI_Menu : MonoBehaviour
             {
                 compTasks[i].Close();
             }
+
+            //set up info
+            compTasks[i].SetUp(comps[i].insightCost, comps[i].timeToCompleteTask);
         }
 
 
@@ -157,6 +161,7 @@ public class CompanionUI_Menu : MonoBehaviour
         //INVESTMENTS
         investMenu.SetUpMotivation();
         investMenu.SetUpPsyche();
+        investMenu.title.text = investMenu.titles[compIndex];
 
         foreach(Block blocks in statBlocks)
         {

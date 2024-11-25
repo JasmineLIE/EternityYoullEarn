@@ -1,16 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class CompanionUI_Investment : CompanionUI_Menu_Model
 {
     public Invest_Btn motivation;
     public Invest_Btn psyche;
+    public TMP_Text title;
+    public string[] titles = new string[3];
 
-   
-    
+    private void Start()
+    {
+        titles[0] = "THE ARCHIVIST";
+        titles[1] = "THE EXPLORER";
+        titles[2] = "THE TRANSLATOR";
+    }
+
     // Start is called before the first frame update
-   
+
     public void SetUpMotivation()
     {
         motivation.SetUp(currComp.motivation.flavourText[currComp.motivation.GetIndex()],
