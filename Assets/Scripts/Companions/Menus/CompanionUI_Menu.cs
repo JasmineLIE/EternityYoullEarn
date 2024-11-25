@@ -8,50 +8,64 @@ using UnityEngine.InputSystem.Android;
 
 public class CompanionUI_Menu : MonoBehaviour
 {
-    public CompanionUI_Btn[] btns = new CompanionUI_Btn[3];
+  
     public CompanionUI_Bio bioMenu;
     public CompanionUI_Task taskMenu;
     public CompanionUI_Investment investMenu;
 
-    public Block[] statBlocks = new Block[2];
+    public CompanionUI_General genUI;
 
-   private CompanionUI_Menu_Model[] menus = new CompanionUI_Menu_Model[3];
+
+    public Block[] statBlocks = new Block[2];
+    public CompanionUI_Btn[] btns = new CompanionUI_Btn[3];
+    private CompanionUI_Menu_Model[] menus = new CompanionUI_Menu_Model[3];
 
     /*
      * 0 - Erem
      * 1 - Gwyn
      * 2 - Quan
      */
-    public Companion[] comps = new Companion[3];    
+    public Companion[] comps = new Companion[3];
 
     /*
-     * 0 = Tasks
-     * 1 = Investments
-     * 2 = Bio
-     */
+      * 0 - Erem
+      * 1 - Gwyn
+      * 2 - Quan
+      */
+    public Tasks[] compTasks = new Tasks[3];
+
     public int currMenu;
     public int compIndex;
 
-    //DEBUG
-    private bool debug;
+   
+ 
     private void Start()
     {
-        debug = true;
+       
         menus[0] = taskMenu;
         menus[1] = investMenu;
         menus[2] = bioMenu;
 
-        SetButtonIDs();
      
+        SetButtonIDs();
+        genUI.Close();
       
     }
-    private void Update()
+
+    public void EremMenu()
     {
-        if (GameAssets.Instance != null && debug) {
-            OpenMenu(0, 2);
-            debug = false;
-        }
+        OpenMenu(0, 0);
     }
+    public void GwynharkMenu()
+    {
+        OpenMenu(1, 0);
+    }
+
+    public void QuanMenu()
+    {
+        OpenMenu(2, 0);
+    }
+   
 
     //Set up buttonIDs
     private void SetButtonIDs()
@@ -63,41 +77,51 @@ public class CompanionUI_Menu : MonoBehaviour
     }
     public void OpenMenu(int tempIndex, int menu)
     {
+        //make menu visible
+        genUI.Open();
+
         //Companion selected
         compIndex = tempIndex;
 
         //Menu selected
         currMenu = menu;
 
-        //Set Companion name header and bark text
-        CompanionUI_General.SetText(comps[compIndex].comName, comps[compIndex].GetBark());
-
-
+        //we need to only do this once when it is initially caled
         //Load in all the data for each menu
         SetUpCompanionData();
 
+        //Set Companion name header and bark text
+        genUI.SetText(comps[compIndex].comName, comps[compIndex].GetBark());
+
+        SwitchMenu(currMenu);
+    
+   
+        
+     
+    }
+
+    public void SwitchMenu(int menu)
+    {
+        
+        
         //set button states and active menu
-       for(int i = 0; i < btns.Length; i++)
+        for (int i = 0; i < btns.Length; i++)
         {
             if (i == menu)
             {
                 btns[i].UpdateButtonState(true);
                 menus[i].MenuSetActive();
-               
-            } else
+
+            }
+            else
             {
                 btns[i].UpdateButtonState(false);
                 menus[i].MenuSetInactive();
-              
+
             }
         }
 
-     
-        
-     
     }
-
-
     private void SetUpCompanionData()
     {
         //Set up static reference to the active companion
@@ -111,17 +135,26 @@ public class CompanionUI_Menu : MonoBehaviour
         //TASKS
         //set hint text based on who is selected
         taskMenu.hintText.text = taskMenu.compHints[compIndex];
-      
+        //Open up the correct task
+        for(int i = 0; i < compTasks.Length; i++) {
+            if (i == compIndex)
+            {
+                compTasks[i].Open();
+            } else
+            {
+                compTasks[i].Close();
+            }
+        }
+
 
         //BIO
-       
+        bioMenu.bioDesc.text = ""; //clear first
         foreach (string bio in comps[compIndex].bio)
         {
-            bioMenu.bioDesc.text += bio + "\n";
+            bioMenu.bioDesc.text += bio + "\n\n";
         }
 
         //INVESTMENTS
-
         investMenu.SetUpMotivation();
         investMenu.SetUpPsyche();
 
@@ -130,5 +163,6 @@ public class CompanionUI_Menu : MonoBehaviour
             blocks.SetUpGlobalStats(comps[compIndex].efficiency, comps[compIndex].mohRate);
         }
     }
+
     
 }

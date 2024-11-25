@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,9 +23,25 @@ public class Tasks : MonoBehaviour
 
     public bool canDispatch;
 
+    public CanvasGroup cg;
 
+    private void Start()
+    {
+        cg= GetComponent<CanvasGroup>();    
+    }
 
-
+    public void Close()
+    {
+        cg.alpha = 0;
+        cg.interactable = false;
+        cg.blocksRaycasts = false;
+    }
+    public void Open()
+    {
+        cg.alpha = 1;
+        cg.interactable = true;
+        cg.blocksRaycasts = true;
+    }
     public virtual void Dispatch()
     {
         CompanionUI_Menu_Model.currComp.player.GetComponent<Player>().SetResource(0, (-1) * insightRequired);

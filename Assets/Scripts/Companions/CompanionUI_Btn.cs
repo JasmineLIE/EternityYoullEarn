@@ -30,7 +30,7 @@ public class CompanionUI_Btn : MonoBehaviour
 
     public void SwitchMenu()
     {
-        menu.OpenMenu(menu.compIndex, ID);
+        menu.SwitchMenu(ID);
       
     }
 }

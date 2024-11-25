@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class CompanionUI_General : MonoBehaviour
 {
-    public static TMP_Text compName;
-    public static TMP_Text bark;
+    public TMP_Text compName;
+    public  TMP_Text bark;
     public CanvasGroup menuCG;
 
     public void Close()
@@ -16,11 +16,21 @@ public class CompanionUI_General : MonoBehaviour
         menuCG.blocksRaycasts = false;
     }
 
-   public static void SetText(string name, string tempBark)
+   public void SetText(string name, string tempBark)
     {
         compName.text = name;
         bark.text = tempBark;   
     }
+
+
+    public void Open()
+    {
+        menuCG.alpha = 1;
+        menuCG.interactable = true;
+        menuCG.blocksRaycasts = true;
+    }
+
+   
 
 
 }

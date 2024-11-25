@@ -58,7 +58,7 @@ public class Invest_Btn : MonoBehaviour
         nextLevelDesc.text = nextLvl;
         cost = tempCost;
         currLevel = tempCurrLevel;
-        level.text = currLevel.ToString();
+        level.text = (currLevel+1).ToString();
 
 
         levelBar.fillAmount = currLevel / maxLevel;
