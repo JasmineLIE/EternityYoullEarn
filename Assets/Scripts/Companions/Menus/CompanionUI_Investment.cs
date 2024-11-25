@@ -25,7 +25,7 @@ public class CompanionUI_Investment : CompanionUI_Menu_Model
                             currComp.GetMotivationEffectDesc(),
                             currComp.GetCurrentMotivation(),
                             currComp.motivation.GetIndex()
-                            ) ;
+                             ) ;
     }
 
     public void UpgradeMotivation()

@@ -13,8 +13,8 @@ public class Tasks : MonoBehaviour
     public TMP_Text insightCost;
 
 
-    protected int fedValues;
-    public int thresh;
+    protected int fedValues; //the values that will be incremented or decremented and sent to scripts via dispatch
+    public int thresh; //the MAX for thresh val
     protected int resourceKey;
     protected float timeToComplete;
     public int insightRequired;
@@ -60,6 +60,20 @@ public class Tasks : MonoBehaviour
         CompanionUI_Menu_Model.currComp.player.GetComponent<Player>().SetResource(0, (-1) * insightRequired);
         UpdateInsightText();
 
+    }
+
+    public virtual void Increment()
+    {
+        if(fedValues < thresh) fedValues++;
+        fedValText.text = fedValues.ToString();
+
+    }
+
+    public virtual void Decrement()
+    {
+        if(fedValues > 0) fedValues--;
+
+        fedValText.text = fedValues.ToString();
     }
 
     public void UpdateInsightText()

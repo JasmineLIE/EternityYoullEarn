@@ -34,8 +34,8 @@ RectTransform:
   m_Children:
   - {fileID: 4757348097251706785}
   - {fileID: 741010375192050278}
-  - {fileID: 1782668164370299536}
   - {fileID: 3454750957472444905}
+  - {fileID: 1782668164370299536}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -646,7 +646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3252342017129760052, guid: 73e721c9aa029d740a3c407cd75663f7, type: 3}
       propertyPath: m_Name
-      value: Special Block 2
+      value: Special Block 1
       objectReference: {fileID: 0}
     - target: {fileID: 4527866836946519920, guid: 73e721c9aa029d740a3c407cd75663f7, type: 3}
       propertyPath: m_text
