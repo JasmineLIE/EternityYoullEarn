@@ -33,7 +33,7 @@ public class Invest_Btn : MonoBehaviour
 
         
         //player = GameObject.FindGameObjectWithTag("Player");
-        maxLevel = 3;
+        maxLevel = 2;
      
         //debug
       

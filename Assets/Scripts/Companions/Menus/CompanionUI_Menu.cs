@@ -165,7 +165,7 @@ public class CompanionUI_Menu : MonoBehaviour
 
         foreach(Block blocks in statBlocks)
         {
-            blocks.SetUpGlobalStats(comps[compIndex].efficiency, comps[compIndex].mohRate);
+            blocks.SetUpStats(comps[compIndex]);
         }
     }
 

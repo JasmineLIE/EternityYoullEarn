@@ -42,10 +42,14 @@ public class Title : MonoBehaviour
     }
     public void Play()
     {
-        StartCoroutine(PlayTransition());
+        StartCoroutine(PlayTransition("LOAD"));
      
     }
 
+    public void NewGame()
+    {
+        StartCoroutine(PlayTransition("NEW"));
+    }
    
     /*
      * The tiger fades in and our based on the distance between the cursor and the "Continue" button (The tiger wants you to release it!!!)
@@ -63,7 +67,7 @@ public class Title : MonoBehaviour
         Application.Quit();
     }
 
-    public IEnumerator PlayTransition()
+    public IEnumerator PlayTransition(string gameType)
     {
         isPlaying = true;
         cg.interactable = false;
@@ -73,8 +77,9 @@ public class Title : MonoBehaviour
         StartCoroutine(AudioFadeout.StartFade(music, 5f, 0f));
 
         yield return new WaitForSeconds(5f);
-        if (!SaveData.DoesSaveExist())
+        if (!SaveData.DoesSaveExist() || gameType == "NEW")
         {
+            SaveData.DeleteSave();
             SceneManager.LoadScene("Intro");
         } else
         {

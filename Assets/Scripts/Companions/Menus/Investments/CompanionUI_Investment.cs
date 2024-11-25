@@ -9,6 +9,7 @@ public class CompanionUI_Investment : CompanionUI_Menu_Model
     public Invest_Btn psyche;
     public TMP_Text title;
     public string[] titles = new string[3];
+    public Block[] blocks = new Block[2];
 
     private void Start()
     {
@@ -19,6 +20,7 @@ public class CompanionUI_Investment : CompanionUI_Menu_Model
 
     // Start is called before the first frame update
 
+ 
     public void SetUpMotivation()
     {
         motivation.SetUp(currComp.motivation.flavourText[currComp.motivation.GetIndex()],
@@ -35,6 +37,12 @@ public class CompanionUI_Investment : CompanionUI_Menu_Model
         {
             currComp.player.GetComponent<Player>().saveData.IncrementTotalInvestments(); //for one of the revelations
             SetUpMotivation();
+
+            foreach(Block tempBlock in blocks)
+            {
+                tempBlock.SetUpStats(currComp);
+            }
+
         } else
         {
             print("Do not have enough MoH to upgrade!");
@@ -59,6 +67,12 @@ public class CompanionUI_Investment : CompanionUI_Menu_Model
         {
             currComp.player.GetComponent<Player>().saveData.IncrementTotalInvestments(); //increment total number of investments
             SetUpPsyche();
+
+            foreach (Block tempBlock in blocks)
+            {
+                tempBlock.SetUpStats(currComp);
+            }
+
         } else
         {
             print("Do not have enough MoH to upgrade!");

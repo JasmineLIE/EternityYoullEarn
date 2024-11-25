@@ -47,7 +47,9 @@ public class Gwynhark : Companion
 
         CharacterSetUp("Gwynhark");
 
-    
+        //once after set up
+        specialVal1 = MIN_resources;
+        specialVal2 = MAX_resources;
 
     }
 
@@ -91,7 +93,8 @@ public class Gwynhark : Companion
         psyche.SetEffect(1, psyche.GetEffectArray(1, 0));
         MIN_resources = psyche.GetEffect(0);
         MAX_resources = psyche.GetEffect(1);
-        
+
+      
     }
 
     protected override void UpdatePsycheEffect()
@@ -100,6 +103,10 @@ public class Gwynhark : Companion
 
         MIN_resources = psyche.GetEffect(0);
         MAX_resources = psyche.GetEffect(1);
+
+        //each time after upgrade
+        specialVal1 = MIN_resources;
+        specialVal2 = MAX_resources;
     }
 
     protected override void UpdateMotivationEffect()
@@ -146,7 +153,7 @@ public class Gwynhark : Companion
 
     }
 
- 
 
+   
 
 }

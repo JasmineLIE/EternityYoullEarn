@@ -34,7 +34,8 @@ public class Companion : MonoBehaviour
     public int efficiency;
     public float timeToCompleteTask;
     public int mohRate;
-    
+    public int specialVal1;
+    public int specialVal2;
 
     protected int additionalMarksEarned;
 

@@ -12,6 +12,7 @@ public class Erem : Companion
     public int MAX_translatedTexts;
     public int artifactTarget;
     public int studiedArtifacts;
+ 
 
     
 
@@ -54,7 +55,8 @@ public class Erem : Companion
 
         CharacterSetUp("Erem");
 
-       
+        specialVal1 = MAX_translatedTexts;
+        specialVal2 = psyche.GetEffectArray(1, psyche.GetIndex());
        
     }
 
@@ -121,8 +123,8 @@ public class Erem : Companion
 
         base.UpdatePsycheEffect();
         mohRate = psyche.GetEffect(0);
-       
-     
+        specialVal2 = psyche.GetEffectArray(1, psyche.GetIndex());
+
     }
 
     protected override void UpdateMotivationEffect()
@@ -130,7 +132,7 @@ public class Erem : Companion
         base.UpdateMotivationEffect();
         efficiency = motivation.GetEffect(0);
         MAX_translatedTexts = motivation.GetEffect(1);
-      
+        specialVal1 = MAX_translatedTexts;
        
 
 

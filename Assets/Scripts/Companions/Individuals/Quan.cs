@@ -49,7 +49,8 @@ public class Quan : Companion
 
         CharacterSetUp("Quan");
 
-       
+        specialVal1 = MIN_untranslatedTexts;
+        specialVal2 = psyche.GetEffectArray(2, psyche.GetIndex());
     }
 
   

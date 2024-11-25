@@ -102,7 +102,19 @@ public class SaveData : MonoBehaviour
         
     }
 
-  
+    public static void DeleteSave()
+    {
+        string companionDataPath = Application.persistentDataPath + "/CompanionData.json";
+        string playerDataPath = Application.persistentDataPath + "/PlayerData.json";
+        string artifactDataPath = Application.persistentDataPath + "/ArtifactData.json";
+
+       
+            System.IO.File.Delete(playerDataPath);
+            System.IO.File.Delete(companionDataPath);
+            System.IO.File.Delete(artifactDataPath);
+       
+
+    }
     //-----Player Data Functions-----
    public int[] LoadPlayerData()
     {

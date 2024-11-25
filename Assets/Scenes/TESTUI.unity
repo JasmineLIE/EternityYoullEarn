@@ -292,6 +292,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8861798374503961357, guid: 1e7f49d8ed3d99640856af58e07af267, type: 3}
   m_PrefabInstance: {fileID: 1543931228}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &242724232 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7014607218079598761, guid: f1975d987501c1146bc9d2b3f623d5d0, type: 3}
+  m_PrefabInstance: {fileID: 627320816}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d692577069bc2499d891c28db3adba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &268860875
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1127,6 +1138,7 @@ GameObject:
   - component: {fileID: 582768966}
   - component: {fileID: 582768965}
   - component: {fileID: 582768964}
+  - component: {fileID: 582768967}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1208,6 +1220,50 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &582768967
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582768963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_RenderShadows: 1
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_Version: 2
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!1001 &627320816
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1664,6 +1720,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1293887840718787922, guid: f1975d987501c1146bc9d2b3f623d5d0, type: 3}
+      propertyPath: m_text
+      value: Scavanging (MIN)
+      objectReference: {fileID: 0}
     - target: {fileID: 1293931828747944295, guid: f1975d987501c1146bc9d2b3f623d5d0, type: 3}
       propertyPath: comps.Array.data[0]
       value: 
@@ -2048,6 +2108,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2682882913367623003, guid: f1975d987501c1146bc9d2b3f623d5d0, type: 3}
+      propertyPath: blocks.Array.data[0]
+      value: 
+      objectReference: {fileID: 2076799968}
+    - target: {fileID: 2682882913367623003, guid: f1975d987501c1146bc9d2b3f623d5d0, type: 3}
+      propertyPath: blocks.Array.data[1]
+      value: 
+      objectReference: {fileID: 242724232}
     - target: {fileID: 2803165796251124717, guid: f1975d987501c1146bc9d2b3f623d5d0, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -2166,7 +2234,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3295980508554634537, guid: f1975d987501c1146bc9d2b3f623d5d0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1520.8539
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3295980508554634537, guid: f1975d987501c1146bc9d2b3f623d5d0, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -4312,6 +4380,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999636573}
   m_CullTransparentMesh: 1
+--- !u!114 &2076799968 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5453439719954638069, guid: f1975d987501c1146bc9d2b3f623d5d0, type: 3}
+  m_PrefabInstance: {fileID: 627320816}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d692577069bc2499d891c28db3adba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
