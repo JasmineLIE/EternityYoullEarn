@@ -12,6 +12,9 @@ public class Tasks : MonoBehaviour
     public Image icon;
     public TMP_Text insightCost;
 
+    public Button dispatchBtn;
+    public TimerController timerController;
+
 
     protected int fedValues; //the values that will be incremented or decremented and sent to scripts via dispatch
     public int thresh; //the MAX for thresh val
@@ -23,24 +26,53 @@ public class Tasks : MonoBehaviour
 
     public bool canDispatch;
 
-    public CanvasGroup cg;
+    public CanvasGroup cg, busyScreen;
+
+    public string compName;
 
     private void Start()
     {
         cg= GetComponent<CanvasGroup>();    
     }
 
-    public virtual void SetUp(int insightCost, float time)
+    public virtual void SetUp(int insightCost)
     {
         insightRequired = insightCost;
-        timeToComplete = time;
+        if (CompanionUI_Menu_Model.currComp.comName == compName)
+        {
+            switch(CompanionUI_Menu_Model.currComp.comName)
+            {
+                case "Erem":
+                    if(BackgroundTasks.EremTimer > 0)
+                    {
+                        BusyScreenOpen(BackgroundTasks.EremTimer);
+                    }
+                    break;
+
+                case "Gwynhark":
+                    if(BackgroundTasks.GwynTimer > 0)
+                    {
+                        BusyScreenOpen(BackgroundTasks.GwynTimer);
+                    }
+                    break;
+                case "Quan":
+                    if (BackgroundTasks.QuanTimer > 0)
+                    {
+                        BusyScreenOpen(BackgroundTasks.QuanTimer);
+                    }
+                    break;
+            }
+        } else
+        {
+            BusyScreenClose();
+        }
 
       
     }
 
     private void Update()
     {
-        UpdateInsightText();
+        UpdateTexts();
     }
 
     public void Close()
@@ -57,8 +89,12 @@ public class Tasks : MonoBehaviour
     }
     public virtual void Dispatch()
     {
+        timeToComplete = ReturnCountdown(CompanionUI_Menu_Model.currComp.timeToCompleteTask, 
+                                            CompanionUI_Menu_Model.currComp.efficiency);
+        BusyScreenOpen(timeToComplete);
+        //take insight from player
         CompanionUI_Menu_Model.currComp.player.GetComponent<Player>().SetResource(0, (-1) * insightRequired);
-        UpdateInsightText();
+        UpdateTexts();
 
     }
 
@@ -76,7 +112,7 @@ public class Tasks : MonoBehaviour
         fedValText.text = fedValues.ToString();
     }
 
-    public void UpdateInsightText()
+    private void UpdateInsightText()
     {
         if(CompanionUI_Menu_Model.currComp != null) //safety first!
         {
@@ -99,4 +135,36 @@ public class Tasks : MonoBehaviour
         }
     }
 
+    public virtual void CanDispatchCheck()
+    {
+        
+        dispatchBtn.interactable = canDispatch;
+    }
+
+    public void BusyScreenOpen(float timeLeft)
+    {
+        busyScreen.alpha = 1;
+        busyScreen.interactable = true;
+        busyScreen.blocksRaycasts = true;
+
+        timerController.SetTime(timeToComplete, timeLeft);
+    }
+
+    public void BusyScreenClose()
+    {
+        busyScreen.alpha = 0;
+        busyScreen.interactable = false;
+        busyScreen.blocksRaycasts = false;
+    }
+
+    public float ReturnCountdown(float timeToComplete, float efficiency)
+    {
+        return timeToComplete - (((efficiency / 100) / timeToComplete) * 100);
+
+    }
+
+    public virtual void UpdateTexts()
+    {
+        UpdateInsightText();
+    }
 }

@@ -147,7 +147,7 @@ public class CompanionUI_Menu : MonoBehaviour
             }
 
             //set up info
-            compTasks[i].SetUp(comps[i].insightCost, comps[i].timeToCompleteTask);
+            compTasks[i].SetUp(comps[i].insightCost);
         }
 
 

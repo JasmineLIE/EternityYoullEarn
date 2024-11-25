@@ -19,14 +19,11 @@ public class CompanionUI_Task_Gwynhark : Tasks
 
     private void Start()
     {
-        thresh = 3; //in this case, thresh will represent out expedition points
-        fedValues = 0;
-        fedValues2 = 0;
-
-        UpdateEstimatedYields(0, 0);
-        UpdateEstimatedYields(1, 0);
+       
         ResetCounters();
-        UpdateRemainingPoints();
+        compName = "Gwynhark";
+       
+ 
     }
 
     public new bool Increment()
@@ -36,6 +33,7 @@ public class CompanionUI_Task_Gwynhark : Tasks
             thresh--;
             UpdateRemainingPoints();
             print(thresh);
+            CanDispatchCheck();
             return true;
         } 
         return false;
@@ -48,6 +46,7 @@ public class CompanionUI_Task_Gwynhark : Tasks
             thresh++;
             UpdateRemainingPoints();
             print(thresh);
+            CanDispatchCheck();
             return true;
         }
 
@@ -108,6 +107,9 @@ public class CompanionUI_Task_Gwynhark : Tasks
         UpdateEstimatedYields(arrayKey, index);
     }
 
+    /*
+     * Gen. reset
+     */
     private void ResetCounters()
     {
         Image[] counters = EbonCounters.Concat(UntransCounters).ToArray();
@@ -115,6 +117,17 @@ public class CompanionUI_Task_Gwynhark : Tasks
         {
             image.color =  new Color(0.227451f, 0.1490196f, 0.08235294f); //brown
         }
+
+        thresh = 3; //in this case, thresh will represent out expedition points
+        fedValues = 0;
+        fedValues2 = 0;
+
+        UpdateEstimatedYields(0, 0);
+        UpdateEstimatedYields(1, 0);
+
+        UpdateRemainingPoints();
+
+        CanDispatchCheck();
     }
 
     private void UpdateEstimatedYields(int index, int fedVal)
@@ -141,4 +154,24 @@ public class CompanionUI_Task_Gwynhark : Tasks
     {
         EPRemaining.text = "Expedition Points Remaining: " + thresh.ToString();
     }
+
+    public override void CanDispatchCheck()
+    {
+        if (thresh <= 0 && CompanionUI_Menu_Model.currComp.player.GetComponent<Player>().GetResource(0) >= insightRequired) 
+            canDispatch = thresh <= 0;
+
+        base.CanDispatchCheck();
+    }
+
+    public override void Dispatch()
+    {
+     
+        base.Dispatch();
+
+        BackgroundTasks.GwynTimer = timeToComplete;
+        BackgroundTasks.GwynHasTask = true;
+
+
+    }
+   
 }
