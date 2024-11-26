@@ -1359,7 +1359,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.88235295}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.9607843}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1397,9 +1397,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1246961287256059495}
   m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!1 &1304532224342472218
 GameObject:
@@ -2595,7 +2595,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2037816586777159774}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -2617,10 +2617,17 @@ MonoBehaviour:
   timerController: {fileID: 2057250712264636808}
   thresh: 0
   insightRequired: 0
-  fedValText: {fileID: 0}
+  fedValText: {fileID: 4185766582134489888}
   canDispatch: 0
   cg: {fileID: 4720237778591550631}
   busyScreen: {fileID: 13170501501918915}
+  compName: 
+  prompt: {fileID: 0}
+  artifactManager: {fileID: 0}
+  progressBar: {fileID: 3870868303583907680}
+  artifactCount: {fileID: 1447155807648797332}
+  studyLimit: {fileID: 3289852307417540483}
+  Erem: {fileID: 0}
 --- !u!1 &2090816151253988843
 GameObject:
   m_ObjectHideFlags: 0
@@ -5408,7 +5415,7 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4063556231183055474}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -5434,6 +5441,7 @@ MonoBehaviour:
   canDispatch: 0
   cg: {fileID: 4101199148533805472}
   busyScreen: {fileID: 13170501501918915}
+  compName: 
   EbonCounters:
   - {fileID: 6284787420658311982}
   - {fileID: 2140535011198004310}
@@ -5446,6 +5454,7 @@ MonoBehaviour:
   - {fileID: 5555641530279972718}
   - {fileID: 1978069883815942814}
   EPRemaining: {fileID: 5534888455877405693}
+  Gwynhark: {fileID: 0}
 --- !u!1 &4425078464947931146
 GameObject:
   m_ObjectHideFlags: 0
@@ -6432,7 +6441,7 @@ GameObject:
   - component: {fileID: 4943924261958810563}
   m_Layer: 5
   m_Name: Companion Menu
-  m_TagString: Untagged
+  m_TagString: Main Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8047,7 +8056,7 @@ GameObject:
   - component: {fileID: 3870868303583907680}
   - component: {fileID: 5587832455485306644}
   m_Layer: 5
-  m_Name: Image
+  m_Name: Fill
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8105,7 +8114,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0
+  m_FillAmount: 0.1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -10102,10 +10111,14 @@ MonoBehaviour:
   timerController: {fileID: 2057250712264636808}
   thresh: 0
   insightRequired: 0
-  fedValText: {fileID: 0}
+  fedValText: {fileID: 4513355958729532247}
   canDispatch: 0
   cg: {fileID: 2346424430899803331}
   busyScreen: {fileID: 13170501501918915}
+  compName: 
+  translationLimit: {fileID: 7158120039654577105}
+  estimatedVal: {fileID: 130661549807829063}
+  Quan: {fileID: 0}
 --- !u!1 &9020722232434157957
 GameObject:
   m_ObjectHideFlags: 0

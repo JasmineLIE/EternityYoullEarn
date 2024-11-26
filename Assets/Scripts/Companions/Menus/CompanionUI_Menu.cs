@@ -16,6 +16,7 @@ public class CompanionUI_Menu : MonoBehaviour
     public CompanionUI_General genUI;
 
 
+
     public Block[] statBlocks = new Block[2];
     public CompanionUI_Btn[] btns = new CompanionUI_Btn[3];
     private CompanionUI_Menu_Model[] menus = new CompanionUI_Menu_Model[3];
@@ -35,7 +36,7 @@ public class CompanionUI_Menu : MonoBehaviour
     public Tasks[] compTasks = new Tasks[3];
 
     public int currMenu;
-    public int compIndex;
+    public static int compIndex;
 
    
  
@@ -46,7 +47,14 @@ public class CompanionUI_Menu : MonoBehaviour
         menus[1] = investMenu;
         menus[2] = bioMenu;
 
-     
+        GameObject erem = GameObject.FindGameObjectWithTag("Erem");
+        GameObject gwyn = GameObject.FindGameObjectWithTag("Gwynhark");
+        GameObject Quan = GameObject.FindGameObjectWithTag("Quan");
+
+        comps[0] = erem.GetComponent<Erem>();
+        comps[1] = gwyn.GetComponent<Gwynhark>();
+        comps[2] = Quan.GetComponent<Quan>();
+        
         SetButtonIDs();
         genUI.Close();
       
@@ -127,7 +135,8 @@ public class CompanionUI_Menu : MonoBehaviour
     private void SetUpCompanionData()
     {
         //Set up static reference to the active companion
-        CompanionUI_Menu_Model.currComp = comps[compIndex];
+
+     
 
         //Sprites for appropriate selected companion
         bioMenu.SetImage(GameAssets.Instance.CompanionBioArt[compIndex]);
@@ -149,6 +158,7 @@ public class CompanionUI_Menu : MonoBehaviour
             }
 
             //set up info
+        
             compTasks[i].SetUp(comps[i].insightCost);
         }
 

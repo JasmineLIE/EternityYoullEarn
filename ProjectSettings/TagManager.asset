@@ -16,6 +16,7 @@ TagManager:
   - Dom
   - ArtifactDesc
   - Stat Block
+  - Main Menu
   layers:
   - Default
   - TransparentFX

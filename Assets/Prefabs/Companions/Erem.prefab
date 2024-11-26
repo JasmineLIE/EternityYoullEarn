@@ -50,7 +50,6 @@ MonoBehaviour:
   bio: []
   barks: []
   saveData: {fileID: 0}
-  ui: {fileID: 0}
   player: {fileID: 0}
   motivation: {fileID: 3719343599812325098}
   psyche: {fileID: 7261675822834789268}
@@ -58,9 +57,10 @@ MonoBehaviour:
   efficiency: 0
   timeToCompleteTask: 0
   mohRate: 0
-  EremTask: {fileID: 0}
+  specialVal1: 0
+  specialVal2: 0
   MAX_translatedTexts: 0
-  artifactTarget: 0
+  artifactTarget: 15
   studiedArtifacts: 0
 --- !u!114 &3719343599812325098
 MonoBehaviour:

@@ -13,6 +13,8 @@ public class TimerController : MonoBehaviour
 
     private CanvasGroup cg;
 
+    public CanvasGroup busyScreen;
+
     private void Start()
     {
         cg = GetComponent<CanvasGroup>();
@@ -30,6 +32,7 @@ public class TimerController : MonoBehaviour
         }  else
         {
             cg.alpha = 0;
+            BusyScreenClose();
         }
     }
 
@@ -45,6 +48,26 @@ public class TimerController : MonoBehaviour
         float minutes = Mathf.FloorToInt(currentTime / 60);
         float seconds = Mathf.FloorToInt(currentTime % 60);
 
+        BusyScreenOpen();
         timer.text = string.Format("{0:00} : {1:00}", minutes, seconds);
+    
     }
+    public void BusyScreenClose()
+    {
+
+        busyScreen.alpha = 0;
+        busyScreen.interactable = false;
+        busyScreen.blocksRaycasts = false;
+    }
+
+    public void BusyScreenOpen()
+    {
+
+        busyScreen.alpha = 1;
+        busyScreen.interactable = true;
+        busyScreen.blocksRaycasts = true;
+
+     
+    }
+
 }

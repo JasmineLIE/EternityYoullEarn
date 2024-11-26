@@ -14,55 +14,75 @@ public class CompanionUI_Task_Erem : Tasks
     public Image progressBar;
     public TMP_Text artifactCount;
     public TMP_Text studyLimit;
+
+    public GameObject Erem;
     private void Start()
     {
         compName = "Erem";
         fedValues = 0;
-        UpdateProgressBar();
         
+        Erem = GameObject.FindGameObjectWithTag(compName);
+        UpdateProgressBar();
+
+     
+
     }
 
     private void Update()
     {
+       
         //should not be able to alter this course once a task has been dispatched
         if (BackgroundTasks.EremHasTask && BackgroundTasks.EremTimer <= 0)
         {
 
-            CompanionUI_Menu.comps[0].GetComponent<Erem>().CompleteTask(studyVal);
-
+            Erem.GetComponent<Erem>().CompleteTask(studyVal);
+            UpdateProgressBar();
 
             BackgroundTasks.EremHasTask = false;
 
         }
 
-       
+        UpdateText();
+
+    }
+
+    public override void CheckTimer()
+    {
+
+        if (BackgroundTasks.EremHasTask)
+        {
+            timerController.SetTime(timeToComplete, BackgroundTasks.EremTimer);
+        }
+        else
+        {
+            timerController.SetTime(0, 0);
+        }
     }
 
     public override void Increment()
     {
         base.Increment();
-        thresh = CompanionUI_Menu_Model.currComp.GetComponent<Erem>().MAX_translatedTexts;
+        thresh = CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].GetComponent<Erem>().MAX_translatedTexts;
     }
-    public override void UpdateTexts()
-    {
-        base.UpdateTexts();
-        studyLimit.text = "Study Limit: " + CompanionUI_Menu.comps[0].GetComponent<Erem>().MAX_translatedTexts;
-    }
+   
 
   public void UpdateProgressBar()
     {
-        progressBar.fillAmount = CompanionUI_Menu.comps[0].GetComponent<Erem>().studiedArtifacts 
-            / CompanionUI_Menu.comps[0].GetComponent<Erem>().artifactTarget;
+        int currProgress = Erem.GetComponent<Erem>().studiedArtifacts;
+        int max = Erem.GetComponent<Erem>().artifactTarget;
+        
+        progressBar.fillAmount = ((float)currProgress) / (float)max;    
+        artifactCount.text = Erem.GetComponent<Erem>().studiedArtifacts + "/" + Erem.GetComponent<Erem>().artifactTarget;
     }
 
     public void RedeemArtifact()
     {
-        if (CompanionUI_Menu.comps[0].GetComponent<Erem>().ArtifactGoalMet())
+        if (Erem.GetComponent<Erem>().GetComponent<Erem>().ArtifactGoalMet())
         {
             //reset back to 0
             //this is messy KILL MEE NYEEOOOW
-            CompanionUI_Menu.comps[0].GetComponent<Erem>().saveData.SetStudiedArtifactsVal(CompanionUI_Menu.comps[0].GetComponent<Erem>().studiedArtifacts * (-1)); 
-            CompanionUI_Menu.comps[0].GetComponent<Erem>().studiedArtifacts = 0;
+            Erem.GetComponent<Erem>().saveData.SetStudiedArtifactsVal(Erem.GetComponent<Erem>().studiedArtifacts * (-1));
+            Erem.GetComponent<Erem>().studiedArtifacts = 0;
 
             ArtifactInfo temp = artifactManager.DiscoverArtifact();
 
@@ -75,7 +95,7 @@ public class CompanionUI_Task_Erem : Tasks
             else
             {
                 //Get extra marks if there are no more artifacts to discover
-                CompanionUI_Menu.comps[0].GetComponent<Erem>().GenerateMarks();
+                Erem.GetComponent<Erem>().GetComponent<Erem>().GenerateMarks();
                 
             }
         }
@@ -87,5 +107,13 @@ public class CompanionUI_Task_Erem : Tasks
         studyVal = fedValues;
         BackgroundTasks.EremTimer = timeToComplete;
         BackgroundTasks.EremHasTask = true;
+    }
+
+    public override void UpdateText()
+    {
+        base.UpdateText();
+        studyLimit.text = "Study Cap: " + Erem.GetComponent<Erem>().MAX_translatedTexts; 
+        //OLD: for some reason didn't work in the override
+        //IT'S BECAUSE I SET PARENT UPDATE TO PRIVATE, CHAT, AM I STUPID?
     }
 }

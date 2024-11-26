@@ -19,6 +19,7 @@ public class CompanionUI_Task_Gwynhark : Tasks
     static int ceVals;
     static int utVals;
 
+    public GameObject Gwynhark;
 
     private void Start()
     {
@@ -26,22 +27,41 @@ public class CompanionUI_Task_Gwynhark : Tasks
         ResetCounters();
         compName = "Gwynhark";
        
- 
+        Gwynhark = GameObject.FindGameObjectWithTag(compName);
+
+
+
     }
 
 
     private void Update()
     {
-
+        insightCost.text = CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].player.GetComponent<Player>().GetResource(0)
+               + "/" + insightRequired;
         //should not be able to alter this course once a task has been dispatched
         if (BackgroundTasks.GwynHasTask && BackgroundTasks.GwynTimer <= 0)
         {
 
-            CompanionUI_Menu.comps[1].GetComponent<Gwynhark>().CompleteTask(ceVals, utVals);
+            Gwynhark.GetComponent<Gwynhark>().CompleteTask(ceVals, utVals);
 
 
             BackgroundTasks.GwynHasTask = false;
 
+        }
+        UpdateText();
+        
+    }
+
+    public override void CheckTimer()
+    {
+
+        if (BackgroundTasks.GwynHasTask)
+        {
+            timerController.SetTime(timeToComplete, BackgroundTasks.GwynTimer);
+        }
+        else
+        {
+            timerController.SetTime(0, 0);
         }
     }
     public new bool Increment()
@@ -63,7 +83,7 @@ public class CompanionUI_Task_Gwynhark : Tasks
         {
             thresh++;
             UpdateRemainingPoints();
-            print(thresh);
+            print(thresh + " " + "hi");
             CanDispatchCheck();
             return true;
         }
@@ -159,9 +179,9 @@ public class CompanionUI_Task_Gwynhark : Tasks
             {
                 
 
-                estimatedYields[index].text = CompanionUI_Menu_Model.currComp.GetComponent<Gwynhark>().MIN_resources 
+                estimatedYields[index].text = CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].GetComponent<Gwynhark>().MIN_resources 
                 + "-" 
-                + (CompanionUI_Menu_Model.currComp.GetComponent<Gwynhark>().MAX_resources * fedVal);
+                + (CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].GetComponent<Gwynhark>().MAX_resources * fedVal);
             }
            
           
@@ -177,7 +197,7 @@ public class CompanionUI_Task_Gwynhark : Tasks
 
     public override void CanDispatchCheck()
     {
-        if (thresh <= 0 && CompanionUI_Menu_Model.currComp.player.GetComponent<Player>().GetResource(0) >= insightRequired) 
+        if (thresh <= 0 && CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].player.GetComponent<Player>().GetResource(0) >= insightRequired) 
             canDispatch = thresh <= 0;
         dispatchBtn.interactable = canDispatch;
        

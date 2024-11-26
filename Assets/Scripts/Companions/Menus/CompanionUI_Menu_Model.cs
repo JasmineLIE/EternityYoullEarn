@@ -7,7 +7,7 @@ public class CompanionUI_Menu_Model : MonoBehaviour
 {
     public Image img;
     public CanvasGroup menu;
-    public static Companion currComp;
+   
 
     private void Start()
     {

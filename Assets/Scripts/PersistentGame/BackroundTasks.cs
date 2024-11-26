@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class BackgroundTasks : MonoBehaviour
 {
-    public Player player;
+   
     public static float EremTimer;
     public static float QuanTimer;
     public static float GwynTimer;

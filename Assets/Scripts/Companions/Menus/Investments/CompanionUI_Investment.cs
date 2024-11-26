@@ -23,24 +23,24 @@ public class CompanionUI_Investment : CompanionUI_Menu_Model
  
     public void SetUpMotivation()
     {
-        motivation.SetUp(currComp.motivation.flavourText[currComp.motivation.GetIndex()],
-                            currComp.GetMotivationEffectDesc(),
-                            currComp.GetCurrentMotivation(),
-                            currComp.motivation.GetIndex()
+        motivation.SetUp(CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].motivation.flavourText[CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].motivation.GetIndex()],
+                           CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].GetMotivationEffectDesc(),
+                            CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].GetCurrentMotivation(),
+                          CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].motivation.GetIndex()
                              ) ;
     }
 
     public void UpgradeMotivation()
     {
-        bool wasUpgradeSuccessful = currComp.UpgradeMotivation();
+        bool wasUpgradeSuccessful = CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].UpgradeMotivation();
         if (wasUpgradeSuccessful)
         {
-            currComp.player.GetComponent<Player>().saveData.IncrementTotalInvestments(); //for one of the revelations
+            CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].player.GetComponent<Player>().saveData.IncrementTotalInvestments(); //for one of the revelations
             SetUpMotivation();
 
             foreach(Block tempBlock in blocks)
             {
-                tempBlock.SetUpStats(currComp);
+                tempBlock.SetUpStats(CompanionUI_Menu.comps[CompanionUI_Menu.compIndex]);
             }
 
         } else
@@ -52,25 +52,25 @@ public class CompanionUI_Investment : CompanionUI_Menu_Model
 
     public void SetUpPsyche()
     {
-        psyche.SetUp(currComp.psyche.flavourText[currComp.psyche.GetIndex()],
-                       currComp.GetPsycheEffectDesc(),
-                       currComp.GetCurrentPsyche(),
-                       currComp.psyche.GetIndex()
+        psyche.SetUp(CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].psyche.flavourText[CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].psyche.GetIndex()],
+                       CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].GetPsycheEffectDesc(),
+                       CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].GetCurrentPsyche(),
+                       CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].psyche.GetIndex()
                        );
     }
 
     public void UpgradePsyche()
     {
-        bool wasUpgradeSuccessful = currComp.UpgradePsyche();
+        bool wasUpgradeSuccessful = CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].UpgradePsyche();
 
         if (wasUpgradeSuccessful)
         {
-            currComp.player.GetComponent<Player>().saveData.IncrementTotalInvestments(); //increment total number of investments
+            CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].player.GetComponent<Player>().saveData.IncrementTotalInvestments(); //increment total number of investments
             SetUpPsyche();
 
             foreach (Block tempBlock in blocks)
             {
-                tempBlock.SetUpStats(currComp);
+                tempBlock.SetUpStats(CompanionUI_Menu.comps[CompanionUI_Menu.compIndex]);
             }
 
         } else
