@@ -191,6 +191,7 @@ public class Tasks : MonoBehaviour
         busyScreen.interactable = true;
         busyScreen.blocksRaycasts = true;
 
+        //timeToComplete should be what it was when Dispatch was intially called
         timerController.SetTime(timeToComplete, timeLeft);
     }
 
