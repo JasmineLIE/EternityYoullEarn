@@ -165,5 +165,10 @@ public class Erem : Companion
      
     }
 
+    public bool ArtifactGoalMet()
+    {
+        return artifactTarget == studiedArtifacts;
+    }
+
 
 }

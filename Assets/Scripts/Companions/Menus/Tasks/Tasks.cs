@@ -121,6 +121,10 @@ public class Tasks : MonoBehaviour
         cg.blocksRaycasts = true;
         UpdateBusyScreen();
     }
+
+    /*
+     * Will calculate time to complete, open Busy Screen, and subtract insight
+     */
     public virtual void Dispatch()
     {
         timeToComplete = ReturnCountdown(CompanionUI_Menu_Model.currComp.timeToCompleteTask, 
