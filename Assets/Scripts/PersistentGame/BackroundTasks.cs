@@ -18,7 +18,9 @@ public class BackgroundTasks : MonoBehaviour
     public static bool GwynHasTask;
 
     public static bool CanCollect;
-   
+
+    
+
     // Start is called before the first frame update
 
     /*
@@ -26,7 +28,7 @@ public class BackgroundTasks : MonoBehaviour
      * Otherwise, those processes will be destroyed when moving between screens.
      */
 
- 
+
     private void Update()
     {
 
@@ -66,7 +68,9 @@ public class BackgroundTasks : MonoBehaviour
                 GwynTimer -= Time.deltaTime;
             } 
         }
-
+        
+       
+      
         if ((GwynTimer <= 0 && GwynHasTask) || (EremTimer <= 0 && EremHasTask) || (QuanTimer <= 0 && QuanHasTask))
         {
             CanCollect = true;

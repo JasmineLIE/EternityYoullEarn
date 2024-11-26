@@ -9,7 +9,7 @@ public class QuanTask : Task
     public TMP_Text untransText;
     public TMP_Text estimatedRewards;
 
-    public QuanRewards summary;
+    
 
     private void Update()
     {

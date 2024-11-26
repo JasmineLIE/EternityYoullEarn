@@ -30,27 +30,65 @@ public class Tasks : MonoBehaviour
 
     public string compName;
 
+    static bool busyScreenOpen;
     private void Start()
     {
-        cg= GetComponent<CanvasGroup>();    
+        cg= GetComponent<CanvasGroup>();
+        busyScreenOpen = false;
     }
 
     public virtual void SetUp(int insightCost)
     {
         insightRequired = insightCost;
-        if (CompanionUI_Menu_Model.currComp.comName == compName)
+       
+      
+    }
+
+    private void Update()
+    {
+     
+        UpdateTexts();
+
+
+        switch (CompanionUI_Menu_Model.currComp.comName)
         {
-            switch(CompanionUI_Menu_Model.currComp.comName)
+            case "Erem":
+                if (BackgroundTasks.EremTimer <= 0)
+                {
+                    BusyScreenClose();
+                }
+                break;
+
+            case "Gwynhark":
+                if (BackgroundTasks.GwynTimer <= 0 )
+                {
+                    BusyScreenClose();
+                }
+                break;
+            case "Quan":
+                if (BackgroundTasks.QuanTimer <= 0)
+                {
+                    BusyScreenClose();
+                }
+                break;
+        }
+
+    }
+
+    public void UpdateBusyScreen()
+    {
+       
+            switch (CompanionUI_Menu_Model.currComp.comName)
             {
                 case "Erem":
-                    if(BackgroundTasks.EremTimer > 0)
+                    if (BackgroundTasks.EremTimer > 0)
                     {
                         BusyScreenOpen(BackgroundTasks.EremTimer);
                     }
                     break;
 
                 case "Gwynhark":
-                    if(BackgroundTasks.GwynTimer > 0)
+                    if (BackgroundTasks.GwynTimer > 0)
                     {
                         BusyScreenOpen(BackgroundTasks.GwynTimer);
                     }
@@ -62,30 +100,26 @@ public class Tasks : MonoBehaviour
                     }
                     break;
             }
-        } else
-        {
-            BusyScreenClose();
-        }
-
+        
       
-    }
+        
+       
 
-    private void Update()
-    {
-        UpdateTexts();
     }
-
     public void Close()
     {
         cg.alpha = 0;
         cg.interactable = false;
         cg.blocksRaycasts = false;
+
+       
     }
     public void Open()
     {
         cg.alpha = 1;
         cg.interactable = true;
         cg.blocksRaycasts = true;
+        UpdateBusyScreen();
     }
     public virtual void Dispatch()
     {
@@ -94,7 +128,7 @@ public class Tasks : MonoBehaviour
         BusyScreenOpen(timeToComplete);
         //take insight from player
         CompanionUI_Menu_Model.currComp.player.GetComponent<Player>().SetResource(0, (-1) * insightRequired);
-        UpdateTexts();
+    
 
     }
 
@@ -103,6 +137,8 @@ public class Tasks : MonoBehaviour
         if(fedValues < thresh) fedValues++;
         fedValText.text = fedValues.ToString();
 
+        CanDispatchCheck();
+
     }
 
     public virtual void Decrement()
@@ -110,6 +146,8 @@ public class Tasks : MonoBehaviour
         if(fedValues > 0) fedValues--;
 
         fedValText.text = fedValues.ToString();
+
+        CanDispatchCheck();
     }
 
     private void UpdateInsightText()
@@ -137,12 +175,14 @@ public class Tasks : MonoBehaviour
 
     public virtual void CanDispatchCheck()
     {
-        
+        if (CompanionUI_Menu_Model.currComp.player.GetComponent<Player>().GetResource(0) >= insightRequired)
+            canDispatch = fedValues > 0;
         dispatchBtn.interactable = canDispatch;
     }
 
     public void BusyScreenOpen(float timeLeft)
     {
+        busyScreenOpen = true;
         busyScreen.alpha = 1;
         busyScreen.interactable = true;
         busyScreen.blocksRaycasts = true;
@@ -152,6 +192,7 @@ public class Tasks : MonoBehaviour
 
     public void BusyScreenClose()
     {
+        busyScreenOpen = false;
         busyScreen.alpha = 0;
         busyScreen.interactable = false;
         busyScreen.blocksRaycasts = false;
@@ -166,5 +207,11 @@ public class Tasks : MonoBehaviour
     public virtual void UpdateTexts()
     {
         UpdateInsightText();
+    }
+
+    public void Max()
+    {
+        fedValues = thresh;
+        fedValText.text = fedValues.ToString();
     }
 }

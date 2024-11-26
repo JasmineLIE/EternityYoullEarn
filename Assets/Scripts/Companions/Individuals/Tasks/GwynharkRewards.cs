@@ -3,36 +3,23 @@ using System.Collections.Generic;
 using Unity.Collections;
 using UnityEngine;
 
-public class GwynharkRewards : Rewards
+public class GwynharkRewards : MonoBehaviour
 {
   
     public static int ebonyYield;
     public static int untransYield;
 
-    
- 
    public Gwynhark gwynhark;
-   public GwynharkTask task;
+  
 
-    private void Start()
-    {
-        companionTasks[1] = task;
-    }
+   
     private void Update()
     {
-        if (BackgroundTasks.GwynHasTask)
-        {
-          
 
-            if (BackgroundTasks.GwynTimer > 0)
-            {
-                SetText(gwynhark.comName + " is searching...");
-            } else
-            {
                 CollectRewards();
-            }
+            
           
-        } 
+        
     }
     public void SetUp(GameObject gwyn)
     {
@@ -57,9 +44,9 @@ public class GwynharkRewards : Rewards
          
             gwynhark.CompleteTask(ebonyYield, untransYield);
          
-            UpdateText();
+       
             BackgroundTasks.GwynHasTask = false;
-            Close();
+         
         }
     
     }

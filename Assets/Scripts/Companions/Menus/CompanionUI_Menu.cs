@@ -25,7 +25,7 @@ public class CompanionUI_Menu : MonoBehaviour
      * 1 - Gwyn
      * 2 - Quan
      */
-    public Companion[] comps = new Companion[3];
+    public static Companion[] comps = new Companion[3];
 
     /*
       * 0 - Erem
@@ -52,6 +52,7 @@ public class CompanionUI_Menu : MonoBehaviour
       
     }
 
+   
     public void EremMenu()
     {
         OpenMenu(0, 0);
@@ -99,6 +100,7 @@ public class CompanionUI_Menu : MonoBehaviour
         
      
     }
+
 
     public void SwitchMenu(int menu)
     {

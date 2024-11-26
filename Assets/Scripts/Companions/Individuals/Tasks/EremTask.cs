@@ -21,7 +21,6 @@ public class EremTask : Task
 
     public int currTextsResearched;
 
-    public EremRewards summary;
 
     public DiscoveredPrompt prompt;
   

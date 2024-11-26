@@ -16,6 +16,9 @@ public class CompanionUI_Task_Gwynhark : Tasks
     int fedValues2; //untrans
     //fed values = CE
   
+    static int ceVals;
+    static int utVals;
+
 
     private void Start()
     {
@@ -26,6 +29,21 @@ public class CompanionUI_Task_Gwynhark : Tasks
  
     }
 
+
+    private void Update()
+    {
+
+        //should not be able to alter this course once a task has been dispatched
+        if (BackgroundTasks.GwynHasTask && BackgroundTasks.GwynTimer <= 0)
+        {
+
+            CompanionUI_Menu.comps[1].GetComponent<Gwynhark>().CompleteTask(ceVals, utVals);
+
+
+            BackgroundTasks.GwynHasTask = false;
+
+        }
+    }
     public new bool Increment()
     {
         if (thresh > 0)
@@ -139,9 +157,11 @@ public class CompanionUI_Task_Gwynhark : Tasks
 
             } else
             {
-                Gwynhark gwyn = CompanionUI_Menu_Model.currComp.GetComponent<Gwynhark>();
+                
 
-                estimatedYields[index].text = gwyn.MIN_resources + "-" + (gwyn.MAX_resources * fedVal);
+                estimatedYields[index].text = CompanionUI_Menu_Model.currComp.GetComponent<Gwynhark>().MIN_resources 
+                + "-" 
+                + (CompanionUI_Menu_Model.currComp.GetComponent<Gwynhark>().MAX_resources * fedVal);
             }
            
           
@@ -159,15 +179,16 @@ public class CompanionUI_Task_Gwynhark : Tasks
     {
         if (thresh <= 0 && CompanionUI_Menu_Model.currComp.player.GetComponent<Player>().GetResource(0) >= insightRequired) 
             canDispatch = thresh <= 0;
-
-        base.CanDispatchCheck();
+        dispatchBtn.interactable = canDispatch;
+       
     }
 
     public override void Dispatch()
     {
      
         base.Dispatch();
-
+        ceVals = fedValues;
+        utVals = ceVals;
         BackgroundTasks.GwynTimer = timeToComplete;
         BackgroundTasks.GwynHasTask = true;
 
