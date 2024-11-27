@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 40249099}
   - component: {fileID: 40249100}
   - component: {fileID: 40249101}
+  - component: {fileID: 40249102}
   m_Layer: 0
   m_Name: PersistentGameManager
   m_TagString: Untagged
@@ -180,6 +181,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34127cf4c6cc3104bacdb7f158b8bbd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!81 &40249102
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40249098}
+  m_Enabled: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
