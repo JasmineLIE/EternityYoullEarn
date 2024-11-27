@@ -42,9 +42,26 @@ public class CompanionUI_Task_Gwynhark : Tasks
         if (BackgroundTasks.GwynHasTask && BackgroundTasks.GwynTimer <= 0)
         {
 
-            Gwynhark.GetComponent<Gwynhark>().CompleteTask(ceVals, utVals);
+            int[] yields = Gwynhark.GetComponent<Gwynhark>().CompleteTask(ceVals, utVals);
 
 
+           if (ceVals >0)
+            {
+                GameObject increment = Instantiate(RewardFeebackInstance);
+                increment.GetComponent<GateIncrementFeedback>().feedback.text = "+" + yields[0];
+                increment.GetComponent<GateIncrementFeedback>().icon.sprite = GameAssets.Instance.ResourceIcons[2];
+                increment.transform.SetParent(CharSpriteTransform.transform);
+                increment.transform.position = CharSpriteTransform.transform.position;
+            }
+
+           if (utVals >0)
+            {
+                GameObject increment = Instantiate(RewardFeebackInstance);
+                increment.GetComponent<GateIncrementFeedback>().feedback.text = "+" + yields[1];
+                increment.GetComponent<GateIncrementFeedback>().icon.sprite = GameAssets.Instance.ResourceIcons[3];
+                increment.transform.SetParent(CharSpriteTransform.transform);
+                increment.transform.position = CharSpriteTransform.transform.position;
+            }
             BackgroundTasks.GwynHasTask = false;
 
         }

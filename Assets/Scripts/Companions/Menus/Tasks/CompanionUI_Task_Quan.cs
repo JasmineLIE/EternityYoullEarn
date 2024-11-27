@@ -17,7 +17,7 @@ public class CompanionUI_Task_Quan : Tasks
         compName = "Quan";
         fedValues = 0;
         Quan = GameObject.FindGameObjectWithTag(compName);
-
+        resourceKey = 3;
      
 
     }
@@ -31,6 +31,12 @@ public class CompanionUI_Task_Quan : Tasks
 
             Quan.GetComponent<Quan>().CompleteTask(utVals);
 
+            GameObject increment = Instantiate(RewardFeebackInstance);
+            increment.GetComponent<GateIncrementFeedback>().feedback.text = "+" +
+                                Quan.GetComponent<Quan>().CalculateRewards(utVals);
+            increment.GetComponent<GateIncrementFeedback>().icon.sprite = GameAssets.Instance.ResourceIcons[4];
+            increment.transform.SetParent(CharSpriteTransform.transform);
+            increment.transform.position = CharSpriteTransform.transform.position;
 
             BackgroundTasks.QuanHasTask = false;
 
@@ -54,14 +60,15 @@ public class CompanionUI_Task_Quan : Tasks
     public override void Decrement()
     {
         base.Decrement();
-        estimatedVal.text = CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].GetComponent<Quan>().CalculateRewards(fedValues).ToString();
+        UpdateEstimatedVal();
+       
     }
     public override void Increment()
     {
         thresh = CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].GetComponent<Quan>().MAX_untranslatedTexts;
-        estimatedVal.text = CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].GetComponent<Quan>().CalculateRewards(fedValues).ToString();
+      
         base.Increment();
-
+        UpdateEstimatedVal();
     }
 
     public override void Dispatch()
@@ -84,5 +91,25 @@ public class CompanionUI_Task_Quan : Tasks
     {
         base.UpdateText();
         translationLimit.text = "Translation Limit: " + Quan.GetComponent<Quan>().MAX_untranslatedTexts;
+    }
+
+    public void UpdateEstimatedVal()
+    {
+        
+    
+        if (CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].GetComponent<Quan>().CalculateRewards(fedValues) <= 0)
+        {
+            estimatedVal.text = "0";
+        } else
+        {
+            estimatedVal.text = CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].GetComponent<Quan>().CalculateRewards(fedValues).ToString();
+        }
+    }
+
+    public override void Max()
+    {
+        thresh = CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].GetComponent<Quan>().MAX_untranslatedTexts;
+        base.Max();
+        UpdateEstimatedVal();
     }
 }

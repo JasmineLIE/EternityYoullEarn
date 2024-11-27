@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
@@ -29,6 +30,8 @@ public class TheGate : MonoBehaviour
     {
         player.GetComponent<Player>().SetResource(0, insightIncrement);
         GameObject increment = Instantiate(feedbackPrefab);
+        increment.GetComponent<GateIncrementFeedback>().feedback.text = "+" + insightIncrement.ToString();
+        increment.GetComponent<GateIncrementFeedback>().icon.sprite = GameAssets.Instance.ResourceIcons[0];
         increment.transform.SetParent(gameObject.transform);
         increment.transform.position = Input.mousePosition;
 

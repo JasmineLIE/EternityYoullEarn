@@ -60,7 +60,12 @@ public class CompanionUI_Menu : MonoBehaviour
       
     }
 
-   
+    private void Update()
+    {
+        
+    }
+
+
     public void EremMenu()
     {
         OpenMenu(0, 0);

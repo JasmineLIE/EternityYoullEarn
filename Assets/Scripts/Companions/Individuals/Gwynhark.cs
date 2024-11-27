@@ -140,7 +140,7 @@ public class Gwynhark : Companion
         int[] yields = {ceYield, utYield };
         return yields;
     }
-   public void CompleteTask(int ceYield, int utYield)
+   public int[] CompleteTask(int ceYield, int utYield)
     {
       
         print("The crystal ebony yield is: " + ceYield);
@@ -150,6 +150,10 @@ public class Gwynhark : Companion
         player.GetComponent<Player>().SetResource(2, ceYield);
         player.GetComponent<Player>().SetResource(3, utYield);
         CompleteTask();
+
+        int[] yields = {ceYield, utYield };
+
+        return yields;
 
     }
 

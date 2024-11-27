@@ -32,7 +32,7 @@ public class Invest_Btn : MonoBehaviour
         //check if there are any investments left
 
         
-        //player = GameObject.FindGameObjectWithTag("Player");
+        player = GameObject.FindGameObjectWithTag("Player");
         maxLevel = 2;
      
         //debug
@@ -71,7 +71,7 @@ public class Invest_Btn : MonoBehaviour
 
     private void UpdateCostText()
     {
-        //currMOH = player.GetComponent<Player>().GetResource(1);
+        currMOH = player.GetComponent<Player>().GetResource(1);
       
         costText.text = currMOH + "/" + cost;
 

@@ -30,6 +30,9 @@ public class Tasks : MonoBehaviour
 
     public string compName;
 
+    public GameObject RewardFeebackInstance;
+    public GameObject CharSpriteTransform;
+
     
     private void Start()
     {
@@ -82,7 +85,8 @@ public class Tasks : MonoBehaviour
 
     public virtual void Increment()
     {
-        if(fedValues < thresh) fedValues++;
+        //need to check if we also have enough
+        if (fedValues < thresh && fedValues < CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].player.GetComponent<Player>().GetResource(resourceKey)) fedValues++;
         fedValText.text = fedValues.ToString();
 
         CanDispatchCheck();
@@ -101,10 +105,9 @@ public class Tasks : MonoBehaviour
 
     private void UpdateInsightText()
     {
-        if(CompanionUI_Menu.comps[CompanionUI_Menu.compIndex] != null) //safety first!
-        {
-            
 
+
+        insightCost.text = CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].player.GetComponent<Player>().GetResource(0) + "/" + insightRequired;
             if (CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].player.GetComponent<Player>().GetResource(0) 
                 >= CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].insightCost)
          {
@@ -117,7 +120,7 @@ public class Tasks : MonoBehaviour
             icon.color = Color.red;
             insightCost.color = Color.red;
              }
-        }
+        
     }
 
     public virtual void CanDispatchCheck()
@@ -137,15 +140,24 @@ public class Tasks : MonoBehaviour
     }
 
    
-    public void Max()
+    public virtual void Max()
     {
-        fedValues = thresh;
+        if (CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].player.GetComponent<Player>().GetResource(resourceKey) >= thresh)
+        {
+            fedValues = thresh;
+        } else
+        {
+            fedValues = CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].player.GetComponent<Player>().GetResource(resourceKey);
+        }
+
         fedValText.text = fedValues.ToString();
+        CanDispatchCheck();
     }
 
     public virtual void UpdateText()
     {
         UpdateInsightText();
+     
     }
 
     public virtual void CheckTimer()

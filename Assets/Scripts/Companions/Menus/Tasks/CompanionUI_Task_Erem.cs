@@ -20,6 +20,7 @@ public class CompanionUI_Task_Erem : Tasks
     {
         compName = "Erem";
         fedValues = 0;
+        resourceKey = 4;
         
         Erem = GameObject.FindGameObjectWithTag(compName);
         UpdateProgressBar();
@@ -36,6 +37,13 @@ public class CompanionUI_Task_Erem : Tasks
         {
 
             Erem.GetComponent<Erem>().CompleteTask(studyVal);
+
+            GameObject increment = Instantiate(RewardFeebackInstance);
+            increment.GetComponent<GateIncrementFeedback>().feedback.text = "+" + studyVal;
+            increment.GetComponent<GateIncrementFeedback>().icon.sprite = GameAssets.Instance.ResourceIcons[7];
+            increment.transform.SetParent(CharSpriteTransform.transform);
+            increment.transform.position = CharSpriteTransform.transform.position;
+
             UpdateProgressBar();
 
             BackgroundTasks.EremHasTask = false;
@@ -61,8 +69,10 @@ public class CompanionUI_Task_Erem : Tasks
 
     public override void Increment()
     {
-        base.Increment();
         thresh = CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].GetComponent<Erem>().MAX_translatedTexts;
+      
+        base.Increment();
+     
     }
    
 
@@ -115,5 +125,13 @@ public class CompanionUI_Task_Erem : Tasks
         studyLimit.text = "Study Cap: " + Erem.GetComponent<Erem>().MAX_translatedTexts; 
         //OLD: for some reason didn't work in the override
         //IT'S BECAUSE I SET PARENT UPDATE TO PRIVATE, CHAT, AM I STUPID?
+        //NVM THAT'S NOT RIGHT EITHER FUUUUU
+    }
+
+    public override void Max()
+    {
+        thresh = CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].GetComponent<Erem>().MAX_translatedTexts;
+        base.Max();
+   
     }
 }
