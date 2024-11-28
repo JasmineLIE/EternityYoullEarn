@@ -154,7 +154,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1626627948}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &40249100
@@ -182,6 +183,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1626627947}
+  clipList:
+  - {fileID: 8300000, guid: 0077c9098f71f4e4a9414c3d28948273, type: 3}
+  - {fileID: 8300000, guid: 5c40c51df503ae549b11984468a478ad, type: 3}
+  - {fileID: 8300000, guid: 04b2df2dcd626fc4e8a5cc6e8ee3454f, type: 3}
+  - {fileID: 8300000, guid: 8cc3655767226d24da4eae6102763fa0, type: 3}
+  - {fileID: 8300000, guid: a107d8b09b8f487448881fe5c08823db, type: 3}
 --- !u!81 &40249102
 AudioListener:
   m_ObjectHideFlags: 0
@@ -196,7 +203,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 40249099}
     m_Modifications:
     - target: {fileID: 1073955165301210831, guid: 35e19c8bba0472244a07235e65749706, type: 3}
       propertyPath: m_LocalPosition.x
@@ -216,15 +223,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1073955165301210831, guid: 35e19c8bba0472244a07235e65749706, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1073955165301210831, guid: 35e19c8bba0472244a07235e65749706, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1073955165301210831, guid: 35e19c8bba0472244a07235e65749706, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1073955165301210831, guid: 35e19c8bba0472244a07235e65749706, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -252,9 +259,13 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 8093077372737894341, guid: 35e19c8bba0472244a07235e65749706, type: 3}
   m_PrefabInstance: {fileID: 1626627946}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1626627948 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1073955165301210831, guid: 35e19c8bba0472244a07235e65749706, type: 3}
+  m_PrefabInstance: {fileID: 1626627946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 40249099}
-  - {fileID: 1626627946}

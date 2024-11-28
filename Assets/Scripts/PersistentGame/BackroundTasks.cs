@@ -19,7 +19,7 @@ public class BackgroundTasks : MonoBehaviour
 
     public static bool CanCollect;
 
-    
+
 
     // Start is called before the first frame update
 
@@ -28,7 +28,10 @@ public class BackgroundTasks : MonoBehaviour
      * Otherwise, those processes will be destroyed when moving between screens.
      */
 
-
+    private void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     private void Update()
     {
 

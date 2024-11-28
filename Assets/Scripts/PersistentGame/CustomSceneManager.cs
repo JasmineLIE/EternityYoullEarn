@@ -24,10 +24,10 @@ public class CustomSceneManager : MonoBehaviour {
         {
             CurrScene = key; 
 
-            SceneManager.LoadScene(key);
+        
             if (key == 1 || key == 3)
             {
-                SceneManager.LoadScene(4, LoadSceneMode.Additive);
+                SceneManager.LoadScene(key);
             }
 
             

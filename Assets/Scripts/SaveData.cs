@@ -98,7 +98,9 @@ public class SaveData : MonoBehaviour
         BackgroundTasks.QuanHasTask = false;
         BackgroundTasks.CanCollect = false;
 
+        SceneManager.LoadScene("PersistentGame");
         CustomSceneManager.ChangeScene(1);
+      
         
     }
 

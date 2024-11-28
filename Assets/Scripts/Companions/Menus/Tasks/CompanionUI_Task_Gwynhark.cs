@@ -225,7 +225,7 @@ public class CompanionUI_Task_Gwynhark : Tasks
      
         base.Dispatch();
         ceVals = fedValues;
-        utVals = ceVals;
+        utVals = fedValues2;
         BackgroundTasks.GwynTimer = timeToComplete;
         BackgroundTasks.GwynHasTask = true;
 
