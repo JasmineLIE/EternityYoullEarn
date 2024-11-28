@@ -52,6 +52,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 265bd0be2f4a15c4894c18ec3fa616d9, type: 3}
   - {fileID: 21300000, guid: d334d3460b2b50441a84de57a0a79319, type: 3}
   - {fileID: 21300000, guid: 05d88eb586cab044fad7189e2db88be4, type: 3}
+  - {fileID: 21300000, guid: 5bab3a66114d1674d9cdc100166f5eae, type: 3}
   ButtonIcons:
   - {fileID: 21300000, guid: 6d533dad8d64a7e48a4df7dad849e1fd, type: 3}
   - {fileID: 21300000, guid: 2bd643e4b2feb0342b22fd0adbd15383, type: 3}

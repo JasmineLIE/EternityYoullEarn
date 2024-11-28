@@ -144,7 +144,7 @@ public class Erem : Companion
 
    
 
-        player.GetComponent<Player>().SetResource(4, (-1) * texts);
+     
     }
 
     public bool RedeemArtifact()

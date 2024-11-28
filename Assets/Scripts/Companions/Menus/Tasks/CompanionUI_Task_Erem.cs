@@ -115,6 +115,7 @@ public class CompanionUI_Task_Erem : Tasks
     {
         base.Dispatch();
         studyVal = fedValues;
+        Erem.GetComponent<Erem>().player.GetComponent<Player>().SetResource(4, (-1) * studyVal);
         BackgroundTasks.EremTimer = timeToComplete;
         BackgroundTasks.EremHasTask = true;
     }
