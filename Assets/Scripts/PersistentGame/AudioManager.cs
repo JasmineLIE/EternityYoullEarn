@@ -8,13 +8,14 @@ public class AudioManager : MonoBehaviour
 
     public List<AudioClip> clipList;
 
-    int currSong;
-    float currLength;
+    static int currSong;
+    static float currLength;
+    static float stopPoint;
     float downtimeSilence;
     float currDownTime;
     private void Start()
     {
-        downtimeSilence = 10f;
+        downtimeSilence = 5f;
         currDownTime = downtimeSilence;
         ShufflePlaylist();
     }
@@ -24,24 +25,47 @@ public class AudioManager : MonoBehaviour
         if (currLength > 0)
         {
             currLength -= Time.deltaTime;
+            stopPoint += Time.deltaTime;
+        } else if (currDownTime > 0)
+        {
+            stopPoint = 0;
+            currDownTime -= Time.deltaTime;
         } else
         {
             ShufflePlaylist();
         }
+        
+         
+        
     }
 
     private void ShufflePlaylist()
     {
-        int song = 0;
+
+        //if song was paused
+        if (stopPoint > 0)
+        {
+            audioSource.clip = clipList[currSong];
+            audioSource.time = stopPoint;
+        }
+
+        int song = Random.Range(0, clipList.Count);
         //if song and currSong are the same, reshuffle the value until we get something different
-        while(song == currSong)
+        while (song == currSong)
         {
             song = Random.Range(0, clipList.Count);
 
         }
 
-        audioSource.clip = clipList[song];  
-        currLength = clipList[song].length; 
+        currSong = song;
 
+        audioSource.clip = clipList[currSong];
+        audioSource.Play();
+        audioSource.volume = 0;
+
+        StartCoroutine(AudioFadeout.StartFade(audioSource, 3f, 1));
+
+        currLength = clipList[song].length;
+        currDownTime = downtimeSilence;
     }
 }

@@ -137,7 +137,7 @@ public class NavBar : Clickable
         
         if (CustomSceneManager.CurrScene == 1)
         {
-           ;
+           
             animator.SetTrigger("CompanionHubTrans");
           
            
