@@ -12,9 +12,11 @@ public class CompanionUI_Task_Erem : Tasks
     public ArtifactManager artifactManager;
     
     public Image progressBar;
+    public Image artifactIcon;
     public TMP_Text artifactCount;
     public TMP_Text studyLimit;
 
+    bool noMoreArtifactsLeft;
     public GameObject Erem;
     private void Start()
     {
@@ -25,6 +27,7 @@ public class CompanionUI_Task_Erem : Tasks
         Erem = GameObject.FindGameObjectWithTag(compName);
         UpdateProgressBar();
 
+       
      
 
     }
@@ -81,8 +84,13 @@ public class CompanionUI_Task_Erem : Tasks
         int currProgress = Erem.GetComponent<Erem>().studiedArtifacts;
         int max = Erem.GetComponent<Erem>().artifactTarget;
         
-        progressBar.fillAmount = ((float)currProgress) / (float)max;    
-        artifactCount.text = Erem.GetComponent<Erem>().studiedArtifacts + "/" + Erem.GetComponent<Erem>().artifactTarget;
+      progressBar.fillAmount = ((float)currProgress) / (float)max; 
+  artifactCount.text = Erem.GetComponent<Erem>().studiedArtifacts + "/" + Erem.GetComponent<Erem>().artifactTarget;
+        //check if there are no more artifacts to discover
+        if (Erem>GetComponent<Erem>().player.saveData.GetDiscoveredCount() == 5) {
+         artifactIcon.sprite = GameAssets.Instance.ResourceIcons[3];
+           
+        } 
     }
 
     public void RedeemArtifact()
