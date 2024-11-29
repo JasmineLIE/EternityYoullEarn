@@ -1,0 +1,2 @@
+Erem
+Erem can study Translated Texts.  Once they have studied enough, they can produce an Artifact.  If there are no more Artifacts left to discover, they will generate Marks of Humanity instead.

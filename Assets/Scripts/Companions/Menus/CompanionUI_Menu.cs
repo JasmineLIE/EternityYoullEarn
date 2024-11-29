@@ -5,6 +5,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem.Android;
+using UnityEngine.SceneManagement;
 
 public class CompanionUI_Menu : MonoBehaviour
 {
@@ -65,8 +66,27 @@ public class CompanionUI_Menu : MonoBehaviour
         
     }
 
+    public void OpenHelp()
+    {
+        switch (comps[compIndex].comName)
+        {
+            case "Erem":
+                HelpColumn.helpIndex = 4;
+           
+                break;
+            case "Gwynhark":
+                HelpColumn.helpIndex = 5;
 
-    public void EremMenu()
+                break;
+            case "Quan":
+                HelpColumn.helpIndex = 6;
+                break;
+        }
+
+        SceneManager.LoadScene("Help");
+
+    }
+        public void EremMenu()
     {
         OpenMenu(0, 0);
     }

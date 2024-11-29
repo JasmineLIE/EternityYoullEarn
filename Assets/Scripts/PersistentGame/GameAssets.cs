@@ -22,4 +22,6 @@ public class GameAssets : MonoBehaviour
     public Sprite[] CompanionTasksArt;
     public Sprite[] CompanionInvestmentsArt;
     public Sprite[] CompanionBioArt;
+
+    public Sprite[] InfoSnapshots;
 }

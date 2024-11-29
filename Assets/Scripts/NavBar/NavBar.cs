@@ -159,7 +159,12 @@ public class NavBar : Clickable
     }
 
  
-   
+   public void OpenHelp()
+    {
+
+        SceneManager.LoadScene("Help");
+
+    }
 
     IEnumerator ChangeScene(int key) {
         screenBlocker.SetActive(true);

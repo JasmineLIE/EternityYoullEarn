@@ -17,6 +17,7 @@ TagManager:
   - ArtifactDesc
   - Stat Block
   - Main Menu
+  - Info
   layers:
   - Default
   - TransparentFX

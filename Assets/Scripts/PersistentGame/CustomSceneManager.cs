@@ -14,15 +14,11 @@ public class CustomSceneManager : MonoBehaviour {
      * 2 - Load Data
      * 3 - Companion Hub
      * 4 - Persistent Game
+     * 5 = help
      */
     public static void ChangeScene(int key)
     {
-        if (key > SceneManager.sceneCountInBuildSettings)
-        {
-            print("Invalid scene!");
-        } else
-        {
-            CurrScene = key; 
+       CurrScene = key; 
 
         
             if (key == 1 || key == 3)
@@ -31,6 +27,6 @@ public class CustomSceneManager : MonoBehaviour {
             }
 
             
-        }
+        
     }
 }

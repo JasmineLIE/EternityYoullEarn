@@ -16,11 +16,14 @@ EditorBuildSettings:
     guid: bc0efc8daaf033c428dda933e92f6309
   - enabled: 1
     path: Assets/Scenes/CompanionHub.unity
-    guid: f72afdbade455da41820e2a86e518712
+    guid: 14cabc40910d3554da2905c5ec842354
   - enabled: 1
     path: Assets/Scenes/PersistentGame.unity
     guid: 2f0a612d8cdbaf24ba0ec16a4c6f8d8a
   - enabled: 1
     path: Assets/Scenes/Intro.unity
     guid: 1c38d85f341ff454fa4713f2d48a1d0a
+  - enabled: 1
+    path: Assets/Scenes/Help.unity
+    guid: 5d128a067fe7d9e4eb9ce787de1fc293
   m_configObjects: {}
