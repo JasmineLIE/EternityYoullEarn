@@ -87,7 +87,7 @@ public class CompanionUI_Task_Erem : Tasks
       progressBar.fillAmount = ((float)currProgress) / (float)max; 
   artifactCount.text = Erem.GetComponent<Erem>().studiedArtifacts + "/" + Erem.GetComponent<Erem>().artifactTarget;
         //check if there are no more artifacts to discover
-        if (Erem>GetComponent<Erem>().player.saveData.GetDiscoveredCount() == 5) {
+        if (Erem.GetComponent<Erem>().player.GetComponent<Player>().saveData.GetDiscoveredCount() == 5) {
          artifactIcon.sprite = GameAssets.Instance.ResourceIcons[3];
            
         } 
