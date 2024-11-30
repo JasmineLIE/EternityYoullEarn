@@ -24,4 +24,6 @@ public class GameAssets : MonoBehaviour
     public Sprite[] CompanionBioArt;
 
     public Sprite[] InfoSnapshots;
+
+    public Sprite[] Revelations;
 }

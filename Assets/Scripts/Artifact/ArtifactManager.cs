@@ -9,9 +9,10 @@ public class ArtifactManager : MonoBehaviour
     public GameObject UnactivatedPrefab;
     public GameObject frame;
 
-    private void Update()
+
+    private void Start()
     {
-       
+        
     }
     public void LoadArtifacts()
     {

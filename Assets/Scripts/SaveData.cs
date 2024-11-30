@@ -346,7 +346,7 @@ public class SaveData : MonoBehaviour
             _ArtifactData.pointer--;
             _ArtifactData.discovered++;
             SaveIntoJson();
-            return _ArtifactData.info[_ArtifactData.pointer];
+            return _ArtifactData.info[0];
         }
 
         return null; //An error somehow occured
@@ -378,17 +378,20 @@ public class SaveData : MonoBehaviour
         return _ArtifactData.pointer;
     }
 
-    public void ActivateArtifact(string tempName)
+  
+
+    public int ActivatedCount
     {
-       for (int i = 0; i < _ArtifactData.info.Count; i++)
+        get
         {
-            if (_ArtifactData.info[i].name == tempName)
-            {
-                _ArtifactData.info[i].isActivated = true;
-            } else
-            {
-                print("No artifact of such name found!");
-            }
+            return _ArtifactData.activated;
+        }
+
+        set
+        {
+            //increment by calling get and incrementing it, then applying to set
+            _ArtifactData.activated = value;
+            SaveIntoJson();
         }
     }
 }
@@ -433,6 +436,8 @@ public class Artifact
    
     public int pointer;
     public int discovered;
+    public int activated;
+    
 
     //Holds all Artifacts thus far
    public List<ArtifactInfo> info = new List<ArtifactInfo>();
@@ -443,9 +448,9 @@ public class Artifact
 [System.Serializable] 
 public class ArtifactInfo
 {
+    public int spriteID;
 
-    public bool isActivated; //we will use this to determine if the artifact has been activated
-
+    public string shorthand;
     public string name;
     public string desc;
     public string lore;

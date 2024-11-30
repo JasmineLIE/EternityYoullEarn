@@ -133,21 +133,21 @@ public class UnactivatedArtifacts : MonoBehaviour
         }
     }
 
-    //DEBUG THIS LATER?
+    //If both bools are true, then the main bool to check if we can redeem an artifact is set to true
     private void CheckEligibility(int key, bool eligible)
     {
         canRedeem[key] = eligible;
 
         bool flag = true;
-        int counter = 0;
-        while (flag && counter < canRedeem.Length)
+
+        for (int i = 0; i < canRedeem.Length; i++)
         {
-            if (canRedeem[counter] == false)
+            if (canRedeem[i] == false)
             {
                 flag = false;
             }
-            counter++;
         }
+       
 
         redeemable = flag;
     }
@@ -155,10 +155,15 @@ public class UnactivatedArtifacts : MonoBehaviour
     {
         if (redeemable)
         {
-
+            print("We can redeem!");
+            int count = player.GetComponent<Player>().saveData.ActivatedCount + 1;
+            player.GetComponent<Player>().saveData.ActivatedCount = count;
+            print(player.GetComponent<Player>().saveData.ActivatedCount);
         } else
         {
             print("we cannot redeem!");
+           
+          
         }
     }
 
