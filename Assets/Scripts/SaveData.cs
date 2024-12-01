@@ -325,6 +325,11 @@ public class SaveData : MonoBehaviour
         SaveIntoJson();
     }
 
+    public void ResetStudiedArtifactVal()
+    {
+        _CompanionData.Erem_studiedArtifactsVal = 0;
+        SaveIntoJson();
+    }
     //-----
 
     //----- Artifact Handler -----

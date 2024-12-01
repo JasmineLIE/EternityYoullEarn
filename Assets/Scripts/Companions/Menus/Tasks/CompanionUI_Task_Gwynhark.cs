@@ -71,6 +71,7 @@ public class CompanionUI_Task_Gwynhark : Tasks
 
     public override void CheckTimer()
     {
+        base.CheckTimer();
 
         if (BackgroundTasks.GwynHasTask)
         {

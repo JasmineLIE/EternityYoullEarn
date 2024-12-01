@@ -38,6 +38,7 @@ public class CompanionUI_Task_Quan : Tasks
             increment.transform.SetParent(CharSpriteTransform.transform);
             increment.transform.position = CharSpriteTransform.transform.position;
 
+            
             BackgroundTasks.QuanHasTask = false;
 
         }
@@ -47,7 +48,7 @@ public class CompanionUI_Task_Quan : Tasks
     }
     public override void CheckTimer()
     {
-
+        base.CheckTimer();
         if (BackgroundTasks.QuanHasTask)
         {
             timerController.SetTime(timeToComplete, BackgroundTasks.QuanTimer);

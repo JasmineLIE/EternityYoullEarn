@@ -4518,7 +4518,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 101194602461464756, guid: 8eb863dacdad76741b748a414533f835, type: 3}
       propertyPath: m_Alpha
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 101194602461464756, guid: 8eb863dacdad76741b748a414533f835, type: 3}
       propertyPath: m_Interactable
@@ -4526,6 +4526,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 101194602461464756, guid: 8eb863dacdad76741b748a414533f835, type: 3}
       propertyPath: m_BlocksRaycasts
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 488293894403247020, guid: 8eb863dacdad76741b748a414533f835, type: 3}
+      propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 907281273333044236, guid: 8eb863dacdad76741b748a414533f835, type: 3}
@@ -4563,6 +4567,10 @@ PrefabInstance:
     - target: {fileID: 2644563292639449307, guid: 8eb863dacdad76741b748a414533f835, type: 3}
       propertyPath: m_AnchorMin.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2644563292639449307, guid: 8eb863dacdad76741b748a414533f835, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1102.2677
       objectReference: {fileID: 0}
     - target: {fileID: 2644563292639449307, guid: 8eb863dacdad76741b748a414533f835, type: 3}
       propertyPath: m_SizeDelta.y
@@ -4654,6 +4662,26 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3864959289687865507, guid: 8eb863dacdad76741b748a414533f835, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403733908371254471, guid: 8eb863dacdad76741b748a414533f835, type: 3}
+      propertyPath: iterations
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403733908371254471, guid: 8eb863dacdad76741b748a414533f835, type: 3}
+      propertyPath: shadowColor.a
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403733908371254471, guid: 8eb863dacdad76741b748a414533f835, type: 3}
+      propertyPath: shadowSpread.x
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403733908371254471, guid: 8eb863dacdad76741b748a414533f835, type: 3}
+      propertyPath: shadowSpread.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4403733908371254471, guid: 8eb863dacdad76741b748a414533f835, type: 3}
+      propertyPath: shadowDistance.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7378984538775012305, guid: 8eb863dacdad76741b748a414533f835, type: 3}

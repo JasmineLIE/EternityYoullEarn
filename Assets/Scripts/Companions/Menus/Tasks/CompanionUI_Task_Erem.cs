@@ -16,7 +16,7 @@ public class CompanionUI_Task_Erem : Tasks
     public TMP_Text artifactCount;
     public TMP_Text studyLimit;
 
-    bool noMoreArtifactsLeft;
+  
     public GameObject Erem;
     private void Start()
     {
@@ -59,9 +59,10 @@ public class CompanionUI_Task_Erem : Tasks
 
     public override void CheckTimer()
     {
-
+        base.CheckTimer();
         if (BackgroundTasks.EremHasTask)
         {
+            
             timerController.SetTime(timeToComplete, BackgroundTasks.EremTimer);
         }
         else
@@ -81,29 +82,37 @@ public class CompanionUI_Task_Erem : Tasks
 
   public void UpdateProgressBar()
     {
+        
         int currProgress = Erem.GetComponent<Erem>().studiedArtifacts;
+    
         int max = Erem.GetComponent<Erem>().artifactTarget;
+       
         
       progressBar.fillAmount = ((float)currProgress) / (float)max; 
-  artifactCount.text = Erem.GetComponent<Erem>().studiedArtifacts + "/" + Erem.GetComponent<Erem>().artifactTarget;
+    artifactCount.text = currProgress + "/" + max;
+
         //check if there are no more artifacts to discover
         if (Erem.GetComponent<Erem>().player.GetComponent<Player>().saveData.GetDiscoveredCount() == 5) {
-            print(Erem.GetComponent<Erem>().player.GetComponent<Player>().saveData.GetDiscoveredCount());
+          
+
          artifactIcon.sprite = GameAssets.Instance.ResourceIcons[1];
            
         } else
         {
             artifactIcon.sprite = GameAssets.Instance.ResourceIcons[7];
         }
+
+        RedeemArtifact();
     }
 
     public void RedeemArtifact()
     {
         if (Erem.GetComponent<Erem>().GetComponent<Erem>().ArtifactGoalMet())
         {
+            print("We should be based");
             //reset back to 0
             //this is messy KILL MEE NYEEOOOW
-            Erem.GetComponent<Erem>().saveData.SetStudiedArtifactsVal(Erem.GetComponent<Erem>().studiedArtifacts * (-1));
+            Erem.GetComponent<Erem>().saveData.ResetStudiedArtifactVal();
             Erem.GetComponent<Erem>().studiedArtifacts = 0;
 
             ArtifactInfo temp = artifactManager.DiscoverArtifact();
@@ -121,6 +130,8 @@ public class CompanionUI_Task_Erem : Tasks
                 
             }
         }
+
+        UpdateProgressBar();
     }
 
     public override void Dispatch()

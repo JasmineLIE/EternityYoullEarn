@@ -142,16 +142,17 @@ public class Gwynhark : Companion
     }
    public int[] CompleteTask(int ceYield, int utYield)
     {
-      
-        print("The crystal ebony yield is: " + ceYield);
-        print("The untranslated texts yield is: " + utYield);
+
+        int[] yields = GenerateYield(ceYield, utYield);
+
+     
        
 
-        player.GetComponent<Player>().SetResource(2, ceYield);
-        player.GetComponent<Player>().SetResource(3, utYield);
+        player.GetComponent<Player>().SetResource(2, yields[0]);
+        player.GetComponent<Player>().SetResource(3, yields[1]);
         CompleteTask();
 
-        int[] yields = {ceYield, utYield };
+       
 
         return yields;
 

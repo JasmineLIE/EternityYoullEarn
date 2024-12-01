@@ -15,11 +15,15 @@ public class ArtifactCount : MonoBehaviour
     void Start()
     {
         tt.alpha = 0;
-        print("Artifact count: " + SaveData.ActivatedCount);
+        
+      
+    }
+
+    private void Update()
+    {
         fill.fillAmount = (float)SaveData.ActivatedCount / 5;
         count.text = SaveData.ActivatedCount + "/5";
     }
-
     public void Hover()
     {
         tt.alpha = 1;

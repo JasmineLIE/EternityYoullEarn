@@ -17,7 +17,7 @@ public class HelpButton : MonoBehaviour
         string[] text = ManageTextFiles.GetAllLines(fileName);
         infoScreen.GetComponent<InfoScreen>().title.text = text[0];
         infoScreen.GetComponent<InfoScreen>().description.text = text[1];
-        //infoScreen.GetComponent<InfoScreen>().snapshot.sprite = GameAssets.Instance.InfoSnapshots[imageIndex];
+        infoScreen.GetComponent<InfoScreen>().snapshot.sprite = GameAssets.Instance.InfoSnapshots[imageIndex];
 
 
     }

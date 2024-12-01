@@ -162,6 +162,7 @@ public class Tasks : MonoBehaviour
 
     public virtual void CheckTimer()
     {
-
+        timeToComplete = ReturnCountdown(CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].timeToCompleteTask,
+                                            CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].efficiency);
     }
 }

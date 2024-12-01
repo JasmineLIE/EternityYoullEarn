@@ -240,7 +240,7 @@ public class Companion : MonoBehaviour
 
     public void GenerateMarks()
     {
-        int numerGen = Random.Range(0, 100);
+        int numerGen = Random.Range(1, 100);
         if (numerGen <= mohRate)
         {
             int marksEarned = Random.Range(3, 5) + saveData.GetExtraMarksGenerated();

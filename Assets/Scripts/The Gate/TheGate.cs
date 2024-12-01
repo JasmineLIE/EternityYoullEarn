@@ -40,8 +40,8 @@ public class TheGate : MonoBehaviour
 
     private void GenMarks()
     {
-        int ranNum = Random.Range(0, 100);
-        print("Random num: " + ranNum);
+        int ranNum = Random.Range(1, 100);
+       
         if (player.GetComponent<Player>().saveData.GetMOHIncrement() >= ranNum)
         {
             player.GetComponent<Player>().SetResource(1, 1);

@@ -141,7 +141,7 @@ public class Erem : Companion
     public void CompleteTask(int texts)
     {
         saveData.SetStudiedArtifactsVal(texts);
-
+        studiedArtifacts = saveData.GetStudiedArtifactsVal();
    
 
      

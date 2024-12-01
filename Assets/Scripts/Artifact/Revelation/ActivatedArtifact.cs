@@ -34,14 +34,14 @@ public class ActivatedArtifact : ArtifactCard
     public void SetUp(string moniker, string name, float time, int[] eKeys, int[] eVals, int indexID, string txt)
     {
         player = GameObject.FindGameObjectWithTag("Player");
-        artName = moniker;
+        artName = name;
         timeEffect = time;
         effectKeys = eKeys;
         effectValues = eVals;
         ID = indexID;
         textFile = txt;
 
-        nameText.text = artName;
+        nameText.text = moniker;
         button.sprite = GameAssets.Instance.Revelations[indexID];
 
         if (time <= 0)
