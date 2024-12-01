@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class ArtifactCard : MonoBehaviour
 {
-   
+    public GameObject player;
     public GameObject artifactDesc;
 
     //to draw from

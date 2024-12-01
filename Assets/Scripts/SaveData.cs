@@ -20,7 +20,10 @@ public class SaveData : MonoBehaviour
 
     [SerializeField] private Artifact _ArtifactData = new Artifact();
 
-
+    private void Start()
+    {
+        LoadJson();
+    }
     public void SaveIntoJson()
     {
         //Create strings for path direction and file name
@@ -45,6 +48,7 @@ public class SaveData : MonoBehaviour
 
     }
 
+    
     public void LoadJson()
     {
         string companionDataPath = Application.persistentDataPath + "/CompanionData.json";
@@ -52,12 +56,7 @@ public class SaveData : MonoBehaviour
         string artifactDataPath = Application.persistentDataPath + "/ArtifactData.json";
 
 
-        if (!DoesSaveExist()) //there is no save file, create a new one
-        {
-          
-            SaveIntoJson();
-        } else
-        {
+      
 
             //read entire file(s) and save its content(s)
             string companionDataContents = File.ReadAllText(companionDataPath);
@@ -69,7 +68,7 @@ public class SaveData : MonoBehaviour
             _PlayerData = JsonUtility.FromJson<PlayerData>(playerDataContents);
             _ArtifactData = JsonUtility.FromJson<Artifact>(artifactDataContents);
 
-        }
+        
     }
 
     /*
@@ -84,10 +83,10 @@ public class SaveData : MonoBehaviour
 
         if (!File.Exists(playerDataPath) || !File.Exists(companionDataPath) || !File.Exists(artifactDataPath))
         {
-            print("no save exists");
+            
             return false;
         }
-        print("save exists");
+      
         return true;
     }
 
@@ -100,6 +99,7 @@ public class SaveData : MonoBehaviour
         BackgroundTasks.QuanHasTask = false;
         BackgroundTasks.QuanHasTask = false;
         BackgroundTasks.CanCollect = false;
+     
 
         SceneManager.LoadScene("PersistentGame");
         CustomSceneManager.ChangeScene(1);

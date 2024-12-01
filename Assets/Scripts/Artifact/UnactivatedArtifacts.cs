@@ -31,7 +31,7 @@ public class UnactivatedArtifacts : ArtifactCard
     
    
 
-    public GameObject player;
+    
     private void Start()
     {
         revelationsContainer = GameObject.FindGameObjectWithTag("RevelationsContainer");

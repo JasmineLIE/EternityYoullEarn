@@ -2125,7 +2125,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3295980508554634537, guid: f1975d987501c1146bc9d2b3f623d5d0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1520.8539
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3295980508554634537, guid: f1975d987501c1146bc9d2b3f623d5d0, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -3845,6 +3845,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ArtifactManager
       objectReference: {fileID: 0}
+    - target: {fileID: 4813462763890461107, guid: 5369fe9b1e80e564e9a554677b0d730b, type: 3}
+      propertyPath: saveData
+      value: 
+      objectReference: {fileID: 1783591465}
     - target: {fileID: 4813462763890461107, guid: 5369fe9b1e80e564e9a554677b0d730b, type: 3}
       propertyPath: UnactivatedPrefab
       value: 

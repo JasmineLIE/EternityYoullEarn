@@ -7,7 +7,7 @@ using UnityEngine.Rendering;
 
 public class BackgroundTasks : MonoBehaviour
 {
-    public SaveData saveData;
+    
 
     public static float EremTimer;
     public static float QuanTimer;
@@ -31,10 +31,15 @@ public class BackgroundTasks : MonoBehaviour
 
  
     public static int[] effectVals = new int[5];
+    public static int[] effectKeys = new int[5];
 
-    private int ImmortalsIndex;
-    private int OdeIndex;
-    private int RaggedIndex;
+    public static bool ImmortalsCanCollect;
+    public static bool OdeCanCollect;
+    public static bool RaggedCanCollect;
+
+    public static int ImmortalsIndex;
+    public static int OdeIndex;
+    public static int RaggedIndex;
     // Start is called before the first frame update
 
     /*
@@ -44,8 +49,8 @@ public class BackgroundTasks : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(this);
-        saveData = GetComponent<SaveData>();
+        
+  
         ImmortalsIndex = 1;
         OdeIndex = 0;
         RaggedIndex = 2;
@@ -63,46 +68,43 @@ public class BackgroundTasks : MonoBehaviour
      */
     private void RevelationQueue()
     {
-        //if (RevelationsActivated[ImmortalsIndex])
-        //{
-        //    if (RevelationCollection[ImmortalsIndex] > 0)
-        //    {
-        //        RevelationCollection[ImmortalsIndex] -= Time.deltaTime;
-        //    }
-        //    else
-        //    {
-        //        int insightGained = saveData.GetInsight() + saveData.GetIncremenetTotal() * effectVals[ImmortalsIndex];
-        //        saveData.SaveInsight(insightGained);
-        //        RevelationCollection[ImmortalsIndex] = RevelationMax[ImmortalsIndex];
-        //    }
-        //}
+        if (RevelationsActivated[ImmortalsIndex])
+        {
+            if (RevelationCollection[ImmortalsIndex] > 0 && !ImmortalsCanCollect)
+            {
+                RevelationCollection[ImmortalsIndex] -= Time.deltaTime;
+            }
+            else
+            {
+                ImmortalsCanCollect = true;
+                RevelationCollection[ImmortalsIndex] = RevelationMax[ImmortalsIndex];
+            }
+        }
 
-        //if (RevelationsActivated[OdeIndex])
-        //{
-        //    if (RevelationCollection[OdeIndex] > 0)
-        //    {
-        //        RevelationCollection[OdeIndex] -= Time.deltaTime;
-        //    } else
-        //    {
-        //        int marksCollected = saveData.GetMarksOfHumanity() + effectVals[OdeIndex];
-        //        saveData.SaveMOH(marksCollected);
-        //        RevelationCollection[OdeIndex] = RevelationMax[OdeIndex];
-        //    }
-        //}
+        if (RevelationsActivated[OdeIndex])
+        {
+            if (RevelationCollection[OdeIndex] > 0 && !OdeCanCollect)
+            {
+                RevelationCollection[OdeIndex] -= Time.deltaTime;
+            } else
+            {
+                OdeCanCollect = true;
+                RevelationCollection[OdeIndex] = RevelationMax[OdeIndex];
+            }
+        }
 
-        //if (RevelationsActivated[RaggedIndex])
-        //{
-        //    if (RevelationCollection[RaggedIndex] > 0)
-        //    {
-        //        RevelationCollection[RaggedIndex] -= Time.deltaTime;
-        //    } else
-        //    {
-        //        int insightGained = saveData.GetInsight() + effectVals[RaggedIndex];
-        //        saveData.SaveInsight(insightGained);
-        //        RevelationCollection[RaggedIndex] = RevelationMax[RaggedIndex];
+        if (RevelationsActivated[RaggedIndex])
+        {
+            if (RevelationCollection[RaggedIndex] > 0 && !RaggedCanCollect)
+            {
+                RevelationCollection[RaggedIndex] -= Time.deltaTime;
+            } else
+            {
+                RaggedCanCollect = true;
+                RevelationCollection[RaggedIndex] = RevelationMax[RaggedIndex];
 
-        //    }
-        //}
+            }
+        }
 
     }
    private void TaskQueue()

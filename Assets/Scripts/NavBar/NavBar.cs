@@ -10,7 +10,7 @@ public class NavBar : Clickable
 {
 
     public CanvasGroup alert;
-
+    
 
 
     public TMP_Text tt_text;
@@ -82,7 +82,9 @@ public class NavBar : Clickable
         } else
         {
             alert.alpha = 0;
-        }
+        } 
+
+       
     }
     private void OpenTT()
     {

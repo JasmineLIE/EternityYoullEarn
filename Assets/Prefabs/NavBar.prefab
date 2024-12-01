@@ -1831,6 +1831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alert: {fileID: 4514444571262061628}
+  artifactAlert: {fileID: 0}
   tt_text: {fileID: 2372368430702218320}
   offset_y: -80
   offset_x: 100
@@ -2740,7 +2741,7 @@ GameObject:
   - component: {fileID: 9222060170466343643}
   - component: {fileID: 4514444571262061628}
   m_Layer: 5
-  m_Name: Alert
+  m_Name: Companion Alert
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

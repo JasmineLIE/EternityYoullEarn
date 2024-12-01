@@ -43,7 +43,8 @@ public class RevelationsContainer : MonoBehaviour
 
     public void AddArtifact(ArtifactInfo info)
     {
-        string name = info.shorthand; //shorthand version for activated cards
+        string shorthand = info.shorthand; //shorthand version for activated cards
+        string name = info.name;
         float time = info.timeEffect;
         int[] eKeys = info.effectKey;
         int[] eVals = info.effect;
@@ -51,7 +52,7 @@ public class RevelationsContainer : MonoBehaviour
         string textFile = info.desc;
 
         GameObject card = Instantiate(revelationPrefab);
-        card.GetComponent<ActivatedArtifact>().SetUp(name, time, eKeys, eVals, ID, textFile);
+        card.GetComponent<ActivatedArtifact>().SetUp(shorthand, name, time, eKeys, eVals, ID, textFile);
 
 
         if (rowsCount[0] < 3)

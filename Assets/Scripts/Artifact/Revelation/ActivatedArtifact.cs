@@ -11,6 +11,8 @@ public class ActivatedArtifact : ArtifactCard
     public Image fill;
     public CanvasGroup fillBar;
     public bool hasBackgroundTask;
+
+  
    
    
     private void Start()
@@ -25,11 +27,14 @@ public class ActivatedArtifact : ArtifactCard
         if (hasBackgroundTask)
         {
             fill.fillAmount = BackgroundTasks.RevelationCollection[ID] / timeEffect;
+
+            
         }
     }
-    public void SetUp(string name, float time, int[] eKeys, int[] eVals, int indexID, string txt)
+    public void SetUp(string moniker, string name, float time, int[] eKeys, int[] eVals, int indexID, string txt)
     {
-        artName = name;
+        player = GameObject.FindGameObjectWithTag("Player");
+        artName = moniker;
         timeEffect = time;
         effectKeys = eKeys;
         effectValues = eVals;
@@ -59,6 +64,8 @@ public class ActivatedArtifact : ArtifactCard
             //first time load;
             BackgroundTasks.RevelationCollection[ID] = timeEffect;
             BackgroundTasks.RevelationMax[ID] = timeEffect;
+            BackgroundTasks.effectVals[ID] = effectValues[0];
+            BackgroundTasks.effectKeys[ID] = effectKeys[0]; 
             BackgroundTasks.RevelationsActivated[ID] = true;
 
           
@@ -71,4 +78,6 @@ public class ActivatedArtifact : ArtifactCard
         artifactDesc.GetComponent<ArtifactDescription>().SetDesc(artName, textFile, true, GetEffectText());
 
     }
+
+  
 }

@@ -11,11 +11,38 @@ public class Player : MonoBehaviour
     private int crystalEbonies;
     private int textsUntrans;
     private int textsTrans;
-    private int studiedArtifacts;
 
     public SaveData saveData;
     public TMP_Text[] resource = new TMP_Text[5];
 
+
+    private void Update()
+    {
+        //Watch for passive resources
+        if(BackgroundTasks.ImmortalsCanCollect)
+        {
+            int insightGained = GetResource(BackgroundTasks.effectKeys[BackgroundTasks.ImmortalsIndex]) + (saveData.GetIncremenetTotal() * BackgroundTasks.effectVals[BackgroundTasks.ImmortalsIndex]);
+            print("We got " + insightGained + " insight");
+            SetResource(BackgroundTasks.effectKeys[BackgroundTasks.ImmortalsIndex], insightGained);
+            BackgroundTasks.ImmortalsCanCollect = false;    
+        }
+
+        if (BackgroundTasks.OdeCanCollect)
+        {
+            int markscollected = GetResource(BackgroundTasks.effectKeys[BackgroundTasks.OdeIndex]) + BackgroundTasks.effectVals[BackgroundTasks.OdeIndex];
+            SetResource(BackgroundTasks.effectKeys[BackgroundTasks.OdeIndex], markscollected);
+            BackgroundTasks.OdeCanCollect = false;
+        }
+
+        if (BackgroundTasks.RaggedCanCollect)
+        {
+            int insightGained = BackgroundTasks.effectVals[BackgroundTasks.RaggedIndex];
+          
+            SetResource(BackgroundTasks.effectKeys[BackgroundTasks.RaggedIndex], insightGained);
+            BackgroundTasks.RaggedCanCollect = false;   
+        }
+
+    }
     private void Start()
     {
 
@@ -27,6 +54,7 @@ public class Player : MonoBehaviour
         //everything should start at 0 when game is booted
        for (int i = 0; i < loadedPlayerData.Length; i++)
         {
+            print("index " + i + ": " + loadedPlayerData[i]);
             SetResource(i, loadedPlayerData[i]);
             
          

@@ -226,8 +226,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 24
+  m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -491,7 +491,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 215.59561, y: -137.98}
+  m_AnchoredPosition: {x: 215.59561, y: -130.95}
   m_SizeDelta: {x: 391.19122, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5784880779471876863
@@ -921,6 +921,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39edd983023d30b4d8767342320a3571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 8861798374503961357, guid: 1e7f49d8ed3d99640856af58e07af267, type: 3}
   artifactDesc: {fileID: 0}
   textFile: 
   artName: 
@@ -937,7 +938,6 @@ MonoBehaviour:
   costTexts:
   - {fileID: 7801822540203344562}
   - {fileID: 822598972153445965}
-  player: {fileID: 8861798374503961357, guid: 1e7f49d8ed3d99640856af58e07af267, type: 3}
 --- !u!114 &8380075330626307901
 MonoBehaviour:
   m_ObjectHideFlags: 0
