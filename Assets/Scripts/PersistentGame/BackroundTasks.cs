@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class BackgroundTasks : MonoBehaviour
 {
-   
+    public SaveData saveData;
+
     public static float EremTimer;
     public static float QuanTimer;
     public static float GwynTimer;
@@ -19,8 +21,20 @@ public class BackgroundTasks : MonoBehaviour
 
     public static bool CanCollect;
 
+  
+    
+
+    public static float[] RevelationCollection = new float[5];
+    public static float[] RevelationMax = new float[5];
+    public static bool[] RevelationsActivated = new bool[5];
 
 
+ 
+    public static int[] effectVals = new int[5];
+
+    private int ImmortalsIndex;
+    private int OdeIndex;
+    private int RaggedIndex;
     // Start is called before the first frame update
 
     /*
@@ -31,15 +45,63 @@ public class BackgroundTasks : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this);
+        saveData = GetComponent<SaveData>();
+        ImmortalsIndex = 1;
+        OdeIndex = 0;
+        RaggedIndex = 2;
     }
     private void Update()
     {
 
         TaskQueue();
-
+        RevelationQueue();
     
     }
 
+    /*
+     * May no employer ever see how I sorta hard coded this
+     */
+    private void RevelationQueue()
+    {
+        if (RevelationsActivated[ImmortalsIndex])
+        {
+            if (RevelationCollection[ImmortalsIndex] > 0)
+            {
+                RevelationCollection[ImmortalsIndex] -= Time.deltaTime;
+            }
+            else
+            {
+                int insightGained = saveData.GetInsight() + saveData.GetIncremenetTotal() * effectVals[ImmortalsIndex];
+                saveData.SaveInsight(insightGained);
+                RevelationCollection[ImmortalsIndex] = RevelationMax[ImmortalsIndex];
+            }
+        }
+
+        if (RevelationsActivated[OdeIndex])
+        {
+            if (RevelationCollection[OdeIndex] > 0)
+            {
+                RevelationCollection[OdeIndex] -= Time.deltaTime;
+            } else
+            {
+                int marksCollected = saveData.GetMarksOfHumanity() + effectVals[OdeIndex];
+                saveData.SaveMOH(marksCollected);
+                RevelationCollection[OdeIndex] = RevelationMax[OdeIndex];
+            }
+        }
+
+        if (RevelationsActivated[RaggedIndex])
+        {
+            if (RevelationCollection[RaggedIndex] > 0)
+            {
+                RevelationCollection[RaggedIndex] -= Time.deltaTime;
+            } else
+            {
+            
+            }
+        }
+
+    }
    private void TaskQueue()
     {
         

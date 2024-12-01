@@ -921,7 +921,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39edd983023d30b4d8767342320a3571, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  artifactDesc: {fileID: 0}
+  textFile: 
+  artName: 
+  button: {fileID: 2485220879574714977}
   nameText: {fileID: 3787466182293631930}
+  effectKeys: 
+  effectValues: 
+  timeEffect: 0
+  revelationsContainer: {fileID: 0}
   descriptionText: {fileID: 6900705811046957097}
   costIcons:
   - {fileID: 1619545117327816629}
@@ -929,8 +937,6 @@ MonoBehaviour:
   costTexts:
   - {fileID: 7801822540203344562}
   - {fileID: 822598972153445965}
-  artName: 
-  button: {fileID: 2485220879574714977}
   player: {fileID: 8861798374503961357, guid: 1e7f49d8ed3d99640856af58e07af267, type: 3}
 --- !u!114 &8380075330626307901
 MonoBehaviour:

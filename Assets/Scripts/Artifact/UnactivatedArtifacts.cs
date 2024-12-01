@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UnactivatedArtifacts : MonoBehaviour
+public class UnactivatedArtifacts : ArtifactCard
 {
     /*
      * This script is used to create Unactivated artifact cards
@@ -13,33 +13,33 @@ public class UnactivatedArtifacts : MonoBehaviour
     // Start is called before the first frame update
 
 
-    GameObject artifactDesc;
+    public GameObject revelationsContainer;
 
-    public TMP_Text nameText;
     public TMP_Text descriptionText;
+
     public Image[] costIcons;
     public TMP_Text[] costTexts;
     private int[] costKeys;
     private int[] costValues;
-    private int[] effectKeys;
-    private int[] effectValues;
-    private float timeEffect;
+    
+   
     private bool[] canRedeem;
     private bool redeemable;
 
-    private string textFile;
-    public string artName;
+   
 
-    public Image button;
+    
    
 
     public GameObject player;
-
-
     private void Start()
     {
+        revelationsContainer = GameObject.FindGameObjectWithTag("RevelationsContainer");
         artifactDesc = GameObject.FindGameObjectWithTag("ArtifactDesc");
+   
     }
+
+
 
     private void Update()
     {
@@ -85,15 +85,9 @@ public class UnactivatedArtifacts : MonoBehaviour
 
         }
 
-        string description = ManageTextFiles.GetLineAtKey("[EFFECT]", desc);
-        description = ManageTextFiles.ReplaceText(description, effectValues[0].ToString(), "#");
-
-        if (timeEffect > 0)
-        {
-            description = ManageTextFiles.ReplaceText(description, timeEffect.ToString(), "@");
-        }
+     
       
-        descriptionText.text = description;
+        descriptionText.text = GetEffectText();
         UpdateCard();
 
     }
@@ -155,10 +149,16 @@ public class UnactivatedArtifacts : MonoBehaviour
     {
         if (redeemable)
         {
-            print("We can redeem!");
+           
+
+            //increment artifacts
             int count = player.GetComponent<Player>().saveData.ActivatedCount + 1;
             player.GetComponent<Player>().saveData.ActivatedCount = count;
-            print(player.GetComponent<Player>().saveData.ActivatedCount);
+
+            ArtifactInfo temp = player.GetComponent<Player>().saveData.ActivateArtifact(artName);
+            revelationsContainer.GetComponent<RevelationsContainer>().AddArtifact(temp);    
+            Destroy(gameObject); //get rid of this card
+         
         } else
         {
             print("we cannot redeem!");
@@ -167,13 +167,5 @@ public class UnactivatedArtifacts : MonoBehaviour
         }
     }
 
-    public void DisplayInfo()
-    {
-        artifactDesc.GetComponent<ArtifactDescription>().SendSignal(artName, textFile);
-    }
-
-    public void ClearInfo()
-    {
-        artifactDesc.GetComponent<ArtifactDescription>().Clear();
-    }
+   
 }

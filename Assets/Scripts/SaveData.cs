@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Security;
 using JetBrains.Annotations;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
@@ -30,18 +31,18 @@ public class SaveData : MonoBehaviour
         //serialize into JSon data
         string companion = JsonUtility.ToJson(_CompanionData);
         string player = JsonUtility.ToJson(_PlayerData);
-        string artifact = JsonUtility.ToJson(_ArtifactData); 
-       
-     
+        string artifact = JsonUtility.ToJson(_ArtifactData);
+
+
         //Default data set is adjusted in Inspector
 
-       
+
         //In the chosen directory, create and save a file
         System.IO.File.WriteAllText(companionDataPath, companion);
         System.IO.File.WriteAllText(playerDataPath, player);
         System.IO.File.WriteAllText(artifactDataPath, artifact);
 
-        
+
     }
 
     public void LoadJson()
@@ -50,14 +51,14 @@ public class SaveData : MonoBehaviour
         string playerDataPath = Application.persistentDataPath + "/PlayerData.json";
         string artifactDataPath = Application.persistentDataPath + "/ArtifactData.json";
 
-       
+
         if (!DoesSaveExist()) //there is no save file, create a new one
         {
-           
+          
             SaveIntoJson();
         } else
         {
-          
+
             //read entire file(s) and save its content(s)
             string companionDataContents = File.ReadAllText(companionDataPath);
             string playerDataContents = File.ReadAllText(playerDataPath);
@@ -83,16 +84,18 @@ public class SaveData : MonoBehaviour
 
         if (!File.Exists(playerDataPath) || !File.Exists(companionDataPath) || !File.Exists(artifactDataPath))
         {
+            print("no save exists");
             return false;
         }
+        print("save exists");
         return true;
-        }
+    }
 
-        public void LoadGameStart()
+    public void LoadGameStart()
     {
 
         LoadJson();
-       
+
         BackgroundTasks.EremHasTask = false;
         BackgroundTasks.QuanHasTask = false;
         BackgroundTasks.QuanHasTask = false;
@@ -100,8 +103,8 @@ public class SaveData : MonoBehaviour
 
         SceneManager.LoadScene("PersistentGame");
         CustomSceneManager.ChangeScene(1);
-      
-        
+
+
     }
 
     public static void DeleteSave()
@@ -110,15 +113,15 @@ public class SaveData : MonoBehaviour
         string playerDataPath = Application.persistentDataPath + "/PlayerData.json";
         string artifactDataPath = Application.persistentDataPath + "/ArtifactData.json";
 
-       
-            System.IO.File.Delete(playerDataPath);
-            System.IO.File.Delete(companionDataPath);
-            System.IO.File.Delete(artifactDataPath);
-       
+
+        System.IO.File.Delete(playerDataPath);
+        System.IO.File.Delete(companionDataPath);
+        System.IO.File.Delete(artifactDataPath);
+
 
     }
     //-----Player Data Functions-----
-   public int[] LoadPlayerData()
+    public int[] LoadPlayerData()
     {
         //Ensure data is up to date bfore loading
         LoadJson();
@@ -142,6 +145,15 @@ public class SaveData : MonoBehaviour
         return playerData;
     }
 
+    public int GetInsight()
+    {
+        return _PlayerData.insightVal;
+    }
+
+    public int GetMarksOfHumanity()
+    {
+        return _PlayerData.MOHVal;
+    }
     public void SaveInsight(int val)
     {
         _PlayerData.insightVal = val;
@@ -165,7 +177,7 @@ public class SaveData : MonoBehaviour
         _PlayerData.texts_untransVal = val;
         SaveIntoJson();
     }
-    public void SaveTransTexts(int val) { 
+    public void SaveTransTexts(int val) {
         _PlayerData.texts_transVal = val;
         SaveIntoJson();
     }
@@ -203,7 +215,7 @@ public class SaveData : MonoBehaviour
     {
         return _PlayerData.MOHIncrementVal;
     }
-   //-----
+    //-----
 
     //----- Companion Data Functions -----
 
@@ -225,13 +237,13 @@ public class SaveData : MonoBehaviour
                 companionData[0] = _CompanionData.Gwynhark_psycheLevel;
                 companionData[1] = _CompanionData.Gwynhark_motivationLevel;
                 break;
-               
-                
+
+
             case "Erem":
                 companionData[0] = _CompanionData.Erem_psycheLevel;
                 companionData[1] = _CompanionData.Erem_motivationLevel;
                 break;
-                
+
             case "Quan":
                 companionData[0] = _CompanionData.Quan_psycheLevel;
                 companionData[1] = _CompanionData.Quan_motivationLevel;
@@ -244,10 +256,10 @@ public class SaveData : MonoBehaviour
     {
         switch (key)
         {
-            
+
             case "Gwynhark":
                 _CompanionData.Gwynhark_psycheLevel++;
-               
+
                 break;
 
 
@@ -263,12 +275,12 @@ public class SaveData : MonoBehaviour
         SaveIntoJson();
     }
 
-   
+
     public void SaveCompanionMotivation(string key)
     {
         switch (key)
         {
-            
+
             case "Gwynhark":
                 _CompanionData.Gwynhark_motivationLevel++;
                 break;
@@ -298,7 +310,7 @@ public class SaveData : MonoBehaviour
         SaveIntoJson();
     }
 
-    public int GetStudiedArtifactsVal() 
+    public int GetStudiedArtifactsVal()
     {
         return _CompanionData.Erem_studiedArtifactsVal;
     }
@@ -308,7 +320,7 @@ public class SaveData : MonoBehaviour
         _CompanionData.Erem_studiedArtifactsVal += val;
         SaveIntoJson();
     }
-    
+
     //-----
 
     //----- Artifact Handler -----
@@ -320,14 +332,14 @@ public class SaveData : MonoBehaviour
      */
     public ArtifactInfo DiscoverArtifact()
     {
- 
+
         if (_ArtifactData.pointer >= 1)
-        { 
+        {
             //Randomly select an undiscovered artifact
             int random = Random.Range(0, _ArtifactData.pointer);
 
             //We will set the select undiscovered artifact to discover, and move it to the end of the "discovered" portion of the list, swapping places with what element was at the end
-          
+
 
             ArtifactInfo discoveredTemp = _ArtifactData.info[random];
             ArtifactInfo undiscoveredTemp = _ArtifactData.info[_ArtifactData.pointer];
@@ -341,7 +353,7 @@ public class SaveData : MonoBehaviour
             SaveIntoJson();
             return discoveredTemp;
 
-        }    else if (_ArtifactData.pointer == 0) 
+        } else if (_ArtifactData.pointer == 0)
         {
             _ArtifactData.pointer--;
             _ArtifactData.discovered++;
@@ -355,12 +367,47 @@ public class SaveData : MonoBehaviour
 
     public List<ArtifactInfo> GetDiscoveredArtifacts()
     {
-        List<ArtifactInfo> temp;
+        List<ArtifactInfo> temp = new List<ArtifactInfo>();
 
+        //we +1 because pointer is -1
         int difference = (_ArtifactData.info.Count - (_ArtifactData.pointer + 1));
-        temp = _ArtifactData.info.GetRange(_ArtifactData.pointer+1, difference);
+
+        for (int i = 0; i < difference; i++)
+        {
+            if (!_ArtifactData.info[i].activated)
+            {
+                temp.Add(_ArtifactData.info[i]);
+            }
+        }
+
 
         return temp;
+    }
+
+   
+    public ArtifactInfo ActivateArtifact(string name)
+    {
+        //return artifact based on name
+
+        foreach(ArtifactInfo artifact in _ArtifactData.info)
+        {
+            if (artifact.name ==  name)
+            {
+                artifact.activated = true;
+                _ArtifactData.activatedArtifacts.Add(artifact);
+                SaveIntoJson();
+
+                return artifact;
+            }
+        }
+
+        return null; // we don't have it
+       
+    }
+
+    public List<ArtifactInfo> GetActivatedArtifacts()
+    {
+        return _ArtifactData.activatedArtifacts;
     }
 
     public int GetDiscoveredCount()
@@ -436,11 +483,14 @@ public class Artifact
    
     public int pointer;
     public int discovered;
+
+    //we mostly need this for the tt on The Gate -- also good to try {get; set;}
     public int activated;
     
 
     //Holds all Artifacts thus far
    public List<ArtifactInfo> info = new List<ArtifactInfo>();
+    public List<ArtifactInfo> activatedArtifacts = new List<ArtifactInfo>();    
 
  
 }
@@ -449,7 +499,7 @@ public class Artifact
 public class ArtifactInfo
 {
     public int spriteID;
-
+    public bool activated;
     public string shorthand;
     public string name;
     public string desc;

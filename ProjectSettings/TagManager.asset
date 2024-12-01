@@ -18,6 +18,7 @@ TagManager:
   - Stat Block
   - Main Menu
   - Info
+  - RevelationsContainer
   layers:
   - Default
   - TransparentFX

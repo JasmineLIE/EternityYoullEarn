@@ -135,6 +135,7 @@ GameObject:
   - component: {fileID: 40249100}
   - component: {fileID: 40249101}
   - component: {fileID: 40249102}
+  - component: {fileID: 40249103}
   m_Layer: 0
   m_Name: PersistentGameManager
   m_TagString: Untagged
@@ -170,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43187abb86a4ce46ba4c9f1ecbc8318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveData: {fileID: 0}
 --- !u!114 &40249101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,6 +199,41 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 40249098}
   m_Enabled: 1
+--- !u!114 &40249103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 40249098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aecfe99df1d9ae749ad7d4a5113f9734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _CompanionData:
+    Gwynhark_psycheLevel: 0
+    Gwynhark_motivationLevel: 0
+    Erem_psycheLevel: 0
+    Erem_motivationLevel: 0
+    Erem_studiedArtifactsVal: 0
+    Quan_psycheLevel: 0
+    Quan_motivationLevel: 0
+    extraMarksGenerated: 0
+  _PlayerData:
+    insightVal: 0
+    MOHVal: 0
+    crystalEbonyVal: 0
+    texts_untransVal: 0
+    texts_transVal: 0
+    incrementVal: 0
+    MOHIncrementVal: 0
+    totalInvestments: 0
+  _ArtifactData:
+    pointer: 0
+    discovered: 0
+    activated: 0
+    info: []
 --- !u!1001 &1626627946
 PrefabInstance:
   m_ObjectHideFlags: 0
