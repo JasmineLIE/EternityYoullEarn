@@ -20,10 +20,7 @@ public class SaveData : MonoBehaviour
 
     [SerializeField] private Artifact _ArtifactData = new Artifact();
 
-    private void Start()
-    {
-        LoadJson();
-    }
+    
     public void SaveIntoJson()
     {
         //Create strings for path direction and file name
@@ -56,8 +53,12 @@ public class SaveData : MonoBehaviour
         string artifactDataPath = Application.persistentDataPath + "/ArtifactData.json";
 
 
-      
-
+        if (!DoesSaveExist())
+        {
+            SaveIntoJson();
+        }
+        else
+        {
             //read entire file(s) and save its content(s)
             string companionDataContents = File.ReadAllText(companionDataPath);
             string playerDataContents = File.ReadAllText(playerDataPath);
@@ -67,6 +68,10 @@ public class SaveData : MonoBehaviour
             _CompanionData = JsonUtility.FromJson<CompanionData>(companionDataContents);
             _PlayerData = JsonUtility.FromJson<PlayerData>(playerDataContents);
             _ArtifactData = JsonUtility.FromJson<Artifact>(artifactDataContents);
+        }
+
+
+     
 
         
     }
@@ -92,8 +97,7 @@ public class SaveData : MonoBehaviour
 
     public void LoadGameStart()
     {
-
-        LoadJson();
+      
 
         BackgroundTasks.EremHasTask = false;
         BackgroundTasks.QuanHasTask = false;
