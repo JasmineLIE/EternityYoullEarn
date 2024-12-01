@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         //everything should start at 0 when game is booted
        for (int i = 0; i < loadedPlayerData.Length; i++)
         {
-            print("index " + i + ": " + loadedPlayerData[i]);
+        
             SetResource(i, loadedPlayerData[i]);
             
          
