@@ -121,7 +121,7 @@ public class CompanionUI_Task_Erem : Tasks
             {
                 
                 prompt.SetUp(temp.name, temp.desc);
-
+                UpdateProgressBar();
             }
             else
             {
@@ -131,7 +131,7 @@ public class CompanionUI_Task_Erem : Tasks
             }
         }
 
-        UpdateProgressBar();
+    
     }
 
     public override void Dispatch()
