@@ -1,4 +1,4 @@
 <b>A poem is etched into the recovered slab of stone.</b>
 <i>""The Iron Horse Gallops Across The Red River / Child of the Mountain Drinks from Our Silver
 Resistance Flies on a Yellow Dragon / Our Princess, Who Shall Not Fall"</i>
-[EFFECT]Every @ seconds, collect # Insight per companion investment.
+[EFFECT] Every @ seconds, gain # Insight per companion investment.

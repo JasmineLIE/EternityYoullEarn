@@ -156,7 +156,17 @@ public class UnactivatedArtifacts : ArtifactCard
             player.GetComponent<Player>().saveData.ActivatedCount = count;
 
             ArtifactInfo temp = player.GetComponent<Player>().saveData.ActivateArtifact(artName);
-            revelationsContainer.GetComponent<RevelationsContainer>().AddArtifact(temp);    
+            revelationsContainer.GetComponent<RevelationsContainer>().AddArtifact(temp);
+
+            switch (temp.effectKey[0])
+            {
+                case 5:
+                    player.GetComponent<Player>().saveData.SaveIncrementVal(temp.effect[0]);
+                    break;
+                case 6:
+                    player.GetComponent<Player>().saveData.SetMOHIncrement(temp.effect[0]);
+                    break;
+            }
             Destroy(gameObject); //get rid of this card
          
         } else

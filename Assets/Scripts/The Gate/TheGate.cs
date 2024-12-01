@@ -29,13 +29,29 @@ public class TheGate : MonoBehaviour
     public void Clicked()
     {
         player.GetComponent<Player>().SetResource(0, insightIncrement);
+        GenMarks();
         GameObject increment = Instantiate(feedbackPrefab);
-        increment.GetComponent<GateIncrementFeedback>().feedback.text = "+" + insightIncrement.ToString();
+        increment.GetComponent<GateIncrementFeedback>().feedback.text = "+" + insightIncrement;
         increment.GetComponent<GateIncrementFeedback>().icon.sprite = GameAssets.Instance.ResourceIcons[0];
         increment.transform.SetParent(gameObject.transform);
         increment.transform.position = Input.mousePosition;
 
     }
 
+    private void GenMarks()
+    {
+        int ranNum = Random.Range(0, 100);
+        print("Random num: " + ranNum);
+        if (player.GetComponent<Player>().saveData.GetMOHIncrement() >= ranNum)
+        {
+            player.GetComponent<Player>().SetResource(1, 1);
+
+            GameObject increment = Instantiate(feedbackPrefab);
+            increment.GetComponent<GateIncrementFeedback>().feedback.text = "+" + 1;
+            increment.GetComponent<GateIncrementFeedback>().icon.sprite = GameAssets.Instance.ResourceIcons[1];
+            increment.transform.SetParent(gameObject.transform);
+            increment.transform.position = Input.mousePosition;
+        }
+    }
    
 }

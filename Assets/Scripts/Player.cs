@@ -21,15 +21,14 @@ public class Player : MonoBehaviour
         //Watch for passive resources
         if(BackgroundTasks.ImmortalsCanCollect)
         {
-            int insightGained = GetResource(BackgroundTasks.effectKeys[BackgroundTasks.ImmortalsIndex]) + (saveData.GetIncremenetTotal() * BackgroundTasks.effectVals[BackgroundTasks.ImmortalsIndex]);
-            print("We got " + insightGained + " insight");
+            int insightGained = (saveData.GetIncremenetTotal() * BackgroundTasks.effectVals[BackgroundTasks.ImmortalsIndex]);
             SetResource(BackgroundTasks.effectKeys[BackgroundTasks.ImmortalsIndex], insightGained);
             BackgroundTasks.ImmortalsCanCollect = false;    
         }
 
         if (BackgroundTasks.OdeCanCollect)
         {
-            int markscollected = GetResource(BackgroundTasks.effectKeys[BackgroundTasks.OdeIndex]) + BackgroundTasks.effectVals[BackgroundTasks.OdeIndex];
+            int markscollected =  BackgroundTasks.effectVals[BackgroundTasks.OdeIndex];
             SetResource(BackgroundTasks.effectKeys[BackgroundTasks.OdeIndex], markscollected);
             BackgroundTasks.OdeCanCollect = false;
         }
