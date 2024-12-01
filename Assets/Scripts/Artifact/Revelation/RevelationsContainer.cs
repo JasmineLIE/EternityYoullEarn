@@ -56,7 +56,7 @@ public class RevelationsContainer : MonoBehaviour
 
         if (rowsCount[0] < 3)
         {
-            card.transform.SetParent(rows[1].transform); rowsCount[0]++;
+            card.transform.SetParent(rows[0].transform); rowsCount[0]++;
         }
         else
         {

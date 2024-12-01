@@ -12,10 +12,7 @@ public class ArtifactManager : MonoBehaviour
 
     private void Start()
     {
-       for(int i = 0; i < 5; i++)
-        {
-            DiscoverArtifact();
-        } 
+      
     }
     public void LoadArtifacts()
     {

@@ -63,43 +63,46 @@ public class BackgroundTasks : MonoBehaviour
      */
     private void RevelationQueue()
     {
-        if (RevelationsActivated[ImmortalsIndex])
-        {
-            if (RevelationCollection[ImmortalsIndex] > 0)
-            {
-                RevelationCollection[ImmortalsIndex] -= Time.deltaTime;
-            }
-            else
-            {
-                int insightGained = saveData.GetInsight() + saveData.GetIncremenetTotal() * effectVals[ImmortalsIndex];
-                saveData.SaveInsight(insightGained);
-                RevelationCollection[ImmortalsIndex] = RevelationMax[ImmortalsIndex];
-            }
-        }
+        //if (RevelationsActivated[ImmortalsIndex])
+        //{
+        //    if (RevelationCollection[ImmortalsIndex] > 0)
+        //    {
+        //        RevelationCollection[ImmortalsIndex] -= Time.deltaTime;
+        //    }
+        //    else
+        //    {
+        //        int insightGained = saveData.GetInsight() + saveData.GetIncremenetTotal() * effectVals[ImmortalsIndex];
+        //        saveData.SaveInsight(insightGained);
+        //        RevelationCollection[ImmortalsIndex] = RevelationMax[ImmortalsIndex];
+        //    }
+        //}
 
-        if (RevelationsActivated[OdeIndex])
-        {
-            if (RevelationCollection[OdeIndex] > 0)
-            {
-                RevelationCollection[OdeIndex] -= Time.deltaTime;
-            } else
-            {
-                int marksCollected = saveData.GetMarksOfHumanity() + effectVals[OdeIndex];
-                saveData.SaveMOH(marksCollected);
-                RevelationCollection[OdeIndex] = RevelationMax[OdeIndex];
-            }
-        }
+        //if (RevelationsActivated[OdeIndex])
+        //{
+        //    if (RevelationCollection[OdeIndex] > 0)
+        //    {
+        //        RevelationCollection[OdeIndex] -= Time.deltaTime;
+        //    } else
+        //    {
+        //        int marksCollected = saveData.GetMarksOfHumanity() + effectVals[OdeIndex];
+        //        saveData.SaveMOH(marksCollected);
+        //        RevelationCollection[OdeIndex] = RevelationMax[OdeIndex];
+        //    }
+        //}
 
-        if (RevelationsActivated[RaggedIndex])
-        {
-            if (RevelationCollection[RaggedIndex] > 0)
-            {
-                RevelationCollection[RaggedIndex] -= Time.deltaTime;
-            } else
-            {
-            
-            }
-        }
+        //if (RevelationsActivated[RaggedIndex])
+        //{
+        //    if (RevelationCollection[RaggedIndex] > 0)
+        //    {
+        //        RevelationCollection[RaggedIndex] -= Time.deltaTime;
+        //    } else
+        //    {
+        //        int insightGained = saveData.GetInsight() + effectVals[RaggedIndex];
+        //        saveData.SaveInsight(insightGained);
+        //        RevelationCollection[RaggedIndex] = RevelationMax[RaggedIndex];
+
+        //    }
+        //}
 
     }
    private void TaskQueue()
