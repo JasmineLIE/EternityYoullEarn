@@ -27,8 +27,6 @@ public class CompanionUI_Task_Erem : Tasks
         Erem = GameObject.FindGameObjectWithTag(compName);
         UpdateProgressBar();
 
-       
-     
 
     }
 
@@ -109,7 +107,7 @@ public class CompanionUI_Task_Erem : Tasks
     {
         if (Erem.GetComponent<Erem>().GetComponent<Erem>().ArtifactGoalMet())
         {
-            print("We should be based");
+          
             //reset back to 0
             //this is messy KILL MEE NYEEOOOW
             Erem.GetComponent<Erem>().saveData.ResetStudiedArtifactVal();

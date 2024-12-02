@@ -26,4 +26,6 @@ public class GameAssets : MonoBehaviour
     public Sprite[] InfoSnapshots;
 
     public Sprite[] Revelations;
+
+    public AudioClip[] SFX;
 }

@@ -402,7 +402,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: THE GATE
+  m_text: TO COMPANION HUB
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4453c28f84a1ed14195cdd5abf101006, type: 2}
   m_sharedMaterial: {fileID: 591054205718249460, guid: 4453c28f84a1ed14195cdd5abf101006, type: 2}
@@ -1788,6 +1788,7 @@ GameObject:
   - component: {fileID: 182924821545380705}
   - component: {fileID: 5410105184525632011}
   - component: {fileID: 1471288196986038878}
+  - component: {fileID: 2037647823690283896}
   m_Layer: 5
   m_Name: NavBar
   m_TagString: Untagged
@@ -1831,12 +1832,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   alert: {fileID: 4514444571262061628}
-  artifactAlert: {fileID: 0}
   tt_text: {fileID: 2372368430702218320}
   offset_y: -80
   offset_x: 100
   animator: {fileID: 3020544481104619365}
   sweep: {fileID: 1722913155060084430}
+  wall: {fileID: 0}
   transitionButton_text: {fileID: 7253834104394798230}
   moon: {fileID: 5005769685319224828}
   TransitionButton: {fileID: 812892783205957532}
@@ -1905,11 +1906,107 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63011932cec19454f9302f53abdeb25c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shadowColor: {r: 0, g: 0, b: 0, a: 0.5}
-  shadowDistance: {x: 0, y: -10}
-  m_UseGraphicAlpha: 1
+  shadowColor: {r: 0, g: 0, b: 0, a: 1}
+  shadowDistance: {x: 0, y: -15}
+  m_UseGraphicAlpha: 0
   iterations: 15
-  shadowSpread: {x: 1, y: 15}
+  shadowSpread: {x: 1, y: 75}
+--- !u!82 &2037647823690283896
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4820774709139989074}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &4930070270551459786
 GameObject:
   m_ObjectHideFlags: 0

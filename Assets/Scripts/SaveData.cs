@@ -98,7 +98,9 @@ public class SaveData : MonoBehaviour
     public void LoadGameStart()
     {
       
-
+       
+            LoadJson();
+        
         BackgroundTasks.EremHasTask = false;
         BackgroundTasks.QuanHasTask = false;
         BackgroundTasks.QuanHasTask = false;

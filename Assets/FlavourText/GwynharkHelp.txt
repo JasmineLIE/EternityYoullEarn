@@ -1,2 +1,2 @@
 Gwynhark
-Gwynhark gathers supplies.  He can scavenge for Ebony Crystals or Untranslated Texts and can be made to prioritize either resource.
+Gwynhark gathers supplies.  He can scavenge for Ebony Crystals or Untranslated Texts and can be made to prioritize either resource.  The minimum and maximum resources Gwynhark can obtain are dictated by his [MIN] and [MAX] stats, which can be upgraded.

@@ -7,8 +7,7 @@ using UnityEngine.UI;
 
 public class CutsceneTree : MonoBehaviour
 {
-    string[] dialogue = ManageTextFiles.GetAllLines("Intro.txt");
-
+    string[] dialogue; 
     public Animator lightAnim, blackScreenAnim;
 
    
@@ -17,13 +16,15 @@ public class CutsceneTree : MonoBehaviour
 
     public List<CutsceneNode> nodes;
 
-    public Image[] eyes = new Image[2];
+    public Image[] eyes;
     float tigerCurseAlpha;
     bool tigerCurseAnim;
     int count;
 
     private void Start()
     {
+        dialogue = ManageTextFiles.GetAllLines("Intro.txt");
+
         tigerCurseAnim = false;
         count = 0;
         SetUpDialogue();
@@ -34,7 +35,7 @@ public class CutsceneTree : MonoBehaviour
     public void SetUpDialogue()
     {
         for(int i = 0; i < dialogue.Length; i++) {
-            CutsceneNode temp = new CutsceneNode();
+            CutsceneNode temp = ScriptableObject.CreateInstance<CutsceneNode>();
             temp.dialogue = dialogue[i];    
             nodes.Add(temp);
         }

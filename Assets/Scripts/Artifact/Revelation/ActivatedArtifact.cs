@@ -12,13 +12,13 @@ public class ActivatedArtifact : ArtifactCard
     public CanvasGroup fillBar;
     public bool hasBackgroundTask;
 
-  
-   
+ 
    
     private void Start()
     {
         nameText = GetComponent<TMP_Text>();
         artifactDesc = GameObject.FindGameObjectWithTag("ArtifactDesc");
+       
        
     }
 

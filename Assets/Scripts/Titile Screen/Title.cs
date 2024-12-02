@@ -16,6 +16,7 @@ public class Title : MonoBehaviour
     public Animator anim;
 
     public AudioSource music;
+    public AudioSource SFX;
     bool isPlaying;
     private void Start()
     {
@@ -42,12 +43,16 @@ public class Title : MonoBehaviour
     }
     public void Play()
     {
+        SFX.clip = GameAssets.Instance.SFX[8];
+        SFX.Play();
         StartCoroutine(PlayTransition("LOAD"));
-     
+        
     }
 
     public void NewGame()
     {
+        SFX.clip = GameAssets.Instance.SFX[8];
+        SFX.Play();
         StartCoroutine(PlayTransition("NEW"));
     }
    

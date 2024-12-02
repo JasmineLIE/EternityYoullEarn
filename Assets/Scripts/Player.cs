@@ -42,24 +42,24 @@ public class Player : MonoBehaviour
         }
 
     }
-    private void Start()
+
+    private void Awake()
     {
 
-    
         //will load player data every time the scene changes
         int[] loadedPlayerData = saveData.LoadPlayerData();
 
         //Load the data retrieved from the json file into the local variables of player
         //everything should start at 0 when game is booted
-       for (int i = 0; i < loadedPlayerData.Length; i++)
+        for (int i = 0; i < loadedPlayerData.Length; i++)
         {
-        
+
             SetResource(i, loadedPlayerData[i]);
-            
-         
+
+
         }
-          
     }
+    
        
     public void SetResource(int key, int val)
     {

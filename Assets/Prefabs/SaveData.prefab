@@ -67,9 +67,9 @@ MonoBehaviour:
     discovered: 0
     activated: 0
     info:
-    - spriteID: 0
+    - spriteID: 1
       activated: 0
-      shorthand: 
+      shorthand: Immortals
       name: The Four Immortals
       desc: TheFourImmortals.txt
       lore: 
@@ -80,7 +80,7 @@ MonoBehaviour:
       timeEffect: 30
     - spriteID: 0
       activated: 0
-      shorthand: 
+      shorthand: An Ode
       name: An Ode to the Fairy Mother
       desc: FairyMother.txt
       lore: 
@@ -89,9 +89,9 @@ MonoBehaviour:
       effect: 19000000
       effectKey: 01000000
       timeEffect: 45
-    - spriteID: 0
+    - spriteID: 3
       activated: 0
-      shorthand: 
+      shorthand: Treachery
       name: Treachery
       desc: Treachery.txt
       lore: 
@@ -100,9 +100,9 @@ MonoBehaviour:
       effect: 02000000
       effectKey: 05000000
       timeEffect: 0
-    - spriteID: 0
+    - spriteID: 4
       activated: 0
-      shorthand: 
+      shorthand: War
       name: War Banner
       desc: WarBanner.txt
       lore: 
@@ -111,9 +111,9 @@ MonoBehaviour:
       effect: 19000000
       effectKey: 06000000
       timeEffect: 0
-    - spriteID: 0
+    - spriteID: 2
       activated: 0
-      shorthand: 
+      shorthand: Ragged
       name: Ragged Banner
       desc: RaggedBanner.txt
       lore: 

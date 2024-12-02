@@ -170,7 +170,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f43187abb86a4ce46ba4c9f1ecbc8318, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  saveData: {fileID: 0}
 --- !u!114 &40249101
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,6 +248,10 @@ PrefabInstance:
     - target: {fileID: 6160415613864160107, guid: 35e19c8bba0472244a07235e65749706, type: 3}
       propertyPath: m_Name
       value: Music Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8093077372737894341, guid: 35e19c8bba0472244a07235e65749706, type: 3}
+      propertyPath: m_Volume
+      value: 0.8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

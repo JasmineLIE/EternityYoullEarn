@@ -17,7 +17,7 @@ public class NavBar : Clickable
      CanvasGroup tt_cg;
     RectTransform tt_rect;
 
-
+    AudioSource SFX;
   
     public float offset_y;
     public float offset_x;
@@ -30,6 +30,9 @@ public class NavBar : Clickable
 
     public Animator animator;
     public Animator sweep;
+    public Animator wall;
+
+    public static bool wallWasClosed;
 
     public TMP_Text transitionButton_text;
     Color amber = new Color(0.9058824f, 0.3254902f, 0.1647059f, 1f);
@@ -53,13 +56,25 @@ public class NavBar : Clickable
 
     private void Start()
     {
+        SFX = GetComponent<AudioSource>();
         screenBlocker.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
         screenBlocker.GetComponent<Image>().raycastTarget = false;
      if (CustomSceneManager.CurrScene == 3)
         {
+
             animator.SetTrigger("Idle2");
-            transitionButton_text.text = "COMPANION HUB";
             moon.color = turqoise;
+
+            
+        }
+
+        if (wallWasClosed)
+        {
+         
+            screenBlocker.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.8f);
+            screenBlocker.GetComponent<Image>().raycastTarget = true;
+            wall.SetTrigger("Idle2");
+            StartCoroutine(OpenWall());
         }
     }
     public override void Clicked()
@@ -157,6 +172,9 @@ public class NavBar : Clickable
         }
         sweep.SetTrigger("Sweep");
         TransitionButton.interactable = false;
+        SFX.clip = GameAssets.Instance.SFX[9];
+        SFX.Play();
+        wallWasClosed = true;
 
     }
 
@@ -169,24 +187,43 @@ public class NavBar : Clickable
     }
 
     IEnumerator ChangeScene(int key) {
-        screenBlocker.SetActive(true);
+     
         screenBlocker.GetComponent<Image>().raycastTarget = true;
-        screenBlocker.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.5f);
+        screenBlocker.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0.8f);
 
-  
+       
         
 
         if (key == 1)
         {
             yield return new WaitForSeconds(0.5f);
-            transitionButton_text.text = "THE GATE";
+            transitionButton_text.text = "TO THE COMPANION HUB";
         } else
         {
             yield return new WaitForSeconds(0.6f);
-            transitionButton_text.text = "COMPANION HUB";
+            transitionButton_text.text = "TO THE GATE";
         }
-        print("moving to companion hub!");
-        yield return new WaitForSeconds(1f);
+
+
+        wall.SetTrigger("Close");
+       
+        
+        yield return new WaitForSeconds(2f);
         CustomSceneManager.ChangeScene(key);
+    }
+
+    IEnumerator OpenWall()
+    {
+
+
+        SFX.clip = GameAssets.Instance.SFX[10];
+        SFX.Play();
+   
+        wall.SetTrigger("Open");
+
+        yield return new WaitForSeconds(1f);
+        screenBlocker.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
+        screenBlocker.GetComponent<Image>().raycastTarget = false;
+        wallWasClosed = false;
     }
 }

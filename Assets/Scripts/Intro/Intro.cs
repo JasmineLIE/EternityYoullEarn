@@ -6,9 +6,13 @@ using UnityEngine.SceneManagement;
 
 public class Intro : MonoBehaviour
 {
-    public CutsceneTree cutscene = new CutsceneTree();
+    public CutsceneTree cutscene;
     public ParticleSystem ps;
     public CanvasGroup talisman;
+
+    public AudioSource SFX;
+
+    public Animator blackScreen;
     bool canClick, talismanShow;
 
     private void Start()
@@ -62,6 +66,7 @@ public class Intro : MonoBehaviour
   
     public IEnumerator WaitForBlackScreen()
     {
+      
         yield return new WaitForSeconds(2f);
         canClick = true;
     }
@@ -69,6 +74,17 @@ public class Intro : MonoBehaviour
     //add flair to transition TODO (can do this in LoadData)
     public void Continue()
     {
+     
+        StartCoroutine(FadeIn());
+    }
+
+    public IEnumerator FadeIn()
+    {
+        SFX.clip = GameAssets.Instance.SFX[7];
+        SFX.Play();
+        StartCoroutine(AudioFadeout.StartFade(SFX, 3, 0));
+        blackScreen.SetTrigger("FadeIn");
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("LoadData");
     }
 }

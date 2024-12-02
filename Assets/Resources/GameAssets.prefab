@@ -83,3 +83,15 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 88665cf7e9fc97343bfded8ae634c494, type: 3}
   - {fileID: 21300000, guid: fe164757002e2e942869359a3a6ae36e, type: 3}
   - {fileID: 21300000, guid: e75867269d065a34dbf1b7a307460d08, type: 3}
+  SFX:
+  - {fileID: 8300000, guid: b6429b8a237f36c469095badcf5d3d27, type: 3}
+  - {fileID: 8300000, guid: e027074f679efa24295c18135237f5ea, type: 3}
+  - {fileID: 8300000, guid: dc3f6fa0a8277af478d9054948a9b348, type: 3}
+  - {fileID: 8300000, guid: 8e4d10ef6e88e6a4bbb15e56bd821b30, type: 3}
+  - {fileID: 8300000, guid: e876aefbe9f705e4790cb32cc02e81c8, type: 3}
+  - {fileID: 8300000, guid: 4da5c29a8fdd4d94ca6356d0782101f3, type: 3}
+  - {fileID: 8300000, guid: 8f8aa997c523cd448af0fe276d59da3f, type: 3}
+  - {fileID: 8300000, guid: 0e47ffabb6f5a874a99ce9d9dc0aa9ff, type: 3}
+  - {fileID: 8300000, guid: 703d4d895ce3eb341b0f2f824f166443, type: 3}
+  - {fileID: 8300000, guid: b245448fcd59acc40a2043a8984c6694, type: 3}
+  - {fileID: 8300000, guid: f143d23639708a74a95d7e6b597f6e09, type: 3}

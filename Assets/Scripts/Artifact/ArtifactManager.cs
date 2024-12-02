@@ -12,7 +12,7 @@ public class ArtifactManager : MonoBehaviour
 
     private void Start()
     {
-      
+     
     }
     public void LoadArtifacts()
     {

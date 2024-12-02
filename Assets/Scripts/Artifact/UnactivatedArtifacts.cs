@@ -26,8 +26,8 @@ public class UnactivatedArtifacts : ArtifactCard
     private bool[] canRedeem;
     private bool redeemable;
 
-   
-
+    public CanvasGroup CG;
+    public AudioSource SFX;
     
    
 
@@ -36,7 +36,7 @@ public class UnactivatedArtifacts : ArtifactCard
     {
         revelationsContainer = GameObject.FindGameObjectWithTag("RevelationsContainer");
         artifactDesc = GameObject.FindGameObjectWithTag("ArtifactDesc");
-   
+        
     }
 
 
@@ -149,8 +149,15 @@ public class UnactivatedArtifacts : ArtifactCard
     {
         if (redeemable)
         {
-           
 
+            SFX.clip = GameAssets.Instance.SFX[3];
+            SFX.Play();
+
+            //move out of the way
+            CG.alpha = 0;
+         
+            GameObject placehlderParent = GameObject.FindGameObjectWithTag("GameController");
+            gameObject.transform.SetParent(placehlderParent.transform);
             //increment artifacts
             int count = player.GetComponent<Player>().saveData.ActivatedCount + 1;
             player.GetComponent<Player>().saveData.ActivatedCount = count;
@@ -167,15 +174,16 @@ public class UnactivatedArtifacts : ArtifactCard
                     player.GetComponent<Player>().saveData.SetMOHIncrement(temp.effect[0]);
                     break;
             }
-            Destroy(gameObject); //get rid of this card
-         
+
+            Destroy(gameObject, 3f); //get rid of this card
         } else
         {
             print("we cannot redeem!");
-           
+            SFX.clip = GameAssets.Instance.SFX[2];
+            SFX.Play();
           
         }
     }
 
-   
+  
 }

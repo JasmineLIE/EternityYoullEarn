@@ -12,7 +12,7 @@ public class TheGate : MonoBehaviour
     private int insightIncrement;
     public GameObject ArtifactManager;
     public GameObject feedbackPrefab;
-
+    public AudioSource SFX;
     private void Start()
     {
         ArtifactManager.GetComponent<ArtifactManager>().LoadArtifacts();
@@ -28,6 +28,8 @@ public class TheGate : MonoBehaviour
    
     public void Clicked()
     {
+        SFX.clip = GameAssets.Instance.SFX[5];
+        SFX.Play();
         player.GetComponent<Player>().SetResource(0, insightIncrement);
         GenMarks();
         GameObject increment = Instantiate(feedbackPrefab);
