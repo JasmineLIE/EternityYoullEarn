@@ -7,8 +7,9 @@ using UnityEngine.UI;
 
 public class CompanionUI_Task_Erem : Tasks
 {
-    static int studyVal;
     public DiscoveredPrompt prompt;
+    static int studyVal;
+  
     public ArtifactManager artifactManager;
     
     public Image progressBar;
@@ -81,7 +82,8 @@ public class CompanionUI_Task_Erem : Tasks
   public void UpdateProgressBar()
     {
         
-        int currProgress = Erem.GetComponent<Erem>().studiedArtifacts;
+        int currProgress = Erem.GetComponent<Erem>().player.GetComponent<Player>().saveData.GetStudiedArtifactsVal();
+       
     
         int max = Erem.GetComponent<Erem>().artifactTarget;
        
@@ -117,7 +119,7 @@ public class CompanionUI_Task_Erem : Tasks
 
             if (temp != null)
             {
-                
+                print(temp.name);
                 prompt.SetUp(temp.name, temp.desc);
                 UpdateProgressBar();
             }

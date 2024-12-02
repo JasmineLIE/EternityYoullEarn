@@ -8,27 +8,28 @@ public class DiscoveredPrompt : MonoBehaviour
 {
     public TMP_Text title;
     public TMP_Text description;
-    private CanvasGroup cg;
+    public CanvasGroup cg;
     private Animator anim;
-    private void Start()
+
+    private void Awake()
     {
         cg = GetComponent<CanvasGroup>();
         anim = GetComponent<Animator>();
         Close();
-    
-           
-      
     }
+  
     public void SetUp(string name, string fileName)
     {
         title.text = name;
         List<string> texts = ManageTextFiles.GetLineStopAtKey("[EFFECT]", fileName);
         foreach (string text in texts)
         {
+            print(text);
             description.text += text + "\n\n\n";
         }
 
         Open();
+        print("We should open");
     }
 
     private void Open()

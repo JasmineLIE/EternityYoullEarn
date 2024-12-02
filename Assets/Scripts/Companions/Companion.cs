@@ -274,7 +274,7 @@ public class Companion : MonoBehaviour
         //These values indicate that the NPC has no investments
         //This can be overriden and changed
         efficiency = 0;
-        mohRate = 20;
+        mohRate = 40;
         additionalMarksEarned = 0;
 
 

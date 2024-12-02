@@ -5364,6 +5364,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8716182040435163740, guid: 8eb863dacdad76741b748a414533f835, type: 3}
+      propertyPath: cg
+      value: 
+      objectReference: {fileID: 8458726164081553165}
     - target: {fileID: 8735791807094230349, guid: 8eb863dacdad76741b748a414533f835, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -5405,6 +5409,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 989af554f81d0b249bea39989ad7cc60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!225 &8458726164081553165 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 101194602461464756, guid: 8eb863dacdad76741b748a414533f835, type: 3}
+  m_PrefabInstance: {fileID: 8458726164081553162}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

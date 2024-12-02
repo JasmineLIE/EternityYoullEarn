@@ -24,7 +24,7 @@ public class NavBar : Clickable
 
     string tt_insight = "<b>Insight.</b>  Interacting with The Gate inspires your next steps.  Used to command your companions.";
     string tt_crystal_ebonies = "<b>Crystal Ebonies.</b>  A strange, crystalline flower pulsing with energy.  Obtained by sending Gwynhark on expeditions.  Used to activate artifacts.";
-    string tt_marks_of_humanity = "<b>Marks of Humanity.</b>  A reminder of home, of good times, of sanity.  Used to upgrade your companions' abilities.";
+    string tt_marks_of_humanity = "<b>Marks of Humanity.</b>  A reminder of home, of good times, of sanity.  Can be obtained by companions completing tasks based on a percentage chance.  Used to upgrade your companions' abilities.";
     string tt_texts_untranslated = "<b>Untranslated Texts.</b>  From a kingdom long gone.  Its texts are written in old Vietnamese.  Obtained by sending Gwynhark on expeditions.  Can be translated by Quan.";
     string tt_texts_translated = "<b>Translated Texts.</b>  Nonsensical on its own.  Can be converted into artifacts by Erem.";
 

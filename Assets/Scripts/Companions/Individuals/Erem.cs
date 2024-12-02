@@ -22,7 +22,7 @@ public class Erem : Companion
     //1st array -- MOH earn rate
     //2nd array -- Additional marks earned by companions
     //3rd array -- N/A
-    private int[,] p_e = {  { 20, 40, 70, 100 }, 
+    private int[,] p_e = {  { 40, 60, 70, 100 }, 
                                 { 0, 3, 3, 10 }, 
                                 { 0, 0, 0, 0 }  };
 
@@ -30,14 +30,13 @@ public class Erem : Companion
     //2nd array -- Translated texts they can study at a time
     //3rd array -- N/A
     private int[,] m_e = {  { 0, 15, 30, 50 }, 
-                                { 4, 5, 6, 7 }, 
+                                { 3, 5, 6, 8 }, 
                                 { 0, 0, 0, 0 }  };
-
-    void Start()
+    private void Awake()
     {
         artifactTarget = 15;
 
-        
+
 
         psyche.SetValues_r(p_r);
         motivation.SetValues_r(m_r);
@@ -57,9 +56,9 @@ public class Erem : Companion
 
         specialVal1 = MAX_translatedTexts;
         specialVal2 = psyche.GetEffectArray(1, psyche.GetIndex());
-       
-    }
 
+    }
+    
     
 
     public override string GetPsycheEffectDesc()
@@ -167,7 +166,12 @@ public class Erem : Companion
 
     public bool ArtifactGoalMet()
     {
-        return artifactTarget == studiedArtifacts;
+
+       if (studiedArtifacts >= artifactTarget)
+        {
+            print("so true");
+        }
+        return studiedArtifacts >= artifactTarget;
     }
 
 

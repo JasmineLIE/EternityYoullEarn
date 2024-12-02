@@ -17,7 +17,7 @@ public class Quan : Companion
     //2nd array -- How many untranslated texts can be translated at a time
     //3rd array -- extra Marks earned for ALL companions
     private int[,] p_e = { { 30, 50, 75, 100 },
-                                { 3, 5, 6, 8 },
+                                { 5, 8, 10, 12 },
                                 { 0, 0, 0, 5 } };
 
     //1st array -- efficiency
@@ -49,7 +49,7 @@ public class Quan : Companion
 
         CharacterSetUp("Quan");
 
-        specialVal1 = MIN_untranslatedTexts;
+        specialVal1 = MAX_untranslatedTexts;
         specialVal2 = psyche.GetEffectArray(2, psyche.GetIndex());
     }
 
@@ -175,7 +175,7 @@ public class Quan : Companion
 
         psyche.SetEffect(0, mohRate);
 
-        MAX_untranslatedTexts = 2;
+        MAX_untranslatedTexts = 5;
        
         extraRewardsRate = 0;
 

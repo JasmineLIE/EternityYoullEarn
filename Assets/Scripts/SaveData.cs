@@ -317,6 +317,7 @@ public class SaveData : MonoBehaviour
 
     public int GetStudiedArtifactsVal()
     {
+        LoadJson();
         return _CompanionData.Erem_studiedArtifactsVal;
     }
 
