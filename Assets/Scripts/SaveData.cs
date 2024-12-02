@@ -387,7 +387,7 @@ public class SaveData : MonoBehaviour
         {
             if (!_ArtifactData.info[i].activated)
             {
-                temp.Add(_ArtifactData.info[i]);
+                temp.Add(_ArtifactData.info[(_ArtifactData.info.Count-1)-i]);
             }
         }
 
