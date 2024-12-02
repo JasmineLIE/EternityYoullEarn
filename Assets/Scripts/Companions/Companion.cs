@@ -85,16 +85,16 @@ public class Companion : MonoBehaviour
             UpdateMotivationEffect();
         }
 
-        string barkPath = comName + "Barks.txt";
+        string barkPath = comName + "Barks";
         barks = ManageTextFiles.GetAllLines(barkPath);
 
-        string bioPath = comName + "Bio.txt";
+        string bioPath = comName + "Bio";
         bio = ManageTextFiles.GetAllLines(bioPath);
 
-        string motivationPath = comName + "MotivationFlavour.txt";
+        string motivationPath = comName + "MotivationFlavour";
         motivation.flavourText = ManageTextFiles.GetAllLines(motivationPath);
 
-        string psychePath = comName + "PsycheFlavour.txt";
+        string psychePath = comName + "PsycheFlavour";
         psyche.flavourText = ManageTextFiles.GetAllLines(psychePath);
         
     }

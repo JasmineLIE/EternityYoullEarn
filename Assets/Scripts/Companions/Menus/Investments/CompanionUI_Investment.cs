@@ -43,9 +43,13 @@ public class CompanionUI_Investment : CompanionUI_Menu_Model
                 tempBlock.SetUpStats(CompanionUI_Menu.comps[CompanionUI_Menu.compIndex]);
             }
 
+            motivation.SFX.clip = GameAssets.Instance.SFX[0];
+            motivation.SFX.Play();
         } else
         {
-            print("Do not have enough MoH to upgrade!");
+            motivation.SFX.clip = GameAssets.Instance.SFX[2];
+            motivation.SFX.Play();
+          
         }
 
     }
@@ -73,9 +77,16 @@ public class CompanionUI_Investment : CompanionUI_Menu_Model
                 tempBlock.SetUpStats(CompanionUI_Menu.comps[CompanionUI_Menu.compIndex]);
             }
 
+
+            psyche.SFX.clip = GameAssets.Instance.SFX[0];
+            psyche.SFX.Play();
+
         } else
         {
-            print("Do not have enough MoH to upgrade!");
+         
+            psyche.SFX.clip = GameAssets.Instance.SFX[2];
+            psyche.SFX.Play();
+
         }
     }
 

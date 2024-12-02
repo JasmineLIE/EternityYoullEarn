@@ -23,7 +23,7 @@ public class CutsceneTree : MonoBehaviour
 
     private void Start()
     {
-        dialogue = ManageTextFiles.GetAllLines("Intro.txt");
+        dialogue = ManageTextFiles.GetAllLines("Intro");
 
         tigerCurseAnim = false;
         count = 0;

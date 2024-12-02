@@ -1,0 +1,3 @@
+<b>Faded text torn from a journal.</b>
+<i>"The Iron Horse is quiet.  The Dragon has flown into the stars, beckoned by the heavens.  We remain.  The traitorous Mountain Leech fled into the bough of our Mother.  He seeks the smothered Tiger King.  Sisters, we shall drink our silver, sharpen our blades, and so tear his heart from his cage."</i>
+[EFFECT] Gain +# Insight when you click on The Gate

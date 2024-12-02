@@ -16,10 +16,10 @@ public class ManageTextFiles : MonoBehaviour
     public static string GetLineAtKey(string key, string fileName)
     {
         string temp = "";
+        var textFile = Resources.Load<TextAsset>("FlavourText/" + fileName);
 
-        string path = Application.dataPath + "/FlavourText/" + fileName; 
-   
-        string[] lines = File.ReadAllLines(path);
+
+        string[] lines = textFile.text.Split('\n');
 
         foreach (string line in lines)
         {
@@ -33,9 +33,10 @@ public class ManageTextFiles : MonoBehaviour
 
     public static List<string> GetLineStopAtKey(string key, string fileName)
     {
-        string path = Application.dataPath + "/FlavourText/" + fileName;
+        var textFile = Resources.Load<TextAsset>("FlavourText/" + fileName);
 
-        string[] lines = File.ReadAllLines(path);
+
+        string[] lines = textFile.text.Split('\n');
 
         List<string> temp = new List<string>();
         bool flag = false;
@@ -55,10 +56,10 @@ public class ManageTextFiles : MonoBehaviour
     }
     public static string[] GetAllLines(string fileName)
     {
+        var textFile = Resources.Load<TextAsset>("FlavourText/" + fileName);
        
 
-        string path = Application.dataPath + "/FlavourText/" + fileName;
-        string[] lines = File.ReadAllLines(path);
+        string[] lines = textFile.text.Split('\n');
 
         return lines;
     }

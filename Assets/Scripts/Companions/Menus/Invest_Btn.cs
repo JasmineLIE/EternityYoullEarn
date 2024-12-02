@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class Invest_Btn : MonoBehaviour
 {
     Button btn;
+    public AudioSource SFX;
 
     public TMP_Text flavourText;
     public TMP_Text nextLevelDesc;
@@ -35,8 +36,8 @@ public class Invest_Btn : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         maxLevel = 2;
      
-        //debug
-      
+        
+      SFX = GetComponent<AudioSource>();
 
 
     }

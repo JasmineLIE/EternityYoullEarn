@@ -86,12 +86,16 @@ public class CompanionUI_Task_Gwynhark : Tasks
     {
         if (thresh > 0)
         {
+            SFX.clip = GameAssets.Instance.SFX[0];
+            SFX.Play();
             thresh--;
             UpdateRemainingPoints();
             print(thresh);
             CanDispatchCheck();
             return true;
-        } 
+        }
+        SFX.clip = GameAssets.Instance.SFX[1];
+        SFX.Play();
         return false;
     }
 
@@ -99,13 +103,16 @@ public class CompanionUI_Task_Gwynhark : Tasks
     {
         if (val > 0)
         {
+            SFX.clip = GameAssets.Instance.SFX[0];
+            SFX.Play();
             thresh++;
             UpdateRemainingPoints();
             print(thresh + " " + "hi");
             CanDispatchCheck();
             return true;
         }
-
+        SFX.clip = GameAssets.Instance.SFX[1];
+        SFX.Play();
         return false;
     }
     public void CEIncrement()

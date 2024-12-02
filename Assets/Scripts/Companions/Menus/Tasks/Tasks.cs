@@ -33,6 +33,7 @@ public class Tasks : MonoBehaviour
     public GameObject RewardFeebackInstance;
     public GameObject CharSpriteTransform;
 
+    public AudioSource SFX;
     
     private void Start()
     {
@@ -43,6 +44,7 @@ public class Tasks : MonoBehaviour
     public virtual void SetUp(int insightCost)
     {
         insightRequired = insightCost;
+        SFX = GetComponent<AudioSource>();
        
       
     }
@@ -79,14 +81,24 @@ public class Tasks : MonoBehaviour
         timerController.SetTime(timeToComplete, timeToComplete);
         //take insight from player
         CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].player.GetComponent<Player>().SetResource(0, (-1) * insightRequired);
-    
 
-    }
+        SFX.clip = GameAssets.Instance.SFX[6];
+        SFX.Play();
+    } 
 
     public virtual void Increment()
     {
         //need to check if we also have enough
-        if (fedValues < thresh && fedValues < CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].player.GetComponent<Player>().GetResource(resourceKey)) fedValues++;
+        if (fedValues < thresh && fedValues < CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].player.GetComponent<Player>().GetResource(resourceKey))
+        {
+            fedValues++;
+            SFX.clip = GameAssets.Instance.SFX[0];
+            SFX.Play();
+        } else
+        {
+            SFX.clip = GameAssets.Instance.SFX[1];
+            SFX.Play();
+        }
         fedValText.text = fedValues.ToString();
 
         CanDispatchCheck();
@@ -96,7 +108,17 @@ public class Tasks : MonoBehaviour
 
     public virtual void Decrement()
     {
-        if(fedValues > 0) fedValues--;
+        if (fedValues > 0)
+        {
+
+            fedValues--;
+            SFX.clip = GameAssets.Instance.SFX[0];
+            SFX.Play();
+        } else
+        {
+            SFX.clip = GameAssets.Instance.SFX[1];
+            SFX.Play();
+        }
 
         fedValText.text = fedValues.ToString();
 
@@ -145,11 +167,19 @@ public class Tasks : MonoBehaviour
         if (CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].player.GetComponent<Player>().GetResource(resourceKey) >= thresh)
         {
             fedValues = thresh;
+            SFX.clip = GameAssets.Instance.SFX[0];
+            SFX.Play();
         } else
         {
             fedValues = CompanionUI_Menu.comps[CompanionUI_Menu.compIndex].player.GetComponent<Player>().GetResource(resourceKey);
+            if (fedValues == 0)
+            {
+                SFX.clip = GameAssets.Instance.SFX[2];
+                SFX.Play();
+            }
         }
-
+     
+        
         fedValText.text = fedValues.ToString();
         CanDispatchCheck();
     }

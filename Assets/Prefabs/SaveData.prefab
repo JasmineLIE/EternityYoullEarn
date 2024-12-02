@@ -71,7 +71,7 @@ MonoBehaviour:
       activated: 0
       shorthand: Immortals
       name: The Four Immortals
-      desc: TheFourImmortals.txt
+      desc: TheFourImmortals
       lore: 
       cost: 0a000000
       costKey: 02000000
@@ -82,7 +82,7 @@ MonoBehaviour:
       activated: 0
       shorthand: An Ode
       name: An Ode to the Fairy Mother
-      desc: FairyMother.txt
+      desc: FairyMother
       lore: 
       cost: f401000032000000
       costKey: 0000000002000000
@@ -93,7 +93,7 @@ MonoBehaviour:
       activated: 0
       shorthand: Treachery
       name: Treachery
-      desc: Treachery.txt
+      desc: Treachery
       lore: 
       cost: 2c01000019000000
       costKey: 0000000002000000
@@ -104,7 +104,7 @@ MonoBehaviour:
       activated: 0
       shorthand: War
       name: War Banner
-      desc: WarBanner.txt
+      desc: WarBanner
       lore: 
       cost: e8030000
       costKey: 00000000
@@ -115,7 +115,7 @@ MonoBehaviour:
       activated: 0
       shorthand: Ragged
       name: Ragged Banner
-      desc: RaggedBanner.txt
+      desc: RaggedBanner
       lore: 
       cost: 14000000
       costKey: 01000000

@@ -221,7 +221,7 @@ public class NavBar : Clickable
    
         wall.SetTrigger("Open");
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         screenBlocker.GetComponent<Image>().color = new Color(0f, 0f, 0f, 0f);
         screenBlocker.GetComponent<Image>().raycastTarget = false;
         wallWasClosed = false;

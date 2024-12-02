@@ -13,9 +13,11 @@ public class TheGate : MonoBehaviour
     public GameObject ArtifactManager;
     public GameObject feedbackPrefab;
     public AudioSource SFX;
+
     private void Start()
     {
         ArtifactManager.GetComponent<ArtifactManager>().LoadArtifacts();
+
     }
     private void Awake()
     {

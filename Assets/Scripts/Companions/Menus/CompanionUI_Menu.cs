@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.InputSystem.Android;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 public class CompanionUI_Menu : MonoBehaviour
@@ -39,11 +39,11 @@ public class CompanionUI_Menu : MonoBehaviour
     public int currMenu;
     public static int compIndex;
 
-   
+    AudioSource SFX;
  
     private void Start()
     {
-       
+       SFX = GetComponent<AudioSource>();
         menus[0] = taskMenu;
         menus[1] = investMenu;
         menus[2] = bioMenu;
@@ -137,8 +137,8 @@ public class CompanionUI_Menu : MonoBehaviour
 
     public void SwitchMenu(int menu)
     {
-        
-        
+        SetUpCompanionData();
+
         //set button states and active menu
         for (int i = 0; i < btns.Length; i++)
         {
@@ -155,7 +155,8 @@ public class CompanionUI_Menu : MonoBehaviour
 
             }
         }
-
+        SFX.clip = GameAssets.Instance.SFX[4];
+        SFX.Play();
     }
     private void SetUpCompanionData()
     {
