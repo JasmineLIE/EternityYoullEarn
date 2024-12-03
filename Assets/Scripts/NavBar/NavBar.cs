@@ -197,7 +197,7 @@ public class NavBar : Clickable
         if (key == 1)
         {
             yield return new WaitForSeconds(0.5f);
-            transitionButton_text.text = "TO THE COMPANION HUB";
+            transitionButton_text.text = "TO COMPANION HUB";
         } else
         {
             yield return new WaitForSeconds(0.6f);
