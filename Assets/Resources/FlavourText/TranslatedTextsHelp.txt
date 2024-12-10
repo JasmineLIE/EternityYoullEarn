@@ -1,0 +1,2 @@
+Translated Texts
+Translated Texts are important for discovering Artifacts.  Erem requires Translated Texts to produce an Artifact.  Translated Texts can be acquired through Quan.

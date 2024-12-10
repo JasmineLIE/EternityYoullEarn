@@ -24,7 +24,7 @@ public class Gwynhark : Companion
     //2nd array -- MOH Rate
     //3rd array -- N/A
     private int[,] m_e = { { 30, 40, 50, 60 }, 
-                            { 20, 30, 50, 80 }, 
+                            { 40, 60, 80, 100 }, 
                             { 0, 0, 0, 0 }  };
 
     

@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class HelpColumn : MonoBehaviour
 {
+    public Scrollbar scroll;
     public List<HelpButton> buttons = new List<HelpButton>();
     public static int helpIndex;
 
@@ -13,6 +15,7 @@ public class HelpColumn : MonoBehaviour
     {
         SFX = GetComponent<AudioSource>();
         buttons[helpIndex].Show();
+        scroll.value = 1;
     }
 
     public void Exit()

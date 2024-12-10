@@ -16,10 +16,14 @@ public class HelpButton : MonoBehaviour
     }
     public void Show()
     {
+        infoScreen.GetComponent<InfoScreen>().description.text = ""; //Clear
         SFX.Play();
         string[] text = ManageTextFiles.GetAllLines(fileName);
         infoScreen.GetComponent<InfoScreen>().title.text = text[0];
-        infoScreen.GetComponent<InfoScreen>().description.text = text[1];
+        for(int i = 1; i < text.Length; i++) {
+            infoScreen.GetComponent<InfoScreen>().description.text += text[i] + "\n\n";
+        }
+
         infoScreen.GetComponent<InfoScreen>().snapshot.sprite = GameAssets.Instance.InfoSnapshots[imageIndex];
 
 

@@ -16,7 +16,7 @@ public class Quan : Companion
     //1st array -- rate to earn Marks
     //2nd array -- How many untranslated texts can be translated at a time
     //3rd array -- extra Marks earned for ALL companions
-    private int[,] p_e = { { 30, 50, 75, 100 },
+    private int[,] p_e = { { 40, 50, 75, 100 },
                                 { 5, 8, 10, 12 },
                                 { 0, 0, 0, 5 } };
 
