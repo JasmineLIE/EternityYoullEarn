@@ -10,7 +10,7 @@ public class NavBar : Clickable
 {
 
     public CanvasGroup alert;
-    
+
 
 
     public TMP_Text tt_text;

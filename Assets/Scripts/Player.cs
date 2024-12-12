@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 public class Player : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour
 
     public SaveData saveData;
     public TMP_Text[] resource = new TMP_Text[5];
+    public Image[] iconsFill;
 
 
     private void Update()
@@ -60,7 +62,11 @@ public class Player : MonoBehaviour
         }
     }
     
+       public void UpdateIcon(int key)
+    {
        
+        iconsFill[key].fillAmount = (float)(GetResource(key) % 100)/100;
+    }
     public void SetResource(int key, int val)
     {
    
@@ -107,6 +113,8 @@ public class Player : MonoBehaviour
             }
         }
         resource[key].text = GetResource(key).ToString();
+
+        UpdateIcon(key);
     }
 
     public int GetResource(int key)
