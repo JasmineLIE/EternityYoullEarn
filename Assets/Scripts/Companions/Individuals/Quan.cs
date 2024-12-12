@@ -42,7 +42,7 @@ public class Quan : Companion
         psyche.SetValues_t(5);
         motivation.SetValues_t(3);
 
-        insightCost = 150;
+        insightCost = 100;
         timeToCompleteTask = 25f;
 
 

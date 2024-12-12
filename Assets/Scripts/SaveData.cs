@@ -442,6 +442,7 @@ public class SaveData : MonoBehaviour
     {
         get
         {
+            _ArtifactData.activated = _ArtifactData.activatedArtifacts.Count;
             return _ArtifactData.activated;
         }
 

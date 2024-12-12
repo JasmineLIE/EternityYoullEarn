@@ -43,7 +43,7 @@ public class Gwynhark : Companion
         motivation.SetValues_t(3);
 
         timeToCompleteTask = 30f;
-        insightCost = 100;
+        insightCost = 50;
 
         CharacterSetUp("Gwynhark");
 

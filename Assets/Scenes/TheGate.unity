@@ -355,6 +355,8 @@ MonoBehaviour:
   ArtifactManager: {fileID: 1214641323}
   feedbackPrefab: {fileID: 8203494251005379514, guid: 46e1fb805d4bcca4b977afa2c87511a6, type: 3}
   SFX: {fileID: 1447910881}
+  EndState: 0
+  transition: {fileID: 654822289}
 --- !u!114 &105779610
 MonoBehaviour:
   m_ObjectHideFlags: 0

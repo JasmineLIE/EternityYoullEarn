@@ -4,6 +4,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TheGate : MonoBehaviour
 {
@@ -13,11 +14,14 @@ public class TheGate : MonoBehaviour
     public GameObject ArtifactManager;
     public GameObject feedbackPrefab;
     public AudioSource SFX;
+    public bool EndState;
 
+   
     private void Start()
     {
+        EndState = false;
         ArtifactManager.GetComponent<ArtifactManager>().LoadArtifacts();
-
+     
     }
     private void Awake()
     {
@@ -30,6 +34,11 @@ public class TheGate : MonoBehaviour
    
     public void Clicked()
     {
+        EndState = player.GetComponent<Player>().saveData.ActivatedCount == 5;
+        if (EndState)
+        {
+            SceneManager.LoadScene("End");
+        }
         SFX.clip = GameAssets.Instance.SFX[5];
         SFX.Play();
         player.GetComponent<Player>().SetResource(0, insightIncrement);
@@ -39,6 +48,8 @@ public class TheGate : MonoBehaviour
         increment.GetComponent<GateIncrementFeedback>().icon.sprite = GameAssets.Instance.ResourceIcons[0];
         increment.transform.SetParent(gameObject.transform);
         increment.transform.position = Input.mousePosition;
+
+      
 
     }
 
@@ -58,4 +69,5 @@ public class TheGate : MonoBehaviour
         }
     }
    
+  
 }

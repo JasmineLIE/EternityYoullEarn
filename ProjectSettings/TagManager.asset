@@ -19,6 +19,7 @@ TagManager:
   - Main Menu
   - Info
   - RevelationsContainer
+  - Persistent
   layers:
   - Default
   - TransparentFX

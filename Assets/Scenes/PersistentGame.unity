@@ -136,8 +136,8 @@ GameObject:
   - component: {fileID: 40249101}
   - component: {fileID: 40249102}
   m_Layer: 0
-  m_Name: PersistentGameManager
-  m_TagString: Untagged
+  m_Name: ntGameManagereManager
+  m_TagString: Persistent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

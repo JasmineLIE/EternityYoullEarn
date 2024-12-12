@@ -34,7 +34,7 @@ public class Erem : Companion
                                 { 0, 0, 0, 0 }  };
     private void Awake()
     {
-        artifactTarget = 15;
+        artifactTarget = 10;
 
 
 
@@ -47,8 +47,8 @@ public class Erem : Companion
         psyche.SetValues_t(5);
         motivation.SetValues_t(3);
 
-        insightCost = 200;
-        timeToCompleteTask = 45f;
+        insightCost = 150;
+        timeToCompleteTask = 40f;
 
         studiedArtifacts = saveData.GetStudiedArtifactsVal();
 
