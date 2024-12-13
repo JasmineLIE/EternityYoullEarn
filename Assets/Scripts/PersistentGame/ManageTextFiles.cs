@@ -37,7 +37,7 @@ public class ManageTextFiles : MonoBehaviour
 
 
         string[] lines = textFile.text.Split('\n');
-        print(lines);
+     
         List<string> temp = new List<string>();
         bool flag = false;
 

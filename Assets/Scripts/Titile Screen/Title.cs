@@ -21,8 +21,12 @@ public class Title : MonoBehaviour
     private void Start()
     {
         isPlaying = false;
-    
-       
+
+        GameObject persistent = GameObject.FindGameObjectWithTag("Persistent");
+        if (persistent != null)
+        {
+            Destroy(persistent);
+        }
         if (!SaveData.DoesSaveExist())
         {
             play.interactable = false;

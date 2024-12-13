@@ -12,10 +12,7 @@ public class ArtifactManager : MonoBehaviour
 
     private void Start()
     {
-     for(int i = 0; i < 5; i++)
-        {
-            DiscoverArtifact();
-        }
+     
     }
     public void LoadArtifacts()
     {
@@ -33,7 +30,7 @@ public class ArtifactManager : MonoBehaviour
             }
         } else
         {
-            print("We have no discovered artifacts!");
+           
         }
      
     }
@@ -47,7 +44,7 @@ public class ArtifactManager : MonoBehaviour
             return temp;
         } else
         {
-            print("We have no more artifacts to discover");
+          
             return null;
         }
     

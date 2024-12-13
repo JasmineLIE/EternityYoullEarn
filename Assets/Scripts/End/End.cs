@@ -28,7 +28,7 @@ public class End : MonoBehaviour
     }
     IEnumerator ExitWait()
     {
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(4f);
         canExit = true;
     }
 }
