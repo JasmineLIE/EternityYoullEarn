@@ -4,6 +4,7 @@ using System.IO;
 using System.Security;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using static UnityEngine.GraphicsBuffer;
 
@@ -75,6 +76,10 @@ public class SaveData : MonoBehaviour
         
     }
 
+    private void Awake()
+    {
+        LoadJson();
+    }
     /*
      * This function returns true or false, depending if there exists save files.
      * False if there is no save file detected in the local directory, true if otherwise.
@@ -378,16 +383,23 @@ public class SaveData : MonoBehaviour
 
     public List<ArtifactInfo> GetDiscoveredArtifacts()
     {
+    
         List<ArtifactInfo> temp = new List<ArtifactInfo>();
 
-        //we +1 because pointer is -1
+        //we +1 because pointer can be -1
         int difference = (_ArtifactData.info.Count - (_ArtifactData.pointer + 1));
 
         for (int i = 0; i < difference; i++)
         {
-            if (!_ArtifactData.info[i].activated)
+            int discoveredArtifactIndex = (_ArtifactData.info.Count - 1)-i; //we are going backwards through the array
+            //so, if the last two elements are discovered artifacts (indexes 4 and 3), we loop two times (i = 0, i < differences, length - pointer [5 - 3 = 2]
+            //thus, we only loop on i = 0, and i = 1 -- two times
+           //and we are checking the index of Count - 1 - i (4 - i)
+          
+            if (!_ArtifactData.info[discoveredArtifactIndex].activated) //get ones we have not activated
             {
-                temp.Add(_ArtifactData.info[(_ArtifactData.info.Count-1)-i]);
+               
+                temp.Add(_ArtifactData.info[discoveredArtifactIndex]);
             }
         }
 
