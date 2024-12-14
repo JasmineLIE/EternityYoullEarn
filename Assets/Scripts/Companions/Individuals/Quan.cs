@@ -16,14 +16,14 @@ public class Quan : Companion
     //1st array -- rate to earn Marks
     //2nd array -- How many untranslated texts can be translated at a time
     //3rd array -- extra Marks earned for ALL companions
-    private int[,] p_e = { { 40, 50, 75, 100 },
+    private int[,] p_e = { { 50, 60, 80, 100 },
                                 { 5, 8, 10, 12 },
                                 { 0, 0, 0, 5 } };
 
     //1st array -- efficiency
     //2nd array -- Extra translated texts earned rate
     //3rd array -- N/A
-    private int[,] m_e = { { 10, 20, 30, 50 },
+    private int[,] m_e = { { 10, 30, 40, 50 },
                                 { 50, 50, 100, 100 },
                                 { 0, 0, 0, 0 } };
 
@@ -61,17 +61,15 @@ public class Quan : Companion
         switch (psyche.GetIndex())
         {
             case 0:
-                effectText = "<b>Marks of Humanity Rate:</b> " + mohRate + "%" + " → " + psyche.GetEffectArray(0, 0) + "%";
+                effectText = "<b>Marks of Humanity Rate:</b> " + mohRate + "%" + " → " + psyche.GetEffectArray(0, 1) + "%";
                 break;
             case 1:
-                effectText = "<b>Marks of Humanity Rate:</b> " + mohRate + "%" + " → " + psyche.GetEffectArray(0, 1) + "%" + "\n" + "<b>Translation Texts Limit:</b> " + MAX_untranslatedTexts + " → " + psyche.GetEffectArray(1, 2);
+                effectText = "<b>Marks of Humanity Rate:</b> " + mohRate + "%" + " → " + psyche.GetEffectArray(0, 2) + "%" + "\n" + "<b>Translation Texts Limit:</b> " + MAX_untranslatedTexts + " → " + psyche.GetEffectArray(1, 2);
                 break;
             case 2:
-                effectText = "<b>Marks of Humanity Rate:</b> " + mohRate + "%" + " → " + psyche.GetEffectArray(0, 2) + "%" + "\n" + "<b>Translation Texts Limit:</b> " + MAX_untranslatedTexts + " → " + psyche.GetEffectArray(1, 3); ;
-                break;
-            case 3:
                 effectText = "<b>Marks of Humanity Rate: Gauranteed</b>" + "\n" + "<b>Marks Earned:</b> +" + psyche.GetEffectArray(2, 3) + " addtional Marks for ALL companions";
                 break;
+       
         }
 
         return effectText;
@@ -84,20 +82,18 @@ public class Quan : Companion
         switch (motivation.GetIndex())
         {
             case 0:
-                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, 0) + "%" + "\n" + "<b>Translated Texts Earned:</b> " + motivation.GetEffectArray(1, 0) + "% chance for +1 extra";
+                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, 1) + "%" + "\n" + "<b>Translated Texts Earned:</b> " + motivation.GetEffectArray(1, 0) + "% chance for +1 extra";
                 break;
 
             case 1:
-                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, 1) + "%";
+                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, 2) + "%";
                 break;
 
             case 2:
-                effectText = "<b>Translated Texts Earned: Gauranteed +1 Extra";
+                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, 3) + "%"+ "<b>Translated Texts Earned: Gauranteed +1 Extra";
                 break;
 
-            case 3:
-                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0,3) + "%";
-                break;
+         
         }
         return effectText;
     }

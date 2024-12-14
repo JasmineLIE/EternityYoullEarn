@@ -114,7 +114,7 @@ public class CompanionUI_Task_Erem : Tasks
             //this is messy KILL MEE NYEEOOOW
             Erem.GetComponent<Erem>().saveData.ResetStudiedArtifactVal();
             Erem.GetComponent<Erem>().studiedArtifacts -= Erem.GetComponent<Erem>().artifactTarget;
-            Erem.GetComponent<Erem>().player.GetComponent<Player>().saveData.SetStudiedArtifactsVal(-(Erem.GetComponent<Erem>().artifactTarget));   
+            Erem.GetComponent<Erem>().player.GetComponent<Player>().saveData.SetStudiedArtifactsVal(Erem.GetComponent<Erem>().studiedArtifacts);   
 
             ArtifactInfo temp = artifactManager.DiscoverArtifact();
 

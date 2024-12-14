@@ -24,7 +24,7 @@ public class Gwynhark : Companion
     //2nd array -- MOH Rate
     //3rd array -- N/A
     private int[,] m_e = { { 30, 40, 50, 60 }, 
-                            { 40, 60, 80, 100 }, 
+                            { 50, 60, 80, 100 }, 
                             { 0, 0, 0, 0 }  };
 
     
@@ -56,8 +56,20 @@ public class Gwynhark : Companion
 
     public override string GetPsycheEffectDesc()
     {
-        string effectText = "<b>Rewards:</b> " + MIN_resources + " - " + MAX_resources + " → " + psyche.GetEffectArray(0, psyche.GetIndex()+1) + " - " + psyche.GetEffectArray(1, psyche.GetIndex()+1);
-        
+        string effectText = "";
+        switch (psyche.GetIndex())
+        {
+            case 0:
+
+
+            case 1:
+
+
+            case 2:
+
+                effectText = "<b>Rewards:</b> " + MIN_resources + " - " + MAX_resources + " → " + psyche.GetEffectArray(0, psyche.GetIndex() + 1) + " - " + psyche.GetEffectArray(1, psyche.GetIndex() + 1);
+                break;
+        }
 
         return effectText;
     }
@@ -76,9 +88,9 @@ public class Gwynhark : Companion
            
        
             case 2:
-              
-            case 3:
-                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, motivation.GetIndex()+1) + "%" + "\n" + "<b>Mark of Humanity Rate:</b> " + mohRate + "%" + " → " + motivation.GetEffectArray(1, motivation.GetIndex()+1) + "&";
+                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, motivation.GetIndex() + 1) + "%" + "\n" + "<b>Mark of Humanity Rate:</b> " + mohRate + "%" + " → " + motivation.GetEffectArray(1, motivation.GetIndex()) + "&";
+       
+          
                 break;
         }
         return effectText;

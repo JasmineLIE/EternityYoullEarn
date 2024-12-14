@@ -22,7 +22,7 @@ public class Erem : Companion
     //1st array -- MOH earn rate
     //2nd array -- Additional marks earned by companions
     //3rd array -- N/A
-    private int[,] p_e = {  { 40, 60, 70, 100 }, 
+    private int[,] p_e = {  { 50, 60, 80, 100 }, 
                                 { 0, 3, 3, 10 }, 
                                 { 0, 0, 0, 0 }  };
 
@@ -91,8 +91,9 @@ public class Erem : Companion
 
             case 1:
             case 2:
-            case 3:
-                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, motivation.GetIndex()+1) + "%" + "\n" + "<b>Study Translated Texts:</b> " + MAX_translatedTexts + " → " + motivation.GetEffectArray(1,motivation.GetIndex()+1);
+                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, motivation.GetIndex() + 1) + "%" + "\n" + "<b>Study Translated Texts:</b> " + MAX_translatedTexts + " → " + motivation.GetEffectArray(1, motivation.GetIndex());
+        
+      
                 break;
         }
         return effectText;
