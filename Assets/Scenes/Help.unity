@@ -2028,7 +2028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6398090688134939335, guid: 9d8cd9b4522579e4b94ef0632b0b4e2f, type: 3}
       propertyPath: imageIndex
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6398090688134939335, guid: 9d8cd9b4522579e4b94ef0632b0b4e2f, type: 3}
       propertyPath: infoScreen
@@ -3062,7 +3062,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6398090688134939335, guid: 9d8cd9b4522579e4b94ef0632b0b4e2f, type: 3}
       propertyPath: imageIndex
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6398090688134939335, guid: 9d8cd9b4522579e4b94ef0632b0b4e2f, type: 3}
       propertyPath: infoScreen

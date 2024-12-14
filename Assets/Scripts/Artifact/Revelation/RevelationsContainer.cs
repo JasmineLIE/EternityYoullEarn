@@ -54,7 +54,7 @@ public class RevelationsContainer : MonoBehaviour
         card.GetComponent<ActivatedArtifact>().SetUp(shorthand, name, time, eKeys, eVals, ID, textFile);
 
 
-        if (rowsCount[0] < 3)
+        if (rowsCount[0] < 4)
         {
             card.transform.SetParent(rows[0].transform); rowsCount[0]++;
         }
