@@ -21,19 +21,20 @@ public class TheGate : MonoBehaviour
     {
         EndState = false;
         ArtifactManager.GetComponent<ArtifactManager>().LoadArtifacts();
-     
+    
     }
     private void Awake()
     {
         
         player = GameObject.FindGameObjectWithTag("Player");
-        insightIncrement = player.GetComponent<Player>().saveData.GetInsightIncrementVal();
+       
       
     }
 
    
     public void Clicked()
     {
+        insightIncrement = player.GetComponent<Player>().saveData.GetInsightIncrementVal();
         EndState = player.GetComponent<Player>().saveData.ActivatedCount == 5;
         if (EndState)
         {
