@@ -19,7 +19,9 @@ public class Invest_Btn : MonoBehaviour
     public int currMOH;
     public TMP_Text costText;
 
-   
+
+    string flavour;
+    string nextLevel;
 
     public Image levelBar;
     private float maxLevel;
@@ -38,51 +40,65 @@ public class Invest_Btn : MonoBehaviour
      
         
       SFX = GetComponent<AudioSource>();
-
+        nextLevelDesc.color = Color.grey;
 
     }
 
     private void Update()
     {
         maxedOut = currLevel >= maxLevel;
+
         if (!maxedOut)
         {
             UpdateCostText();
-        } else
+        }
+        else
         {
+          
             MaxOut();
         }
+
     }
     public void SetUp(string flavour, string nextLvl, int tempCost, float tempCurrLevel)
     {
         flavourText.text = flavour;
+        this.flavour = flavour;
+
         nextLevelDesc.text = nextLvl;
+        
+        this.nextLevel = nextLvl;
+
         cost = tempCost;
         currLevel = tempCurrLevel;
         level.text = (currLevel+1).ToString();
 
 
         levelBar.fillAmount = currLevel / maxLevel;
+
         
-        if(maxedOut)
-        {
-            MaxOut();
-        }
     }
 
     private void UpdateCostText()
     {
-        currMOH = player.GetComponent<Player>().GetResource(1);
-      
-        costText.text = currMOH + "/" + cost;
+        flavourText.text = flavour;
+        nextLevelDesc.text = nextLevel;
 
+
+        level.text = (currLevel + 1).ToString();
+
+        currMOH = player.GetComponent<Player>().GetResource(1);
+        
+        costText.text = currMOH + "/" + cost;
+        nextLevelDesc.color = Color.grey;
         //if we have the correct amount of MOH or more
-        if(currMOH >= cost)
+        if (currMOH >= cost)
         {
+            btn.interactable = true;
             sprite.color = new Color(0.7568628f, 0.5882353f, 0.3411765f); //gold
             costText.color = new Color(0.7568628f, 0.5882353f, 0.3411765f);
         } else
         {
+            btn.interactable = false;
             sprite.color = Color.red;
             costText.color = Color.red;
         }

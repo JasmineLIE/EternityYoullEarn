@@ -91,7 +91,7 @@ public class Erem : Companion
 
             case 1:
             case 2:
-                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, motivation.GetIndex() + 1) + "%" + "\n" + "<b>Study Translated Texts:</b> " + MAX_translatedTexts + " → " + motivation.GetEffectArray(1, motivation.GetIndex());
+                effectText = "<b>Efficiency:</b> " + efficiency + "%" + " → " + motivation.GetEffectArray(0, motivation.GetIndex() + 1) + "%" + "\n" + "<b>Study Translated Texts:</b> " + MAX_translatedTexts + " → " + motivation.GetEffectArray(1, motivation.GetIndex()+1);
         
       
                 break;

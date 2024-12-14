@@ -60,6 +60,10 @@ public class Title : MonoBehaviour
         StartCoroutine(PlayTransition("NEW"));
     }
    
+    public void Credits()
+    {
+        Application.OpenURL("https://docs.google.com/document/d/12WnU5MVfay_LuLihqHuSdNjYF6RBe7z2fxR6VABsV0g/edit?usp=sharing");
+    }
     /*
      * The tiger fades in and our based on the distance between the cursor and the "Continue" button (The tiger wants you to release it!!!)
      */
